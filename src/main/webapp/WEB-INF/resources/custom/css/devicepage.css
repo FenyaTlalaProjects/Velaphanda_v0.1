@@ -1,0 +1,40 @@
+@CHARSET "ISO-8859-1";
+li {
+	list-style: none;
+}
+
+.machinetype {
+	margin-left: 3%;
+}
+
+.serial {
+	margin-left: 41%;
+}
+
+.customerDeviceContainer {
+	padding: 25px;
+	margin-bottom: -1em;
+	width: auto;
+	display: table;
+}
+
+p.customerAddressTitle {
+	font-size: 1.1em;
+	font-weight: bolder;
+	margin-left: 16%;
+	margin-right: -25%;
+}
+
+ul.addressDeviceList {
+	margin-left: -7%;
+}
+
+input.currency {
+	text-align: right;
+	padding-right: 15px;
+}
+
+.resize {
+	margin-left: 12%;
+	margin-right: 12%;
+}

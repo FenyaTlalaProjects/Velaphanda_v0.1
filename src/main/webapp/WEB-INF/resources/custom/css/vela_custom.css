@@ -1,0 +1,218 @@
+@import ulr("href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,400italic,600italic,700' rel='stylesheet' type='text/css'>")
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing: border-box;
+}
+
+.disableLinks{
+	
+   pointer-events: none;
+   cursor: default;
+}
+
+.orderDetails {
+    margin-left: -17px;
+}
+body{
+	
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 1.42857143;
+    color: #333;		
+}
+legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 17px;
+    line-height: inherit;
+    color: #333;
+    border: 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+a{
+	text-decoration:none;
+}
+
+b.optionalFields{
+	color:red;
+}
+
+a.deactive_button{
+	color:#ff0000;
+}
+/*devider hr*/
+.devider {
+    margin-top: 6%;
+	margin-bottom: 20px;
+	border: 0;
+	border-top: 1px solid #92CF9B;
+	margin-right: 13%;
+	margin-left: 6%;
+}
+
+.vela_motto{	
+	margin-left: 9%;
+    margin-bottom: -7%;
+    margin-top: 4%;}
+span.motto{
+	font-weight:bold;
+	font-size:2em;
+	color:#084f9d;
+}
+span.techsystem{
+	color:#084f9d;
+	font-weight:bold;
+}
+/*Pie Chart*/
+.pie_content{
+	margin-left:5%;
+}
+#ticket_details_pie{	 
+
+}		
+/* End Pie Chart*/
+
+div#container{
+	width:100%;
+	margin:0 auto;
+}
+.content{
+	margin-left:85px;
+    height: auto;
+    width: auto;
+    position: relative;
+    overflow: auto;
+    z-index: 1;
+ }
+#customer_container {
+	/* background: #f9f9f9;
+	border: 1px solid #aaa; */
+	padding: 25px;
+    margin-bottom: -1em;
+    width: auto;
+    display: table;
+    font-size: 100%;
+}
+ul.address_list {
+    margin-left: 2%;
+}
+#payment_container {
+	/* background: #f9f9f9; */
+	/* border: 1px solid #aaa; */
+	padding: 10px;
+	margin-bottom: 1em;
+	width: auto;
+	display: table;
+	font-size: 100%;
+	margin-left: auto;
+}
+#logo_container {
+	/* background: #f9f9f9; */
+	/* border: 1px solid #aaa; */
+	padding: 10px;
+	margin-bottom: 1em;
+	width: auto;
+	display: table;
+	font-size: 100%;
+	margin-left: auto;
+	margin-right: -19%;
+    margin-top:-38% ;
+}
+.tablemachinesacccso{
+	padding-left: 14%;
+    padding-right: 14%;
+}
+.centerbutton{	
+	padding-left:41%;
+}
+/*input-group-addon for icons*/
+.input-group-addon {
+    padding: 2px 12px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+/*Form Control size for text box and font*/
+ .form-control {
+    display: block;
+    width: 100%;
+    height: 27px;
+    padding: 6px 12px;
+    font-size: 0.9em;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+p.contactPerson_title, p.customerAddress_title{
+	font-size: 1.1em;
+    font-weight: bolder;
+    margin-left: 23%
+}
+
+
+p.payment_title{
+	font-size: 1.1em;
+	font-weight:bolder;
+}
+
+p.customerAddress_title{
+	font-size: 1.1em;
+	font-weight:bolder;
+}
+/*sidebar nav*/
+.sidebar{
+	width:250px;
+	background-color:#2980b9;
+	float:left;	
+	position: fixed;
+    height: 400px;
+     
+}
+ul#nav{
+	padding:9px;
+}
+ul#nav li{
+	list-style: none;
+}
+
+ul#nav li a{
+	color:#ccc;
+	display:block;
+	padding:10px;
+	font-size:0.8em;
+	border-bottom:1px solid #ecf0f1;
+	webkit-transition: 0.2s;
+	-moz-transition:02.2s;
+	-o-transition:0.2s;
+	transition:0.2s;	
+}
+ul#nav li a:hover{
+	background-color:#2c3e50;
+	color:#fff;
+}
+ul#nav li a.selected{
+	background-color:#2c3e50;
+	color:#fff;
+}
+
+table#myDatatable{
+	width:100%;
+}
+

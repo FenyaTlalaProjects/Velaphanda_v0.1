@@ -1,0 +1,47 @@
+@CHARSET "ISO-8859-1";
+
+.selectDate {
+	position: relative;
+	display: inline-block;
+	height: 28px;
+	width: 48%;
+	margin-left: 25%;
+}
+
+.selectDate input {
+	width: 100%; /* Arbitrary number */
+	height: 100%;
+	padding-right: 40px;
+	box-sizing: border-box;
+}
+
+input#selectDateRange {
+	cursor: pointer;
+}
+
+#calendar {
+	height: 100%;
+	width: 40px;
+	background-image: url(resources/images/calendar.png),
+		url(resources/images/down_arrow.png);
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	border: none;
+	background-color: transparent;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+}
+
+i.glyphicon.glyphicon-calendar.col-sm-pull-2 {
+	right: -29%;
+}
+
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group
+	{
+	z-index: 2;
+	height: 32px;
+	margin-left: -1px;
+	padding-bottom: 17px;
+}

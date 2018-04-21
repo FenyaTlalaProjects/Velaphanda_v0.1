@@ -1,0 +1,41 @@
+@CHARSET "ISO-8859-1";
+.machinedetailsfloatright {
+    float: left;    
+    padding-left: 23px;
+}
+.machinedetailsdetailsfloatleft {
+	float: left;
+	margin-left: 10px;
+}
+p.contactPerson_title, p.customerAddress_title {
+    font-size: 1.1em;
+    font-weight: bolder;
+}
+li { list-style: none; }
+
+/************************************************************************************
+MEDIA QUERIES
+*************************************************************************************/
+@media only screen and (max-width: 760px), (max-device-width: 1024px) and (min-device-width: 768px){
+	.machinedetailsfloatright {
+		float: left;
+		margin-right: -31%;
+		padding-left: 9%;
+		margin-top: 0%;
+	}
+}
+/* for 980px or less */
+@media screen and (max-width: 980px) {
+	
+}
+
+/* for 700px or less */
+@media screen and (max-width: 600px) {
+
+}
+
+/* for 480px or less */
+@media screen and (max-width: 480px) {
+
+}
+

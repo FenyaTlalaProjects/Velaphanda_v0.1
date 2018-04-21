@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:task="http://www.springframework.org/schema/task"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+                        http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                        http://www.springframework.org/schema/tx
+                        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+                        http://www.springframework.org/schema/mvc 
+                        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                        http://www.springframework.org/schema/task     
+                        http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+                                      
+   <context:component-scan base-package="com.demo" />
+   <mvc:annotation-driven /> 
+	<context:property-placeholder location="classpath:resources/database.properties" />
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="cacheSeconds" value="0"/>
+	</bean>
+
+	 <tx:annotation-driven transaction-manager="hibernateTransactionManager" /> 
+	<bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+			<property name="order" value="2"/>
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<bean id="viewResolver1" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+  		<property name="order" value="1"/>
+  		<property name="basename" value="views"/>
+	</bean>	
+		
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${database.driver}" />
+		<property name="url" value="${database.url}" />
+		<property name="username" value="${database.user}" />
+		<property name="password" value="${database.password}" />
+	</bean>
+	<task:annotation-driven  scheduler="myScheduler"/>
+    <task:scheduler id="myScheduler" pool-size="10"/>
+    
+    
+	 <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"/> 
+
+
+	 <bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				 <value>com.demo.model.Employee</value> 
+				 <value>com.demo.model.Device</value>
+				 <value>com.demo.model.Customer</value>
+				 <value>com.demo.model.HOStock</value>
+				 <value>com.demo.model.Tickets</value>
+				 <value>com.demo.model.OrderHeader</value>
+				 <value>com.demo.model.CustomerContactDetails</value>
+				 <value>com.demo.model.Accessories</value>
+				 <value>com.demo.model.Manager</value>
+				 <value>com.demo.model.Technician</value>
+				 <value>com.demo.model.User</value>
+				 <value>com.demo.model.TicketHistory</value>
+				 <value>com.demo.model.OrderDetails</value>
+				 <value>com.demo.model.DeviceContactPerson</value>
+				 <value>com.demo.model.UserLogDetails</value>
+				 <value>com.demo.model.Leave</value>
+				 <value>com.demo.model.LeaveStatus</value>
+				 <value>com.demo.model.SpareReports</value>
+				 <value>com.demo.model.SpareMaster</value>
+				 <value>com.demo.model.Credentials</value>
+				 <value>com.demo.model.LoginAttempt</value>
+				 <value>com.demo.model.SiteStock</value>
+				 <value>com.demo.model.BootStock</value>
+				 <value>com.demo.model.ApprovedOrderStock</value>
+				 <value>com.demo.model.TechnicianSite</value>
+				 <value>com.demo.model.OrderHistory</value>
+				 <value>com.demo.model.VelaphandaProfile</value>
+				 <value>com.demo.model.DeliveryNoteHeader</value>
+				 <value>com.demo.model.DeliveryNoteLineItem</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="hibernateTransactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean> 
+		 
+</beans>
