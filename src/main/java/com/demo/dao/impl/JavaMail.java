@@ -168,12 +168,12 @@ public class JavaMail {
 	}
 	
 	//Email message details to technician for escalation
-	public static void sendMailDetailsToTechnicianForEscalation(Tickets ticket,Employee manager) {
+	public static void sendMailDetailsToTechnicianForEscalation(Tickets ticket,Employee employee) {
 		
-		String[] to = { ticket.getEscalatedTo(),ticket.getEmployee().getEmail() };
+		String[] to = {ticket.getEmployee().getEmail() };
 		String from = emailFrom;
 		String pass = password;
-		String body = "Hi " + manager.getFirstName() + " " + manager.getLastName() + " The following service call has been escalated to you:"
+		String body = "Hi " + employee.getFirstName() + " " + employee.getLastName() + " The following service call has been escalated to Senior Manager:\n"
 				
 				+ "\n\nTicket Details are as follows:" +"\n\n"
 				
@@ -196,7 +196,7 @@ public class JavaMail {
 				+ "\n\nKind Regards,\nVelaphanda Technical Team"
 				+ "\nWebsite: www.velaphanda.com";
 		
-		String subject = "Velaphanda Ticket Ref No " + newTicketNum+ticket.getRecordID() + " Escalated To You";
+		String subject = "Velaphanda Ticket Ref No " + newTicketNum+ticket.getRecordID() + " Escalated To Senior Manager";
 		
 		Properties props = System.getProperties();
 		String host = "smtp.mweb.co.za";
@@ -237,12 +237,12 @@ public class JavaMail {
 	}
 	
 	//Escalation Notification to manager
-	public static void sendMailEscalationNotificationToManager(Tickets ticket,Employee employee) {
+	public static void sendMailEscalationNotificationToManager(Tickets ticket,String managerFirstName, String managerLastName) {
 		
-		String[] to = { ticket.getEmployee().getEmail() };
+		String[] to = {ticket.getEscalatedTo()};
 		String from = emailFrom;
 		String pass = password;
-		String body = "Hi " + ticket.getEmployee().getFirstName() + " " + ticket.getEmployee().getLastName() + " The following service call has been escalated to you:"
+		String body = "Hi " + managerFirstName + " " + managerLastName + " The following service call has been escalated to you:\n"
 				
 				+ "Ticket Details are as follows:" +"\n\n"
 				
@@ -265,7 +265,7 @@ public class JavaMail {
 				+ "\n\nKind Regards,\nVelaphanda Technical Team"
 				+ "\nWebsite: www.velaphanda.com";
 		
-		String subject = "Velaphanda Ticket Ref No " + newTicketNum+ticket.getRecordID() + " Escalated To Senior Manager";
+		String subject = "Velaphanda Ticket Ref No " + newTicketNum+ticket.getRecordID() + " Escalated To You";
 		
 		Properties props = System.getProperties();
 		String host = "smtp.mweb.co.za";

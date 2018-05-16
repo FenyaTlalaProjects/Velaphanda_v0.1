@@ -96,7 +96,7 @@ public class ScheduledTicketsDao implements ScheduledTickets{
 					
 						JavaMail.SendMailToManagersForFourHoursReminder(openTicket,managerEmails);
 					
-				}else if(hour>=8 && openTicket.getStatus().equalsIgnoreCase("Escalated")){
+				}else if(hour>=48 && openTicket.getStatus().equalsIgnoreCase("Escalated")){
 				// Send emails here
 			   }else if(hour>=48 && openTicket.getStatus().equalsIgnoreCase("Awaiting Spares")){
 				
@@ -145,6 +145,7 @@ public class ScheduledTicketsDao implements ScheduledTickets{
 	    		secondDate= myFormat.parse(date2);
 	    		long difference = currentDate.getTime()- secondDate.getTime();
 	    		// 86400 is equal to 24 hrs
+	    		// 172800 is equal to 48 hrs
 	    		if(difference > 86400){
 	    			
 	    			ticket.setStatus("Closed");

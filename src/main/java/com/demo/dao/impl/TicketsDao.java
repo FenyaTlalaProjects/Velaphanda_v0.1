@@ -1944,11 +1944,11 @@ public class TicketsDao implements TicketsDaoInt {
 								.getEscalateReason());
 						ticket.setEscalatedTo(ticketsBean.getEscalatedTo());
 						sessionFactory.getCurrentSession().update(ticket);
-
+						emp = employeeDaoInt.getEmployeeByEmpNum(ticketsBean.getEscalatedTo());
 						ticket.setComments(ticketsBean.getComments());
 						historyDaoInt.insertTicketHistory(ticket);
 						JavaMail.sendMailDetailsToTechnicianForEscalation(ticket, ticket.getEmployee());
-						JavaMail.sendMailEscalationNotificationToManager(ticket, ticket.getEmployee());
+						JavaMail.sendMailEscalationNotificationToManager(ticket, emp.getFirstName(), emp.getLastName());
 
 						retMessage = "Ticket " + tempTicketNum + ticketNumber
 								+ " successfully Escalated to "

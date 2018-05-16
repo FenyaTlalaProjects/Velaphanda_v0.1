@@ -4,7 +4,7 @@
  * Author : Fenya Tlala 
  * Client: Velaphanda
  * Created Date:20-08-2017
- * Last Date Modified:21-01-2018
+ * Last Date Modified:15-05-2018
  */
 
 
@@ -273,7 +273,7 @@ function Faulty(val) {
 			|| val == 'Configured Printer' || val == 'User Error'
 			|| val == 'No fault Found' || val == 'Cleaned Mirrors'
 			|| val == 'Cleaned Laser Unit' || val == 'Cleaned Charge Rollers'
-			|| val == 'Cleaned ADF Class' || val == 'Cleaned Rollers')
+			|| val == 'Cleaned ADF Class' || val == 'Cleaned Rollers' || val == 'Firmware Upgrade')
 
 		element.style.display = 'block';
 	else
@@ -288,7 +288,7 @@ function Faulty(val) {
 			|| val == 'No fault Found' || val == 'Replaced Part/Toner'
 			|| val == 'Cleaned Mirrors' || val == 'Cleaned Laser Unit'
 			|| val == 'Cleaned Charge Rollers' || val == 'Cleaned ADF Class'
-			|| val == 'Cleaned Rollers')
+			|| val == 'Cleaned Rollers' || val == "Firmware Upgrade")
 		element.style.display = 'block';
 	else
 		element.style.display = 'none';
@@ -302,7 +302,7 @@ function Faulty(val) {
 			|| val == 'No fault Found' || val == 'Replaced Part/Toner'
 			|| val == 'Cleaned Mirrors' || val == 'Cleaned Laser Unit'
 			|| val == 'Cleaned Charge Rollers' || val == 'Cleaned ADF Class'
-			|| val == 'Cleaned Rollers')
+			|| val == 'Cleaned Rollers' || val == "Firmware Upgrade")
 		element.style.display = 'block';
 	else
 		element.style.display = 'none';

@@ -101,10 +101,15 @@ public class DeviceDetailsPDFBuilder extends ReportITextPdfView {
 		table.setWidthPercentage(30);
 
 		/*This is absolute path for Velaphanda server*/
+		
+		//QA testing Application path
+		Image img = Image.getInstance("/xampp/tomcat/webapps/Velaphanda_Dev_v0.3/WEB-INF/resources/images/mainlogo_small.jpg");
+		
+		//Production Application path
 		//Image img = Image.getInstance("/xampp/tomcat/webapps/Velaphanda_v0.2/WEB-INF/resources/images/mainlogo_small.jpg");
 		
 		/*Path to use when running project on your PC:*/
-		Image img = Image.getInstance(System.getProperty("user.home") + "/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo_small.jpg");
+		//Image img = Image.getInstance(System.getProperty("user.home") + "/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo_small.jpg");
 
 
 		img.setWidthPercentage(1);

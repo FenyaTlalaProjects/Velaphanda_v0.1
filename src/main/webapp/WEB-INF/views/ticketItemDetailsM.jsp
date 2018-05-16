@@ -954,6 +954,7 @@
 																	Class</option>
 																<option value="Cleaned Rollers">Cleaned Rollers</option>
 																<option value="Move Copier To New Location">Move Copier To New Location</option>
+																<option value="Firmware Upgrade">Firmware Upgrade</option>
 															</select>
 														</div>
 													</div>
@@ -1287,8 +1288,7 @@
 																	Class</option>
 																<option value="Cleaned Rollers">Cleaned Rollers</option>
 																<option value="Move Copier To New Location">Move Copier To New Location</option>
-												
-																
+																<option value="Firmware Upgrade">Firmware Upgrade</option>
 															</select>
 														</div>
 													</div>
@@ -1623,6 +1623,7 @@
 																	Class</option>
 																<option value="Cleaned Rollers">Cleaned Rollers</option>
 																<option value="Move Copier To New Location">Move Copier To New Location</option>
+																<option value="Firmware Upgrade">Firmware Upgrade</option>
 															</select>
 														</div>
 													</div>
