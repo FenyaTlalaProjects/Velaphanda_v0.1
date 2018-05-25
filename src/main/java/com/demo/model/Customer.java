@@ -55,9 +55,9 @@ public class Customer implements Serializable{
 	private String faxNumber;
 	@Column(name="Street_No")
 	private String streetNumber;
-	@Column(name="DateTime")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateTime;
+	@Column(name="DateTimeClientAdded")
+	//@Temporal(TemporalType.TIMESTAMP)
+	private String dateTime;
 	@Column(name="Quantity")
 	private String quantity;
 	

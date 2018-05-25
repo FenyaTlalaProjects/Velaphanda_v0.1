@@ -70,12 +70,15 @@ public class DeviceDao implements DeviceDaoInt {
 	Device localdevice = null;
 	DateFormat dateFormat = null;
 	Date date = null;
-	
+	SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	Date now = new Date();
+	String timeDeviceAdded = sdfDate.format(now);
 	@Override
 	public String saveDevice(Device device) {
 		try {
 			 localdevice = getDeviceBySerialNumbuer(device.getSerialNumber());
 			if (localdevice == null) {
+				device.setDateTime(timeDeviceAdded);
 				sessionFactory.getCurrentSession().saveOrUpdate(device);
 				retMessage = "Device "
 						+ device.getSerialNumber()
@@ -121,6 +124,7 @@ public class DeviceDao implements DeviceDaoInt {
 	public String updateDevice(Device device) {
 		try {
 			sessionFactory.getCurrentSession().update(device);
+			device.setDateTime(timeDeviceAdded);
 			retMessage = "Device " + device.getSerialNumber()
 					+ " is successfully updated. Device belongs to customer : "
 					+ device.getCustomerDevice().getCustomerName()+".";
@@ -151,7 +155,7 @@ public class DeviceDao implements DeviceDaoInt {
 				device.setStartDate(deviceBean.getStartDate());
 				device.setInstallationDate(deviceBean.getInstallationDate());
 				device.setModelBrand(deviceBean.getModelBrand());
-
+				device.setDateTime(timeDeviceAdded);
 				device.setMonoReading(deviceBean.getMonoReading());
 				device.setColourReading(deviceBean.getColourReading());
 				device.setMonoCopyCost(deviceBean.getMonoCopyCost());

@@ -1,6 +1,8 @@
 package com.demo.dao.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -24,7 +26,9 @@ public class AccessoriesDao implements AccessoriesDaoInt {
 	List<Accessories> accessoriesList = null;
 	List<Accessories> aList = null;
 	Accessories acc = null;
-
+	SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	Date now = new Date();
+	String timeDeviceAccessAdded = sdfDate.format(now);
 	private String retMessage = null;
 
 	@Override
@@ -35,6 +39,7 @@ public class AccessoriesDao implements AccessoriesDaoInt {
 			if (accessories.isEmpty() == false) {
 				for (Accessories access : accessories) {
 					if (access.getSerial().length()>3) {
+						access.setDateTime(timeDeviceAccessAdded);
 						sessionFactory.getCurrentSession().save(access);
 						retMessage = "OK";
 					}
@@ -55,6 +60,7 @@ public class AccessoriesDao implements AccessoriesDaoInt {
 
 		try {
 			for (Accessories access : accessories) {
+				access.setDateTime(timeDeviceAccessAdded);
 				sessionFactory.getCurrentSession().update(access);
 				retMessage = "OK";
 			}

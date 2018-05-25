@@ -51,7 +51,9 @@ public class EmployeeDao implements EmployeeDaoInt{
 	
 	private DateFormat dateFormat = null;
 	private Date date = null;
-	
+	SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	Date now = new Date();
+	String timeUserRegistered = sdfDate.format(now);
 	public String saveEmployee(Employee employee) {
 		String password = "";
 		
@@ -61,6 +63,7 @@ public class EmployeeDao implements EmployeeDaoInt{
 				employee.setFirstTimeLogin(true);
 				  employee.setStatus("ACTIVE");
 				  employee.setLeaveStatus("Available");
+				  employee.setDateTime(timeUserRegistered);
 				  password = generatePassword();
 				  encryptPassword = PasswordEncrypt.encryptPassword(password);
 				  employee.setPassword(encryptPassword);
@@ -182,6 +185,7 @@ public class EmployeeDao implements EmployeeDaoInt{
 			tempEmp.setLastName(updateEmployee.getLastName());
 			tempEmp.setRole(updateEmployee.getRole());
 			tempEmp.setTitle(updateEmployee.getTitle());
+			tempEmp.setDateTime(timeUserRegistered);
 			  sessionFactory.getCurrentSession().update(tempEmp);
 		      retMessage = "Employee"+ " "+ tempEmp.getFirstName()+" "+ tempEmp.getLastName()+ " " + " successfully updated.";
 		}

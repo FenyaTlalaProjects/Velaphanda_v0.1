@@ -1,6 +1,8 @@
 package com.demo.dao.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -20,6 +22,9 @@ import com.demo.model.CustomerContactDetails;
 
 @Repository("clientDAO")
 @Transactional(propagation = Propagation.REQUIRED)
+
+
+
 public class CustomerDao implements CustomerDaoInt {
 
 	@Autowired
@@ -46,7 +51,9 @@ public class CustomerDao implements CustomerDaoInt {
 				.setFirstResult(offset != null ? offset : 0)
 				.setMaxResults(maxResults != null ? maxResults : 10).list();
 	}
-
+	SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	Date now = new Date();
+	String timeClientRegistered = sdfDate.format(now);
 	@Override
 	public String saveCustomer(CustomerBean customerBean) {
 
@@ -68,7 +75,7 @@ public class CustomerDao implements CustomerDaoInt {
 				tempCustomer.setStreetName(customerBean.getStreetName());
 				tempCustomer.setStreetNumber(customerBean.getStreetNumber());
 				tempCustomer.setContactEmail(customerBean.getContactEmail());
-				
+				tempCustomer.setDateTime(timeClientRegistered);
 				tempCustomer.setTelephoneNumber(customerBean
 						.getTelephoneNumber());
 				tempCustomer.setZipcode(customerBean.getZipcode());
@@ -136,7 +143,8 @@ public class CustomerDao implements CustomerDaoInt {
 			tempCustomer.setStreetName(customerBean.getStreetName());
 			tempCustomer.setStreetNumber(customerBean.getStreetNumber());
 			tempCustomer.setTelephoneNumber(customerBean.getTelephoneNumber());
-			tempCustomer.setContactEmail(customerBean.getContactEmail());			
+			tempCustomer.setContactEmail(customerBean.getContactEmail());
+			tempCustomer.setDateTime(timeClientRegistered);
 			tempCustomer.setZipcode(customerBean.getZipcode());
 
 			list = new ArrayList<CustomerContactDetails>();

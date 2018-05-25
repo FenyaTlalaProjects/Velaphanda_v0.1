@@ -47,6 +47,6 @@ public class Accessories implements Serializable{
 	@ForeignKey(name="Device_Serial")
 	private Device device;
 	@Column(name="DateTime")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateTime;
+	//@Temporal(TemporalType.TIMESTAMP)
+	private String dateTime;
 }

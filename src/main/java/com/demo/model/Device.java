@@ -68,9 +68,9 @@ public class Device implements Serializable{
 	private String floorNumber;
 	@Column(name="Area_Code")
 	private String areaCode;
-	@Column(name="DateTime")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateTime;
+	@Column(name="DateTimeDeviceAdded")
+	//@Temporal(TemporalType.TIMESTAMP)
+	private String dateTime;
 	@Column(name="Model_Brand")
 	private String modelBrand;
 	@Column(name="Mono_Copy_Cost")

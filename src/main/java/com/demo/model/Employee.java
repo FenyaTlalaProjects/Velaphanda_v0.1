@@ -63,9 +63,9 @@ public class Employee implements Serializable{
 	private String status;
 	@Column(name="LEAVE_STATUS")
 	private String leaveStatus;
-	@Column(name="DateTime")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateTime;
+	@Column(name="DateTimeUserRegistered")
+	//@Temporal(TemporalType.TIMESTAMP)
+	private String dateTime;
 	@Column(name="Cell_Number")
 	private String cellNumber;
 	@Column(name="Quantity")

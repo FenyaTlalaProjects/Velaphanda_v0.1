@@ -19,6 +19,6 @@ public class EmployeeBean {
     private String role;
 	private String email;
 	private String gender;
-	private String leaveStatus;
+	private String leaveStatus;	
 
 }
