@@ -58,6 +58,7 @@
 									<th data-field="update" data-sortable="true">Update</th>
 									<th data-field="reset" data-sortable="true">Reset</th>
 									<th data-field="active" data-sortable="true">Action</th>
+									<th data-field="active" data-sortable="true">Export Report</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -123,6 +124,8 @@
 
 												</c:choose>
 										</a></td>
+										<td><a
+											href="downloadpage">Export</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
