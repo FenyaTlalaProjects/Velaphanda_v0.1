@@ -1,565 +1,370 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.1.0.final using JasperReports Library version 6.4.3  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="deliverynote" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="template.engine" value="tabular_template"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="tree-template" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" >
+	<property name="template.type" value="columnar"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
-	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
-	<style name="Detail" fontName="Arial" fontSize="12"/>
-	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
-	<style name="Row" mode="Transparent">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="SubHeading" fontName="Times New Roman" fontSize="12" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
 		<conditionalStyle>
 			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
-			<style backcolor="#E6DAC3"/>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
-	<style name="Table">
-		<box>
-			<pen lineWidth="1.0" lineColor="#000000"/>
-			<topPen lineWidth="1.0" lineColor="#000000"/>
-			<leftPen lineWidth="1.0" lineColor="#000000"/>
-			<bottomPen lineWidth="1.0" lineColor="#000000"/>
-			<rightPen lineWidth="1.0" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-			<topPen lineWidth="0.5" lineColor="#000000"/>
-			<leftPen lineWidth="0.5" lineColor="#000000"/>
-			<bottomPen lineWidth="0.5" lineColor="#000000"/>
-			<rightPen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-		<conditionalStyle>
-			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
-			<style mode="Transparent" backcolor="#E6DAC3"/>
-		</conditionalStyle>
-	</style>
-	
-	<style name="Table_TH" mode="Opaque" backcolor="#BDBEBF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-			<topPen lineWidth="0.5" lineColor="#000000"/>
-			<leftPen lineWidth="0.5" lineColor="#000000"/>
-			<bottomPen lineWidth="0.5" lineColor="#000000"/>
-			<rightPen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="Table 1_TD" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-			<topPen lineWidth="0.5" lineColor="#000000"/>
-			<leftPen lineWidth="0.5" lineColor="#000000"/>
-			<bottomPen lineWidth="0.5" lineColor="#000000"/>
-			<rightPen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="Table 1_TH" mode="Opaque" backcolor="#BEC0C2">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-			<topPen lineWidth="0.5" lineColor="#000000"/>
-			<leftPen lineWidth="0.5" lineColor="#000000"/>
-			<bottomPen lineWidth="0.5" lineColor="#000000"/>
-			<rightPen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="Table 1_CH" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-			<topPen lineWidth="0.5" lineColor="#000000"/>
-			<leftPen lineWidth="0.5" lineColor="#000000"/>
-			<bottomPen lineWidth="0.5" lineColor="#000000"/>
-			<rightPen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<subDataset name="tableDataset">
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
-		<queryString>
-			<![CDATA[]]>
-		</queryString>
-	</subDataset>
-	<queryString>
-		<![CDATA[]]>
-	</queryString>
+	<field name="partNumber" class="java.lang.String"/>
+	<field name="serialNumber" class="java.lang.String"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="qtyOrdered" class="java.lang.String"/>
+	<field name="qtyDelivered" class="java.lang.String"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
+		<groupHeader>
+			<band height="31">
+				<frame>
+					<reportElement mode="Opaque" x="-10" y="7" width="818" height="24" forecolor="#B89F7D" backcolor="#BDBAB7" />
+					<staticText>
+						<reportElement x="10" y="0" width="88" height="24" />
+						<textElement textAlignment="Center" verticalAlignment="Middle"/>
+						<text><![CDATA[Model Number]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="160" y="0" width="80" height="24" />
+						<textElement textAlignment="Center" verticalAlignment="Middle"/>
+						<text><![CDATA[Serial Number]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="360" y="0" width="170" height="24" />
+						<textElement textAlignment="Center" verticalAlignment="Middle"/>
+						<text><![CDATA[Decription]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="610" y="0" width="80" height="24" />
+						<textElement textAlignment="Center" verticalAlignment="Middle"/>
+						<text><![CDATA[QTY Ordered]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="710" y="0" width="90" height="24" />
+						<textElement textAlignment="Center" verticalAlignment="Middle"/>
+						<text><![CDATA[QTY Delivered]]></text>
+					</staticText>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/5)]]></groupExpression>
+		<groupHeader>
+			<band height="24"/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
 	<title>
 		<band height="230" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="266" y="-10" width="294" height="62"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Trebuchet MS" size="38" isBold="false"/>
+				<reportElement style="Title" x="276" y="9" width="254" height="40" />
+				<textElement>
+					<font size="30" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DELIVERY NOTE]]></text>
 			</staticText>
-			<image>
-				<reportElement x="380" y="40" width="40" height="51"/>
-				<imageExpression><![CDATA["C:/Users/belly/Fenya Tlala/Fenya Tlala Projects/Fenya Clients/Velaphanda/Images/Logo Velas.jpg"]]></imageExpression>
-			</image>
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="11" width="261" height="20" forecolor="#BDBAB7" backcolor="#DEDBD5"/>
+				<reportElement mode="Opaque" x="-20" y="11" width="261" height="20" forecolor="#BDBAB7" backcolor="#DEDBD5" />
 				<staticText>
-					<reportElement x="21" y="3" width="168" height="14"/>
-					<textElement textAlignment="Left">
-						<font fontName="Trebuchet MS&#xD;&#xA;" size="12" isBold="true"/>
-						<paragraph lineSpacing="String"/>
-					</textElement>
+					<reportElement style="SubHeading" x="21" y="3" width="88" height="14" />
+					<textElement textAlignment="Left"/>
 					<text><![CDATA[DELIVER TO:]]></text>
 				</staticText>
 			</frame>
-			<frame>
-				<reportElement mode="Opaque" x="570" y="9" width="261" height="20" forecolor="#BDBAB7" backcolor="#DEDBD5"/>
-				<staticText>
-					<reportElement x="10" y="5" width="229" height="16"/>
-					<textElement textAlignment="Center">
-						<font fontName="Trebuchet MS&#xD;&#xA;" size="10" isBold="false"/>
-					</textElement>
-					<text><![CDATA[PAYMENT INFORMATION]]></text>
-				</staticText>
-			</frame>
 			<textField>
-				<reportElement x="0" y="50" width="219" height="20"/>
+				<reportElement x="1" y="30" width="139" height="21" />
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["customerName"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="50" width="140" height="20" />
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA["streetNumber"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="70" width="219" height="21" />
+				<reportElement x="0" y="70" width="140" height="21" />
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA["streetName"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="90" width="219" height="21"/>
+				<reportElement x="0" y="90" width="140" height="21" />
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA["city_Town"]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="1" y="30" width="219" height="21" />
-				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["customerName"]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="270" y="100" width="263" height="30" />
-				<textElement textAlignment="Center">
-					<font fontName="Trebuchet MS&#xD;&#xA;" size="10"/>
-				</textElement>
-				<text><![CDATA[VELAPHANDA TRADING & PROJECTS]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="270" y="140" width="263" height="30"/>
-				<textElement textAlignment="Center">
-					<font fontName="Trebuchet MS&#xD;&#xA;&#xD;&#xA;" size="10"/>
-				</textElement>
-				<text><![CDATA[296 GALWAY AVENUE, BRONBERRICK]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="270" y="121" width="263" height="30"/>
-				<textElement textAlignment="Center">
-					<font fontName="Trebuchet MS&#xD;&#xA;" size="10"/>
-				</textElement>
-				<text><![CDATA[REG NO:2008/164490/23]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="256" y="180" width="290" height="30"/>
-				<textElement textAlignment="Center">
-					<font fontName="Trebuchet MS&#xD;&#xA;" size="10"/>
-				</textElement>
-				<text><![CDATA[TEL: 012 765 0200/087 701 1689 FAX: 086 403 7955]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="270" y="160" width="263" height="30"/>
-				<textElement textAlignment="Center">
-					<font fontName="Trebuchet MS&#xD;&#xA;" size="10"/>
-				</textElement>
-				<text><![CDATA[CENTURION 0158]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="260" y="200" width="290" height="30" />
-				<textElement textAlignment="Center">
-					<font fontName="Trebuchet MS&#xD;&#xA;&#xD;&#xA;" size="10"/>
-				</textElement>
-				<text><![CDATA[E-MAIL: sales@velaphanda.co.za]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="691" y="31" width="118" height="20"/>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["dateDelivered"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="690" y="91" width="118" height="20"/>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["customerVatNo"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="690" y="71" width="118" height="20"/>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["orderNo"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="690" y="51" width="118" height="19"/>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["deliveryNumber"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="580" y="31" width="102" height="19"/>
+				<reportElement x="1" y="121" width="98" height="19" />
 				<textElement>
-					<font fontName="Trebuchet MS&#xD;&#xA;&#xD;&#xA;"/>
-				</textElement>
-				<text><![CDATA[DATE OF DELIVERY:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="580" y="51" width="102" height="19" />
-				<textElement>
-					<font fontName="Trebuchet MS&#xD;&#xA;&#xD;&#xA;"/>
-				</textElement>
-				<text><![CDATA[DELIVERY NOTE NO:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="580" y="71" width="80" height="19"/>
-				<textElement>
-					<font fontName="Trebuchet MS&#xD;&#xA;&#xD;&#xA;"/>
-				</textElement>
-				<text><![CDATA[ORDER NO:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="580" y="91" width="102" height="19"/>
-				<textElement>
-					<font fontName="Trebuchet MS&#xD;&#xA;&#xD;&#xA;"/>
-				</textElement>
-				<text><![CDATA[CUSTOMER VAT NO:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="580" y="111" width="102" height="19"/>
-				<textElement>
-					<font fontName="Trebuchet MS&#xD;&#xA;&#xD;&#xA;"/>
-				</textElement>
-				<text><![CDATA[CONTRACT NO:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="580" y="130" width="102" height="19"/>
-				<textElement>
-					<font fontName="Trebuchet MS&#xD;&#xA;&#xD;&#xA;"/>
-				</textElement>
-				<text><![CDATA[WAYBILL NO:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="580" y="150" width="102" height="19"/>
-				<textElement>
-					<font fontName="Trebuchet MS&#xD;&#xA;&#xD;&#xA;"/>
-				</textElement>
-				<text><![CDATA[PLEASE REMIT TO:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="690" y="110" width="118" height="20"/>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["contractNo"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="690" y="130" width="118" height="20"/>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["wayBill"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="671" y="150" width="136" height="19"/>
-				<textElement>
-					<font fontName="Trebuchet MS&#xD;&#xA;&#xD;&#xA;"/>
-				</textElement>
-				<text><![CDATA[admin@velaphanda.co.za]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="1" y="121" width="88" height="19"/>
-				<textElement>
-					<font fontName="Trebuchet MS&#xD;&#xA;&#xD;&#xA;"/>
+					
 				</textElement>
 				<text><![CDATA[CONTACT PERSON:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="89" y="120" width="50" height="20"/>
+				<reportElement x="108" y="120" width="50" height="20" />
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA["firstName"]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="162" y="120" width="58" height="20" />
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["lastName"]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement x="1" y="141" width="68" height="19"/>
+				<reportElement x="1" y="141" width="88" height="19" />
 				<textElement>
-					<font fontName="Trebuchet MS&#xD;&#xA;&#xD;&#xA;"/>
+					
 				</textElement>
 				<text><![CDATA[CONTACT NO:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="69" y="140" width="118" height="19"/>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["cellNumber"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="40" y="160" width="118" height="20"/>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["email"]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="1" y="161" width="38" height="19"/>
+				<reportElement x="1" y="161" width="38" height="19" />
 				<textElement>
-					<font fontName="Trebuchet MS&#xD;&#xA;&#xD;&#xA;"/>
+					
 				</textElement>
 				<text><![CDATA[EMAIL:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="150" y="120" width="68" height="20" />
+				<reportElement x="40" y="160" width="48" height="20" />
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["lastName"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["email"]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="100" y="141" width="68" height="19"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["cellNumber"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="314" y="79" width="178" height="18" />
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[VELAPHANDA TRADING & PROJECTS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="100" width="140" height="18" />
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[REG NO:2008/164490/23]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="121" width="198" height="18" />
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[296 GALWAY AVENUE, BRONBERRICK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="343" y="144" width="120" height="18" />
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[CENTURION 0158]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="161" width="208" height="18" />
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[TEL: 012 765 0200/087 701 1689 FAX: 086 403 7955]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="315" y="179" width="170" height="18" />
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[E-MAIL: sales@velaphanda.co.za]]></text>
+			</staticText>
+			<frame>
+				<reportElement mode="Opaque" x="570" y="9" width="252" height="20" forecolor="#BDBAB7" backcolor="#DEDBD5" />
+				<staticText>
+					<reportElement x="49" y="5" width="130" height="15" />
+					<textElement textAlignment="Center">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<text><![CDATA[PAYMENT INFORMATION]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement x="680" y="150" width="106" height="18" />
+				<textElement>
+					
+				</textElement>
+				<text><![CDATA[admin@velaphanda.co.za]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="580" y="150" width="90" height="18"/>
+				<textElement>
+					
+				</textElement>
+				<text><![CDATA[PLEASE REMIT TO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="580" y="130" width="70" height="18" />
+				<textElement>
+					
+				</textElement>
+				<text><![CDATA[WAYBILL NO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="690" y="130" width="50" height="19" />
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["wayBill"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="690" y="110" width="60" height="19" />
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["contractNo"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="580" y="111" width="82" height="18" />
+				<textElement>
+					
+				</textElement>
+				<text><![CDATA[CONTRACT NO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="580" y="91" width="100" height="18" />
+				<textElement>
+					
+				</textElement>
+				<text><![CDATA[CUSTOMER VAT NO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="690" y="91" width="80" height="19" />
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["customerVatNo"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="690" y="71" width="50" height="19" />
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["orderNo"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="580" y="71" width="60" height="18" />
+				<textElement>
+					
+				</textElement>
+				<text><![CDATA[ORDER NO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="580" y="51" width="110" height="18" />
+				<textElement>
+				
+				</textElement>
+				<text><![CDATA[DELIVERY NOTE NO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="690" y="51" width="80" height="18" />
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["deliveryNumber"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="691" y="31" width="78" height="19"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["dateDelivered"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="580" y="31" width="110" height="18" />
+				<textElement>
+				
+				</textElement>
+				<text><![CDATA[DATE OF DELIVERY:]]></text>
+			</staticText>
 		</band>
 	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="169" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-10" y="40" width="817" height="1" />
+			</line>
+			<textField>
+				<reportElement x="141" y="10" width="100" height="20" />
+				<textFieldExpression><![CDATA[$F{serialNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="590" y="10" width="100" height="20" />
+				<textFieldExpression><![CDATA[$F{qtyDelivered}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="392" y="10" width="82" height="20" />
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-8" y="10" width="100" height="20" />
+				<textFieldExpression><![CDATA[$F{partNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="700" y="10" width="100" height="20" />
+				<textFieldExpression><![CDATA[$F{qtyOrdered}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch"/>
+	</columnFooter>
 	<pageFooter>
-		<band height="25" splitType="Stretch">
+		<band height="13" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#D1D0CF" />
+				<reportElement mode="Opaque" x="-20" y="0" width="840" height="13" forecolor="#D0B48E" backcolor="#BDBAB7" >
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343"/>
+					<reportElement style="Column header" x="800" y="0" width="40" height="13" forecolor="#FFFFFF" />
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343"/>
+					<reportElement style="Column header" x="720" y="0" width="80" height="13" forecolor="#FFFFFF" >
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" />
+					<reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF" />
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new java.util.Date().toString()]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="200" splitType="Stretch">
-			<property name="local_mesure_unitheight" value="pixel"/>
-			<componentElement>
-				<reportElement x="0" y="0" width="791" height="200">
-					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
-				</reportElement>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="tableDataset">
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-					</datasetRun>
-					<jr:columnGroup width="220"
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [2]"/>
-						<jr:columnFooter style="Table_CH" height="30" rowSpan="2"/>
-						<jr:column width="140">
-							<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-							<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-							<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-							<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
-							<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
-								<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.HorizontalRowLayout"/>
-								<staticText>
-									<reportElement x="0" y="0" width="140" height="30">
-										<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-										<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-										<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-										<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-									</reportElement>
-									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="Trebuchet MS"/>
-									</textElement>
-									<text><![CDATA[Model No]]></text>
-								</staticText>
-							</jr:tableHeader>
-							<jr:columnHeader style="Table_CH" height="90" rowSpan="1">
-								<textField>
-									<reportElement x="0" y="0" width="140" height="90">
-										<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-										<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-										<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-										<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-									</reportElement>
-									<textFieldExpression><![CDATA["partNumber"]]></textFieldExpression>
-								</textField>
-							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="70" rowSpan="3"/>
-							<jr:detailCell style="Table_CH" height="40" rowSpan="1"/>
-						</jr:column>
-						<jr:column width="80">
-							<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-							<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-							<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-							<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
-							<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
-								<staticText>
-									<reportElement x="0" y="0" width="80" height="30">
-										<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-										<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-										<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-										<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-									</reportElement>
-									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="Trebuchet MS"/>
-									</textElement>
-									<text><![CDATA[Brand]]></text>
-								</staticText>
-							</jr:tableHeader>
-							<jr:columnHeader style="Table_CH" height="90" rowSpan="1">
-								<textField>
-									<reportElement x="0" y="0" width="80" height="90">
-										<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-										<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-										<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-										<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-									</reportElement>
-									<textFieldExpression><![CDATA["brand"]]></textFieldExpression>
-								</textField>
-							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="70" rowSpan="3"/>
-							<jr:detailCell style="Table_CH" height="40" rowSpan="1"/>
-						</jr:column>
-					</jr:columnGroup>
-					<jr:column width="270">
-						<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-						<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-						<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
-						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="270" height="30">
-									<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-									<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-									<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-									<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-								</reportElement>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Trebuchet MS"/>
-								</textElement>
-								<text><![CDATA[Description]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:columnHeader style="Table_CH" height="90" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="270" height="90">
-									<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-									<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-									<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-									<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-								</reportElement>
-								<textFieldExpression><![CDATA["description"]]></textFieldExpression>
-							</textField>
-						</jr:columnHeader>
-						<jr:columnFooter style="Table_CH" height="100" rowSpan="2"/>
-						<jr:detailCell style="Table_TD" height="40"/>
-					</jr:column>
-					<jr:column width="60">
-						<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-						<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-						<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
-						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="60" height="30">
-									<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-									<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-									<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-									<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-								</reportElement>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Trebuchet MS"/>
-								</textElement>
-								<text><![CDATA[Qty ordered]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:columnHeader style="Table_CH" height="90" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="60" height="90">
-									<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-									<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-									<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-									<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-								</reportElement>
-								<textFieldExpression><![CDATA["quantityOrdered"]]></textFieldExpression>
-							</textField>
-						</jr:columnHeader>
-						<jr:columnFooter style="Table_CH" height="100" rowSpan="2"/>
-						<jr:detailCell style="Table_TD" height="40"/>
-					</jr:column>
-					<jr:column width="150">
-						<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-						<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-						<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
-						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
-							<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
-							<staticText>
-								<reportElement x="0" y="0" width="150" height="30">
-									<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-									<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-									<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-									<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-								</reportElement>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Trebuchet MS"/>
-								</textElement>
-								<text><![CDATA[Serial Numbers]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:columnHeader style="Table_CH" height="90" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="150" height="90">
-									<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-									<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-									<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-									<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-								</reportElement>
-								<textFieldExpression><![CDATA["serialNumber"]]></textFieldExpression>
-							</textField>
-						</jr:columnHeader>
-						<jr:columnFooter style="Table_CH" height="100" rowSpan="2"/>
-						<jr:detailCell style="Table_TD" height="40"/>
-					</jr:column>
-					<jr:column width="90">
-						<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-						<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-						<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
-						<jr:tableHeader style="Table_TH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30">
-									<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-									<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-									<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-									<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-								</reportElement>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Trebuchet MS"/>
-								</textElement>
-								<text><![CDATA[Qty Delivered]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:columnHeader style="Table_CH" height="90" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="90">
-									<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-									<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-									<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-									<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-								</reportElement>
-								<textFieldExpression><![CDATA["quantityDelivered"]]></textFieldExpression>
-							</textField>
-						</jr:columnHeader>
-						<jr:columnFooter style="Table_CH" height="100" rowSpan="2"/>
-						<jr:detailCell style="Table_TD" height="40"/>
-					</jr:column>
-				</jr:table>
-			</componentElement>
-		</band>
+		<band splitType="Stretch"/>
 	</summary>
 </jasperReport>

@@ -19,24 +19,27 @@ public class SalesDAO {
 		
 		// Create first item
 		Sales item1 = new Sales();
-		item1.setId(1001L);
-		item1.setName("Pencil");
-		item1.setDescription("This is used for sketching drawings");
-		item1.setPrice(10.50);
+		item1.setPartNumber("CLT-1001L");
+		item1.setSerialNumber("07SUVSSSK");
+		item1.setDescription("Yellow Toner");
+		item1.setQtyOrdered("10");
+		item1.setQtyDelivered("10");
 		
 		// Create second item
 		Sales item2 = new Sales();
-		item2.setId(1002L);
-		item2.setName("Pen");
-		item2.setDescription("This is used for signing autographs");
-		item2.setPrice(15.00);
+		item2.setPartNumber("CLT-KDKDKD");
+		item2.setSerialNumber("074SDSSAD");
+		item2.setDescription("Black Toner");
+		item2.setQtyOrdered("2");
+		item2.setQtyDelivered("2");
 		
 		// Create third item
 		Sales item3 = new Sales();
-		item3.setId(1003L);
-		item3.setName("Bag");
-		item3.setDescription("This is used for storing other items");
-		item3.setPrice(50.00);
+		item3.setPartNumber("CLT-TRDKKD");
+		item3.setSerialNumber("08DSSARS");
+		item3.setDescription("Magenta Toner");
+		item3.setQtyOrdered("1");
+		item3.setQtyDelivered("1");
 		
 		// Add to list
 		items.add(item1);
