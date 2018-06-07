@@ -2,6 +2,8 @@ package com.demo.dao;
 
 import java.util.List;
 
+import net.sf.jasperreports.engine.JRDataSource;
+
 import com.demo.model.OrderDetails;
 
 public interface OrderDetailsDaoInt {
@@ -16,4 +18,5 @@ public interface OrderDetailsDaoInt {
 	List<OrderDetails> getAllBootStockOrders();
 	List<OrderDetails> getAllSiteStockOrders();
 	List<OrderDetails> getAllAvailableOrderDetailsForCustomer(String customerName);
+	JRDataSource getOrderDetailsDataSource(Long RecordID);
 }

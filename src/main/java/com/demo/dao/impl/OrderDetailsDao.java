@@ -3,6 +3,9 @@ package com.demo.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -209,4 +212,20 @@ public class OrderDetailsDao implements OrderDetailsDaoInt {
 
 		return availableOrders;
 	}
+
+	@Override
+	public JRDataSource getOrderDetailsDataSource(Long recordID) {
+		JRDataSource ds = null;
+		try{
+			List<OrderDetails> orderDetails = getOrderDetailsByOrderNum(recordID);
+			
+			 ds = new JRBeanCollectionDataSource(orderDetails);
+			
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return ds;
+	}
+
+
 }

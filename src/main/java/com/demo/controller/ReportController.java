@@ -29,7 +29,7 @@ import com.demo.service.CustomerServiceInt;
 
 @Controller
 public class ReportController {
-	@Autowired
+	/*@Autowired
 	private OrderDetailsDaoInt detailsDaoInt;
 	@Autowired
 	private TicketsDaoInt ticketDaoInt;
@@ -90,5 +90,5 @@ public class ReportController {
 		return new ModelAndView("customerListPdfView", "customerList", customerList);
 	}
 	
-	
+	*/
 }

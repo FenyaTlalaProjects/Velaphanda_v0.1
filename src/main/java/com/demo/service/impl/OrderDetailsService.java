@@ -2,6 +2,8 @@ package com.demo.service.impl;
 
 import java.util.List;
 
+import net.sf.jasperreports.engine.JRDataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,6 +64,9 @@ public class OrderDetailsService implements OrderDetailsInt{
 		return orderDetailsDaoInt.getAllSiteStockOrders();
 	}
 
-	
+	@Override
+	public JRDataSource getOrderDetailsDataSource(Long RecordID) {
+		return orderDetailsDaoInt.getOrderDetailsDataSource(RecordID);
+	}
 
 }
