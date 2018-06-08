@@ -36,7 +36,9 @@ protected static Logger logger = Logger.getLogger("controller");
 		// Retrieve our data from a custom data provider
 		// Our data comes from a DAO layer
 		//SalesDAO dataprovider = new SalesDAO();
-		JRDataSource orderDetails = detailsDaoInt.getOrderDetailsDataSource(recordID);
+		//JRDataSource orderDetails = detailsDaoInt.getOrderDetailsDataSource(recordID);
+		HistoryDao ht = new HistoryDao();
+		JRDataSource history = ht.getHistory();
 		// Assign the datasource to an instance of JRDataSource
 		// JRDataSource is the datasource that Jasper understands
 		// This is basically a wrapper to Java's collection classes
@@ -46,7 +48,7 @@ protected static Logger logger = Logger.getLogger("controller");
 		// We are required to pass our datasource as a map parameter
 		// parameterMap is the Model of our application
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
-		parameterMap.put("datasource", orderDetails);
+		parameterMap.put("datasource", history);
 		
 		// pdfReport is the View of our application
 		// This is declared inside the /WEB-INF/jasper-views.xml
