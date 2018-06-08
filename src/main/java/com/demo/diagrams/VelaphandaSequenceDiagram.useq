@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" automaticImage="PNG" generate-combined-fragments="true">  
+  <object id="1" language="java" name="com.demo.model.UserLogDetails" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/UserLogDetails.java" binary="false" label="userLogDetails" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="904" y="0"/>    
+    <execution id="2">      
+      <position height="63" width="110" x="5" y="164"/>    
+    </execution>  
+  </object>  
+  <object id="5" language="java" name="com.demo.model.Credentials" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/Credentials.java" binary="false" label="credentials" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="436" y="0"/>    
+    <execution id="4">      
+      <position height="21" width="88" x="119" y="185"/>    
+    </execution>    
+    <execution id="6">      
+      <position height="63" width="88" x="119" y="253"/>    
+    </execution>    
+    <execution id="9">      
+      <position height="21" width="88" x="119" y="127"/>    
+    </execution>  
+  </object>  
+  <object id="10" language="java" name="com.demo.model.LoginAttempt" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/LoginAttempt.java" binary="false" label="loginAttempt" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="913" y="0"/>    
+    <execution id="11">      
+      <position height="137" width="99" x="211" y="106"/>    
+    </execution>    
+    <execution id="14">      
+      <position height="21" width="7" x="257" y="201"/>    
+    </execution>    
+    <execution id="16">      
+      <position height="21" width="99" x="211" y="201"/>    
+    </execution>    
+    <execution id="18">      
+      <position height="21" width="99" x="211" y="201"/>    
+    </execution>  
+  </object>  
+  <object id="19" language="java" name="com.demo.model.Employee" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/Employee.java" binary="false" label="employee" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="972" y="0"/>    
+    <execution id="8">      
+      <position height="21" width="79" x="314" y="274"/>    
+    </execution>    
+    <execution id="20">      
+      <position height="63" width="79" x="314" y="444"/>    
+    </execution>    
+    <execution id="23">      
+      <position height="63" width="79" x="314" y="99"/>    
+    </execution>  
+  </object>  
+  <object id="26" language="java" name="com.demo.model.Manager" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/Manager.java" binary="false" label="manager" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="966" y="0"/>    
+    <execution id="27">      
+      <position height="63" width="79" x="397" y="171"/>    
+    </execution>    
+    <execution id="30">      
+      <position height="63" width="79" x="397" y="323"/>    
+    </execution>    
+    <execution id="33">      
+      <position height="63" width="79" x="397" y="99"/>    
+    </execution>  
+  </object>  
+  <object id="36" language="java" name="com.demo.model.Leave" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/Leave.java" binary="false" label="leave" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="987" y="0"/>    
+    <execution id="25">      
+      <position height="21" width="79" x="480" y="120"/>    
+    </execution>    
+    <execution id="37">      
+      <position height="63" width="79" x="480" y="99"/>    
+    </execution>    
+    <execution id="35">      
+      <position height="21" width="79" x="480" y="120"/>    
+    </execution>  
+  </object>  
+  <object id="40" language="java" name="com.demo.model.LeaveStatus" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/LeaveStatus.java" binary="false" label="leaveStatus" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="1026" y="0"/>    
+    <execution id="39">      
+      <position height="21" width="94" x="563" y="120"/>    
+    </execution>  
+  </object>  
+  <object id="41" language="java" name="com.demo.model.Customer" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/Customer.java" binary="false" label="customer" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="572" y="0"/>    
+    <execution id="29">      
+      <position height="21" width="79" x="661" y="192"/>    
+    </execution>    
+    <execution id="42">      
+      <position height="84" width="79" x="661" y="153"/>    
+    </execution>    
+    <execution id="46">      
+      <position height="21" width="79" x="661" y="195"/>    
+    </execution>  
+  </object>  
+  <object id="47" language="java" name="com.demo.model.CustomerContactDetails" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/CustomerContactDetails.java" binary="false" label="customerContactDetails" 
+    type="class" autoSize="true">    
+    <position height="-1" width="-1" x="628" y="0"/>  
+  </object>  
+  <object id="48" language="java" name="com.demo.model.Device" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/Device.java" binary="false" label="device" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="755" y="0"/>    
+    <execution id="44">      
+      <position height="21" width="79" x="910" y="174"/>    
+    </execution>    
+    <execution id="49">      
+      <position height="63" width="79" x="910" y="129"/>    
+    </execution>    
+    <execution id="52">      
+      <position height="63" width="79" x="910" y="232"/>    
+    </execution>  
+  </object>  
+  <object id="55" language="java" name="com.demo.model.DeviceContactPerson" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/DeviceContactPerson.java" binary="false" label="deviceContactPerson" 
+    type="class" autoSize="true">    
+    <position height="-1" width="-1" x="815" y="0"/>    
+    <execution id="51">      
+      <position height="21" width="146" x="993" y="150"/>    
+    </execution>  
+  </object>  
+  <object id="56" language="java" name="com.demo.model.Accessories" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/Accessories.java" binary="false" label="accessories" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="90" y="0"/>    
+    <execution id="54">      
+      <position height="21" width="95" x="1143" y="253"/>    
+    </execution>  
+  </object>  
+  <object id="57" language="java" name="com.demo.model.SpareMaster" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/SpareMaster.java" binary="false" label="spareMaster" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="866" y="0"/>    
+    <execution id="32">      
+      <position height="21" width="97" x="1242" y="344"/>    
+    </execution>  
+  </object>  
+  <object id="58" language="java" name="com.demo.model.HOStock" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/HOStock.java" binary="false" label="hoStock" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="880" y="0"/>  
+  </object>  
+  <object id="59" language="java" name="com.demo.model.BootStock" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/BootStock.java" binary="false" label="bootStock" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="360" y="0"/>  
+  </object>  
+  <object id="60" language="java" name="com.demo.model.SiteStock" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/SiteStock.java" binary="false" label="siteStock" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="1010" y="0"/>  
+  </object>  
+  <object id="61" language="java" name="com.demo.model.Tickets" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/Tickets.java" binary="false" label="tickets" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="817" y="0"/>    
+    <execution id="22">      
+      <position height="21" width="79" x="1595" y="465"/>    
+    </execution>    
+    <execution id="62">      
+      <position height="63" width="79" x="1595" y="436"/>    
+    </execution>  
+  </object>  
+  <object id="65" language="java" name="com.demo.model.TicketHistory" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/TicketHistory.java" binary="false" label="ticketHistory" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="905" y="0"/>    
+    <execution id="64">      
+      <position height="21" width="98" x="1678" y="457"/>    
+    </execution>  
+  </object>  
+  <object id="66" language="java" name="com.demo.model.OrderDetails" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/OrderDetails.java" binary="false" label="orderDetails" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="919" y="0"/>  
+  </object>  
+  <object id="67" language="java" name="com.demo.model.ApprovedOrderStock" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/ApprovedOrderStock.java" binary="false" label="approvedOrderStock" 
+    type="class" autoSize="true">    
+    <position height="-1" width="-1" x="218" y="0"/>  
+  </object>  
+  <object id="68" language="java" name="com.demo.model.OrderHeader" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/OrderHeader.java" binary="false" label="orderHeader" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="964" y="0"/>  
+  </object>  
+  <object id="69" language="java" name="com.demo.model.OrderHistory" project="Demo" 
+    file="/Demo/src/main/java/com/demo/model/OrderHistory.java" binary="false" label="orderHistory" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="921" y="0"/>  
+  </object>  
+  <note id="70">    
+    <position height="59" width="60" x="87" y="126"/>    
+    <text><![CDATA[Login]]>
+    </text>  
+  </note>  
+  <note id="71">    
+    <position height="50" width="72" x="267" y="226"/>    
+    <text><![CDATA[Account Exit Login]]>
+    </text>  
+  </note>  
+  <note id="72">    
+    <position height="57" width="78" x="178" y="71"/>    
+    <text><![CDATA[Account Does not Exit]]>
+    </text>  
+  </note>  
+  <note id="73">    
+    <position height="56" width="84" x="524" y="136"/>    
+    <text><![CDATA[Add Customer
+]]>
+    </text>  
+  </note>  
+  <note id="74">    
+    <position height="51" width="108" x="781" y="123"/>    
+    <text><![CDATA[Add Device for Customer 
+]]>
+    </text>  
+  </note>  
+  <note id="75">    
+    <position height="53" width="81" x="972" y="97"/>    
+    <text><![CDATA[Device have contact Person
+]]>
+    </text>  
+  </note>  
+  <note id="76">    
+    <position height="64" width="176" x="739" y="282"/>    
+    <text><![CDATA[Add Spares to Spare Master
+]]>
+    </text>  
+  </note>  
+  <note id="77">    
+    <position height="62" width="94" x="1029" y="192"/>    
+    <text><![CDATA[Add Accessories]]>
+    </text>  
+  </note>  
+  <note id="78">    
+    <position height="73" width="142" x="947" y="394"/>    
+    <text><![CDATA[End User/Manager/Admin 
+Log Call
+]]>
+    </text>  
+  </note>  
+  <note id="79">    
+    <position height="108" width="68" x="1645" y="349"/>    
+    <text><![CDATA[Ticket history based on change of ticket status]]>
+    </text>  
+  </note>  
+  <note id="80">    
+    <position height="43" width="57" x="365" y="79"/>    
+    <text><![CDATA[Request Leave]]>
+    </text>  
+  </note>  
+  <note id="81">    
+    <position height="40" width="57" x="535" y="80"/>    
+    <text><![CDATA[Leave Status]]>
+    </text>  
+  </note>  
+  <note id="82">    
+    <position height="58" width="57" x="451" y="62"/>    
+    <text><![CDATA[Approve or Decline Leave
+]]>
+    </text>  
+  </note>  
+  <message id="3" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="7" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="12" asynchronous="false">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="13" asynchronous="false">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="15" asynchronous="false">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>  
+  <message id="17" asynchronous="false">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="18"/>  
+  </message>  
+  <message id="21" asynchronous="false">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="22"/>  
+  </message>  
+  <message id="24" asynchronous="false">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="25"/>  
+  </message>  
+  <message id="28" asynchronous="false">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="29"/>  
+  </message>  
+  <message id="31" asynchronous="false">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="32"/>  
+  </message>  
+  <message id="34" asynchronous="false">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="35"/>  
+  </message>  
+  <message id="38" asynchronous="false">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="39"/>  
+  </message>  
+  <message id="43" asynchronous="false">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="44"/>  
+  </message>  
+  <message id="45" asynchronous="false">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="46"/>  
+  </message>  
+  <message id="50" asynchronous="false">    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="51"/>  
+  </message>  
+  <message id="53" asynchronous="false">    
+    <end type="SOURCE" refId="52"/>    
+    <end type="TARGET" refId="54"/>  
+  </message>  
+  <message id="63" asynchronous="false">    
+    <end type="SOURCE" refId="62"/>    
+    <end type="TARGET" refId="64"/>  
+  </message>
+</sequence-diagram>
