@@ -227,9 +227,12 @@ public class OrderDetailsDao implements OrderDetailsDaoInt {
 		JRDataSource ds = null;
 		try{
 			List<OrderDetails> orderDetails = getOrderDetailsByOrderNum(recordID);
-			
+			OrderHeader ordHeader = null;
             List<OrderReportBean> orderResults = new ArrayList<OrderReportBean>();
-            OrderHeader ordHeader = orderDaoInt.getOrder(recordID);
+            if(orderDetails.get(0).getOrderHeader().getStockType().equalsIgnoreCase("Site")){
+            	ordHeader = orderDaoInt.getOrder(recordID);
+            }
+            
             Employee emp = employeeDaoInt.getEmployeeByEmpNum(orderDetails.get(0).getOrderHeader().getEmployee().getEmail());
 			
 			for(OrderDetails order:orderDetails){
@@ -240,14 +243,21 @@ public class OrderDetailsDao implements OrderDetailsDaoInt {
 				bean.setPartNumber(order.getPartNumber());
 				bean.setQuantity(order.getQuantity());
 				
-				bean.setCustomerName(ordHeader.getCustomer().getCustomerName());
-				bean.setAddress(ordHeader.getCustomer().getStreetNumber()+" "+ordHeader.getCustomer().getStreetName());
-				bean.setProvince(ordHeader.getCustomer().getProvince());
 				
-				bean.setTechName(emp.getFirstName() +" "+emp.getLastName());
+				bean.setTechName(emp.getFirstName()+" "+emp.getLastName());
 				bean.setTechEmail(emp.getEmail());
 				bean.setTechCellNo(emp.getCellNumber());
-				
+				if(ordHeader !=null){
+					
+					bean.setCustomerName(ordHeader.getCustomer().getCustomerName());
+					bean.setAddress(ordHeader.getCustomer().getStreetNumber()+" "+ordHeader.getCustomer().getStreetName());
+					bean.setProvince(ordHeader.getCustomer().getCity_town()+" ,"+ordHeader.getCustomer().getProvince());
+					
+					String NoteNumber = ordHeader.getCustomer().getCustomerName().substring(0,3)+"/"+ "ORD00"+ordHeader.getRecordID();
+					bean.setDateDelivered("");
+					bean.setDeliveryNoteNo(NoteNumber);
+					bean.setCustomerOrderNum("ORD00"+ordHeader.getRecordID());
+				}
 				orderResults.add(bean);
 				ds = new JRBeanCollectionDataSource(orderResults);
 				
