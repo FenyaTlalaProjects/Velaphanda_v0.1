@@ -28,5 +28,6 @@ public class OrderReportBean {
 	
 	private String deliveryNoteNo;
 	private String customerOrderNum;
+	private String dateDelivered;
 
 }
