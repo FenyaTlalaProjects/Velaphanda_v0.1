@@ -26,10 +26,18 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
-	<field name="modelNumber" class="java.lang.String"/>
+	<field name="model" class="java.lang.String"/>
 	<field name="partNumber" class="java.lang.String"/>
 	<field name="itemDescription" class="java.lang.String"/>
-	<field name="quantity" class="java.lang.String"/>
+	<field name="quantity" class="java.lang.Integer"/>
+	<field name="customerName" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="province" class="java.lang.String"/>
+	<field name="techName" class="java.lang.String"/>
+	<field name="techCellNo" class="java.lang.String"/>
+	<field name="techEmail" class="java.lang.String"/>
+	<field name="deliveryNoteNo" class="java.lang.String"/>
+	<field name="customerOrderNum" class="java.lang.String"/>
 	<group name="Group1">
 		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
 		<groupHeader>
@@ -86,7 +94,7 @@
 			<band height="45">
 				<textField>
 					<reportElement x="730" y="4" width="70" height="13"/>
-					<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+					<textFieldExpression class="java.lang.Integer"><![CDATA[$F{quantity}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="450" y="2" width="82" height="13"/>
@@ -94,7 +102,7 @@
 				</textField>
 				<textField>
 					<reportElement x="162" y="4" width="100" height="13"/>
-					<textFieldExpression><![CDATA[$F{modelNumber}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{model}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="10" y="4" width="100" height="13"/>
@@ -141,13 +149,9 @@
 			<textField>
 				<reportElement x="108" y="120" width="50" height="20"/>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{techName}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="162" y="120" width="58" height="20"/>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
-			</textField>
+			
 			<staticText>
 				<reportElement x="1" y="141" width="88" height="19"/>
 				<text><![CDATA[CONTACT NO:]]></text>
@@ -159,12 +163,12 @@
 			<textField>
 				<reportElement x="40" y="160" width="48" height="20"/>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{techEmail}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="100" y="141" width="68" height="19"/>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA[$F{cellNumber}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{techCellNo}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="314" y="79" width="178" height="18"/>
@@ -256,7 +260,7 @@
 			<textField>
 				<reportElement x="690" y="71" width="50" height="19" />
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA[$F{orderNo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{customerOrderNum}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="580" y="71" width="60" height="18" />

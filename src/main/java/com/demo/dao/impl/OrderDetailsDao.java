@@ -13,8 +13,13 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.demo.dao.EmployeeDaoInt;
 import com.demo.dao.OrderDetailsDaoInt;
+import com.demo.dao.OrdersDaoInt;
+import com.demo.model.Employee;
 import com.demo.model.OrderDetails;
+import com.demo.model.OrderHeader;
+import com.demo.reports.initializer.OrderReportBean;
 
 @Repository("orderDetailsDAO")
 @Transactional(propagation = Propagation.REQUIRED)
@@ -22,6 +27,10 @@ public class OrderDetailsDao implements OrderDetailsDaoInt {
 
 	@Autowired
 	SessionFactory sessionFactory;
+	@Autowired
+	private OrdersDaoInt orderDaoInt;
+	@Autowired
+	private EmployeeDaoInt employeeDaoInt;
 
 	private String retMessage = null;
 
@@ -219,7 +228,29 @@ public class OrderDetailsDao implements OrderDetailsDaoInt {
 		try{
 			List<OrderDetails> orderDetails = getOrderDetailsByOrderNum(recordID);
 			
-			 ds = new JRBeanCollectionDataSource(orderDetails);
+            List<OrderReportBean> orderResults = new ArrayList<OrderReportBean>();
+            OrderHeader ordHeader = orderDaoInt.getOrder(recordID);
+            Employee emp = employeeDaoInt.getEmployeeByEmpNum(orderDetails.get(0).getOrderHeader().getEmployee().getEmail());
+			
+			for(OrderDetails order:orderDetails){
+				OrderReportBean bean = new OrderReportBean();
+				
+				bean.setItemDescription(order.getItemDescription());
+				bean.setModel(order.getModel());
+				bean.setPartNumber(order.getPartNumber());
+				bean.setQuantity(order.getQuantity());
+				
+				bean.setCustomerName(ordHeader.getCustomer().getCustomerName());
+				bean.setAddress(ordHeader.getCustomer().getStreetNumber()+" "+ordHeader.getCustomer().getStreetName());
+				bean.setProvince(ordHeader.getCustomer().getProvince());
+				
+				bean.setTechName(emp.getFirstName() +" "+emp.getLastName());
+				bean.setTechEmail(emp.getEmail());
+				bean.setTechCellNo(emp.getCellNumber());
+				
+				orderResults.add(bean);
+				ds = new JRBeanCollectionDataSource(orderResults);
+			}
 			
 		}catch(Exception e){
 			e.getMessage();
