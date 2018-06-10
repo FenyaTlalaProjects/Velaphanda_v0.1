@@ -18,28 +18,28 @@ public class HistoryDao {
 			List<History> items = new ArrayList<History>();
 			
 			History his = new History();
-			his.setCustomer("Fenya Tlala");
-			his.setDate(d);
-			his.setId(1L);
-			his.setTotal(1234.03);
+			his.setModelNumber("Fenya Tlala");
+			his.setPartNumber("PT0000");
+			his.setItemDescription("Black Guys");
+			his.setQuantity("1234");
 			
 			History his1 = new History();
-			his1.setCustomer("Fenya Tlala Consulting");
-			his1.setDate(d);
-			his1.setId(2L);
-			his1.setTotal(12234.03);
+			his1.setModelNumber("Fenya Tlala Consulting");
+			his1.setPartNumber("Ptddk9d");
+			his1.setItemDescription("Yellow Nation");
+			his1.setQuantity("3");
 			
 			History his2 = new History();
-			his2.setCustomer("Madibeng Municipality From Vandabeiltjpark");
-			his2.setDate(d);
-			his2.setId(3L);
-			his2.setTotal(234.03);
+			his2.setModelNumber("Madibeng Municipality From Vandabeiltjpark");
+			his2.setPartNumber("PZKIFJNFNF");
+			his2.setItemDescription("Magenta Suation");
+			his2.setQuantity("234");
 			
 			History his3 = new History();
-			his3.setCustomer("Madibeng ");
-			his3.setDate(d);
-			his3.setId(4L);
-			his3.setTotal(34.03);
+			his3.setModelNumber("Madibeng");
+			his3.setPartNumber("Plsks");
+			his3.setItemDescription("4L");
+			his3.setQuantity("34");
 			
 			
 			items.add(his);

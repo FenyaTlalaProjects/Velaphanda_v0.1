@@ -3,33 +3,33 @@ package com.demo.reports;
 import java.util.Date;
 
 public class History {
-	private String customer;
-	private Date date;
-	private Long id;
-	private Double total;
-	public String getCustomer() {
-		return customer;
+	private String modelNumber;
+	private String partNumber;
+	private String itemDescription;
+	private String quantity;
+	public String getModelNumber() {
+		return modelNumber;
 	}
-	public void setCustomer(String customer) {
-		this.customer = customer;
+	public void setModelNumber(String modelNumber) {
+		this.modelNumber = modelNumber;
 	}
-	public Date getDate() {
-		return date;
+	public String getpartNumber() {
+		return partNumber;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setPartNumber(String partNumber) {
+		this.partNumber = partNumber;
 	}
-	public Long getId() {
-		return id;
+	public String getItemDescription() {
+		return itemDescription;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setItemDescription(String itemDescription) {
+		this.itemDescription = itemDescription;
 	}
-	public Double getTotal() {
-		return total;
+	public String getQuantity() {
+		return quantity;
 	}
-	public void setTotal(Double total) {
-		this.total = total;
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
 	}
 	
 	
