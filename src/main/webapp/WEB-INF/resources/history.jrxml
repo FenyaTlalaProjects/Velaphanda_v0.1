@@ -126,23 +126,14 @@
 			<textField>
 				<reportElement x="1" y="30" width="139" height="21"/>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["customerName"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="50" width="140" height="20"/>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["streetNumber"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="0" y="70" width="140" height="21"/>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["streetName"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="90" width="140" height="21"/>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["city_Town"]]></textFieldExpression>
-			</textField>
+			
 			<staticText>
 				<reportElement x="1" y="121" width="98" height="19"/>
 				<text><![CDATA[CONTACT PERSON:]]></text>
@@ -150,12 +141,12 @@
 			<textField>
 				<reportElement x="108" y="120" width="50" height="20"/>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["firstName"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="162" y="120" width="58" height="20"/>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["lastName"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="141" width="88" height="19"/>
@@ -168,12 +159,12 @@
 			<textField>
 				<reportElement x="40" y="160" width="48" height="20"/>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["email"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="100" y="141" width="68" height="19"/>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["cellNumber"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cellNumber}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="314" y="79" width="178" height="18"/>
@@ -265,7 +256,7 @@
 			<textField>
 				<reportElement x="690" y="71" width="50" height="19" />
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["orderNo"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{orderNo}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="580" y="71" width="60" height="18" />
@@ -278,7 +269,7 @@
 			<textField>
 				<reportElement x="690" y="51" width="80" height="18" />
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["deliveryNumber"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{deliveryNoteNo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="691" y="31" width="78" height="19" />
