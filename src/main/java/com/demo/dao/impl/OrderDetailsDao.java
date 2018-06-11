@@ -258,6 +258,16 @@ public class OrderDetailsDao implements OrderDetailsDaoInt {
 					bean.setDeliveryNoteNo(NoteNumber);
 					bean.setCustomerOrderNum("ORD00"+ordHeader.getRecordID());
 				}
+				else{
+					bean.setCustomerName("");
+					bean.setAddress("");
+					bean.setProvince("");
+					
+					String NoteNumber = "ORD00"+order.getOrderHeader().getRecordID();
+					bean.setDateDelivered("");
+					bean.setDeliveryNoteNo(NoteNumber);
+					bean.setCustomerOrderNum("ORD00"+order.getOrderHeader().getRecordID());
+				}
 				orderResults.add(bean);
 				ds = new JRBeanCollectionDataSource(orderResults);
 				
