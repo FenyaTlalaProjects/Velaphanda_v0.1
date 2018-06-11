@@ -59,18 +59,20 @@
 								<!--First column-->
 								<div class="col-sm-6">
 									<!-- Text input Client Name-->
-									<div class="form-group">
-										<label class="col-md-3 control-label">Customer Name</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-user"></i></span> <input
-													name="customerName" placeholder="Client Name"
-													readonly="readonly" class="form-control"
-													value="${customer.customerName}" type="text">
-											</div>
+									
+																			
+										<div id="customerDeviceContainer"
+										style="width: auto; display: table;">
+										<div class="customerDeviceAddressTitle">
+											<p class="customerAddressTitle">Customer Name</p>
+											<ul class="addressDeviceList" style="display: block;">
+												<li id="customerName">${customer.customerName}</li>
+												
+											</ul>
 										</div>
 									</div>
+										
+									
 								</div>
 
 								<div class="col-sm-6">

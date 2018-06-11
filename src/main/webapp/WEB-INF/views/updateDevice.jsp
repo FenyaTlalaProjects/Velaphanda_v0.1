@@ -58,23 +58,24 @@
 							<fieldset>
 								<!-- Customer Details  -->
 								<legend style="font-size: 18px;">Customer Details</legend>
+								
 								<!--First column-->
 								<div class="col-sm-6">
-
 									<!-- Text input Client Name-->
-									<div class="form-group">
-										<label class="col-md-3 control-label">Customer Name</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-user"></i></span> <input type="text"
-													id="customerName" name="customerName" readonly="readonly"
-													placeholder="Client Name" class="form-control"
-													value="${productObject.customerDevice.customerName}">
-											</div>
+																			
+										<div id="customerDeviceContainer"
+										style="width: auto; display: table;">
+										<div class="customerDeviceAddressTitle">
+											<p class="customerAddressTitle">Customer Name</p>
+											<ul class="addressDeviceList" style="display: block;">
+												<li id="customerName">${productObject.customerDevice.customerName}</li>
+												
+											</ul>
 										</div>
-									</div>
+									</div>									
+									
 								</div>
+								
 
 								<div class="col-sm-6">
 
