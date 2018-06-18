@@ -159,7 +159,7 @@ li {
 										<li id="Contact Number">Contact Number:
 											${OrderNum.employee.cellNumber}</li>
 										<br />
-										<li id="approvedDate">Approved By : ${approver}</li>
+										<li id="approvedDate">Approver : ${approver}</li>
 
 									</c:if>
 
@@ -241,7 +241,7 @@ li {
 												<tr>
 													<th>Order Status</th>
 													<th>Date/Time</th>
-
+													<th>User</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -250,7 +250,8 @@ li {
 													<tr>
 
 														<td>${list.orderStatus}</td>
-														<td>${list.statusDateTime}</td>
+														<td>${list.statusDateTime}</td>														
+														<td>Who Approved/Recieved/Shipped</td>
 
 													</tr>
 												</c:forEach>

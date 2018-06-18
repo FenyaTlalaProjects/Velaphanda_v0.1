@@ -19,7 +19,7 @@
 	<style name="Row" mode="Transparent">
 		<conditionalStyle>
 			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
-			<style backcolor="#ffffff"/>
+			<style backcolor="#E6DAC3"/>
 		</conditionalStyle>
 	</style>
 	<field name="model" class="java.lang.String"/>
@@ -70,24 +70,24 @@
 				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="113" width="98" height="13"/>
-				<text><![CDATA[CONTACT PERSON:]]></text>
+				<reportElement x="0" y="113" width="80" height="13"/>
+				<text><![CDATA[Contact Person:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="98" y="113" width="181" height="13"/>
+				<reportElement x="80" y="113" width="181" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{techName}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="127" width="69" height="13"/>
-				<text><![CDATA[CONTACT NO:]]></text>
+				<reportElement x="0" y="127" width="60" height="13"/>
+				<text><![CDATA[Contact No:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="140" width="35" height="13"/>
-				<text><![CDATA[EMAIL:]]></text>
+				<reportElement x="1" y="140" width="29" height="13"/>
+				<text><![CDATA[Email:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="69" y="127" width="78" height="13"/>
+				<reportElement x="60" y="127" width="78" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{techCellNo}]]></textFieldExpression>
 			</textField>
@@ -144,46 +144,46 @@
 				</staticText>
 			</frame>
 			<staticText>
-				<reportElement x="674" y="151" width="117" height="13"/>
+				<reportElement x="660" y="151" width="117" height="13"/>
 				<text><![CDATA[admin@velaphanda.co.za]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="580" y="151" width="94" height="13"/>
-				<text><![CDATA[PLEASE REMIT TO:]]></text>
+				<reportElement x="580" y="151" width="80" height="13"/>
+				<text><![CDATA[Please Remit To:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="580" y="138" width="67" height="13"/>
-				<text><![CDATA[WAYBILL NO:]]></text>
+				<text><![CDATA[Waybill No:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="580" y="124" width="78" height="13"/>
-				<text><![CDATA[CONTRACT NO:]]></text>
+				<text><![CDATA[Contract No:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="580" y="110" width="101" height="13"/>
-				<text><![CDATA[CUSTOMER VAT NO:]]></text>
+				<text><![CDATA[Customer Vat No:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="640" y="96" width="50" height="13"/>
+				<reportElement x="630" y="96" width="50" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{customerOrderNum}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="580" y="96" width="60" height="13"/>
-				<text><![CDATA[ORDER NO:]]></text>
+				<reportElement x="580" y="96" width="50" height="13"/>
+				<text><![CDATA[Order No:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="580" y="83" width="102" height="13"/>
-				<text><![CDATA[DELIVERY NOTE NO:]]></text>
+				<reportElement x="580" y="83" width="80" height="13"/>
+				<text><![CDATA[Delivery Note No:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="682" y="83" width="80" height="13"/>
+				<reportElement x="660" y="83" width="80" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{deliveryNoteNo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="580" y="70" width="100" height="13"/>
-				<text><![CDATA[DATE OF DELIVERY:]]></text>
+				<reportElement x="580" y="70" width="78" height="13"/>
+				<text><![CDATA[Date Of Delivery:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="4" y="71" width="206" height="13">
@@ -193,12 +193,12 @@
 				<textFieldExpression><![CDATA[$F{province}]]></textFieldExpression>
 			</textField>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="680" y="70" width="111" height="13"/>
+				<reportElement x="658" y="70" width="111" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="36" y="140" width="234" height="13"/>
+				<reportElement x="30" y="140" width="234" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{techEmail}]]></textFieldExpression>
 			</textField>

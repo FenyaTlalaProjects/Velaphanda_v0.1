@@ -37,4 +37,6 @@ public class OrderHistory implements Serializable{/**
 	private String statusDateTime;
 	@Column(name="Order_Status")
 	private String orderStatus;
+	@Column(name="UserOrderTakeAction")
+	private String userOrderAction;
 }
