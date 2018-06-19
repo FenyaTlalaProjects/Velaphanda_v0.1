@@ -19,16 +19,16 @@
 	<style name="Row" mode="Transparent">
 		<conditionalStyle>
 			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
-			<style backcolor="#E6DAC3"/>
+			<style backcolor="#ffffff"/>
 		</conditionalStyle>
 	</style>
 	<field name="customerName" class="java.lang.String"/>
 	<field name="serialNumber" class="java.lang.String"/>
 	<field name="modelNumber" class="java.lang.String"/>
 	<field name="modelBrand" class="java.lang.String"/>
-	<field name="startDate" class="java.lang.String"/>
-	<field name="installationDate" class="java.lang.String"/>
-	<field name="endDate" class="java.lang.Integer"/>
+	<field name="startDate" class="java.util.Date"/>
+	<field name="installationDate" class="java.util.Date"/>
+	<field name="endDate" class="java.util.Date"/>
 	<field name="colourReading" class="java.lang.String"/>
 	<field name="monoReading" class="java.lang.String"/>
 	<field name="monoCopyCost" class="java.lang.String"/>
@@ -68,7 +68,7 @@
 			<textField>
 				<reportElement x="58" y="85" width="129" height="13"/>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA[$F{startDate}]]></textFieldExpression>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{startDate}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="2" y="111" width="46" height="13"/>
@@ -81,7 +81,7 @@
 			<textField>
 				<reportElement x="79" y="98" width="99" height="13"/>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA[$F{installationDate}]]></textFieldExpression>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{installationDate}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="308" y="85" width="211" height="13"/>
@@ -135,7 +135,7 @@
 			<textField>
 				<reportElement x="48" y="111" width="109" height="13"/>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA[$F{endDate}]]></textFieldExpression>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{endDate}]]></textFieldExpression>
 			</textField>
 			<image>
 				<reportElement x="390" y="40" width="48" height="40"/>
@@ -381,7 +381,7 @@
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+					<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
