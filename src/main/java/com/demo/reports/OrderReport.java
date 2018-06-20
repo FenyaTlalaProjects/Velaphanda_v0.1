@@ -45,11 +45,11 @@ protected static Logger logger = Logger.getLogger("controller");
 		// We are required to pass our datasource as a map parameter
 		// parameterMap is the Model of our application
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
-		parameterMap.put("datasource", orderDetails);
+		parameterMap.put("datanowsourceDeliveryNotepdf", orderDetails);
 		
 		// pdfReport is the View of our application
-		// This is declared inside the /WEB-INF/jasper-views.xml
-		modelAndView = new ModelAndView("pdfReport", parameterMap);
+		// This is declared inside the /WEB-INF/deliveryNote-views.xml
+		modelAndView = new ModelAndView("deliveryNotepdfReport", parameterMap);
 		
 		// Return the View and the Model combined
 		return modelAndView;

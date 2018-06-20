@@ -30,6 +30,12 @@
 				<div class="panel panel-default">
 					<div class="panel-heading" align="center">View Customer</div>
 					<div class="panel-body">
+					
+					<div align="right">
+							<a target="_blank"
+								href="customerListDownloadPDF?customerName=<c:out value='${customer.customerName}'/>">Download
+								PDF </a>
+						</div>
 
 						<form:form class="well form-horizontal" method="post"
 							action="viewCustomerData" modelAttribute="viewCustomerData"
@@ -86,7 +92,7 @@
 							<!-- //Contact Person 2 -->
 								<legend>
 									<b class="optionalFields" style="color: red; font-size: 15px;">Contact
-										Person 2 (Optional Fields)</b>
+										Person 2 (Optional)</b>
 								</legend>
 								<div class="row">															
 									<div class="col-sm-6">

@@ -52,6 +52,8 @@ public class TicketHistory implements Serializable{
 	private String solution;
 	@Column(name="Comment")
 	private String comment;
+	@Column(name="Description")
+	private String description;
 	@Column(name="Action_Taken")
 	private String actionTaken;
 	@Column(name="Mono_Reading")

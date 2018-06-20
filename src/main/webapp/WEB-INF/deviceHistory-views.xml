@@ -20,24 +20,24 @@
 		url: the path where the Jasper JRXML file is located
 		reportDateKey: the name of the datasource. This is passed by the controller
 	-->
-	<bean id="pdfReport"
+	<bean id="deviceHistoryPdfReport"
 	   class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView"
-		p:url="WEB-INF/resources/deliveryNote.jrxml"
-		p:reportDataKey="datanowsource" />
+		p:url="WEB-INF/resources/deviceHistory.jrxml"
+		p:reportDataKey="deviceHistoryDatasource" />
 
-	<bean id="xlsReport"
+	<bean id="deviceHistoryxlsReport"
 	   class="org.springframework.web.servlet.view.jasperreports.JasperReportsXlsView"
-		p:url="WEB-INF/resources/deliveryNote.jrxml"
-		p:reportDataKey="datanowsource" />
+		p:url="WEB-INF/resources/deviceHistory.jrxml"
+		p:reportDataKey="deviceHistoryDatasource" />
 	
-	<bean id="htmlReport"
+	<bean id="deviceHistoryhtmlReport"
 	   class="org.springframework.web.servlet.view.jasperreports.JasperReportsHtmlView"
-		p:url="WEB-INF/resources/deliveryNote.jrxml" 
-		p:reportDataKey="datasource" />
+		p:url="WEB-INF/resources/deviceHistory.jrxml" 
+		p:reportDataKey="deviceHistoryDatasource" />
 	
-	<bean id="csvReport"
+	<bean id="deviceHistoryCsvReport"
 	   class="org.springframework.web.servlet.view.jasperreports.JasperReportsCsvView"
-		p:url="WEB-INF/resources/deliveryNote.jrxml"
-		p:reportDataKey="datasource" />
+		p:url="WEB-INF/resources/deviceHistory.jrxml"
+		p:reportDataKey="deviceHistoryDatasource" />
 		
 </beans>

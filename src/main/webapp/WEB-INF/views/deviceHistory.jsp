@@ -37,16 +37,35 @@
 				<div class="panel panel-default">
 					<div class="panel-heading" align="center">Device History</div>
 					<div class="panel-body">
-						<div class="col-sm-4"><b>Serial Number: </b>${device.serialNumber}</div>
-						<div class="col-sm-4"><b>Model Number: </b>${device.modelNumber}</div>
-						<div class="col-sm-4"><b>Customer Name: </b>${device.customerDevice.customerName}</div>
-						<br/><br/>
+						<div class="col-sm-4">
+							<b>Serial Number: </b>${device.serialNumber}</div>
+						<div class="col-sm-4">
+							<b>Model Number: </b>${device.modelNumber}</div>
+						<div class="col-sm-4">
+							<b>Customer Name: </b>${device.customerDevice.customerName}</div>
+						<div class="col-sm-6">
+							<br />
+							<legend style="font-size: 14px; line-height: 1.42857143;">
+								<b>Contact person</b>
+							</legend>
+							<div class="machinedetailsfloatright ">
+								<div class="orderDetails">
+									<li id="contactName">First & Last Name:<b>${ticketObject.firstName} ${ticketObject.lastName}</b></li>
+									<li id="cell">Cell No: ${ticketObject.contactCellNumber}</li>
+									<li id="telephone">Telephone No: ${ticketObject.contactTelephoneNumber}</li>
+									<li id="email">E-Mail: ${ticketObject.contactEmail}</li>
+								</div>
+								<br>
+							</div>
+						</div>
+						<br />
+						<br />
 						<!-- table tckHistory -->
-						<table id="deviceHistory" data-toggle="table" data-url="deviceHistoryList"
-							data-show-refresh="true" data-show-toggle="true"
-							data-search="true" data-select-item-name="toolbar1"
-							data-pagination="true" data-sort-name="date"
-							data-sort-order="desc">
+						<table id="deviceHistory" data-toggle="table"
+							data-url="deviceHistoryList" data-show-refresh="true"
+							data-show-toggle="true" data-search="true"
+							data-select-item-name="toolbar1" data-pagination="true"
+							data-sort-name="date" data-sort-order="desc">
 							<thead>
 								<tr>
 									<th data-field="ticketnumber" data-sortable="true">Ticket
@@ -56,11 +75,10 @@
 									<th data-field="actiontaken" data-sortable="true">Action
 										Taken</th>
 									<th data-field="assignedto" data-sortable="true">Assigned
-										To</th>									
+										To</th>
 									<!-- <th data-field="colourreading" data-sortable="true">Colour
-										Reading</th>
-									<th data-field="monoreading" data-sortable="true">Mono
-										Reading</th> -->
+										Reading</th>-->
+									<th data-field="monoreading" data-sortable="true">Description</th>
 									<th data-field="comments" data-sortable="true">Comments</th>
 								</tr>
 							</thead>
@@ -68,16 +86,18 @@
 							<tbody>
 								<!-- Iterating over the list sent from Controller -->
 								<c:forEach items="${tickets}" var="ticket">
-									<tr>									
-										<td><a href="viewMoreDeviceHistory?recordID=<c:out value='${ticket.recordID}'/>">VTC000${ticket.recordID}</a></td>
+									<tr>
+										<td><a
+											href="viewMoreDeviceHistory?recordID=<c:out value='${ticket.recordID}'/>">VTC000${ticket.recordID}</a></td>
 										<td><c:out value="${ticket.dateTime}" /></td>
 										<td><c:out value="${ticket.status}" /></td>
 										<td><c:out value="${ticket.actionTaken}" /></td>
-										<td><c:out value="${ticket.employee.firstName} ${ticket.employee.lastName}" /></td>
-										<%-- <td><c:out value="${ticket.colourReading }" /></td>
-										<td><c:out value="${ticket.monoReading }" /></td> --%>
+										<td><c:out
+												value="${ticket.employee.firstName} ${ticket.employee.lastName}" /></td>
+										<%-- <td><c:out value="${ticket.colourReading }" /></td>--%>
+										<td><c:out value="${ticket.description}" /></td>
 										<td><c:out value="${ticket.comments}" /></td>
-										
+
 									</tr>
 								</c:forEach>
 							</tbody>

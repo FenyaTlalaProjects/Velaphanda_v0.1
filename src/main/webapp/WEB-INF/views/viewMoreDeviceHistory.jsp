@@ -6,6 +6,8 @@
 	Projects</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/custom/css/vela_details.css" />" />
 <c:import url="templates/tableresizefont.jsp"></c:import>
 <c:import url="templates/stylesheetlib.jsp"></c:import>
 </head>
@@ -38,6 +40,23 @@
 							<b>Model Number: </b>${ticket.device.modelNumber}</div>
 						<div class="col-sm-4">
 							<b>Customer Name: </b>${ticket.device.customerDevice.customerName}</div>
+							
+								<div class="col-sm-6"><br/>
+						
+									<legend style="font-size: 14px; line-height: 1.42857143;">
+										Contact person</legend>
+									<div class="machinedetailsfloatright ">
+										<div class="orderDetails">
+											<li id="contactName">First & Last Name: <b>${device.contactPerson.firstName}
+													${device.contactPerson.lastName}</b></li>
+											<li id="cell">Cell No: ${device.contactPerson.contactCellNumber}</li>
+											<li id="telephone">Telephone No:
+												${device.contactPerson.contactTelephoneNumber}</li>
+											<li id="email">E-Mail: ${device.contactPerson.contactEmail}</li>
+										</div>
+										<br>
+									</div>
+								</div>
 						<br />
 						<br />
 						<!-- table tckHistory -->
@@ -60,6 +79,7 @@
 										Reading</th>
 									<th data-field="monoreading" data-sortable="true">Mono
 										Reading</th>
+									<th data-field="monoreading" data-sortable="true">Description</th> 
 									<th data-field="comments" data-sortable="true">Comments</th>
 								</tr>
 							</thead>
@@ -107,6 +127,7 @@
 										<td><c:out value="${ticket.employee.firstName} ${ticket.employee.lastName}" /></td>
 										<td><c:out value="${ticket.colourReading }" /></td>
 										<td><c:out value="${ticket.monoReading }" /></td>
+										<td><c:out value="${ticket.description}" /></td>
 										<td><c:out value="${ticket.comment}" /></td>
 									</tr>
 								</c:forEach>

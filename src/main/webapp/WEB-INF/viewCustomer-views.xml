@@ -20,24 +20,24 @@
 		url: the path where the Jasper JRXML file is located
 		reportDateKey: the name of the datasource. This is passed by the controller
 	-->
-	<bean id="devicePdfReport"
+	<bean id="viewCustomerPdfReport"
 	   class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView"
-		p:url="WEB-INF/resources/deviceDetials.jrxml"
-		p:reportDataKey="datasource" />
+		p:url="WEB-INF/resources/viewCustomer.jrxml"
+		p:reportDataKey="viewCustomerDatasource" />
 
-	<bean id="devicexlsReport"
+	<bean id="viewCustomerxlsReport"
 	   class="org.springframework.web.servlet.view.jasperreports.JasperReportsXlsView"
-		p:url="WEB-INF/resources/deviceDetials.jrxml"
-		p:reportDataKey="datasource" />
+		p:url="WEB-INF/resources/viewCustomer.jrxml"
+		p:reportDataKey="viewCustomerDatasource" />
 	
-	<bean id="devicehtmlReport"
+	<bean id="viewCustomerhtmlReport"
 	   class="org.springframework.web.servlet.view.jasperreports.JasperReportsHtmlView"
-		p:url="WEB-INF/resources/deviceDetials.jrxml" 
-		p:reportDataKey="datasource" />
+		p:url="WEB-INF/resources/viewCustomer.jrxml" 
+		p:reportDataKey="viewCustomerDatasource" />
 	
-	<bean id="deviceCsvReport"
+	<bean id="viewCustomerCsvReport"
 	   class="org.springframework.web.servlet.view.jasperreports.JasperReportsCsvView"
-		p:url="WEB-INF/resources/deviceDetials.jrxml"
-		p:reportDataKey="datasource" />
+		p:url="WEB-INF/resources/viewCustomer.jrxml"
+		p:reportDataKey="viewCustomerDatasource" />
 		
 </beans>

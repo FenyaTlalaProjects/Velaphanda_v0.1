@@ -14,13 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-public class DeviceReport {
+public class DeviceHistoryReport {
 	
 	protected static Logger logger = Logger.getLogger("controller");
 	
 
-    @RequestMapping(value = "/deviceDownloadPDF", method = RequestMethod.GET)
-    public ModelAndView doSalesReportPDF(@RequestParam("recordID") Long recordID) 
+    @RequestMapping(value = "/deviceHistoryDownloadPDF", method = RequestMethod.GET)
+    public ModelAndView doDeviceHistoryReportPDF(@RequestParam("recordID") Long recordID) 
 		 {
     	logger.debug("Received request to download PDF report");
 		ModelAndView modelAndView = null;
@@ -36,11 +36,11 @@ public class DeviceReport {
 		// We are required to pass our datasource as a map parameter
 		// parameterMap is the Model of our application
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
-		parameterMap.put("datasource", "");
+		parameterMap.put("deviceHistoryDatasource", "");
 		
 		// pdfReport is the View of our application
 		// This is declared inside the /WEB-INF/jasper-views.xml
-		modelAndView = new ModelAndView("devicePdfReport", parameterMap);
+		modelAndView = new ModelAndView("deviceHistoryPdfReport", parameterMap);
 		
 		// Return the View and the Model combined
 		return modelAndView;
