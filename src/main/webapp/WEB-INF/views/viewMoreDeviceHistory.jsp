@@ -34,6 +34,11 @@
 				<div class="panel panel-default">
 					<div class="panel-heading" align="center">Device History</div>
 					<div class="panel-body">
+						<div align="right">
+							<a target="_blank"
+								href="deviceHistoryDownloadPDF?serialNumber=<c:out value='${device.serialNumber}'/>">Download
+								PDF </a>
+						</div>
 						<div class="col-sm-4">
 							<b>Serial Number: </b>${ticket.device.serialNumber}</div>
 						<div class="col-sm-4">

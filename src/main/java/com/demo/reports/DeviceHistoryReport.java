@@ -20,7 +20,7 @@ public class DeviceHistoryReport {
 	
 
     @RequestMapping(value = "/deviceHistoryDownloadPDF", method = RequestMethod.GET)
-    public ModelAndView doDeviceHistoryReportPDF(@RequestParam("recordID") Long recordID) 
+    public ModelAndView doDeviceHistoryReportPDF(@RequestParam("serialNumber") String serialNumber) 
 		 {
     	logger.debug("Received request to download PDF report");
 		ModelAndView modelAndView = null;

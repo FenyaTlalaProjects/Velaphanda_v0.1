@@ -19,8 +19,8 @@ public class DeviceDetialsReport {
 	protected static Logger logger = Logger.getLogger("controller");
 	
 
-    @RequestMapping(value = "/deviceDownloadPDF", method = RequestMethod.GET)
-    public ModelAndView doSalesReportPDF(@RequestParam("recordID") Long recordID) 
+    @RequestMapping(value = "/deviceDetailsDownloadPDF", method = RequestMethod.GET)
+    public ModelAndView doDeviceDetailsReportPDF(@RequestParam("serialNumber") String serialNumber) 
 		 {
     	logger.debug("Received request to download PDF report");
 		ModelAndView modelAndView = null;
