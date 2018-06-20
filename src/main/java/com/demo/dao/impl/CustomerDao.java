@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
@@ -18,6 +21,7 @@ import com.demo.dao.CustomerDaoInt;
 import com.demo.dao.CustomerContactDetailsDaoInt;
 import com.demo.model.Customer;
 import com.demo.model.CustomerContactDetails;
+import com.demo.reports.initializer.CustomerReportBean;
 
 
 @Repository("clientDAO")
@@ -240,6 +244,34 @@ public class CustomerDao implements CustomerDaoInt {
 			
 		}
 		return clientList;
+	}
+
+	@Override
+	public JRDataSource getCustomerListDataSource() {
+		JRDataSource ds = null;
+		List<CustomerReportBean> result = new ArrayList<CustomerReportBean>();
+		try{
+			clientList = getClientList();
+			for(Customer cust:clientList){
+				CustomerReportBean custBean = new CustomerReportBean();
+				
+				custBean.setCustomerName(cust.getCustomerName());
+				custBean.setContactPersonEmail(cust.getEmail());
+				custBean.setDeviceContactPersonTellphone(cust.getTelephoneNumber());
+				custBean.setDeviceContactPersonCellphone(cust.getContactEmail());
+				result.add(custBean);
+				ds = new JRBeanCollectionDataSource(result);
+			}
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return ds;
+	}
+
+	@Override
+	public JRDataSource getCustomerDetailsDataSource(String customerName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

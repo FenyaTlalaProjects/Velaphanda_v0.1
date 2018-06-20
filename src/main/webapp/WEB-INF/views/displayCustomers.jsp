@@ -34,7 +34,7 @@
 					<div class="panel-body">
 
 							<a target="_blank"
-								href="customerListDownloadPDF?clientName=<c:out value='${customer.clientName}' />">Download
+								href="customerListDownloadPDF">Download
 								PDF </a>
 							<table data-toggle="table" data-url="${displayCustomers}"
 								data-show-refresh="true" data-show-toggle="true"
