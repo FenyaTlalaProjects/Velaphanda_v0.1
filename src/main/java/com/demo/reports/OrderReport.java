@@ -45,7 +45,7 @@ protected static Logger logger = Logger.getLogger("controller");
 		// We are required to pass our datasource as a map parameter
 		// parameterMap is the Model of our application
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
-		parameterMap.put("datanowsourceDeliveryNotepdf", orderDetails);
+		parameterMap.put("deliveryNoteDatanowsource", orderDetails);
 		
 		// pdfReport is the View of our application
 		// This is declared inside the /WEB-INF/deliveryNote-views.xml

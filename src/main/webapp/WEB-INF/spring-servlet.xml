@@ -105,8 +105,10 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean> 
 	
-	<import resource="deliveryNote-views.xml"/>
+	<import resource="customerList-views.xml"/>
 	<import resource="deviceDetails-views.xml"/>
+	<import resource="deviceList-views.xml"/>
+	<import resource="deliveryNote-views.xml"/>	
 	<import resource="deviceHistory-views.xml"/>
 	<import resource="ticketDetails-views.xml"/>
 	<import resource="viewCustomer-views.xml"/>
