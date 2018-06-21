@@ -33,7 +33,7 @@
 					
 					<div align="right">
 							<a target="_blank"
-								href="customerListDownloadPDF?customerName=<c:out value='${customer.customerName}'/>">Download
+								href="viewCustomerDownloadPDF?customerName=<c:out value='${customer.customerName}'/>">Download
 								PDF </a>
 						</div>
 

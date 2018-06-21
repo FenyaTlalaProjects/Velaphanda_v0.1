@@ -173,11 +173,11 @@
 				<text><![CDATA[Order No:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="580" y="83" width="80" height="13"/>
-				<text><![CDATA[Delivery Note No:]]></text>
+				<reportElement x="580" y="83" width="91" height="13"/>
+				<text><![CDATA[Delivery Notes No:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="660" y="83" width="80" height="13"/>
+				<reportElement x="671" y="83" width="69" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{deliveryNoteNo}]]></textFieldExpression>
 			</textField>
@@ -336,7 +336,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 				</textField>
-				<textField pattern="EEEEE dd MMMMM yyyy">
+				<textField pattern="dd MMMMM yyyy HH:mm:ss">
 					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#000000"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
@@ -382,7 +382,7 @@
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="10" isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[ ID/EMPLOYEE NO:]]></text>
+				<text><![CDATA[ Id/Employee No:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Detail" x="419" y="11" width="150" height="44" forecolor="#000000" backcolor="#CCC8C8">
@@ -394,7 +394,7 @@
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[ SIGNATURE:]]></text>
+				<text><![CDATA[ Signature:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Detail" x="569" y="11" width="173" height="44" forecolor="#000000" backcolor="#CCC8C8">
@@ -406,7 +406,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[RECIEVED DATE:]]></text>
+				<text><![CDATA[Received Date:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Detail" x="742" y="11" width="53" height="44" forecolor="#000000" backcolor="#CCC8C8">
@@ -418,7 +418,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[TIME:]]></text>
+				<text><![CDATA[Time:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Detail" x="0" y="60" width="795" height="25" forecolor="#000000" backcolor="#CCC8C8">
@@ -439,7 +439,7 @@
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[OWNERSHIP OF GOODS REMAINS VESTED IN VELAPHANDA TRADING AND PROJECTS UNTIL PAID FOR IN FULL.]]></text>

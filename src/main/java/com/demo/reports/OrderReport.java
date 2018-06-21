@@ -27,7 +27,7 @@ protected static Logger logger = Logger.getLogger("controller");
    
    
     @RequestMapping(value = "/orderDownloadPDF", method = RequestMethod.GET)
-    public ModelAndView doSalesReportPDF(@RequestParam("recordID") Long recordID) 
+    public ModelAndView doOrderDeliveryNoteReportPDF(@RequestParam("recordID") Long recordID) 
 		 {
     	logger.debug("Received request to download PDF report");
 		ModelAndView modelAndView = null;

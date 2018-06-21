@@ -35,16 +35,16 @@ public class CustomerReport {
 		// Assign the datasource to an instance of JRDataSource
 		// JRDataSource is the datasource that Jasper understands
 		// This is basically a wrapper to Java's collection classes
-		JRDataSource datasource  = custIntDao.getCustomerListDataSource();
+		JRDataSource customerList  = custIntDao.getCustomerListDataSource();
 		
 		// In order to use Spring's built-in Jasper support, 
 		// We are required to pass our datasource as a map parameter
 		// parameterMap is the Model of our application
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
-		parameterMap.put("customerListDatasource", datasource);
+		parameterMap.put("customerListDatasource", customerList);
 		
 		// pdfReport is the View of our application
-		// This is declared inside the /WEB-INF/jasper-views.xml
+		// This is declared inside the /WEB-INF/customerList-views.xml
 		modelAndView = new ModelAndView("customerListPdfReport", parameterMap);
 		
 		// Return the View and the Model combined
@@ -61,16 +61,16 @@ public class CustomerReport {
 		// Assign the datasource to an instance of JRDataSource
 		// JRDataSource is the datasource that Jasper understands
 		// This is basically a wrapper to Java's collection classes
-		//JRDataSource datasource  = orderDetails.getDataSource();
+		JRDataSource viewCustomer  = custIntDao.getCustomerDetailsDataSource(customerName);
 		
 		// In order to use Spring's built-in Jasper support, 
 		// We are required to pass our datasource as a map parameter
 		// parameterMap is the Model of our application
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
-		parameterMap.put("viewCustomerDatasource", "");
+		parameterMap.put("viewCustomerDatasource", viewCustomer);
 		
 		// pdfReport is the View of our application
-		// This is declared inside the /WEB-INF/jasper-views.xml
+		// This is declared inside the /WEB-INF/viewCustomer-views.xml
 		modelAndView = new ModelAndView("viewCustomerPdfReport", parameterMap);
 		
 		// Return the View and the Model combined

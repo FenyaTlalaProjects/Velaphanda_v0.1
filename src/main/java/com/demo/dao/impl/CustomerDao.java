@@ -21,7 +21,11 @@ import com.demo.dao.CustomerDaoInt;
 import com.demo.dao.CustomerContactDetailsDaoInt;
 import com.demo.model.Customer;
 import com.demo.model.CustomerContactDetails;
+import com.demo.model.Employee;
+import com.demo.model.OrderDetails;
+import com.demo.model.OrderHeader;
 import com.demo.reports.initializer.CustomerReportBean;
+import com.demo.reports.initializer.OrderReportBean;
 
 
 @Repository("clientDAO")
@@ -270,8 +274,45 @@ public class CustomerDao implements CustomerDaoInt {
 
 	@Override
 	public JRDataSource getCustomerDetailsDataSource(String customerName) {
-		// TODO Auto-generated method stub
-		return null;
+		JRDataSource ds = null;
+		List<CustomerReportBean> result = new ArrayList<CustomerReportBean>();
+		
+		try{
+			customer = getClientByClientName(customerName);
+			for(Customer cust:clientList){
+				CustomerReportBean custBean = new CustomerReportBean();
+				
+				custBean.setCustomerName(cust.getCustomerName());
+				custBean.setTelephoneNumber(cust.getTelephoneNumber());
+				custBean.setFaxNumber(cust.getFaxNumber());
+				custBean.setStreetName(cust.getStreetName());
+				custBean.setStreetNumber(cust.getStreetNumber());
+				custBean.setCity_town(cust.getCity_town());
+				
+				/*custBean.setFirstName(cust.getFirstName());				
+				custBean.setLastName(cust.getLastName());
+				custBean.setContactEmail(cust.getContactEmail());
+				custBean.setContactCellNumber(cust.getContactCellNumber());				
+				custBean.setContactTelephoneNumber(cust.getContactTelephoneNumber());
+				
+				custBean.setLastName1(cust.getLastName1());
+				custBean.setFirstName1(cust.getFirstName1());
+				custBean.setContactEmail1(cust.getContactEmail1());	
+				custBean.setContactCellNumber1(cust.getContactCellNumber1());
+				custBean.setContactTelephoneNumber1(cust.getContactTelephoneNumber1());*/
+				
+				
+				result.add(custBean);
+				ds = new JRBeanCollectionDataSource(result);
+			}
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return ds;
 	}
+	
+	
+	
+	
 
 }
