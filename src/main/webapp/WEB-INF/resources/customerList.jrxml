@@ -89,10 +89,11 @@
 	<pageHeader>
 		<band splitType="Stretch"/>
 	</pageHeader>
+	
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="0" y="-4" width="226" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="0" y="-4" width="456" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
@@ -107,55 +108,35 @@
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Tell No]]></text>
 			</staticText>
-			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="227" y="-4" width="228" height="21" forecolor="#000000" backcolor="#CCC8C8"/>
-				<box>
-					<pen lineWidth="1.0" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[Email]]></text>
-			</staticText>
 		</band>
+
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="-4" width="795" height="20"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="0" y="0" width="226" height="20"/>
-					<box>
+					<reportElement style="Detail" x="0" y="0" width="456" height="20"/>
+					<box leftPadding="3" rightPadding="3">
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
 						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="1.0"/>
 					</box>
-					<textElement>
+					<textElement verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="456" y="0" width="337" height="20"/>
-					<box>
+					<box leftPadding="3" rightPadding="3">
 						<pen lineWidth="1.0"/>
 					</box>
-					<textElement>
+					<textElement verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{deviceContactPersonTellphone}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="227" y="0" width="228" height="20"/>
-					<box>
-						<topPen lineWidth="1.0"/>
-						<leftPen lineWidth="1.0"/>
-						<bottomPen lineWidth="1.0"/>
-						<rightPen lineWidth="1.0"/>
-					</box>
-					<textElement>
-						<font size="8"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{contactPersonEmail}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

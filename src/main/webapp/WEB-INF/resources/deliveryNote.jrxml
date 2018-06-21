@@ -19,7 +19,7 @@
 	<style name="Row" mode="Transparent">
 		<conditionalStyle>
 			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
-			<style backcolor="#E6DAC3"/>
+			<style backcolor="#ffffff"/>
 		</conditionalStyle>
 	</style>
 	<field name="model" class="java.lang.String"/>
@@ -257,48 +257,50 @@
 		<band height="20" splitType="Stretch">
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="-4" width="795" height="20"/>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="1" y="-1" width="484" height="20"/>
-					<box>
+						<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="1" y="-1" width="484" height="20">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box leftPadding="3" rightPadding="3">
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
 						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="1.0"/>
 					</box>
-					<textElement>
+					<textElement verticalAlignment="Middle" rotation="None">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{model}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="486" y="-1" width="123" height="20"/>
-					<box>
+					<box leftPadding="3" rightPadding="3">
 						<pen lineWidth="1.0"/>
 					</box>
-					<textElement>
+					<textElement verticalAlignment="Middle" rotation="None">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{partNumber}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="610" y="-1" width="131" height="20"/>
-					<box>
+					<box leftPadding="3" rightPadding="3">
 						<pen lineWidth="1.0"/>
 					</box>
-					<textElement>
+					<textElement verticalAlignment="Middle" rotation="None">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{itemDescription}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="742" y="-1" width="53" height="20"/>
-					<box>
+					<box leftPadding="3" rightPadding="3">
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
 						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="1.0"/>
 					</box>
-					<textElement>
+					<textElement verticalAlignment="Middle" rotation="None">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression class="java.lang.Integer"><![CDATA[$F{quantity}]]></textFieldExpression>
