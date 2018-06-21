@@ -19,7 +19,7 @@
 	<style name="Row" mode="Transparent">
 		<conditionalStyle>
 			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
-			<style backcolor="#ffffff"/>
+			<style backcolor="#E6DAC3"/>
 		</conditionalStyle>
 	</style>
 	<field name="model" class="java.lang.String"/>
@@ -204,7 +204,7 @@
 			</textField>
 			<image>
 				<reportElement x="390" y="56" width="48" height="40"/>
-				<imageExpression><![CDATA["C:/Users/MohapiMokoena/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:/Users/belly/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -220,7 +220,7 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="0" y="-4" width="485" height="15" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="1" y="-4" width="484" height="15" forecolor="#000000" backcolor="#CCC8C8"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
@@ -258,7 +258,7 @@
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="-4" width="795" height="20"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="0" y="-1" width="486" height="20"/>
+					<reportElement style="Detail" x="1" y="-1" width="484" height="20"/>
 					<box>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -271,7 +271,7 @@
 					<textFieldExpression><![CDATA[$F{model}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="486" y="-1" width="124" height="20"/>
+					<reportElement style="Detail" x="486" y="-1" width="123" height="20"/>
 					<box>
 						<pen lineWidth="1.0"/>
 					</box>
@@ -281,7 +281,7 @@
 					<textFieldExpression><![CDATA[$F{partNumber}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="610" y="-1" width="132" height="20"/>
+					<reportElement style="Detail" x="610" y="-1" width="131" height="20"/>
 					<box>
 						<pen lineWidth="1.0"/>
 					</box>
@@ -359,7 +359,7 @@
 				<text><![CDATA[ Recieved By:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Detail" x="1" y="26" width="418" height="15" forecolor="#000000" backcolor="#CCC8C8">
+				<reportElement style="Detail" x="0" y="26" width="419" height="15" forecolor="#000000" backcolor="#CCC8C8">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box>
@@ -371,7 +371,7 @@
 				<text><![CDATA[ Print Name & Surname: ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Detail" x="1" y="40" width="418" height="15" forecolor="#000000" backcolor="#CCC8C8">
+				<reportElement style="Detail" x="0" y="41" width="419" height="14" forecolor="#000000" backcolor="#CCC8C8">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box>
@@ -395,7 +395,7 @@
 				<text><![CDATA[ SIGNATURE:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Detail" x="570" y="11" width="172" height="44" forecolor="#000000" backcolor="#CCC8C8">
+				<reportElement style="Detail" x="569" y="11" width="173" height="44" forecolor="#000000" backcolor="#CCC8C8">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box>
@@ -407,7 +407,7 @@
 				<text><![CDATA[RECIEVED DATE:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Detail" x="742" y="11" width="52" height="44" forecolor="#000000" backcolor="#CCC8C8">
+				<reportElement style="Detail" x="742" y="11" width="53" height="44" forecolor="#000000" backcolor="#CCC8C8">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box>
@@ -419,7 +419,7 @@
 				<text><![CDATA[TIME:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Detail" x="1" y="60" width="794" height="25" forecolor="#000000" backcolor="#CCC8C8">
+				<reportElement style="Detail" x="0" y="60" width="795" height="25" forecolor="#000000" backcolor="#CCC8C8">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box>
@@ -431,7 +431,7 @@
 				<text><![CDATA[ NOTE:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Detail" x="2" y="93" width="792" height="15" forecolor="#000000" backcolor="#CCC8C8">
+				<reportElement style="Detail" x="0" y="93" width="795" height="15" forecolor="#000000" backcolor="#CCC8C8">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box>
