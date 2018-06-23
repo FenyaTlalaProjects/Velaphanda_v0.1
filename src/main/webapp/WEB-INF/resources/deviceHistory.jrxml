@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 7.1.0.final using JasperReports Library version 4.5.0  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Coffee" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<!-- Created with Jaspersoft Studio version 7.1.0.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Coffee" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ac8701c9-4713-426d-aef0-5399f1317411">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
@@ -46,124 +46,120 @@
 	<title>
 		<band height="220" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="325" y="0" width="190" height="44"/>
+				<reportElement style="Title" x="331" y="65" width="140" height="30" uuid="24cd6217-ee4e-435a-ad01-a40a08a470b7"/>
 				<textElement>
-					<font size="30" isBold="true"/>
+					<font size="20" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Device History]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="47" y="60" width="146" height="13">
+				<reportElement x="50" y="110" width="146" height="13" uuid="f44b37b7-dc1d-4c32-b02c-eb938d95fa5f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{serialNumber}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="404" y="60" width="106" height="13">
+				<reportElement x="400" y="110" width="106" height="13" uuid="2f19c698-5f77-4c66-a2d6-9ec8f03c4709">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA[$F{modelNumber}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="591" y="60" width="80" height="13"/>
+				<reportElement x="587" y="110" width="80" height="13" uuid="a3e6ddb3-6bd6-461c-aa3a-c329d0d7b11d"/>
 				<text><![CDATA[Cutomer Name:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="60" width="46" height="13"/>
+				<reportElement x="4" y="110" width="46" height="13" uuid="ed9be0f7-8717-4f00-b07b-8a03d20a662d"/>
 				<text><![CDATA[Serial No:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="328" y="60" width="76" height="13"/>
+				<reportElement x="324" y="110" width="76" height="13" uuid="932485f0-6de8-4600-94d5-8f11d907813d"/>
 				<text><![CDATA[Model Number:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="670" y="60" width="128" height="13">
+				<reportElement x="666" y="110" width="128" height="13" uuid="a0b4d30c-f99d-4abd-91de-3cc4792449e9">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="53" width="799" height="1"/>
+				<reportElement x="4" y="94" width="799" height="1" uuid="b51e02eb-876e-4ab6-8052-b659a816a1df"/>
 			</line>
 			<textField>
-				<reportElement x="4" y="108" width="81" height="13"/>
+				<reportElement x="4" y="155" width="81" height="13" uuid="09695135-9e4d-4571-9d83-03b5e0b4d433"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{deviceContactPersonFirstName}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="90" width="86" height="13"/>
+				<reportElement x="4" y="137" width="86" height="13" uuid="810683ec-ed78-420c-b433-6db4625ed184"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Contact Person:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="4" y="147" width="142" height="13"/>
+				<reportElement x="4" y="194" width="142" height="13" uuid="407ab168-0313-4291-919e-2cb2fb4cd6e9"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{deviceContactPersonTellphone}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="4" y="134" width="141" height="13"/>
+				<reportElement x="4" y="181" width="141" height="13" uuid="af2ab620-f93d-4f1f-9669-9ea4dc43aa40"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{deviceContactPersonTellphone}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="4" y="121" width="142" height="13"/>
+				<reportElement x="4" y="168" width="142" height="13" uuid="362010c2-3f23-4cbf-8993-596ce21fe65c"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{deviceContactPersonCellphone}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="97" y="108" width="81" height="13"/>
+				<reportElement x="97" y="155" width="81" height="13" uuid="d21a209c-5feb-4478-a271-61dc1989e258"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{deviceContactPersonLastName}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="4" y="103" width="197" height="1"/>
+				<reportElement x="4" y="150" width="197" height="1" uuid="7eadd5d7-28cb-42e0-b762-ca59537fdc58"/>
 			</line>
 			<staticText>
-				<reportElement x="-1" y="-3" width="236" height="13"/>
-				<textElement textAlignment="Center">
+				<reportElement x="160" y="10" width="240" height="30" forecolor="#0B41D6" uuid="b6e038b5-bae7-409e-98f5-e539e4ee539a"/>
+				<textElement textAlignment="Left">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Velaphanda Trading & Projects ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="20" y="10" width="66" height="60" uuid="156ab3bc-c05a-491f-9616-48a3c09fd8c7"/>
+				<imageExpression><![CDATA["C:/Users/King/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="555" y="30" width="230" height="50" uuid="8f431d48-faf0-402a-8b62-ef1a70e5fde0"/>
+				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
-				<text><![CDATA[VELAPHANDA TRADING & PROJECTS]]></text>
+				<text><![CDATA[Switchboard:  (012) 765 0200 / 087 701 1691
+Fax#:  086 403 7955
+Email : admin@velaphanda.co.za
+]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="18" y="21" width="198" height="13"/>
-				<textElement textAlignment="Center">
+				<reportElement x="160" y="30" width="240" height="50" uuid="b2b9f0e1-c320-45fd-8830-8e33bb20aaa4"/>
+				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
-				<text><![CDATA[296 GALWAY AVENUE, BRONBERRICK]]></text>
+				<text><![CDATA[Reg. No. 2008/164490/23
+296 Galway Avenue
+Bronberrik
+]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="47" y="10" width="140" height="13"/>
-				<textElement textAlignment="Center">
-					<font size="10"/>
+				<reportElement x="555" y="11" width="85" height="29" forecolor="#0B41D6" uuid="f0df473a-fb04-4104-af39-7152180e5f5d"/>
+				<textElement textAlignment="Left">
+					<font size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[REG NO:2008/164490/23]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="55" y="31" width="120" height="13"/>
-				<textElement textAlignment="Center">
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[CENTURION 0158]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="590" y="30" width="208" height="13"/>
-				<textElement textAlignment="Center">
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[TEL: 012 765 0200/087 701 1689 FAX: 086 403 7955]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="629" y="10" width="170" height="13"/>
-				<textElement textAlignment="Center">
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[E-MAIL: sales@velaphanda.co.za]]></text>
+				<text><![CDATA[Contacts:]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -173,13 +169,13 @@
 	<columnHeader>
 		<band height="12" splitType="Stretch">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="11" width="795" height="1"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="11" width="795" height="1" uuid="9d95858e-7c09-4c7e-b1d8-ad5afa1b74cf"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="0" y="-4" width="70" height="15" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="0" y="-4" width="70" height="15" forecolor="#000000" backcolor="#CCC8C8" uuid="ffc783fd-739b-4eb7-b81b-a68e1c1b4f8d"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
@@ -187,7 +183,7 @@
 				<text><![CDATA[Ticket No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="700" y="-4" width="93" height="15" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="700" y="-4" width="93" height="15" forecolor="#000000" backcolor="#CCC8C8" uuid="cb076514-4df6-43b2-b282-f315c1c76648"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
@@ -195,7 +191,7 @@
 				<text><![CDATA[Comments]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="70" y="-4" width="50" height="15" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="70" y="-4" width="50" height="15" forecolor="#000000" backcolor="#CCC8C8" uuid="ebac862e-e99b-497a-947b-43df71b7b4c2"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
@@ -203,7 +199,7 @@
 				<text><![CDATA[Date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="120" y="-4" width="50" height="15" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="120" y="-4" width="50" height="15" forecolor="#000000" backcolor="#CCC8C8" uuid="a6441e5b-8ce8-4f6c-9c3c-fdfb5036f48c"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
@@ -211,7 +207,7 @@
 				<text><![CDATA[Status]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="170" y="-4" width="80" height="15" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="170" y="-4" width="80" height="15" forecolor="#000000" backcolor="#CCC8C8" uuid="ee7d8ba4-0ef3-47be-b9b2-097c90cf65bd"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
@@ -219,7 +215,7 @@
 				<text><![CDATA[Action Taken]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="250" y="-4" width="77" height="15" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="250" y="-4" width="77" height="15" forecolor="#000000" backcolor="#CCC8C8" uuid="6647be39-9ef3-42eb-8cc1-31871752103a"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
@@ -227,7 +223,7 @@
 				<text><![CDATA[Assigned To]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="327" y="-4" width="103" height="15" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="327" y="-4" width="103" height="15" forecolor="#000000" backcolor="#CCC8C8" uuid="cabb3fe0-72e8-44c4-a931-5c5de3263f15"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
@@ -235,7 +231,7 @@
 				<text><![CDATA[Colour Reading]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="430" y="-4" width="103" height="15" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="430" y="-4" width="103" height="15" forecolor="#000000" backcolor="#CCC8C8" uuid="36fea58e-b903-4bfc-9dbd-878b8e4f7d3d"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
@@ -243,7 +239,7 @@
 				<text><![CDATA[Mono Reading]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="532" y="-4" width="168" height="15" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="532" y="-4" width="168" height="15" forecolor="#000000" backcolor="#CCC8C8" uuid="cc0a99c7-9d14-42a7-9b00-ed25538709a1"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
@@ -253,11 +249,11 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="20" splitType="Stretch">
+		<band height="17" splitType="Stretch">
 			<frame>
-				<reportElement style="Row" mode="Opaque" x="0" y="-4" width="795" height="20"/>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="795" height="17" uuid="f8074dd6-8864-429c-8777-0bf33c7aa954"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="0" y="-1" width="70" height="20"/>
+					<reportElement style="Detail" x="0" y="-1" width="70" height="18" uuid="16edcd6e-5395-4522-806b-f948857373ec"/>
 					<box>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -270,7 +266,7 @@
 					<textFieldExpression><![CDATA[$F{ticketNo}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="700" y="-1" width="93" height="20"/>
+					<reportElement style="Detail" x="700" y="-1" width="93" height="18" uuid="3c86e030-c7bd-44f3-8933-22db74518674"/>
 					<box>
 						<pen lineWidth="1.0"/>
 					</box>
@@ -280,7 +276,7 @@
 					<textFieldExpression><![CDATA[$F{comment}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="70" y="-1" width="50" height="20"/>
+					<reportElement style="Detail" x="70" y="-1" width="50" height="18" uuid="3de3d733-23cc-4c0b-80f2-e1220d422b47"/>
 					<box>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -290,10 +286,10 @@
 					<textElement>
 						<font size="8"/>
 					</textElement>
-					<textFieldExpression class="java.util.Date"><![CDATA[$F{date}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="120" y="-1" width="50" height="20"/>
+					<reportElement style="Detail" x="120" y="-1" width="50" height="18" uuid="4aa0ed4d-9778-42c5-9e04-713690e33fee"/>
 					<box>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -306,7 +302,7 @@
 					<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="170" y="-1" width="80" height="20"/>
+					<reportElement style="Detail" x="170" y="-1" width="80" height="18" uuid="6a97f0bc-51d7-431d-9f90-46a726e281ea"/>
 					<box>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -319,7 +315,7 @@
 					<textFieldExpression><![CDATA[$F{actionTaken}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="250" y="-1" width="40" height="20"/>
+					<reportElement style="Detail" x="250" y="-1" width="40" height="18" uuid="a4b2b1b3-9d32-478e-93ac-c36880184ccb"/>
 					<box>
 						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -332,20 +328,7 @@
 					<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="328" y="-1" width="102" height="20"/>
-					<box>
-						<topPen lineWidth="1.0"/>
-						<leftPen lineWidth="1.0"/>
-						<bottomPen lineWidth="1.0"/>
-						<rightPen lineWidth="1.0"/>
-					</box>
-					<textElement>
-						<font size="8"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{colourReading}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="430" y="-1" width="102" height="20"/>
+					<reportElement style="Detail" x="430" y="-1" width="102" height="18" uuid="12910114-379e-4e4e-8133-e9fd56e6dcbb"/>
 					<box>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -358,7 +341,7 @@
 					<textFieldExpression><![CDATA[$F{monoReading}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="532" y="-1" width="168" height="20"/>
+					<reportElement style="Detail" x="532" y="-1" width="168" height="18" uuid="57df9457-9f78-4d11-9bd5-69956304fd5a"/>
 					<box>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -371,7 +354,7 @@
 					<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="290" y="-1" width="37" height="20"/>
+					<reportElement style="Detail" x="290" y="-1" width="37" height="18" uuid="42baf48f-cf5e-41cf-b0a8-1655ed33b0cd"/>
 					<box>
 						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -383,13 +366,26 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
 				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="327" y="-1" width="103" height="18" uuid="408ce624-ed3a-4621-8aeb-5e3da4737a9b"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{colourReading}]]></textFieldExpression>
+				</textField>
 			</frame>
 		</band>
 	</detail>
 	<columnFooter>
 		<band height="4" splitType="Stretch">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="795" height="1"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="795" height="1" uuid="75d40fcb-c711-4d2f-9ea7-7cda0b3a27bf"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
@@ -399,27 +395,27 @@
 	<pageFooter>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="1" width="795" height="24" forecolor="#8F8F8F" backcolor="#DEDBD5"/>
+				<reportElement mode="Opaque" x="0" y="1" width="795" height="24" forecolor="#8F8F8F" backcolor="#DEDBD5" uuid="acb188a1-c739-43a9-9080-fd4e256633d7"/>
 				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="751" y="1" width="40" height="20" forecolor="#000000"/>
+					<reportElement style="Column header" x="751" y="1" width="40" height="20" forecolor="#000000" uuid="9e033cf9-8f82-40f0-a5f6-933732a8f816"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Column header" x="671" y="1" width="80" height="20" forecolor="#000000"/>
+					<reportElement style="Column header" x="671" y="1" width="80" height="20" forecolor="#000000" uuid="cc2b60ef-9765-45ee-8c0c-bc7b133ed470"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement style="Column header" x="30" y="2" width="197" height="20" forecolor="#000000"/>
+					<reportElement style="Column header" x="30" y="2" width="197" height="20" forecolor="#000000" uuid="38d9d64d-7990-4d42-82d4-f223c2c01560"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

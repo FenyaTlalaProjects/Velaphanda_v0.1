@@ -17,7 +17,6 @@ public class CustomerReportBean {
 	private String deviceContactPersonCellphone;
 	private String deviceContactPersonTellphone;
 	private String contactPersonEmail;
-
 	
 	private String telephoneNumber;
 	private String faxNumber;
