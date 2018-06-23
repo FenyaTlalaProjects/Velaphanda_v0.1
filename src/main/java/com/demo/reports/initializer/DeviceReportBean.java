@@ -37,6 +37,6 @@ public class DeviceReportBean {
 	private String streetNumber; 
 	private String streetName;
 	private String city_town;	
-	private String  zipcode; 
+	private String zipcode; 
 
 }

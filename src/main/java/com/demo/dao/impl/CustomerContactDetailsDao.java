@@ -1,6 +1,10 @@
 package com.demo.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
@@ -13,6 +17,7 @@ import com.demo.bean.CustomerBean;
 import com.demo.dao.CustomerContactDetailsDaoInt;
 import com.demo.model.Customer;
 import com.demo.model.CustomerContactDetails;
+import com.demo.reports.initializer.CustomerReportBean;
 
 @Repository("customerContactDetailsDao")
 @Transactional(propagation=Propagation.REQUIRED)
@@ -140,4 +145,52 @@ public class CustomerContactDetailsDao implements CustomerContactDetailsDaoInt{
 
 		return contactDetails;
 	}
+
+	@Override
+	public JRDataSource getCustomerContactDetailsDataSource(String customerName) {
+		JRDataSource ds = null;
+		List<CustomerReportBean> result = new ArrayList<CustomerReportBean>();
+        try{        	
+        				
+			tempContacts = contacts();
+			String currentContactType;
+			for(CustomerContactDetails temp:tempContacts ){
+				CustomerReportBean returnCustomerContact = new CustomerReportBean();
+				if(temp.getCustomerContactDetails().getCustomerName().equalsIgnoreCase(customerName)== true)
+				{
+				    currentContactType = temp.getContactType();
+				if (currentContactType.equals("Primary") == true)
+				   {
+					//Retrieve Primary Contact from Database
+				  if (temp.getContactKey().equals(temp.getCustomerContactDetails().getCustomerName() + " " + "Primary") == true)
+					{	  
+
+						returnCustomerContact.setFirstName(temp.getFirstName());
+						returnCustomerContact.setLastName(temp.getLastName());
+						returnCustomerContact.setContactEmail(temp.getContactEmail());
+						returnCustomerContact.setContactTelephoneNumber(temp.getContactTelephoneNumber());
+						returnCustomerContact.setContactCellNumber(temp.getContactCellNumber());						
+						result.add(returnCustomerContact);
+						ds = new JRBeanCollectionDataSource(result);
+					}
+				   }
+				   //Retrieve Alternate Contact from Database
+				  else if (currentContactType.equals("Primary") == false)
+				{
+				    if(temp.getContactKey().equals(temp.getCustomerContactDetails().getCustomerName() + " " + "Seconday") == true)
+						returnCustomerContact.setFirstName1(temp.getFirstName());
+						returnCustomerContact.setLastName1(temp.getLastName());
+						returnCustomerContact.setContactEmail1(temp.getContactEmail());
+						returnCustomerContact.setContactTelephoneNumber1(temp.getContactTelephoneNumber());
+						returnCustomerContact.setContactCellNumber1(temp.getContactCellNumber());						
+						result.add(returnCustomerContact);
+						ds = new JRBeanCollectionDataSource(result);
+					}
+			   }
+			}
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return ds;
+		}
 }

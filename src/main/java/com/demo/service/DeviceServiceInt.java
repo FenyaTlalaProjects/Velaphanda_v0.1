@@ -2,6 +2,8 @@ package com.demo.service;
 
 import java.util.List;
 
+import net.sf.jasperreports.engine.JRDataSource;
+
 import com.demo.bean.DeviceBean;
 import com.demo.model.Accessories;
 import com.demo.model.Device;
@@ -22,6 +24,7 @@ public interface DeviceServiceInt {
 	String[] getSerials();
 	String replaceToner(String compitableSiteStock,String currentMonoReading,String currentColourReading,String firstName,String lastName,String loggedInUser,String contactEmail,String contactTelephoneNumber,String contactCellNumber,String description,String serialNumber
 			);
-	
+	JRDataSource getDeviceListDataSource();
+	JRDataSource getDeviceDetailsDataSource(String serialNumber);
 
 }

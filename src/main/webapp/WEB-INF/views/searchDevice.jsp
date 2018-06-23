@@ -32,10 +32,11 @@
 				<div class="panel panel-default">
 					<div class="panel-heading" align="center">Devices</div>
 					<div class="panel-body">
-
+						
 						<a target="_blank"
-							href="deviceListDownloadPDF?serialNumber=<c:out value='${device.serialNumber}' />">Download
-							PDF </a>
+								href="deviceListDownloadPDF">Download
+								PDF </a>
+							
 						<!-- Below table will be displayed as Data table -->
 						<table data-toggle="table" data-url="${deviceList}"
 							data-show-refresh="true" data-show-toggle="true"
@@ -68,7 +69,7 @@
 										<td><a
 											href="detailedProduct?serialNumber=<c:out value='${list.serialNumber}'/>">
 												${list.serialNumber}</a></td>
-										<td>${list.buildingName }${list.streetNumber }
+										<td>${list.buildingName } ${list.streetNumber } 
 											${list.streetName }</td>
 										<td>${list.modelNumber}</td>
 										<td>${list.modelBrand}</td>

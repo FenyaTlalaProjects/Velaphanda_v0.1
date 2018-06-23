@@ -3,6 +3,8 @@ package com.demo.service.impl;
 import java.util.List;
 import java.util.Set;
 
+import net.sf.jasperreports.engine.JRDataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,6 +63,12 @@ public class CustomerService implements CustomerServiceInt{
 	@Override
 	public List<Customer> getClientList(String customerName) {
 		return clientDAO.getClientList(customerName);
+	}
+
+	@Override
+	public JRDataSource getCustomerDetailsDataSource(String customerName) {
+		// TODO Auto-generated method stub
+		return clientDAO.getCustomerDetailsDataSource(customerName);
 	}
 
 

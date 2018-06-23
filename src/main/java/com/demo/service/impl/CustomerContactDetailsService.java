@@ -2,6 +2,8 @@ package com.demo.service.impl;
 
 import java.util.List;
 
+import net.sf.jasperreports.engine.JRDataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +39,12 @@ public class CustomerContactDetailsService implements CustomerContactDetailsServ
 	public CustomerContactDetails getContactPerson(String customerName) {
 	
 		return contactDetailsDaoInt.getContactPerson(customerName);
+	}
+
+	@Override
+	public JRDataSource getCustomerContactDetailsDataSource(String customerName) {
+		// TODO Auto-generated method stub
+		return contactDetailsDaoInt.getCustomerContactDetailsDataSource(customerName);
 	}
 
 }

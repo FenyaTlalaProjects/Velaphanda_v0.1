@@ -139,7 +139,7 @@
 			</textField>
 			<image>
 				<reportElement x="390" y="40" width="48" height="40"/>
-				<imageExpression><![CDATA["C:/Users/MohapiMokoena/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:/Users/belly/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="2" y="30" width="80" height="13"/>
@@ -324,23 +324,23 @@
 				<reportElement style="Row" mode="Opaque" x="0" y="-4" width="795" height="20"/>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="0" y="-1" width="486" height="20"/>
-					<box>
+					<box leftPadding="3" rightPadding="3">
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
 						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="1.0"/>
 					</box>
-					<textElement>
+					<textElement verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{serial}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="486" y="-1" width="308" height="20"/>
-					<box>
+					<box leftPadding="3" rightPadding="3">
 						<pen lineWidth="1.0"/>
 					</box>
-					<textElement>
+					<textElement verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{accessotyType}]]></textFieldExpression>

@@ -26,6 +26,9 @@ import com.demo.model.OrderDetails;
 import com.demo.model.OrderHeader;
 import com.demo.reports.initializer.CustomerReportBean;
 import com.demo.reports.initializer.OrderReportBean;
+import com.demo.service.CustomerContactDetailsServiceInt;
+import com.demo.service.CustomerServiceInt;
+import com.demo.service.DeviceServiceInt;
 
 
 @Repository("clientDAO")
@@ -37,13 +40,19 @@ public class CustomerDao implements CustomerDaoInt {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-
+	@Autowired
+	private CustomerServiceInt customerServiceInt;
+	@Autowired
+	private DeviceServiceInt deviceServiceInt;
+	@Autowired
+	private CustomerContactDetailsServiceInt contactDetailsServiceInt;
 	@Autowired
 	private CustomerContactDetailsDaoInt customerContactDetailsDaoIntDaoInt;
 
 	private String retMessage = null;
 	List<Customer> clientList = null;
 	Customer customer = null;
+	private List<CustomerContactDetails> tempContacts = null;
 
 	@Override
 	public Customer getClientByClientName(String clientName) {
@@ -271,14 +280,20 @@ public class CustomerDao implements CustomerDaoInt {
 		}
 		return ds;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<CustomerContactDetails> contacts() {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(CustomerContactDetails.class);
+		return (List<CustomerContactDetails>)criteria.list(); 
+	}
 
 	@Override
 	public JRDataSource getCustomerDetailsDataSource(String customerName) {
 		JRDataSource ds = null;
 		List<CustomerReportBean> result = new ArrayList<CustomerReportBean>();
-		
 		try{
-			customer = getClientByClientName(customerName);
+			customer = getClientByClientName(customerName);			
 			for(Customer cust:clientList){
 				CustomerReportBean custBean = new CustomerReportBean();
 				
@@ -288,22 +303,11 @@ public class CustomerDao implements CustomerDaoInt {
 				custBean.setStreetName(cust.getStreetName());
 				custBean.setStreetNumber(cust.getStreetNumber());
 				custBean.setCity_town(cust.getCity_town());
-				
-				/*custBean.setFirstName(cust.getFirstName());				
-				custBean.setLastName(cust.getLastName());
-				custBean.setContactEmail(cust.getContactEmail());
-				custBean.setContactCellNumber(cust.getContactCellNumber());				
-				custBean.setContactTelephoneNumber(cust.getContactTelephoneNumber());
-				
-				custBean.setLastName1(cust.getLastName1());
-				custBean.setFirstName1(cust.getFirstName1());
-				custBean.setContactEmail1(cust.getContactEmail1());	
-				custBean.setContactCellNumber1(cust.getContactCellNumber1());
-				custBean.setContactTelephoneNumber1(cust.getContactTelephoneNumber1());*/
-				
-				
+				custBean.setProvince(cust.getProvince());
+				custBean.setZipcode(cust.getZipcode());
 				result.add(custBean);
 				ds = new JRBeanCollectionDataSource(result);
+				
 			}
 		}catch(Exception e){
 			e.getMessage();
@@ -311,8 +315,4 @@ public class CustomerDao implements CustomerDaoInt {
 		return ds;
 	}
 	
-	
-	
-	
-
 }

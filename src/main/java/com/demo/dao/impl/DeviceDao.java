@@ -10,6 +10,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
@@ -34,6 +37,8 @@ import com.demo.model.Employee;
 import com.demo.model.SiteStock;
 import com.demo.model.TicketHistory;
 import com.demo.model.Tickets;
+import com.demo.reports.initializer.CustomerReportBean;
+import com.demo.reports.initializer.DeviceReportBean;
 
 @Repository("productDAO")
 @Transactional(propagation = Propagation.REQUIRED)
@@ -58,7 +63,8 @@ public class DeviceDao implements DeviceDaoInt {
 	private String retMessage = null;
 	@SuppressWarnings("unused")
 	private Date currentDate = null;
-	ArrayList<Device> productList = null;      
+	ArrayList<Device> productList = null;
+	List<Device> deviceList = null; 
 	ArrayList<?> aList = null;
 	ArrayList<Accessories> list = null;
 	Customer customer = null;
@@ -533,6 +539,42 @@ public class DeviceDao implements DeviceDaoInt {
 		date = new Date();
 		
 		return retMessage;
+	}
+
+	@Override
+	public JRDataSource getDeviceListDataSource() {
+		JRDataSource ds = null;
+		List<DeviceReportBean> result = new ArrayList<DeviceReportBean>();
+		try{
+			deviceList = getDeviceList();
+			for(Device device:deviceList){
+				DeviceReportBean deviceBean = new DeviceReportBean();				
+				deviceBean.setCustomerName(device.getCustomerDevice().getCustomerName());
+				deviceBean.setSerialNumber(device.getSerialNumber());
+				deviceBean.setCity_town(device.getCity_town());
+				deviceBean.setStreetName(device.getStreetName());
+				deviceBean.setStreetNumber(device.getStreetNumber());
+				deviceBean.setModelNumber(device.getModelNumber());
+				deviceBean.setModelBrand(device.getModelBrand());
+				result.add(deviceBean);
+				ds = new JRBeanCollectionDataSource(result);
+			}
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return ds;
+	}
+
+	@Override
+	public JRDataSource getDeviceDetailsDataSource(String serialNumber) {
+		JRDataSource ds = null;
+		List<CustomerReportBean> result = new ArrayList<CustomerReportBean>();
+		try{
+			
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return ds;
 	}
 
 }
