@@ -274,7 +274,7 @@
 			</staticText>
 			<image>
 				<reportElement x="-1" y="-10" width="77" height="60"/>
-				<imageExpression><![CDATA["C:/Users/belly/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:/Users/MohapiMokoena/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="534" y="10" width="230" height="50"/>

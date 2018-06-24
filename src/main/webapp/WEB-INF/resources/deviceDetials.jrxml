@@ -64,7 +64,7 @@
 			</staticText>
 			<image>
 				<reportElement x="0" y="10" width="72" height="70" uuid="e8fb4334-c939-4f70-98ac-753f86f705c7"/>
-				<imageExpression><![CDATA["C:/Users/King/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:/Users/MohapiMokoena/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="535" y="30" width="230" height="50" uuid="4f56e218-87ad-443b-a6f7-8382517576ec"/>

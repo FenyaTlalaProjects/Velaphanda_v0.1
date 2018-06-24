@@ -73,13 +73,13 @@ public class CustomerReport {
 		// JRDataSource is the datasource that Jasper understands
 		// This is basically a wrapper to Java's collection classes
 		JRDataSource contactList  = contactDetailsServiceInt.getCustomerContactDetailsDataSource(customerName);
-		JRDataSource viewCustomer  = customerServiceInt.getCustomerDetailsDataSource(customerName);
+		//JRDataSource viewCustomer  = customerServiceInt.getCustomerDetailsDataSource(customerName);
 		
 		// In order to use Spring's built-in Jasper support, 
 		// We are required to pass our datasource as a map parameter
 		// parameterMap is the Model of our application
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
-		parameterMap.put("viewCustomerDatasource", viewCustomer);
+		//parameterMap.put("viewCustomerDatasource", viewCustomer);
 		parameterMap.put("viewCustomerDatasource", contactList);
 		
 		

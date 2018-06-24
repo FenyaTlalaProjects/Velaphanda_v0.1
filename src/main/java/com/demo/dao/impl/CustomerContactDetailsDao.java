@@ -169,7 +169,15 @@ public class CustomerContactDetailsDao implements CustomerContactDetailsDaoInt{
 						returnCustomerContact.setLastName(temp.getLastName());
 						returnCustomerContact.setContactEmail(temp.getContactEmail());
 						returnCustomerContact.setContactTelephoneNumber(temp.getContactTelephoneNumber());
-						returnCustomerContact.setContactCellNumber(temp.getContactCellNumber());						
+						returnCustomerContact.setContactCellNumber(temp.getContactCellNumber());
+						
+						returnCustomerContact.setCustomerName(temp.getCustomerContactDetails().getCustomerName());
+						returnCustomerContact.setStreetName(temp.getCustomerContactDetails().getStreetName());
+						returnCustomerContact.setStreetNumber(temp.getCustomerContactDetails().getStreetNumber());
+						returnCustomerContact.setCity_town(temp.getCustomerContactDetails().getCity_town());
+						returnCustomerContact.setZipcode(temp.getCustomerContactDetails().getZipcode());
+						returnCustomerContact.setProvince(temp.getCustomerContactDetails().getProvince());
+						
 						result.add(returnCustomerContact);
 						ds = new JRBeanCollectionDataSource(result);
 					}
@@ -182,7 +190,14 @@ public class CustomerContactDetailsDao implements CustomerContactDetailsDaoInt{
 						returnCustomerContact.setLastName1(temp.getLastName());
 						returnCustomerContact.setContactEmail1(temp.getContactEmail());
 						returnCustomerContact.setContactTelephoneNumber1(temp.getContactTelephoneNumber());
-						returnCustomerContact.setContactCellNumber1(temp.getContactCellNumber());						
+						returnCustomerContact.setContactCellNumber1(temp.getContactCellNumber());	
+						
+						returnCustomerContact.setCustomerName(temp.getCustomerContactDetails().getCustomerName());
+						returnCustomerContact.setStreetName(temp.getCustomerContactDetails().getStreetName());
+						returnCustomerContact.setStreetNumber(temp.getCustomerContactDetails().getStreetNumber());
+						returnCustomerContact.setCity_town(temp.getCustomerContactDetails().getCity_town());
+						returnCustomerContact.setZipcode(temp.getCustomerContactDetails().getZipcode());
+						returnCustomerContact.setProvince(temp.getCustomerContactDetails().getProvince());
 						result.add(returnCustomerContact);
 						ds = new JRBeanCollectionDataSource(result);
 					}

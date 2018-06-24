@@ -27,12 +27,7 @@
 	<field name="modelNumber" class="java.lang.String"/>
 	<field name="modelBrand" class="java.lang.String"/>
 	<field name="date" class="java.util.Date"/>
-	<field name="streetNumber" class="java.lang.String"/>
-	<field name="streetName" class="java.lang.String"/>
-	<field name="city_town" class="java.lang.String"/>
 	<field name="address" class="java.lang.String"/>
-	<field name="province" class="java.lang.String"/>
-	<field name="zipcode" class="java.lang.String"/>
 	<background>
 		<band height="220" splitType="Stretch"/>
 	</background>
@@ -54,7 +49,7 @@
 			</staticText>
 			<image>
 				<reportElement x="20" y="10" width="72" height="70"/>
-				<imageExpression><![CDATA["C:/Users/belly/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:/Users/MohapiMokoena/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="555" y="30" width="230" height="50"/>
