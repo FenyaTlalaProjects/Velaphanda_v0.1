@@ -67,7 +67,7 @@
 			</staticText>
 			<image>
 				<reportElement x="20" y="10" width="72" height="70"/>
-				<imageExpression><![CDATA["C:/Users/belly/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["../resources/images/mainlogo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="555" y="30" width="230" height="50"/>
