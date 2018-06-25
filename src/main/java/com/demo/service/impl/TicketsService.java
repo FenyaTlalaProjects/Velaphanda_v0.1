@@ -2,6 +2,8 @@ package com.demo.service.impl;
 
 import java.util.List;
 
+import net.sf.jasperreports.engine.JRDataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -459,14 +461,20 @@ public class TicketsService implements TicketsServiceInt{
 
 	@Override
 	public String acknowledgeTicketsForTech(Long recordID) {
-		// TODO Auto-generated method stub
+		
 		return logTicketsDAO.acknowledgeTicketsForTech(recordID);
 	}
 
 	@Override
 	public String takeTicketsForTech(Long recordID) {
-		// TODO Auto-generated method stub
+		
 		return logTicketsDAO.takeTicketsForTech(recordID);
+	}
+
+	@Override
+	public JRDataSource getTicketDetailsDataSource(Long recordID) {
+		
+		return logTicketsDAO.getTicketDetailsDataSource(recordID);
 	}
 	
 }

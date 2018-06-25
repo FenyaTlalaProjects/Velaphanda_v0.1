@@ -39,6 +39,7 @@ import com.demo.model.TicketHistory;
 import com.demo.model.Tickets;
 import com.demo.reports.initializer.CustomerReportBean;
 import com.demo.reports.initializer.DeviceReportBean;
+import com.demo.service.TicketHistoryInt;
 
 @Repository("productDAO")
 @Transactional(propagation = Propagation.REQUIRED)
@@ -59,6 +60,8 @@ public class DeviceDao implements DeviceDaoInt {
 	@Autowired
 	private TicketsDaoInt ticketsDaoInt;
 	@Autowired
+	private TicketHistoryInt ticketHistoryInt;
+	@Autowired
 	private HttpSession session = null;
 	private String retMessage = null;
 	@SuppressWarnings("unused")
@@ -69,11 +72,13 @@ public class DeviceDao implements DeviceDaoInt {
 	ArrayList<Accessories> list = null;
 	Customer customer = null;
 	Device device = null;
+	private Tickets ticket = null;
 	TicketHistory ticketHistory = null;
 	List<Accessories> accessoryList = null;
 	private DeviceBean deviceBean = null;
 	private DeviceContactPerson contactPerson;
 	Device localdevice = null;
+	Accessories accesories = null;
 	DateFormat dateFormat = null;
 	Date date = null;
 	SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -566,13 +571,109 @@ public class DeviceDao implements DeviceDaoInt {
 	@Override
 	public JRDataSource getDeviceDetailsDataSource(String serialNumber) {
 		JRDataSource ds = null;
-		List<CustomerReportBean> result = new ArrayList<CustomerReportBean>();
-		try{
-			
+		List<DeviceReportBean> result = new ArrayList<DeviceReportBean>();
+		try{	
+				device = getDeviceBySerialNumbuer(serialNumber);
+				DeviceReportBean deviceBean = new DeviceReportBean();
+				deviceBean.setCustomerName(device.getCustomerDevice().getCustomerName());
+				deviceBean.setSerialNumber(device.getSerialNumber());
+				deviceBean.setModelNumber(device.getModelNumber());
+				deviceBean.setModelBrand(device.getModelBrand());
+				
+				deviceBean.setStartDate(device.getStartDate());
+				deviceBean.setInstallationDate(device.getInstallationDate());
+				deviceBean.setEndDate(device.getEndDate());
+				
+				deviceBean.setMonoReading(device.getMonoReading());
+				deviceBean.setColourReading(device.getColourReading());
+				deviceBean.setMonoCopyCost(device.getMonoCopyCost());
+				deviceBean.setColourCopyCost(device.getColourCopyCost());
+				
+				deviceBean.setZipcode(device.getAreaCode());
+				deviceBean.setCity_town(device.getCity_town());
+				deviceBean.setProvince(device.getProvince());
+				deviceBean.setStreetName(device.getStreetName());
+				deviceBean.setStreetNumber(device.getStreetNumber());
+
+				deviceBean.setContactPersonEmail(device.getContactPerson().getEmail());
+				deviceBean.setContactPersonFirstName(device.getContactPerson().getFirstName());
+				deviceBean.setContactPersonLastName(device.getContactPerson().getLastName());
+				deviceBean.setContactPersonCellphone(device.getContactPerson().getCellphone());
+				deviceBean.setContactPersonTellphone(device.getContactPerson().getTelephone());
+							
+				
+				result.add(deviceBean);
+				ds = new JRBeanCollectionDataSource(result);
+				
 		}catch(Exception e){
 			e.getMessage();
 		}
 		return ds;
 	}
+	
+	@Override
+	public List<TicketHistory> getHistoryByTicketNumber(Long ticketNumber) {
+		
+		List<TicketHistory> newList = null;
+		try{
+			
+			List<TicketHistory> list = getAllTicketHistoryByTicketNumber();
+			 newList = new ArrayList<TicketHistory>();
+			for(TicketHistory ticketHistory:list){
+				if(ticketHistory.getTicketNo().equals(ticketNumber)){
+					newList.add(ticketHistory);
+				}
+			}
+			
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return newList;
+	}
 
+	@Override
+	public List<TicketHistory> getAllTicketHistoryByTicketNumber() {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+				TicketHistory.class);
+		return (List<TicketHistory>) criteria.list();	
+	}
+	
+	@Override
+	public JRDataSource getDeviceHistoryDataSource(Long recordID) {
+		JRDataSource ds = null;
+		List<DeviceReportBean> result = new ArrayList<DeviceReportBean>();
+		try{
+			//ticket = (Tickets) getHistoryByTicketNumber(recordID);
+			DeviceReportBean deviceBean = new DeviceReportBean();
+					
+			/*	
+			deviceBean.setCustomerName(ticket.getDevice().getCustomerDevice().getCustomerName());
+			deviceBean.setSerialNumber(ticket.getDevice().getSerialNumber());
+			deviceBean.setModelNumber(ticket.getDevice().getModelNumber());
+			deviceBean.setModelBrand(ticket.getDevice().getModelBrand());
+			deviceBean.setCustomerName(ticket.getStatus());
+			deviceBean.setDate(ticket.getDateTime());			
+			deviceBean.setMonoReading(ticket.getDevice().getMonoReading());
+			deviceBean.setColourReading(ticket.getDevice().getColourReading());		
+			deviceBean.setFirstName(ticket.getFirstName());
+			deviceBean.setLastName(ticket.getLastName());
+			deviceBean.setDescription(ticket.getDescription());
+			deviceBean.setComment(ticket.getComments());
+			deviceBean.setActionTaken(ticket.getActionTaken());			
+			
+			deviceBean.setContactPersonEmail(device.getContactPerson().getEmail());
+			deviceBean.setContactPersonFirstName(device.getContactPerson().getFirstName());
+			deviceBean.setContactPersonLastName(device.getContactPerson().getLastName());
+			deviceBean.setContactPersonCellphone(device.getContactPerson().getCellphone());
+			deviceBean.setContactPersonTellphone(device.getContactPerson().getTelephone());*/
+			result.add(deviceBean);
+			ds = new JRBeanCollectionDataSource(result);
+			
+	}catch(Exception e){
+		e.getMessage();
+	}
+	return ds;
+	}
+
+	
 }

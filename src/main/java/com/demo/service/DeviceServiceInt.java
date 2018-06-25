@@ -26,5 +26,7 @@ public interface DeviceServiceInt {
 			);
 	JRDataSource getDeviceListDataSource();
 	JRDataSource getDeviceDetailsDataSource(String serialNumber);
+	JRDataSource getDeviceHistoryDataSource(Long recordID);
+
 
 }

@@ -2,6 +2,8 @@ package com.demo.service;
 
 import java.util.List;
 
+import net.sf.jasperreports.engine.JRDataSource;
+
 import com.demo.bean.EmployeeBean;
 import com.demo.bean.PieChart;
 import com.demo.bean.TicketsBean;
@@ -137,4 +139,6 @@ public interface TicketsServiceInt {
 	List<Tickets> getAllTicketsBySerialNumber(String serialNumber);
 	public String acknowledgeTicketsForTech(Long recordID);
 	public String takeTicketsForTech(Long recordID);
+
+	JRDataSource getTicketDetailsDataSource(Long recordID);
 }

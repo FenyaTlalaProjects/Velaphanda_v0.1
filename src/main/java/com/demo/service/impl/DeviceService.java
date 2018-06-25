@@ -47,8 +47,7 @@ public class DeviceService implements DeviceServiceInt {
 	}
 
 	@Override
-	public List<Accessories> accessories(Device device) {
-		// TODO Auto-generated method stub
+	public List<Accessories> accessories(Device device) {	
 		return deviceDAO.accessories(device);
 	}
 
@@ -96,15 +95,18 @@ public class DeviceService implements DeviceServiceInt {
 	}
 
 	@Override
-	public JRDataSource getDeviceListDataSource() {
-		// TODO Auto-generated method stub
-		return null;
+	public JRDataSource getDeviceListDataSource() {		
+		return deviceDAO.getDeviceListDataSource();
 	}
 
 	@Override
-	public JRDataSource getDeviceDetailsDataSource(String serialNumber) {
-		// TODO Auto-generated method stub
+	public JRDataSource getDeviceDetailsDataSource(String serialNumber) {		
 		return deviceDAO.getDeviceDetailsDataSource(serialNumber);
+	}
+
+	@Override
+	public JRDataSource getDeviceHistoryDataSource(Long recordID) {	
+		return deviceDAO.getDeviceHistoryDataSource(recordID);
 	}
 
 }

@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class DeviceReportBean {
+public class TicketReportBean {
 	
 	private String model;
 	private String partNumber;
@@ -60,6 +60,7 @@ public class DeviceReportBean {
 	private String comment;
 	private String actionTaken;
 	private String status;
+	private String priority;
 	private String firstName;
 	private String lastName;
 	private String deviceContactPersonFirstName;

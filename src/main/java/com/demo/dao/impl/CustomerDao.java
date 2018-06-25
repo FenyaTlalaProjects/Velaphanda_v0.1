@@ -293,22 +293,21 @@ public class CustomerDao implements CustomerDaoInt {
 		JRDataSource ds = null;
 		List<CustomerReportBean> result = new ArrayList<CustomerReportBean>();
 		try{
-			customer = getClientByClientName(customerName);			
-			for(Customer cust:clientList){
-				CustomerReportBean custBean = new CustomerReportBean();
-				
-				custBean.setCustomerName(cust.getCustomerName());
-				custBean.setTelephoneNumber(cust.getTelephoneNumber());
-				custBean.setFaxNumber(cust.getFaxNumber());
-				custBean.setStreetName(cust.getStreetName());
-				custBean.setStreetNumber(cust.getStreetNumber());
-				custBean.setCity_town(cust.getCity_town());
-				custBean.setProvince(cust.getProvince());
-				custBean.setZipcode(cust.getZipcode());
+				customer = getClientByClientName(customerName);			
+			
+				CustomerReportBean custBean = new CustomerReportBean();				
+				custBean.setCustomerName(customer.getCustomerName());
+				custBean.setTelephoneNumber(customer.getTelephoneNumber());
+				custBean.setFaxNumber(customer.getFaxNumber());
+				custBean.setStreetName(customer.getStreetName());
+				custBean.setStreetNumber(customer.getStreetNumber());
+				custBean.setCity_town(customer.getCity_town());
+				custBean.setProvince(customer.getProvince());
+				custBean.setZipcode(customer.getZipcode());
 				result.add(custBean);
 				ds = new JRBeanCollectionDataSource(result);
 				
-			}
+			
 		}catch(Exception e){
 			e.getMessage();
 		}

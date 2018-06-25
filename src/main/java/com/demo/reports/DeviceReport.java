@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.dao.DeviceDaoInt;
+import com.demo.service.DeviceServiceInt;
+import com.demo.service.TicketHistoryInt;
 
 
 
@@ -24,6 +26,10 @@ public class DeviceReport {
 	
 	@Autowired
 	private DeviceDaoInt deviceDaoInt;
+	@Autowired
+	private DeviceServiceInt deviceServiceInt;
+	@Autowired
+	private TicketHistoryInt ticketHistoryInt;
     @RequestMapping(value = "/deviceDetailsDownloadPDF", method = RequestMethod.GET)
     public ModelAndView doDeviceDetailsReportPDF(@RequestParam("serialNumber") String serialNumber) 
 		 {
@@ -35,17 +41,17 @@ public class DeviceReport {
 		// Assign the datasource to an instance of JRDataSource
 		// JRDataSource is the datasource that Jasper understands
 		// This is basically a wrapper to Java's collection classes
-		//JRDataSource deviceDetails  = deviceServiceInt.getDeviceListDataSource();
+		JRDataSource deviceDetails  = deviceDaoInt.getDeviceDetailsDataSource(serialNumber);
 		
 		// In order to use Spring's built-in Jasper support, 
 		// We are required to pass our datasource as a map parameter
 		// parameterMap is the Model of our application
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
-		//parameterMap.put("deviceDetailsDatasource", deviceDetails);
+		parameterMap.put("deviceDetailsDatasource", deviceDetails);
 		
 		// pdfReport is the View of our application
-		// This is declared inside the /WEB-INF/jasper-views.xml
-		modelAndView = new ModelAndView("deviceDetialsPdfReport", parameterMap);
+		// This is declared inside the /WEB-INF/deviceDetails-views.xml
+		modelAndView = new ModelAndView("deviceDetailsPdfReport", parameterMap);
 		
 		// Return the View and the Model combined
 		return modelAndView;
@@ -71,7 +77,7 @@ public class DeviceReport {
 		parameterMap.put("deviceListDatasource",deviceList);
 		
 		// pdfReport is the View of our application
-		// This is declared inside the /WEB-INF/jasper-views.xml
+		// This is declared inside the /WEB-INF/deviceList-views.xml
 		modelAndView = new ModelAndView("deviceListPdfReport", parameterMap);
 		
 		// Return the View and the Model combined
@@ -79,7 +85,7 @@ public class DeviceReport {
 	}
     
     @RequestMapping(value = "/deviceHistoryDownloadPDF", method = RequestMethod.GET)
-    public ModelAndView doDeviceHistoryReportPDF(@RequestParam("serialNumber") String serialNumber) 
+    public ModelAndView doDeviceHistoryReportPDF(@RequestParam("recordID")Long recordID) 
 		 {
     	logger.debug("Received request to download PDF report");
 		ModelAndView modelAndView = null;
@@ -89,16 +95,16 @@ public class DeviceReport {
 		// Assign the datasource to an instance of JRDataSource
 		// JRDataSource is the datasource that Jasper understands
 		// This is basically a wrapper to Java's collection classes
-		//JRDataSource deviceHistory  = deviceServiceInt.getDeviceHistoryDataSource();
+		JRDataSource deviceHistory  = deviceDaoInt.getDeviceHistoryDataSource(recordID);
 		
 		// In order to use Spring's built-in Jasper support, 
 		// We are required to pass our datasource as a map parameter
 		// parameterMap is the Model of our application
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
-		//parameterMap.put("deviceHistoryDatasource", deviceHistory);
+		parameterMap.put("deviceHistoryDatasource", deviceHistory);
 		
 		// pdfReport is the View of our application
-		// This is declared inside the /WEB-INF/jasper-views.xml
+		// This is declared inside the /WEB-INF/deviceHistory-views.xml
 		modelAndView = new ModelAndView("deviceHistoryPdfReport", parameterMap);
 		
 		// Return the View and the Model combined

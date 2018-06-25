@@ -10,6 +10,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -36,6 +39,8 @@ import com.demo.model.Device;
 import com.demo.model.OrderHeader;
 import com.demo.model.SiteStock;
 import com.demo.model.Tickets;
+import com.demo.reports.initializer.DeviceReportBean;
+import com.demo.reports.initializer.TicketReportBean;
 
 @Repository("LogTicketsDAO")
 @Transactional(propagation = Propagation.REQUIRED)
@@ -4434,6 +4439,45 @@ public class TicketsDao implements TicketsDaoInt {
 			e.getMessage();
 		}
 		return aList;
+	}
+	
+
+	
+	@Override
+	public JRDataSource getTicketDetailsDataSource(Long recordID) {
+		JRDataSource ds = null;
+		List<TicketReportBean> result = new ArrayList<TicketReportBean>();
+		try{
+			//ticket = (Tickets) getHistoryByTicketNumber(recordID);
+			TicketReportBean ticketBean = new TicketReportBean();
+					
+			/*	
+			ticketBean.setCustomerName(ticket.getDevice().getCustomerDevice().getCustomerName());
+			ticketBean.setSerialNumber(ticket.getDevice().getSerialNumber());
+			ticketBean.setModelNumber(ticket.getDevice().getModelNumber());
+			ticketBean.setModelBrand(ticket.getDevice().getModelBrand());
+			ticketBean.setCustomerName(ticket.getStatus());
+			ticketBean.setDate(ticket.getDateTime());			
+			ticketBean.setMonoReading(ticket.getDevice().getMonoReading());
+			ticketBean.setColourReading(ticket.getDevice().getColourReading());		
+			ticketBean.setFirstName(ticket.getFirstName());
+			ticketBean.setLastName(ticket.getLastName());
+			ticketBean.setDescription(ticket.getDescription());
+			ticketBean.setComment(ticket.getComments());
+			ticketBean.setActionTaken(ticket.getActionTaken());			
+			
+			ticketBean.setContactPersonEmail(device.getContactPerson().getEmail());
+			ticketBean.setContactPersonFirstName(device.getContactPerson().getFirstName());
+			ticketBean.setContactPersonLastName(device.getContactPerson().getLastName());
+			ticketBean.setContactPersonCellphone(device.getContactPerson().getCellphone());
+			ticketBean.setContactPersonTellphone(device.getContactPerson().getTelephone());*/
+			result.add(ticketBean);
+			ds = new JRBeanCollectionDataSource(result);
+			
+	}catch(Exception e){
+		e.getMessage();
+	}
+	return ds;
 	}
 
 }

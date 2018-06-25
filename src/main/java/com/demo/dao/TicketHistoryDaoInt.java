@@ -2,6 +2,8 @@ package com.demo.dao;
 
 import java.util.List;
 
+import net.sf.jasperreports.engine.JRDataSource;
+
 import org.hibernate.Criteria;
 
 import com.demo.model.OrderHistory;
@@ -13,4 +15,5 @@ public interface TicketHistoryDaoInt {
 	List<TicketHistory> getHistoryByTicketNumber(Long ticketNumber);
 	
 	List<TicketHistory> getAllTicketHistoryByTicketNumber();
+	JRDataSource getDeviceHistoryDataSource(Long recordID);
 }

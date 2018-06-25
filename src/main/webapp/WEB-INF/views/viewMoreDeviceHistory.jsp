@@ -36,7 +36,7 @@
 					<div class="panel-body">
 						<div align="right">
 							<a target="_blank"
-								href="deviceHistoryDownloadPDF?serialNumber=<c:out value='${device.serialNumber}'/>">Download
+								href="deviceHistoryDownloadPDF?recordID=<c:out value='${ticket.recordID}'/>">Download
 								PDF </a>
 						</div>
 						<div class="col-sm-4">
