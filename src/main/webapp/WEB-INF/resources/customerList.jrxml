@@ -32,7 +32,7 @@
 	<title>
 		<band height="150" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="320" y="90" width="190" height="44"/>
+				<reportElement style="Title" x="290" y="90" width="190" height="44"/>
 				<textElement>
 					<font size="30" isBold="true"/>
 				</textElement>
@@ -47,7 +47,7 @@
 			</staticText>
 			<image>
 				<reportElement x="20" y="10" width="72" height="70"/>
-				<imageExpression><![CDATA["C:/Users/belly/git/Velaphanda_v0.1/src/main/webapp/WEB-INF/resources/images/mainlogo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["../resources/images/mainlogo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="555" y="30" width="230" height="50"/>
@@ -85,22 +85,30 @@ Bronberrik
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="20" splitType="Stretch">
+		<band height="21" splitType="Stretch">
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="0" y="-4" width="456" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="0" y="-4" width="270" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Customer]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="456" y="-4" width="337" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="530" y="-4" width="263" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Tell No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="270" y="-4" width="260" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Email Address]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -109,7 +117,7 @@ Bronberrik
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="-4" width="795" height="20"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="0" y="0" width="456" height="20"/>
+					<reportElement style="Detail" x="0" y="-1" width="270" height="21"/>
 					<box leftPadding="3" rightPadding="3">
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -122,7 +130,7 @@ Bronberrik
 					<textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="456" y="0" width="337" height="20"/>
+					<reportElement style="Detail" x="530" y="-1" width="263" height="21"/>
 					<box leftPadding="3" rightPadding="3">
 						<pen lineWidth="1.0"/>
 					</box>
@@ -130,6 +138,16 @@ Bronberrik
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{deviceContactPersonTellphone}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="270" y="-1" width="260" height="21"/>
+					<box leftPadding="3" rightPadding="3">
+						<pen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{contactPersonEmail}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

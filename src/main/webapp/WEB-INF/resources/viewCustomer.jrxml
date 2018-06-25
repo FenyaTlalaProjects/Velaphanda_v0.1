@@ -39,7 +39,7 @@
 		<band height="220" splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="150" splitType="Stretch">
+		<band height="130" splitType="Stretch">
 			<staticText>
 				<reportElement x="160" y="10" width="240" height="30" forecolor="#0B41D6"/>
 				<textElement textAlignment="Left">
@@ -79,14 +79,14 @@ Bronberrik
 				<text><![CDATA[Contacts:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Title" x="297" y="110" width="215" height="40"/>
+				<reportElement style="Title" x="280" y="90" width="215" height="40"/>
 				<textElement>
 					<font size="30" isBold="true"/>
 				</textElement>
 				<text><![CDATA[View Customer]]></text>
 			</staticText>
 			<line>
-				<reportElement x="11" y="80" width="783" height="1"/>
+				<reportElement x="0" y="80" width="793" height="1"/>
 			</line>
 		</band>
 	</title>
@@ -330,7 +330,7 @@ Bronberrik
 					<text><![CDATA[Customer Details]]></text>
 				</staticText>
 				<line>
-					<reportElement x="10" y="29" width="783" height="1"/>
+					<reportElement x="10" y="29" width="784" height="1"/>
 				</line>
 				<line>
 					<reportElement x="11" y="129" width="783" height="1"/>

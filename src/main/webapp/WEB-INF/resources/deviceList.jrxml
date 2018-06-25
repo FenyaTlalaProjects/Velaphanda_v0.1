@@ -27,7 +27,12 @@
 	<field name="modelNumber" class="java.lang.String"/>
 	<field name="modelBrand" class="java.lang.String"/>
 	<field name="date" class="java.util.Date"/>
+	<field name="streetNumber" class="java.lang.String"/>
+	<field name="streetName" class="java.lang.String"/>
+	<field name="city_town" class="java.lang.String"/>
 	<field name="address" class="java.lang.String"/>
+	<field name="province" class="java.lang.String"/>
+	<field name="zipcode" class="java.lang.String"/>
 	<background>
 		<band height="220" splitType="Stretch"/>
 	</background>
@@ -79,7 +84,7 @@ Bronberrik
 				<text><![CDATA[Contacts:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="2" y="90" width="788" height="1"/>
+				<reportElement x="5" y="80" width="786" height="1"/>
 			</line>
 		</band>
 	</title>
@@ -197,7 +202,7 @@ Bronberrik
 						<bottomPen lineWidth="1.0"/>
 						<rightPen lineWidth="1.0"/>
 					</box>
-					<textElement verticalAlignment="Middle" >
+					<textElement verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{modelNumber}]]></textFieldExpression>

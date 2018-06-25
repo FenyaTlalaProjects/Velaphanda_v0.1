@@ -26,7 +26,7 @@
 	<field name="serialNumber" class="java.lang.String"/>
 	<field name="modelNumber" class="java.lang.String"/>
 	<field name="ticketNo" class="java.lang.String"/>
-	<field name="date" class="java.lang.String"/>
+	<field name="date"  class="java.lang.String"/>
 	<field name="colourReading" class="java.lang.String"/>
 	<field name="monoReading" class="java.lang.String"/>
 	<field name="description" class="java.lang.String"/>
@@ -44,84 +44,81 @@
 		<band height="220" splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="220" splitType="Stretch">
+		<band height="287" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="331" y="65" width="140" height="30"/>
+				<reportElement style="Title" x="310" y="100" width="209" height="50"/>
 				<textElement>
-					<font size="20" isBold="true"/>
+					<font size="30" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Device History]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="50" y="110" width="146" height="13">
+				<reportElement x="50" y="160" width="146" height="13">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{serialNumber}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="400" y="110" width="106" height="13">
+				<reportElement x="400" y="160" width="106" height="13">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA[$F{modelNumber}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="587" y="110" width="80" height="13"/>
+				<reportElement x="587" y="160" width="80" height="13"/>
 				<text><![CDATA[Cutomer Name:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="110" width="46" height="13"/>
+				<reportElement x="4" y="160" width="46" height="13"/>
 				<text><![CDATA[Serial No:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="324" y="110" width="76" height="13"/>
+				<reportElement x="324" y="160" width="76" height="13"/>
 				<text><![CDATA[Model Number:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="666" y="110" width="128" height="13">
+				<reportElement x="662" y="160" width="124" height="13">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="4" y="94" width="799" height="1"/>
-			</line>
 			<textField>
-				<reportElement x="4" y="155" width="81" height="13"/>
+				<reportElement x="4" y="205" width="36" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{deviceContactPersonFirstName}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="4" y="137" width="86" height="13"/>
+				<reportElement x="4" y="187" width="86" height="13"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Contact Person:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="4" y="194" width="142" height="13"/>
+				<reportElement x="4" y="244" width="142" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{deviceContactPersonTellphone}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="4" y="181" width="141" height="13"/>
+				<reportElement x="4" y="231" width="141" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{deviceContactPersonTellphone}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="4" y="168" width="142" height="13"/>
+				<reportElement x="4" y="218" width="142" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{deviceContactPersonCellphone}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="97" y="155" width="81" height="13"/>
+				<reportElement x="40" y="205" width="81" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{deviceContactPersonLastName}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="4" y="150" width="197" height="1"/>
+				<reportElement x="4" y="200" width="197" height="1"/>
 			</line>
 			<staticText>
 				<reportElement x="160" y="10" width="240" height="30" forecolor="#0B41D6"/>
@@ -131,7 +128,7 @@
 				<text><![CDATA[Velaphanda Trading & Projects ]]></text>
 			</staticText>
 			<image>
-				<reportElement x="20" y="10" width="66" height="60"/>
+				<reportElement x="20" y="10" width="72" height="70"/>
 				<imageExpression><![CDATA["../resources/images/mainlogo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
@@ -161,6 +158,9 @@ Bronberrik
 				</textElement>
 				<text><![CDATA[Contacts:]]></text>
 			</staticText>
+			<line>
+				<reportElement x="5" y="80" width="786" height="1"/>
+			</line>
 		</band>
 	</title>
 	<pageHeader>
@@ -290,7 +290,7 @@ Bronberrik
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="120" y="-1" width="50" height="18"/>
-					<box leftPadding="3" rightPadding="3"> 
+					<box leftPadding="3" rightPadding="3">
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
 						<bottomPen lineWidth="1.0"/>
