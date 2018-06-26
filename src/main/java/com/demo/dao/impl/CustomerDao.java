@@ -52,21 +52,11 @@ public class CustomerDao implements CustomerDaoInt {
 	private String retMessage = null;
 	List<Customer> clientList = null;
 	Customer customer = null;
-	private List<CustomerContactDetails> tempContacts = null;
 
 	@Override
 	public Customer getClientByClientName(String clientName) {
 		return (Customer) sessionFactory.getCurrentSession().get(
 				Customer.class, clientName);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Customer> getClientList(Integer offset, Integer maxResults) {
-
-		return sessionFactory.openSession().createCriteria(Customer.class)
-				.setFirstResult(offset != null ? offset : 0)
-				.setMaxResults(maxResults != null ? maxResults : 10).list();
 	}
 	SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	Date now = new Date();
@@ -205,14 +195,6 @@ public class CustomerDao implements CustomerDaoInt {
 		}
 		return retMessage;
 	}
-
-	@Override
-	public Integer count() {
-		return (Integer) sessionFactory.getCurrentSession()
-				.createCriteria(Customer.class)
-				.setProjection(Projections.rowCount()).uniqueResult();
-
-	}
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Customer> getClientList() {
@@ -269,7 +251,7 @@ public class CustomerDao implements CustomerDaoInt {
 				CustomerReportBean custBean = new CustomerReportBean();
 				
 				custBean.setCustomerName(cust.getCustomerName());
-				custBean.setContactPersonEmail(cust.getEmail());
+				custBean.setContactPersonEmail(cust.getContactEmail());
 				custBean.setDeviceContactPersonTellphone(cust.getTelephoneNumber());
 				custBean.setDeviceContactPersonCellphone(cust.getContactEmail());
 				result.add(custBean);

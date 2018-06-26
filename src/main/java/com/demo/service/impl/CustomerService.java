@@ -25,22 +25,11 @@ public class CustomerService implements CustomerServiceInt{
 		return clientDAO.getClientByClientName(clientName);
 	}
 
-	@Override
-	public List<Customer> getClientList(Integer offset, Integer maxResults) {
-		
-		return clientDAO.getClientList(offset,maxResults);
-	}
 
 	@Override
 	public String updateCustomer(CustomerBean customerBean) {
 		retMessage = clientDAO.updateCustomer(customerBean);
 		return retMessage;
-	}
-
-	@Override
-	public Integer count() {
-		
-		return clientDAO.count();
 	}
 
 	@Override

@@ -253,21 +253,15 @@ public class CustomerController {
 	@RequestMapping(value={"displayCustomers","userDisplayCustomers"},method=RequestMethod.GET)
 	public ModelAndView displayCustomers(Integer offset,Integer maxResults){
 		model= new ModelAndView();
-		Integer count =0;
 		userName = (Employee) session.getAttribute("loggedInUser");
 		if(userName != null){
 		
 			if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")) {
-				count = customerServiceInt.count();
-				model.addObject("count",count);
-				model.addObject("offset", offset);
+				
 				model.addObject("displayCustomers", customerServiceInt.getClientList());			
 				model.setViewName("displayCustomers");
 			
 		   }else if(userName.getRole().equalsIgnoreCase("User")){			   
-			   count = customerServiceInt.count();
-			   model.addObject("count",count);
-			   model.addObject("offset", offset);
 			   model.addObject("displayCustomers", customerServiceInt.getClientList());				
 			   model.setViewName("userDisplayCustomers"); 
 			   

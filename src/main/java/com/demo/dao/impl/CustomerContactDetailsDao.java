@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.bean.CustomerBean;
 import com.demo.dao.CustomerContactDetailsDaoInt;
-import com.demo.model.Customer;
 import com.demo.model.CustomerContactDetails;
 import com.demo.reports.initializer.CustomerReportBean;
 
@@ -103,7 +102,6 @@ public class CustomerContactDetailsDao implements CustomerContactDetailsDaoInt{
 		return returnCustomerContact;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<CustomerContactDetails> contacts(String customerName) {
 		try{
