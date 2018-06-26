@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <c:import url="templates/tableresizefont.jsp"></c:import>
-<c:import url="templates/stylesheetlib.jsp"></c:import>
+<c:import url="templates/datatablesstyles.jsp"></c:import>
 </head>
 <body>
 	<c:import url="templates/navbar.jsp"></c:import>
@@ -36,22 +36,16 @@
 							<a target="_blank"
 								href="customerListDownloadPDF">Download
 								PDF </a>
-							<table data-toggle="table" data-url="${displayCustomers}"
-								data-show-refresh="true" data-show-toggle="true"
-								 data-search="true" data-select-item-name="toolbar1" data-pagination="true"
-								data-sort-name="customername" data-sort-order="aesc">
+							<table id="example" class="details-control">
 								<thead>
 									<tr>
-										<th  data-toggle="true" data-field="customername" data-sortable="true">Customer
-											</th>
-										<th data-field="email" data-sortable="true">Email</th>
-										<th data-field="tellno" data-sortable="true">Tell No</th>
-										<th data-field="updatecustomer" data-sortable="true">Update
-											</th>
-										<th data-field="viewdevice" data-sortable="true">View
-											Device</th>
-										<th data-field="adddevice" data-sortable="true">Add
-											Device</th>
+										<th></th>
+										<th>Customer</th>
+										<th>Email</th>
+										<th>Tell No</th>
+										<th>Update</th>
+										<th>View Device</th>
+										<th>Add Device</th>
 									</tr>
 								</thead>
 
@@ -59,6 +53,7 @@
 									<!-- Iterating over the list sent from Controller -->
 									<c:forEach var="list" items="${displayCustomers}">
 										<tr>
+											<td class="details-control"></td>
 											<td><a
 												href="viewCustomer?customerName=<c:out value='${list.customerName}'/>"> ${list.customerName}</a></td>
 											<td> ${list.contactEmail}</td>
@@ -89,7 +84,7 @@
 			<!--/ footer -->
 		</div>
 		<!--/.main-->
-		<c:import url="templates/javascriptslib.jsp"></c:import>
+		<c:import url="templates/datatablesscripts.jsp"></c:import>
 		<c:import url="templates/sidebar-collapse.jsp"></c:import>
 		<!-- /Scripts -->
 </body>

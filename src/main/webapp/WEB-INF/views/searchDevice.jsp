@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <c:import url="templates/tableresizefont.jsp"></c:import>
-<c:import url="templates/stylesheetlib.jsp"></c:import>
+<c:import url="templates/datatablesstyles.jsp"></c:import>
 </head>
 <body>
 	<c:import url="templates/navbar.jsp"></c:import>
@@ -38,24 +38,20 @@
 								PDF </a>
 							
 						<!-- Below table will be displayed as Data table -->
-						<table data-toggle="table" data-url="${deviceList}"
-							data-show-refresh="true" data-show-toggle="true"
-							data-search="true" data-select-item-name="toolbar1"
-							data-pagination="true" data-sort-name="customername"
-							data-sort-order="aesc">
+						<table >
 							<thead>
 								<tr>
-									<th data-toggle="true" data-field="customername"
-										data-sortable="true">Customer</th>
-									<th data-field="seriano" data-sortable="true">Serial No</th>
-									<th data-field="Address" data-sortable="true">Address</th>
-									<th data-field="modelNo" data-sortable="true">Model No</th>
-									<th data-field="brand" data-sortable="true">Brand</th>
-									<th data-field="viewdetails" data-sortable="true">View
+									<th></th>
+									<th>Customer</th>
+									<th>Serial No</th>
+									<th>Address</th>
+									<th>Model No</th>
+									<th>Brand</th>
+									<th>View
 										Details</th>
-									<th data-field="deviceHistory" data-sortable="true">Device
+									<th>Device
 										History</th>
-									<th data-field="updatedevice" data-sortable="true">Update
+									<th>Update
 										Device</th>
 								</tr>
 							</thead>
@@ -63,6 +59,7 @@
 								<!-- Iterating over the list sent from Controller -->
 								<c:forEach var="list" items="${deviceList}">
 									<tr>
+										<td class="details-control"></td>
 										<td><a
 											href="viewCustomer?customerName=<c:out value='${list.customerDevice.customerName}'/>">
 												${list.customerDevice.customerName}</a></td>
@@ -99,7 +96,7 @@
 		<!--/ footer -->
 	</div>
 	<!--/.main-->
-	<c:import url="templates/javascriptslib.jsp"></c:import>
+<c:import url="templates/datatablesscripts.jsp"></c:import>
 	<c:import url="templates/sidebar-collapse.jsp"></c:import>
 	<!-- /Scripts -->
 </body>
