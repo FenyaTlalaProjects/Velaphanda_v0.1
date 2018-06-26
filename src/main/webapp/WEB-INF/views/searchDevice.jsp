@@ -38,7 +38,7 @@
 								PDF </a>
 							
 						<!-- Below table will be displayed as Data table -->
-						<table >
+						<table id="example" class="details-control">
 							<thead>
 								<tr>
 									<th></th>
