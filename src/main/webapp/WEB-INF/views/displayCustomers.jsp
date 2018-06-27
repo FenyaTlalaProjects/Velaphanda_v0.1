@@ -35,7 +35,7 @@
 
 							<a target="_blank"
 								href="customerListDownloadPDF">Download
-								PDF </a>
+								PDF </a><br/><br/>
 							<table id="example" class="details-control">
 								<thead>
 									<tr>

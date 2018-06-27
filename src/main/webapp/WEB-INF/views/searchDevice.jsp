@@ -35,7 +35,7 @@
 						
 						<a target="_blank"
 								href="deviceListDownloadPDF">Download
-								PDF </a>
+								PDF </a><br/><br/>
 							
 						<!-- Below table will be displayed as Data table -->
 						<table id="example" class="details-control">
