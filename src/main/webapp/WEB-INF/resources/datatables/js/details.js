@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
          var table = $('#example').DataTable({
-             
+        	 responsive: true,
              "order": [[1, 'asc']],
           });
 

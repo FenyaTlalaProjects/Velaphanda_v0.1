@@ -61,7 +61,7 @@
 									<!-- Text input Client Name-->
 									
 																			
-										<div id="customerDeviceContainer"
+									<div id="customerDeviceContainer"
 										style="width: auto; display: table;">
 										<div class="customerDeviceAddressTitle">
 											<p class="customerAddressTitle">Customer Name</p>
@@ -69,7 +69,8 @@
 												<li id="customerName">${customer.customerName}</li>
 												
 											</ul>
-										</div>
+										</div>										
+										<input type="hidden" id="customerName" name="customerName" value="${customer.customerName}"/>
 									</div>
 										
 									

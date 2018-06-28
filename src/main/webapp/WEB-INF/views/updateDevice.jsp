@@ -63,7 +63,7 @@
 								<div class="col-sm-6">
 									<!-- Text input Client Name-->
 																			
-										<div id="customerDeviceContainer"
+									<div id="customerDeviceContainer"
 										style="width: auto; display: table;">
 										<div class="customerDeviceAddressTitle">
 											<p class="customerAddressTitle">Customer Name</p>
@@ -72,6 +72,7 @@
 												
 											</ul>
 										</div>
+										<input type="hidden" id="customerName" name="customerName" value="${productObject.customerDevice.customerName}"/>
 									</div>									
 									
 								</div>
