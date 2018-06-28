@@ -23,8 +23,7 @@
 						class="glyphicon glyphicon-circle-arrow-right btn-lg"
 						title="Go Forward"></span></a>
 				</div>
-			</ol>
-			
+			</ol>			
 		</div>
 		<!--/.row-->
 
