@@ -24,6 +24,7 @@
 						title="Go Forward"></span></a>
 				</div>
 			</ol>
+			
 		</div>
 		<!--/.row-->
 
