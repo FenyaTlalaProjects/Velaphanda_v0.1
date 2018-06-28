@@ -111,7 +111,8 @@
 												<c:when test="${list.quantity > 0}">											
 											
 												<tr>
-												<td>${list.partNumber}</td>
+												<td><a href="#" name="moveSparesSubmit" data-toggle="modal"
+											data-target="#historyDetails">${list.partNumber}</a></td>
 												<td>${list.compatibleDevice}</td>
 												<td>${list.customerName}</td>
 												<td>${list.modelBrand}</td>
@@ -399,6 +400,73 @@
 									<!-- /.modal-dialog -->
 								</div>
 								<!-- /.modal moveParts-->
+								
+								
+								
+								
+									<!-- Movement History Details -->
+								
+								<div id="historyDetails" class="modal fade" role="dialog" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+
+										<div class="modal-content">
+
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">×</button>
+												<h3 class="modal-title">Movement History Details</h3>
+											</div>
+
+											<div class="modal-body">
+
+												<div class="well form-horizontal">
+													<div class="row">
+														<div class="col-sm-6">
+																			
+																<div id="customerDeviceContainer"
+																	style="width: auto; display: table;">
+																	<div class="customerDeviceAddressTitle">
+																		<p class="customerAddressTitle">Date Moved:</p>
+																		<ul class="addressDeviceList" style="display: block;">
+																					
+																		</ul>
+																		<p class="customerAddressTitle">Moved From:</p>
+																		<ul class="addressDeviceList" style="display: block;">
+																					
+																		</ul>
+																		
+																		<p class="customerAddressTitle">Moved To:</p>
+																		<ul class="addressDeviceList" style="display: block;">
+																					
+																		</ul>
+																		<p class="customerAddressTitle">Moved By:</p>
+																		<ul class="addressDeviceList" style="display: block;">
+																					
+																		</ul>
+																		<p class="customerAddressTitle">Quantity Moved:</p>
+																		<ul class="addressDeviceList" style="display: block;">
+																					
+																		</ul>
+																	</div>										
+																			</div>
+										
+														</div>
+													</div>
+
+												</div>
+											</div>
+											<!-- modal-body -->
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">Cancel</button>
+											</div>
+										</div>
+										<!-- /.modal-content -->
+									</div>
+									<!-- /.modal-dialog -->
+								</div>
+								<!-- /.modal -- Movement History Details -->
+								
 
 							</form:form>
 

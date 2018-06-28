@@ -36,18 +36,19 @@ $(document).ready(function () {
         
          // `d` is the original data object for the row
          return '<table  border="0">' +
+		     '<tr>' +
+		         '<td>Date Captured:</td>' +
+		         '<td>' + " " + '</td>' +
+		     '</tr>' +
              '<tr>' +
                  '<td>Updated By:</td>' +
-                 '<td>' + "Patra" + '</td>' +
+                 '<td>' + " " + '</td>' +
              '</tr>' +
              '<tr>' +
                  '<td>Last Date Updated:</td>' +
-                 '<td>' + "26-06-2018 15:31:39" + '</td>' +
+                 '<td>' + " " + '</td>' +
              '</tr>' +
-             '<tr>' +
-                 '<td>Date Captured:</td>' +
-                 '<td>' +"21-03-2018 12:21:34"+ '</td>' +
-             '</tr>' +
+            
          '</table>';  
     }
 

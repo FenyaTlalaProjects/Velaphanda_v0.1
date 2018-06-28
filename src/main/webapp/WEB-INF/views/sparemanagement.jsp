@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <c:import url="templates/tableresizefont.jsp"></c:import>
 <c:import url="templates/stylesheetlib.jsp"></c:import>
+<c:import url="templates/datatablesstyles.jsp"></c:import>
 </head>
 <body>
 	<c:import url="templates/navbar.jsp"></c:import>
@@ -105,13 +106,10 @@
 								<legend align=center>Head Office Stock</legend>
 
 
-								<table data-toggle="table" data-url="${spareParts}"
-									data-show-refresh="true" data-show-toggle="true"
-									data-search="true" data-select-item-name="toolbar1"
-									data-pagination="true" data-sort-name="partNo"
-									data-sort-order="aesc">
+								<table id="example" class="display">
 									<thead>
 										<tr>
+											<th data-field="" data-sortable="true"></th>
 											<th data-field="partNo" data-sortable="true">Part No</th>
 											<th data-field="compatibledevices" data-sortable="true">Compatible
 												Devices</th>
@@ -127,6 +125,7 @@
 										<!-- Iterating over the list sent from Controller -->
 										<c:forEach var="list" items="${spareParts}">
 											<tr>
+												<td class="details-control"></td>
 												<td>${list.partNumber}</td>
 												<td>${list.compitableDevice}</td>
 												<td>${list.modelBrand}</td>
@@ -231,7 +230,34 @@
 			</div>
 			<!--/.main-->
 			<c:import url="templates/javascriptslib.jsp"></c:import>
+			<c:import url="templates/datatablesscripts.jsp"></c:import>
 			<c:import url="templates/sidebar-collapse.jsp"></c:import>
+			
+			<script>
+			 function format(d){
+			        
+		         // `d` is the original data object for the row
+		         return '<table  border="0">' +
+				     '<tr>' +
+				         '<td>Name and Surname:</td>' +
+				         '<td>' + " " + '</td>' +
+				     '</tr>' +
+		             '<tr>' +
+		                 '<td>Date Time:</td>' +
+		                 '<td>' + " " + '</td>' +
+		             '</tr>' +
+		             '<tr>' +
+		                 '<td>Order number:</td>' +
+		                 '<td>' + " " + '</td>' +
+		             '</tr>' +
+		             '<tr>' +
+	                 '<td>Supplier details:</td>' +
+	                 '<td>' + " " + '</td>' +
+	            	 '</tr>' +		             
+		            
+		         '</table>';  
+		    }
+			</script>
 			<!-- /Scripts -->
 </body>
 </html>
