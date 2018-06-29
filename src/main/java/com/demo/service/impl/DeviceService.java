@@ -11,7 +11,6 @@ import com.demo.bean.DeviceBean;
 import com.demo.dao.DeviceDaoInt;
 import com.demo.model.Accessories;
 import com.demo.model.Device;
-import com.demo.model.Employee;
 import com.demo.service.DeviceServiceInt;
 
 

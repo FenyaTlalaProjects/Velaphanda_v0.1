@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +16,24 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.dao.AccessoriesDaoInt;
+import com.demo.dao.DeviceDaoInt;
+import com.demo.dao.EmployeeDaoInt;
 import com.demo.model.Accessories;
 import com.demo.model.Device;
+import com.demo.reports.initializer.DeviceReportBean;
 
 @Repository("accessoriesDAO")
-@Transactional(propagation = Propagation.REQUIRED)
+@Transactional(propagation=Propagation.REQUIRED)
 public class AccessoriesDao implements AccessoriesDaoInt {
 
 	@Autowired
 	SessionFactory sessionFactory;
+	
+	@Autowired
+	private DeviceDaoInt deviceDaoInt;
+	
+	@Autowired
+	private EmployeeDaoInt employeeDaoInt;
 
 	List<Accessories> accessoriesList = null;
 	List<Accessories> aList = null;
@@ -137,5 +149,101 @@ public class AccessoriesDao implements AccessoriesDaoInt {
 			e.getMessage();
 		}
 		return current;
+	}
+
+	@Override
+	public JRDataSource getAccessoriesByDeviceSerialDataSource(
+			String serialNumber) {
+		JRDataSource ds = null;
+		Device device = null;
+		try{
+			
+			List<DeviceReportBean> result = new ArrayList<DeviceReportBean>();
+			List<Accessories> tempAccessory = getAccessoriesByDeviceSerial(serialNumber);
+			
+			if(tempAccessory.size()==0|| tempAccessory.isEmpty()== true){
+				
+				DeviceReportBean deviceBean = new DeviceReportBean();
+				
+				
+				device = deviceDaoInt.getDeviceBySerialNumbuer(serialNumber);
+				
+				deviceBean.setCustomerName(device.getCustomerDevice().getCustomerName());
+				deviceBean.setSerialNumber(device.getSerialNumber());
+				deviceBean.setModelNumber(device.getModelNumber());
+				deviceBean.setModelBrand(device.getModelBrand());
+				
+				deviceBean.setStartDate(device.getStartDate());
+				deviceBean.setInstallationDate(device.getInstallationDate());
+				deviceBean.setEndDate(device.getEndDate());
+				
+				deviceBean.setMonoReading(device.getMonoReading());
+				deviceBean.setColourReading(device.getColourReading());
+				deviceBean.setMonoCopyCost(device.getMonoCopyCost());
+				deviceBean.setColourCopyCost(device.getColourCopyCost());
+				
+				deviceBean.setZipcode(device.getAreaCode());
+				deviceBean.setCity_town(device.getCity_town());
+				deviceBean.setProvince(device.getProvince());
+				deviceBean.setStreetName(device.getStreetName());
+				deviceBean.setStreetNumber(device.getStreetNumber());
+
+				deviceBean.setContactPersonEmail(device.getContactPerson().getEmail());
+				deviceBean.setContactPersonFirstName(device.getContactPerson().getFirstName());
+				deviceBean.setContactPersonLastName(device.getContactPerson().getLastName());
+				deviceBean.setContactPersonCellphone(device.getContactPerson().getCellphone());
+				deviceBean.setContactPersonTellphone(device.getContactPerson().getTelephone());
+				
+				deviceBean.setSerial("");
+				deviceBean.setAccessoryType("");		
+				
+				result.add(deviceBean);
+				ds = new JRBeanCollectionDataSource(result);
+			}else{
+				
+				
+				device = deviceDaoInt.getDeviceBySerialNumbuer(serialNumber);
+                    for(Accessories acc:tempAccessory){
+					
+					DeviceReportBean deviceBean = new DeviceReportBean();
+					
+					deviceBean.setCustomerName(acc.getDevice().getCustomerDevice().getCustomerName());
+					deviceBean.setSerialNumber(acc.getDevice().getSerialNumber());
+					deviceBean.setModelNumber(acc.getDevice().getModelNumber());
+					deviceBean.setModelBrand(acc.getDevice().getModelBrand());
+					
+					deviceBean.setStartDate(acc.getDevice().getStartDate());
+					deviceBean.setInstallationDate(acc.getDevice().getInstallationDate());
+					deviceBean.setEndDate(acc.getDevice().getEndDate());
+					
+					deviceBean.setMonoReading(acc.getDevice().getMonoReading());
+					deviceBean.setColourReading(acc.getDevice().getColourReading());
+					deviceBean.setMonoCopyCost(acc.getDevice().getMonoCopyCost());
+					deviceBean.setColourCopyCost(acc.getDevice().getColourCopyCost());
+					
+					deviceBean.setZipcode(acc.getDevice().getAreaCode());
+					deviceBean.setCity_town(acc.getDevice().getCity_town());
+					deviceBean.setProvince(acc.getDevice().getProvince());
+					deviceBean.setStreetName(acc.getDevice().getStreetName());
+					deviceBean.setStreetNumber(acc.getDevice().getStreetNumber());
+
+					deviceBean.setContactPersonEmail(acc.getDevice().getContactPerson().getEmail());
+					deviceBean.setContactPersonFirstName(acc.getDevice().getContactPerson().getFirstName());
+					deviceBean.setContactPersonLastName(acc.getDevice().getContactPerson().getLastName());
+					deviceBean.setContactPersonCellphone(acc.getDevice().getContactPerson().getCellphone());
+					deviceBean.setContactPersonTellphone(acc.getDevice().getContactPerson().getTelephone());
+					
+					deviceBean.setSerial(acc.getSerial());
+					deviceBean.setAccessoryType(acc.getAccessotyType());
+								
+					
+					result.add(deviceBean);
+					ds = new JRBeanCollectionDataSource(result);
+                    }
+			}
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return ds;
 	}
 }

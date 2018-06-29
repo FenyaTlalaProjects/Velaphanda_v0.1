@@ -3,6 +3,8 @@ package com.demo.service.impl;
 import java.util.List;
 import java.util.Set;
 
+import net.sf.jasperreports.engine.JRDataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +41,7 @@ public class AccessoriesService implements AccessoriesInt{
 
 	@Override
 	public Accessories getAccessories(Long recordID) {
-		// TODO Auto-generated method stub
+
 		return accessoriesDaoInt.getAccessories(recordID);
 	}
 
@@ -47,11 +49,15 @@ public class AccessoriesService implements AccessoriesInt{
 	public List<String> getAccessoriesList(String deviceSerialNumber) {
 		return accessoriesDaoInt.getAccessoriesList(deviceSerialNumber);
 	}
-
 	@Override
 	public String removeAccessory(String[] serialNumbers) {
-		// TODO Auto-generated method stub
 		return accessoriesDaoInt.removeAccessory(serialNumbers);
+	}
+
+	@Override
+	public JRDataSource getAccessoriesByDeviceSerialDataSource(
+			String serialNumber) {
+		return accessoriesDaoInt.getAccessoriesByDeviceSerialDataSource(serialNumber);
 	}
 
 }

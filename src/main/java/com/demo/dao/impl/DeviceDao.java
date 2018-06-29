@@ -37,12 +37,11 @@ import com.demo.model.Employee;
 import com.demo.model.SiteStock;
 import com.demo.model.TicketHistory;
 import com.demo.model.Tickets;
-import com.demo.reports.initializer.CustomerReportBean;
 import com.demo.reports.initializer.DeviceReportBean;
 import com.demo.service.TicketHistoryInt;
 
 @Repository("productDAO")
-@Transactional(propagation = Propagation.REQUIRED)
+@Transactional(propagation=Propagation.REQUIRED)
 public class DeviceDao implements DeviceDaoInt {
 
 	@Autowired
@@ -72,7 +71,6 @@ public class DeviceDao implements DeviceDaoInt {
 	ArrayList<Accessories> list = null;
 	Customer customer = null;
 	Device device = null;
-	private Tickets ticket = null;
 	TicketHistory ticketHistory = null;
 	List<Accessories> accessoryList = null;
 	private DeviceBean deviceBean = null;
@@ -134,6 +132,7 @@ public class DeviceDao implements DeviceDaoInt {
 	@Override
 	public String updateDevice(Device device) {
 		try {
+			System.err.println("Moleko");
 			sessionFactory.getCurrentSession().update(device);
 			device.setDateTime(timeDeviceAdded);
 			retMessage = "Device " + device.getSerialNumber()

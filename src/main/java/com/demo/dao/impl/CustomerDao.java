@@ -10,7 +10,6 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -21,11 +20,7 @@ import com.demo.dao.CustomerDaoInt;
 import com.demo.dao.CustomerContactDetailsDaoInt;
 import com.demo.model.Customer;
 import com.demo.model.CustomerContactDetails;
-import com.demo.model.Employee;
-import com.demo.model.OrderDetails;
-import com.demo.model.OrderHeader;
 import com.demo.reports.initializer.CustomerReportBean;
-import com.demo.reports.initializer.OrderReportBean;
 import com.demo.service.CustomerContactDetailsServiceInt;
 import com.demo.service.CustomerServiceInt;
 import com.demo.service.DeviceServiceInt;
@@ -287,7 +282,8 @@ public class CustomerDao implements CustomerDaoInt {
 				custBean.setProvince(customer.getProvince());
 				custBean.setZipcode(customer.getZipcode());
 				result.add(custBean);
-				ds = new JRBeanCollectionDataSource(result);
+				
+				//ds = new JRBeanCollectionDataSource(result);
 				
 			
 		}catch(Exception e){

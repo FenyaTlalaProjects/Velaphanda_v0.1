@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.dao.DeviceDaoInt;
+import com.demo.service.AccessoriesInt;
 import com.demo.service.DeviceServiceInt;
 import com.demo.service.TicketHistoryInt;
 
@@ -30,6 +31,10 @@ public class DeviceReport {
 	private DeviceServiceInt deviceServiceInt;
 	@Autowired
 	private TicketHistoryInt ticketHistoryInt;
+	
+	@Autowired
+	private AccessoriesInt accessoryInt;
+	
     @RequestMapping(value = "/deviceDetailsDownloadPDF", method = RequestMethod.GET)
     public ModelAndView doDeviceDetailsReportPDF(@RequestParam("serialNumber") String serialNumber) 
 		 {
@@ -41,7 +46,7 @@ public class DeviceReport {
 		// Assign the datasource to an instance of JRDataSource
 		// JRDataSource is the datasource that Jasper understands
 		// This is basically a wrapper to Java's collection classes
-		JRDataSource deviceDetails  = deviceDaoInt.getDeviceDetailsDataSource(serialNumber);
+		JRDataSource deviceDetails  = accessoryInt.getAccessoriesByDeviceSerialDataSource(serialNumber);
 		
 		// In order to use Spring's built-in Jasper support, 
 		// We are required to pass our datasource as a map parameter

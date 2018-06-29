@@ -33,7 +33,7 @@
 	<field name="monoReading" class="java.lang.String"/>
 	<field name="monoCopyCost" class="java.lang.String"/>
 	<field name="colourCopyCost" class="java.lang.String"/>
-	<field name="accessotyType" class="java.lang.String"/>
+	<field name="accessoryType" class="java.lang.String"/>
 	<field name="serial" class="java.lang.String"/>
 	<field name="address" class="java.lang.String"/>
 	<field name="streetNumber" class="java.lang.String"/>
@@ -357,7 +357,7 @@ Bronberrik
 					<textElement verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{accessotyType}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{accessoryType}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

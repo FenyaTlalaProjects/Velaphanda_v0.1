@@ -46,7 +46,6 @@ public class DeviceReportBean {
 	private String monoReading;
 	private String monoCopyCost;
 	private String colourCopyCost;
-	private String accessotyType;
 	private String serial;
 	
 	private String contactPersonFirstName;
@@ -66,5 +65,9 @@ public class DeviceReportBean {
 	private String deviceContactPersonLastName;
 	private String deviceContactPersonCellphone;
 	private String deviceContactPersonTellphone;
+	
+	private String accessoryType;
+	private String accessory;
+	
 	
 }
