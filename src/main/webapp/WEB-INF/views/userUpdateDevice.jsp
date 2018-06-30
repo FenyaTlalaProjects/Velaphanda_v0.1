@@ -60,20 +60,17 @@
 								<legend style="font-size: 18px;">Customer Details</legend>
 								<!--First column-->
 								<div class="col-sm-6">
-
-									<!-- Text input Client Name-->
-									<div class="form-group">
-										<label class="col-md-3 control-label">Customer Name</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-user"></i></span> <input type="text"
-													id="customerName" name="customerName" readonly="readonly"
-													placeholder="Client Name" class="form-control"
-													value="${productObject.customerDevice.customerName}">
-											</div>
+									<div id="customerDeviceContainer"
+										style="width: auto; display: table;">
+										<div class="customerDeviceAddressTitle">
+											<p class="customerAddressTitle">Customer Name</p>
+											<ul class="addressDeviceList" style="display: block;">
+												<li id="customerName">${productObject.customerDevice.customerName}</li>
+												
+											</ul>
 										</div>
-									</div>
+										<input type="hidden" id="customerName" name="customerName" value="${productObject.customerDevice.customerName}"/>
+									</div>	
 								</div>
 
 								<div class="col-sm-6">
@@ -104,43 +101,19 @@
 
 									<!-- Text input Contact Person First Name-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">First Name</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-user"></i></span> <input id="firstName"
-													name="firstName" placeholder="First Name"
-													class="form-control" type="text"
-													value="${productObject.contactPerson.firstName}" readonly="readonly">
-											</div>
-										</div>
+										<label class="col-md-3" >First Name</label>
+										${productObject.contactPerson.firstName}											
 									</div>
 									<!-- Text input Contact Person  Last Name-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Last Name</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-user"></i></span> <input id="lastName"
-													name="lastName" placeholder="Last Name"
-													class="form-control" type="text"
-													value="${productObject.contactPerson.lastName}" readonly="readonly">
-											</div>
-										</div>
+										<label class="col-md-3">Last Name</label>
+										${productObject.contactPerson.lastName}											
 									</div>
 
 									<!-- Text input Contact Person 1 Email-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Email</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-envelope"></i></span> <input id="email"
-													name="email" placeholder="Email Address"
-													class="form-control" type="email"
-													value="${productObject.contactPerson.email}" readonly="readonly">
-											</div>
-										</div>
+										<label class="col-md-3">Email</label>
+										${productObject.contactPerson.email}"
 									</div>
 								</div>
 
@@ -148,37 +121,18 @@
 
 									<!-- Text input Contact Person Cellphone Number-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Cellphone No</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-earphone"></i></span> <input
-													id="cellphoneNumber" name="cellphone"
-													placeholder="Cellphone No" maxlength="10"
-													class="form-control" type="text"
-													onkeypress="return isNumber(event)"
-													value="${productObject.contactPerson.cellphone}" readonly="readonly">
-											</div>
+										<label class="col-md-3 ">Cellphone No</label>
+										
+											${productObject.contactPerson.cellphone}
+											
 										</div>
-									</div>
-
+									
 									<!-- Text input Contact Person Tellphone Number-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Tellphone No</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-earphone"></i></span> <input
-													id="tellphoneNumber" name="telephone"
-													placeholder="Tellphone No" maxlength="10"
-													class="form-control" type="text"
-													onkeypress="return isNumber(event)"
-													value="${productObject.contactPerson.telephone}" readonly="readonly">
-
-											</div>
-										</div>
+										<label class="col-md-3 ">Tellphone No</label>
+										${productObject.contactPerson.telephone}
 									</div>
-
+															
 								</div>
 								<!-- /Contact Person  -->
 
@@ -195,156 +149,68 @@
 
 									<!-- Text input Serial No-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Serial No</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-barcode"></i></span> <input
-													name="serialNumber" id="serialNumber"
-													onkeydown="upperCaseF(this)" readonly="readonly"
-													placeholder="Serial Number" class="form-control"
-													type="text" value="${productObject.serialNumber}" readonly="readonly">
-											</div>
-										</div>
+										<label class="col-md-4">Serial No</label>
+										${productObject.serialNumber}
 									</div>
 									<!-- Text input Machine Model-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Model No</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-barcode"></i></span> <input
-													name="modelNumber" id="modelNumber"
-													onkeydown="upperCaseF(this)" placeholder="Model Number"
-													class="form-control" type="text"
-													value="${productObject.modelNumber}" readonly>
-											</div>
-										</div>
+										<label class="col-md-4">Model No</label>
+										${productObject.modelNumber}
 									</div>
-
 									<!-- Select type Brand-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Brand</label>
-										<div class="col-md-8 selectContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-list"></i></span> <select
-													id="modelBrand" name="modelBrand" class="form-control" readonly="readonly">
-													<option value="${productObject.modelBrand}">${productObject.modelBrand}</option>
-													<option value="Samsung">Samsung</option>
-													<option value="Canon">Canon</option>
-													<option value="Oce">Oce</option>
-													<option value="HP">HP</option>
-													<option value="Kyocera">Kyocera</option>
-													<option value="Nasua">Nasua</option>
-													<option value="Ricoh">Ricoh</option>
-													<option value="Toshiba">Toshiba</option>
-												</select>
-											</div>
-										</div>
-									</div>
+										<label class="col-md-4">Brand</label>
+										${productObject.modelBrand}">${productObject.modelBrand}
+									</div>									
 									<!-- Text input Contract Start Date-->
 									<div class="form-group">
-										<label class="col-xs-3 control-label">Contract Start
+										<label class="col-xs-4">Contract Start
 											Date</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group input-append date"
-												id="startDatePicker">
-												<input type='text' class="form-control" name="startDate"
-													id="startDate" placeholder="YYYY-MM-DD"
-													value="${productObject.startDate.toString().substring(0,10) }" readonly="readonly"/>
-												<span class="input-group-addon"> <span
-													class="glyphicon glyphicon-calendar"></span>
-												</span>
-											</div>
-										</div>
-									</div>
+										${productObject.startDate.toString().substring(0,10) }
+									</div>									
 									<!-- Text input Contract End Date-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Contract End
-											Date</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group input-append date" id="endDatePicker">
-												<input type='text' class="form-control" name="endDate"
-													id="endDate" placeholder="YYYY-MM-DD"
-													value="${productObject.endDate.toString().substring(0,10) }" readonly="readonly"/>
-												<span class="input-group-addon"> <span
-													class="glyphicon glyphicon-calendar"></span>
-												</span>
-											</div>
-										</div>
+										<label class="col-md-4">Contract End
+											Date</label>${productObject.endDate.toString().substring(0,10) }												
 									</div>
 									<!-- Text input Installation Date-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Installation
+										<label class="col-md-4 ">Installation
 											Date</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group input-append date"
-												id="installDatePicker">
-												<input type='text' class="form-control"
-													id="installationDate" name="installationDate" id="endDate"
-													placeholder="YYYY-MM-DD"
-													value="${productObject.installationDate.toString().substring(0,10) }" readonly="readonly"/>
-												<span class="input-group-addon"> <span
-													class="glyphicon glyphicon-calendar"></span>
-												</span>
-											</div>
-										</div>
+										${productObject.installationDate.toString().substring(0,10) }
 									</div>
 									<c:if test="${not empty productObject.monoReading }">
 										<div class="form-group">
-											<label class="col-md-3 control-label">Mono Reading</label>
-											<div class="col-md-8">
-												<input type="text" class="form-control"
-													onkeypress="return isNumber(event)" id="mono"
-													name="monoReading" placeholder="Enter Mono Reading"
-													value="${productObject.monoReading}" readonly="readonly">
-											</div>
+											<label class="col-md-4 ">Mono Reading</label>
+											
+													${productObject.monoReading}
+											
 										</div>
 										<div class="form-group">
-											<label class="col-md-3 control-label">Mono Copy Cost</label>
-											<div class="col-md-8">
-												<div class="input-group">
-													<span class="input-group-addon"><i
-														class="glyphicon glyphicon">$</i></span> <input type="number"
-														min="0" step="0.01" data-number-to-fixed="2"
-														data-number-stepfactor="100" class="form-control currency"
-														placeholder="Enter Mono Copy Cost" id="colour"
-														name="monoCopyCost" value="${productObject.monoCopyCost}" readonly="readonly">
-												</div>
-											</div>
-											<br>
+											<label class="col-md-4 ">Mono Copy Cost</label>
+											${productObject.monoCopyCost}
 										</div>
+											
 									</c:if>
 									<c:if test="${not empty productObject.colourReading}">
 										<!-- Text checkbox Colour Reading-->
 										<div class="form-group">
-											<label class="col-md-3 control-label">Colour Reading</label>
-											<div class="col-md-8">
-												<input type="text" class="form-control"
-													onkeypress="return isNumber(event)" id="colour"
-													name="colourReading" placeholder="Enter Colour Reading"
-													value="${productObject.colourReading}" readonly="readonly">
-											</div>
+											<label class="col-md-4 ">Colour Reading</label>
+											
+											${productObject.colourReading}
+											
 											<br>
 										</div>
 										<!-- Text checkbox Colour Copy Cost-->
 										<div class="form-group">
-											<label class="col-md-3 control-label">Colour Copy
+											<label class="col-md-4 ">Colour Copy
 												Cost</label>
-											<div class="col-md-8">
-												<div class="input-group">
-													<span class="input-group-addon"><i
-														class="glyphicon glyphicon">$</i></span> <input type="number"
-														min="0" step="0.01" data-number-to-fixed="2"
-														data-number-stepfactor="100" class="form-control currency"
-														placeholder="Enter Mono Copy Cost" id="colour"
-														name="colourCopyCost"
-														value="${productObject.colourCopyCost}" readonly="readonly"/>
-												</div>
-											</div>
-											<br>
+											
+												${productObject.colourCopyCost}
+												
+											
 										</div>
+											<br>
 									</c:if>
 								</div>
 								<!--/F Column-->
@@ -354,111 +220,44 @@
 
 									<!-- Text input Building Name-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Building Name</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-home"></i></span> <input
-													name="buildingName" id="buildingName"
-													placeholder="Building Name" class="form-control"
-													type="text" value="${productObject.buildingName}" readonly="readonly">
-											</div>
-										</div>
+										<label class="col-md-4 ">Building Name</label>
+										${productObject.buildingName}
 									</div>
 									<!-- Text input Floor Number-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Floor Number</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-home"></i></span> <input
-													name="floorNumber" id="floorNumber"
-													placeholder="Floor Number" maxlength="4"
-													class="form-control" type="text"
-													value="${productObject.floorNumber}" readonly="readonly">
-											</div>
-										</div>
+										<label class="col-md-4 ">Floor Number</label>
+										${productObject.floorNumber}
 									</div>
 
 									<!-- Text input Street Number-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Street No</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-home"></i></span> <input
-													name="streetNumber" id="streetNumber"
-													placeholder="Street Number" class="form-control"
-													type="text" value="${productObject.streetNumber}" readonly="readonly">
-											</div>
-										</div>
+										<label class="col-md-4 ">Street No</label>
+										${productObject.streetNumber}
 									</div>
 
 									<!-- Text input Street Name-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Street Name</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-home"></i></span> <input
-													id="streetName" name="streetName" placeholder="Street Name"
-													class="form-control" type="text"
-													value="${productObject.streetName}" readonly="readonly">
-											</div>
-										</div>
+										<label class="col-md-4 ">Street Name</label>
+										${productObject.streetName}
 									</div>
 									<!-- Text input City or Town-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">City/Town</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-home"></i></span> <input
-													name="city_town" id="city_town" placeholder="City / Town"
-													class="form-control" type="text"
-													value="${productObject.city_town}" readonly="readonly">
-											</div>
-										</div>
+										<label class="col-md-4 ">City/Town</label>
+										${productObject.city_town}
 									</div>
 									<!-- Select type Province-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Province</label>
-										<div class="col-md-8 selectContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-list"></i></span> <select
-													name="province" id="province"
-													class="form-control selectpicker" readonly="readonly">
-													<option value="${productObject.province}">${productObject.province}</option>
-													<option value="Gauteng">Gauteng</option>
-													<option value="Limpopo">Limpopo</option>
-													<option value="North West">North West</option>
-													<option value="Free State">Free State</option>
-													<option value="Mpumalanga">Mpumalanga</option>
-													<option value="KwaZulu Natal">KwaZulu Natal</option>
-													<option value="Northern Cape">Northern Cape</option>
-													<option value="Eastern Cape">Eastern Cape</option>
-													<option value="Western Cape">Western Cape</option>
-												</select>
-											</div>
-										</div>
+										<label class="col-md-4 ">Province</label>
+										${productObject.province}">${productObject.province}
 									</div>
 									<!-- Text input Area Code-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Area Code</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-home"></i></span> <input name="zipcode"
-													id="zipcode" placeholder="Area Code" maxlength="4"
-													class="form-control" type="text"
-													onkeypress="return isNumber(event)"
-													value="${productObject.areaCode}" readonly="readonly">
-											</div>
-										</div>
+										<label class="col-md-4 ">Area Code</label>
+										${productObject.areaCode}
 									</div>
 
 								</div>
+							
 								<!--/S Column-->
 
 							</fieldset>
@@ -480,11 +279,11 @@
 												method="post">
 												<!--Machine Accessories-->
 												<div class="tablemachinesacccso" name="removeAccessory">
-													<br />
+													<!-- <br />
 													<br />
 													<h5>Remove Accessories</h5>
 													<p style="font-size:12px; color:red;">To remove accessory, check the checkbox</p>
-													<table
+												 -->	<table
 														class="table table-striped table-bordered table-hover table-condensed"
 														data-show-refresh="true" data-show-toggle="true"
 														data-search="true" data-pagination="true"
@@ -495,8 +294,8 @@
 																	Type</th>
 																<th data-field="serialnumber" data-sortable="true">Serial
 																	Number</th>
-																<th data-field="removeaccessory" data-sortable="true">Remove
-																	Accessory</th>
+																<!-- <th data-field="removeaccessory" data-sortable="true">Remove
+																	Accessory</th> -->
 															</tr>
 														</thead>
 														<tbody>
@@ -505,9 +304,9 @@
 																<tr>
 																	<td>${list.accessotyType}</td>
 																	<td>${list.serial}</td>
-																	<td><input type="checkbox" class="chkAccessories"
+																	<%-- <td><input type="checkbox" class="chkAccessories"
 																		id="${list.accessotyType}" name="chkAccessories"
-																		value="${list.recordID}" /></td>
+																		value="${list.recordID}" /></td> --%>
 																</tr>
 															</c:forEach>
 

@@ -84,7 +84,7 @@
 										Reading</th>
 									<th data-field="monoreading" data-sortable="true">Mono
 										Reading</th>
-									<th data-field="monoreading" data-sortable="true">Description</th> 
+									<th data-field="description" data-sortable="true">Description</th> 
 									<th data-field="comments" data-sortable="true">Comments</th>
 								</tr>
 							</thead>

@@ -126,7 +126,7 @@
 									</c:when>
 								</c:choose>
 
-								<li><a target="_blank"
+							<li><a target="_blank"
 									href="ticketDownloadPDF?recordID=<c:out value='${ticketObject.recordID}' />">Download
 										PDF </a></li>
 							</ul>

@@ -176,9 +176,10 @@
 								data-sort-order="aesc">
 								<thead>
 									<tr>
-										<th data-field="serialno" data-sortable="true">Serial No</th>
+										
 										<th data-field="accessorytype" data-sortable="true">Accessory
 											Type</th>
+										<th data-field="serialno" data-sortable="true">Serial No</th>
 								</thead>
 								<tbody>
 									<!-- Iterating over the list sent from Controller -->
