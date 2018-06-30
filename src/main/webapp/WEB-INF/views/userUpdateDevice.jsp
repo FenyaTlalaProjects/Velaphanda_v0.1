@@ -248,7 +248,7 @@
 									<!-- Select type Province-->
 									<div class="form-group">
 										<label class="col-md-4 ">Province</label>
-										${productObject.province}">${productObject.province}
+										${productObject.province}
 									</div>
 									<!-- Text input Area Code-->
 									<div class="form-group">
