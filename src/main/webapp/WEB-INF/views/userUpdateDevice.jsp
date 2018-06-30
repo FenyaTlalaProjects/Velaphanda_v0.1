@@ -159,8 +159,8 @@
 									</div>
 									<!-- Select type Brand-->
 									<div class="form-group">
-										<label class="col-md-4">Brand</label>
-										${productObject.modelBrand}">${productObject.modelBrand}
+										<label class="col-md-4">Model Brand</label>
+										${productObject.modelBrand}
 									</div>									
 									<!-- Text input Contract Start Date-->
 									<div class="form-group">
