@@ -31,6 +31,12 @@
 				<div class="panel panel-default">
 					<div class="panel-heading" align="center">View Customer</div>
 					<div class="panel-body">
+					
+					<div align="right">
+							<a target="_blank"
+								href="viewCustomerDownloadPDF?customerName=<c:out value='${customer.customerName}'/>">Download
+								PDF </a>
+					</div>
 					 
 					<form:form class="well form-horizontal" method="post"
 							action="viewCustomerData" modelAttribute="viewCustomerData"
