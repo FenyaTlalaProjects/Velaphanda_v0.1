@@ -42,11 +42,11 @@ public class SiteStockDao implements SiteStocDaoInt {
 	private HOStockDaoInt hoStockDaoInt;
 	
 	
-	private SiteStock siteStock,siteStockForCustomer;
+	private SiteStock siteStock;
 	
 	private BootStock bootSite;
 	
-	private HOStock hoStock,hoStockFromCustomer;
+	private HOStock hoStock;
 	
 	List<SiteStock> sitetStockList = null;
 	List<SiteStock> siteStocks = null;
@@ -56,6 +56,7 @@ public class SiteStockDao implements SiteStocDaoInt {
 	Date date = null;
 
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<SiteStock> getAllSiteStock() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
@@ -277,7 +278,6 @@ public class SiteStockDao implements SiteStocDaoInt {
 	@Override
 	public List<SiteStock> getTonerForCustomer(String customerName) {
  		List<SiteStock> currentList = new ArrayList<SiteStock>();
-		int bootCount = 0;
 		try{
 			List<SiteStock> tempBootList = getAllSiteStock();
 			for(SiteStock stock:tempBootList){
@@ -477,42 +477,67 @@ public class SiteStockDao implements SiteStocDaoInt {
 					Employee emp = daoInt.getEmployeeByEmpNum(technicianName);
 					
 					if(reasonForBoot.length()>3){
-						bootSite.setCompatibleDevice(bootStock.getCompatibleDevice());
-						bootSite.setColor(bootStock.getColor());
-						bootSite.setModelBrand(bootStock.getModelBrand());
-						bootSite.setReasonForMovement(reasonForBoot);
-						bootSite.setDateSparesMoved(dateFormat.format(date));
-						bootSite.setItemDescription(bootStock.getItemDescription());
-						bootSite.setItemType(bootStock.getItemType());
-						bootSite.setMoveSparesFrom(fromCustomerName);
-						bootSite.setMoveSparesTo(technicianName);
-						bootSite.setPartNumber(bootStock.getPartNumber());
-						bootSite.setQuantity(result);
-						bootSite.setTechnicianEmail(emp.getFirstName()+ " "+emp.getLastName());
-						bootSite.setTechnicianName(emp.getFirstName()+ " "+emp.getLastName());
-						sessionFactory.getCurrentSession().saveOrUpdate(bootSite);
+						BootStock toBootStockExst = bootStockDaoInt.getBootStock(tempPartNumber, technicianName);
+					    if (toBootStockExst !=null){
+					    	int incrQuantityForBoot = toBootStockExst.getQuantity()+result;
+					    	toBootStockExst.setQuantity(incrQuantityForBoot);
+					    	toBootStockExst.setTechnicianEmail(emp.getFirstName()+ " "+emp.getLastName());
+					    	toBootStockExst.setTechnicianName(emp.getFirstName()+ " "+emp.getLastName());
+					    	toBootStockExst.setMoveSparesFrom(fromCustomerName);
+					    	toBootStockExst.setMoveSparesTo(technicianName);
+					    	toBootStockExst.setReasonForMovement(reasonForBoot);
+					    	toBootStockExst.setDateSparesMoved(dateFormat.format(date));
+					    	sessionFactory.getCurrentSession().update(toBootStockExst);
+					    	
+					    }else{
+					    	bootSite.setCompatibleDevice(bootStock.getCompatibleDevice());
+							bootSite.setColor(bootStock.getColor());
+							bootSite.setModelBrand(bootStock.getModelBrand());
+							bootSite.setReasonForMovement(reasonForBoot);
+							bootSite.setDateSparesMoved(dateFormat.format(date));
+							bootSite.setItemDescription(bootStock.getItemDescription());
+							bootSite.setItemType(bootStock.getItemType());
+							bootSite.setMoveSparesFrom(fromCustomerName);
+							bootSite.setMoveSparesTo(technicianName);
+							bootSite.setPartNumber(bootStock.getPartNumber());
+							bootSite.setQuantity(result);
+							bootSite.setTechnicianEmail(emp.getFirstName()+ " "+emp.getLastName());
+							bootSite.setTechnicianName(emp.getFirstName()+ " "+emp.getLastName());
+							sessionFactory.getCurrentSession().save(bootSite);
+					    }
 						
 						retMessage = "Spares successfully  moved to "+ emp.getFirstName()+ " "+emp.getLastName() ;
 						
 						
 					}else if(reasonForSite.length()>3){
-
-						siteStock.setCustomerName(customerName);
-						siteStock.setItemDescription(bootStock.getItemDescription());
-						siteStock.setItemType(bootStock.getItemType());
-						siteStock.setPartNumber(bootStock.getPartNumber());
-						siteStock.setCompatibleDevice(bootStock.getCompatibleDevice());
 						
-						siteStock.setModelBrand(bootStock.getModelBrand());
-						siteStock.setColor(bootStock.getColor());
-						siteStock.setDateSparesMoved(dateFormat.format(date));
-						siteStock.setMoveSparesFrom(fromTechnicianName);
-						siteStock.setMoveSparesTo(customerName);
+						SiteStock partExistForSite = getSiteStock( bootStock.getPartNumber(),customerName);
 						
-						siteStock.setQuantity(result);
-						
-						siteStock.setReasonForMovement(reasonForSite);
-						sessionFactory.getCurrentSession().saveOrUpdate(siteStock);
+						if(partExistForSite != null){
+							int icreQuantity = partExistForSite.getQuantity() + result;
+							partExistForSite.setQuantity(icreQuantity);
+							partExistForSite.setReasonForMovement(reasonForSite);
+							partExistForSite.setDateSparesMoved(dateFormat.format(date));
+							partExistForSite.setMoveSparesFrom(fromTechnicianName);
+							sessionFactory.getCurrentSession().update(partExistForSite);
+						}else{
+							    siteStock.setCustomerName(customerName);
+								siteStock.setItemDescription(bootStock.getItemDescription());
+								siteStock.setItemType(bootStock.getItemType());
+								siteStock.setPartNumber(bootStock.getPartNumber());
+								siteStock.setCompatibleDevice(bootStock.getCompatibleDevice());
+								
+								siteStock.setModelBrand(bootStock.getModelBrand());
+								siteStock.setColor(bootStock.getColor());
+								siteStock.setDateSparesMoved(dateFormat.format(date));
+								siteStock.setMoveSparesFrom(fromTechnicianName);
+								siteStock.setMoveSparesTo(customerName);
+								
+								siteStock.setQuantity(result);
+								
+								siteStock.setReasonForMovement(reasonForSite);
+								sessionFactory.getCurrentSession().save(siteStock);
+						}
 						
 						retMessage = "Spares successfully  moved to "+ customerName +" Site" ;
 					}else{

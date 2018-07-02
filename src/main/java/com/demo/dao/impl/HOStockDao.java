@@ -132,10 +132,10 @@ public class HOStockDao implements HOStockDaoInt {
 		try{
 			tempHOList = getAllSpareParts();
 			for(HOStock hoStock:tempHOList){
-				/*if(hoStock.getQuantity()>0){
-					
-				}*/
-				tempList.add(hoStock);
+				if(hoStock.getQuantity()>0){
+					tempList.add(hoStock);
+				}
+				
 			}
 		}catch(Exception e){
 			e.getMessage();
