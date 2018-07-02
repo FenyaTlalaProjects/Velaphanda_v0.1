@@ -39,7 +39,6 @@ import com.demo.model.Device;
 import com.demo.model.OrderHeader;
 import com.demo.model.SiteStock;
 import com.demo.model.Tickets;
-import com.demo.reports.initializer.DeviceReportBean;
 import com.demo.reports.initializer.TicketReportBean;
 
 @Repository("LogTicketsDAO")
@@ -4448,30 +4447,42 @@ public class TicketsDao implements TicketsDaoInt {
 		JRDataSource ds = null;
 		List<TicketReportBean> result = new ArrayList<TicketReportBean>();
 		try{
-			//ticket = (Tickets) getHistoryByTicketNumber(recordID);
+			ticket = getLoggedTicketsByTicketNumber(recordID);
 			TicketReportBean ticketBean = new TicketReportBean();
 					
-			/*	
+				
 			ticketBean.setCustomerName(ticket.getDevice().getCustomerDevice().getCustomerName());
 			ticketBean.setSerialNumber(ticket.getDevice().getSerialNumber());
 			ticketBean.setModelNumber(ticket.getDevice().getModelNumber());
 			ticketBean.setModelBrand(ticket.getDevice().getModelBrand());
-			ticketBean.setCustomerName(ticket.getStatus());
+			ticketBean.setStatus(ticket.getStatus());
 			ticketBean.setDate(ticket.getDateTime());			
 			ticketBean.setMonoReading(ticket.getDevice().getMonoReading());
 			ticketBean.setColourReading(ticket.getDevice().getColourReading());		
-			ticketBean.setFirstName(ticket.getFirstName());
-			ticketBean.setLastName(ticket.getLastName());
 			ticketBean.setDescription(ticket.getDescription());
 			ticketBean.setComment(ticket.getComments());
-			ticketBean.setActionTaken(ticket.getActionTaken());			
+			ticketBean.setActionTaken(ticket.getActionTaken());	
 			
-			ticketBean.setContactPersonEmail(device.getContactPerson().getEmail());
-			ticketBean.setContactPersonFirstName(device.getContactPerson().getFirstName());
-			ticketBean.setContactPersonLastName(device.getContactPerson().getLastName());
-			ticketBean.setContactPersonCellphone(device.getContactPerson().getCellphone());
-			ticketBean.setContactPersonTellphone(device.getContactPerson().getTelephone());*/
+			ticketBean.setAssignedTo(ticket.getEmployee().getFirstName() +" "+ticket.getEmployee().getLastName());
+			ticketBean.setTechEmail(ticket.getEmployee().getEmail());
+			
+			ticketBean.setTicketContactPersonFirstLastName(ticket.getFirstName()+ " "+ ticket.getLastName());
+			ticketBean.setTicketContactPersonCellphone(ticket.getContactCellNumber());
+			ticketBean.setTicketContactPersonTellphone(ticket.getContactTelephoneNumber());
+			ticketBean.setTicketcontactPersonEmail(ticket.getContactEmail());
+			
+			ticketBean.setTicketNo("VTC000"+ticket.getRecordID());
+			ticketBean.setPriority(ticket.getPriority());
+			
+			
+			ticketBean.setZipcode(ticket.getDevice().getAreaCode());
+			ticketBean.setCity_town(ticket.getDevice().getCity_town());
+			ticketBean.setProvince(ticket.getDevice().getProvince());
+			ticketBean.setAddress(ticket.getDevice().getStreetNumber()+" "+ticket.getDevice().getStreetName());
+			
 			result.add(ticketBean);
+			
+			
 			ds = new JRBeanCollectionDataSource(result);
 			
 	}catch(Exception e){

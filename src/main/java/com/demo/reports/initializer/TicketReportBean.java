@@ -49,11 +49,11 @@ public class TicketReportBean {
 	private String accessotyType;
 	private String serial;
 	
-	private String contactPersonFirstName;
+	private String ticketContactPersonFirstLastName;
 	private String contactPersonLastName;
-	private String contactPersonCellphone;
-	private String contactPersonTellphone;
-	private String contactPersonEmail;
+	private String ticketContactPersonCellphone;
+	private String ticketContactPersonTellphone;
+	private String ticketcontactPersonEmail;
 		
 	private String ticketNo;
 	private String description;
@@ -67,5 +67,6 @@ public class TicketReportBean {
 	private String deviceContactPersonLastName;
 	private String deviceContactPersonCellphone;
 	private String deviceContactPersonTellphone;
+	private String assignedTo;
 	
 }

@@ -153,7 +153,6 @@ public class DeviceDao implements DeviceDaoInt {
 		customer = new Customer();
 		contactPerson = new DeviceContactPerson();
 		device = new Device();
-		String newSerial = null;
 		String oldSerial =null;
 		
 		try {
@@ -535,15 +534,6 @@ public class DeviceDao implements DeviceDaoInt {
 		}
 		return retMessage;
 	}
-	
-	private String logTicket(){
-		
-		
-		dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		date = new Date();
-		
-		return retMessage;
-	}
 
 	@Override
 	public JRDataSource getDeviceListDataSource() {
@@ -561,49 +551,6 @@ public class DeviceDao implements DeviceDaoInt {
 				result.add(deviceBean);
 				ds = new JRBeanCollectionDataSource(result);
 			}
-		}catch(Exception e){
-			e.getMessage();
-		}
-		return ds;
-	}
-
-	@Override
-	public JRDataSource getDeviceDetailsDataSource(String serialNumber) {
-		JRDataSource ds = null;
-		List<DeviceReportBean> result = new ArrayList<DeviceReportBean>();
-		try{	
-				device = getDeviceBySerialNumbuer(serialNumber);
-				DeviceReportBean deviceBean = new DeviceReportBean();
-				deviceBean.setCustomerName(device.getCustomerDevice().getCustomerName());
-				deviceBean.setSerialNumber(device.getSerialNumber());
-				deviceBean.setModelNumber(device.getModelNumber());
-				deviceBean.setModelBrand(device.getModelBrand());
-				
-				deviceBean.setStartDate(device.getStartDate());
-				deviceBean.setInstallationDate(device.getInstallationDate());
-				deviceBean.setEndDate(device.getEndDate());
-				
-				deviceBean.setMonoReading(device.getMonoReading());
-				deviceBean.setColourReading(device.getColourReading());
-				deviceBean.setMonoCopyCost(device.getMonoCopyCost());
-				deviceBean.setColourCopyCost(device.getColourCopyCost());
-				
-				deviceBean.setZipcode(device.getAreaCode());
-				deviceBean.setCity_town(device.getCity_town());
-				deviceBean.setProvince(device.getProvince());
-				deviceBean.setStreetName(device.getStreetName());
-				deviceBean.setStreetNumber(device.getStreetNumber());
-
-				deviceBean.setContactPersonEmail(device.getContactPerson().getEmail());
-				deviceBean.setContactPersonFirstName(device.getContactPerson().getFirstName());
-				deviceBean.setContactPersonLastName(device.getContactPerson().getLastName());
-				deviceBean.setContactPersonCellphone(device.getContactPerson().getCellphone());
-				deviceBean.setContactPersonTellphone(device.getContactPerson().getTelephone());
-							
-				
-				result.add(deviceBean);
-				ds = new JRBeanCollectionDataSource(result);
-				
 		}catch(Exception e){
 			e.getMessage();
 		}
@@ -630,6 +577,7 @@ public class DeviceDao implements DeviceDaoInt {
 		return newList;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<TicketHistory> getAllTicketHistoryByTicketNumber() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(

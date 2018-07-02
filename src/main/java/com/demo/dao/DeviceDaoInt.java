@@ -4,8 +4,6 @@ import java.util.List;
 
 import net.sf.jasperreports.engine.JRDataSource;
 
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.demo.bean.DeviceBean;
 import com.demo.model.Accessories;
 import com.demo.model.Device;
@@ -27,7 +25,6 @@ public interface DeviceDaoInt {
 	String replaceToner(String compitableSiteStock,String currentMonoReading,String currentColourReading,String firstName,String lastName,String loggedInUser,String contactEmail,String contactTelephoneNumber,String contactCellNumber,String description,String serialNumber
 			);
 	JRDataSource getDeviceListDataSource();
-	JRDataSource getDeviceDetailsDataSource(String serialNumber);
 	JRDataSource getDeviceHistoryDataSource(Long recordID);
 	List<TicketHistory> getHistoryByTicketNumber(Long ticketNumber);
 	List<TicketHistory> getAllTicketHistoryByTicketNumber();	
