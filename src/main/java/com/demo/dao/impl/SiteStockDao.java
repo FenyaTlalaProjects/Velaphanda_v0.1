@@ -416,25 +416,42 @@ public class SiteStockDao implements SiteStocDaoInt {
 					stock.setQuantity(curentQuantity);
 					sessionFactory.getCurrentSession().update(stock);
 					Employee emp = daoInt.getEmployeeByEmpNum(technicianName);
+					
                     if(reasonForSite.length()>3){
+                    	
+						SiteStock stockExist = getSiteStock(tempPartNumber,customerName);
+						if(stockExist!= null){
+							int existingQuantity = stockExist.getQuantity() + result;
+							
+							stockExist.setQuantity(existingQuantity);
+							stockExist.setDateSparesMoved(dateFormat.format(date));
+							stockExist.setMoveSparesFrom(fromCustomerName);
+							stockExist.setMoveSparesTo(customerName);
+							stockExist.setReasonForMovement(reasonForSite);
+							
+							sessionFactory.getCurrentSession().update(stockExist);
+							
+							
+						}else{
+							siteStock.setCustomerName(customerName);
+							siteStock.setItemDescription(stock.getItemDescription());
+							siteStock.setItemType(stock.getItemType());
+							siteStock.setLocation(stock.getLocation());
+							siteStock.setPartNumber(stock.getPartNumber());
+							siteStock.setCompatibleDevice(stock.getCompatibleDevice());
+							
+							siteStock.setModelBrand(stock.getModelBrand());
+							siteStock.setColor(stock.getColor());
+							siteStock.setDateSparesMoved(dateFormat.format(date));
+							siteStock.setMoveSparesFrom(fromCustomerName);
+							siteStock.setMoveSparesTo(customerName);
+							
+							siteStock.setQuantity(result);
+							
+							siteStock.setReasonForMovement(reasonForSite);
+							sessionFactory.getCurrentSession().save(siteStock);
+						}
 						
-						siteStock.setCustomerName(customerName);
-						siteStock.setItemDescription(stock.getItemDescription());
-						siteStock.setItemType(stock.getItemType());
-						siteStock.setLocation(stock.getLocation());
-						siteStock.setPartNumber(stock.getPartNumber());
-						siteStock.setCompatibleDevice(stock.getCompatibleDevice());
-						
-						siteStock.setModelBrand(stock.getModelBrand());
-						siteStock.setColor(stock.getColor());
-						siteStock.setDateSparesMoved(dateFormat.format(date));
-						siteStock.setMoveSparesFrom(fromCustomerName);
-						siteStock.setMoveSparesTo(customerName);
-						
-						siteStock.setQuantity(result);
-						
-						siteStock.setReasonForMovement(reasonForSite);
-						sessionFactory.getCurrentSession().saveOrUpdate(siteStock);
 						retMessage = "Spares successfully  moved to "+ customerName +" Site" ;
 					}else if(reasonForBoot.length()>3){
 						
