@@ -63,11 +63,21 @@ public class DeviceReportBean {
 	private String lastName;
 	private String deviceContactPersonFirstName;
 	private String deviceContactPersonLastName;
-	private String deviceContactPersonCellphone;
-	private String deviceContactPersonTellphone;
 	
 	private String accessoryType;
 	private String accessory;
+	
+	private String deviceContactPersonFirstLastName;
+	private String deviceContactPersonCellphone;
+	private String deviceContactPersonTellphone;
+	private String deviceContactPersonEmail;
+	private String assignedTo;
+	private String technicianEmail;
+	
+	private String ticketContactPersonFirstLastName;		
+	private String ticketContactPersonCellphone;
+	private String ticketContactPersonTellphone;
+	private String ticketcontactPersonEmail;
 	
 	
 }

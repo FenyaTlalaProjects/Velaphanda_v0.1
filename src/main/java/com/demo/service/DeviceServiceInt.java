@@ -24,7 +24,5 @@ public interface DeviceServiceInt {
 	String replaceToner(String compitableSiteStock,String currentMonoReading,String currentColourReading,String firstName,String lastName,String loggedInUser,String contactEmail,String contactTelephoneNumber,String contactCellNumber,String description,String serialNumber
 			);
 	JRDataSource getDeviceListDataSource();
-	JRDataSource getDeviceHistoryDataSource(Long recordID);
-
-
+	
 }

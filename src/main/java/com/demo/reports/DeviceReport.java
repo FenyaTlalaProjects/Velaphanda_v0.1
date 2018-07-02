@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.dao.DeviceDaoInt;
+import com.demo.dao.TicketHistoryDaoInt;
 import com.demo.service.AccessoriesInt;
 import com.demo.service.DeviceServiceInt;
 import com.demo.service.TicketHistoryInt;
@@ -31,6 +32,8 @@ public class DeviceReport {
 	private DeviceServiceInt deviceServiceInt;
 	@Autowired
 	private TicketHistoryInt ticketHistoryInt;
+	@Autowired
+	private TicketHistoryDaoInt ticketHistoryDaoInt;
 	
 	@Autowired
 	private AccessoriesInt accessoryInt;
@@ -100,7 +103,7 @@ public class DeviceReport {
 		// Assign the datasource to an instance of JRDataSource
 		// JRDataSource is the datasource that Jasper understands
 		// This is basically a wrapper to Java's collection classes
-		JRDataSource deviceHistory  = deviceDaoInt.getDeviceHistoryDataSource(recordID);
+		JRDataSource deviceHistory  = ticketHistoryDaoInt.getDeviceHistoryDataSource(recordID);
 		
 		// In order to use Spring's built-in Jasper support, 
 		// We are required to pass our datasource as a map parameter

@@ -8,6 +8,7 @@ import com.demo.bean.DeviceBean;
 import com.demo.model.Accessories;
 import com.demo.model.Device;
 import com.demo.model.TicketHistory;
+import com.demo.model.Tickets;
 
 public interface DeviceDaoInt {
 	
@@ -25,7 +26,8 @@ public interface DeviceDaoInt {
 	String replaceToner(String compitableSiteStock,String currentMonoReading,String currentColourReading,String firstName,String lastName,String loggedInUser,String contactEmail,String contactTelephoneNumber,String contactCellNumber,String description,String serialNumber
 			);
 	JRDataSource getDeviceListDataSource();
-	JRDataSource getDeviceHistoryDataSource(Long recordID);
 	List<TicketHistory> getHistoryByTicketNumber(Long ticketNumber);
-	List<TicketHistory> getAllTicketHistoryByTicketNumber();	
+	List<TicketHistory> getAllTicketHistoryByTicketNumber();
+	List<TicketHistory> getAllTicketHistoryByTicketNumber(Long recordID);
+	Tickets getLoggedTicketsByTicketNumber(Long ticketNumber);
 }

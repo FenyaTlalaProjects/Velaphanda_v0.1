@@ -23,6 +23,7 @@ import com.demo.model.OrderHistory;
 import com.demo.model.TicketHistory;
 import com.demo.model.Tickets;
 import com.demo.reports.initializer.DeviceReportBean;
+import com.demo.reports.initializer.TicketReportBean;
 
 @Repository("ticketHistoryDAO")
 @Transactional(propagation=Propagation.REQUIRED)
@@ -31,7 +32,7 @@ public class TicketHistoryDao implements TicketHistoryDaoInt{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	Device device = null;
+	
 	private TicketHistory ticketHistory=null;
 	
 	DateFormat dateFormat = null;
@@ -42,7 +43,8 @@ public class TicketHistoryDao implements TicketHistoryDaoInt{
 	List<TicketHistory> ticketHistoryList = null;
 	ArrayList<?> aList = null;
 	ArrayList list = null;
-	
+	private Device device = null;
+	private Tickets ticket = null;
 	
 	@Transactional(propagation=Propagation.REQUIRED)
 	@Override
@@ -74,6 +76,14 @@ public class TicketHistoryDao implements TicketHistoryDaoInt{
 			e.getMessage();
 		}
 	}
+	
+	@Override
+	public TicketHistory getLoggedTicketsByTicketNumber(Long ticketNumber) {
+
+		return (TicketHistory) sessionFactory.getCurrentSession().get(TicketHistory.class,
+				ticketNumber);
+	}
+
 
 	@Override
 	public List<TicketHistory> getHistoryByTicketNumber(Long ticketNumber) {
@@ -95,42 +105,54 @@ public class TicketHistoryDao implements TicketHistoryDaoInt{
 		return newList;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<TicketHistory> getAllTicketHistoryByTicketNumber() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
 				TicketHistory.class);
 		return (List<TicketHistory>) criteria.list();	
 	}
-	
+
+	@Override
+	public TicketHistory  getAllTicketHistoryByTicketNumber(Long recordID) {
+		return (TicketHistory) sessionFactory.getCurrentSession().get(TicketHistory.class,
+				recordID);
+	}
 	@Override
 	public JRDataSource getDeviceHistoryDataSource(Long recordID) {
 		JRDataSource ds = null;
-		List<DeviceReportBean> result = new ArrayList<DeviceReportBean>();
-		try{
-			//ticket = (Tickets) getHistoryByTicketNumber(recordID);
-			DeviceReportBean deviceBean = new DeviceReportBean();
+		List<TicketReportBean> result = new ArrayList<TicketReportBean>();
 					
-			/*	
-			deviceBean.setCustomerName(ticket.getDevice().getCustomerDevice().getCustomerName());
-			deviceBean.setSerialNumber(ticket.getDevice().getSerialNumber());
-			deviceBean.setModelNumber(ticket.getDevice().getModelNumber());
-			deviceBean.setModelBrand(ticket.getDevice().getModelBrand());
-			deviceBean.setCustomerName(ticket.getStatus());
-			deviceBean.setDate(ticket.getDateTime());			
-			deviceBean.setMonoReading(ticket.getDevice().getMonoReading());
-			deviceBean.setColourReading(ticket.getDevice().getColourReading());		
-			deviceBean.setFirstName(ticket.getFirstName());
-			deviceBean.setLastName(ticket.getLastName());
-			deviceBean.setDescription(ticket.getDescription());
-			deviceBean.setComment(ticket.getComments());
-			deviceBean.setActionTaken(ticket.getActionTaken());			
+		try{
+													
+			ticketHistory =  getAllTicketHistoryByTicketNumber(recordID);	
+			TicketReportBean ticketBean = new TicketReportBean();					
+				
+			//ticketBean.setCustomerName(ticketHistory.getTickets().getDevice().getCustomerDevice().getCustomerName());
+			/*ticketBean.setSerialNumber(ticketHistory.getTickets().getDevice().getSerialNumber());
+			ticketBean.setModelNumber(ticketHistory.getTickets().getDevice().getModelNumber());
+			ticketBean.setModelBrand(ticketHistory.getTickets().getDevice().getModelBrand());
+			ticketBean.setStatus(ticketHistory.getStatus());
+			ticketBean.setDate(ticketHistory.getTickets().getDateTime());			
+			ticketBean.setMonoReading(ticketHistory.getTickets().getDevice().getMonoReading());
+			ticketBean.setColourReading(ticketHistory.getTickets().getDevice().getColourReading());		
+			ticketBean.setDescription(ticketHistory.getDescription());
+			ticketBean.setComment(ticketHistory.getTickets().getComments());
+			ticketBean.setActionTaken(ticketHistory.getActionTaken());	
 			
-			deviceBean.setContactPersonEmail(device.getContactPerson().getEmail());
-			deviceBean.setContactPersonFirstName(device.getContactPerson().getFirstName());
-			deviceBean.setContactPersonLastName(device.getContactPerson().getLastName());
-			deviceBean.setContactPersonCellphone(device.getContactPerson().getCellphone());
-			deviceBean.setContactPersonTellphone(device.getContactPerson().getTelephone());*/
-			result.add(deviceBean);
+			ticketBean.setAssignedTo(ticketHistory.getEmployee().getFirstName() +" "+ticketHistory.getEmployee().getLastName());
+			ticketBean.setTechnicianEmail(ticketHistory.getEmployee().getEmail());
+			
+			ticketBean.setDeviceContactPersonFirstLastName(ticketHistory.getTickets().getFirstName()+ " "+ ticketHistory.getTickets().getLastName());
+			ticketBean.setDeviceContactPersonCellphone(ticketHistory.getTickets().getContactCellNumber());
+			ticketBean.setDeviceContactPersonTellphone(ticketHistory.getTickets().getContactTelephoneNumber());
+			ticketBean.setDeviceContactPersonEmail(ticketHistory.getTickets().getContactEmail());
+			
+			ticketBean.setTicketNo("VTC000"+ticketHistory.getTicketNo());
+			ticketBean.setPriority(ticketHistory.getTickets().getPriority());*/
+		
+							
+			result.add(ticketBean);			
 			ds = new JRBeanCollectionDataSource(result);
 			
 	}catch(Exception e){

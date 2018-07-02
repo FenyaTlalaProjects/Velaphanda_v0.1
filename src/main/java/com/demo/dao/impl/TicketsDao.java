@@ -4464,7 +4464,7 @@ public class TicketsDao implements TicketsDaoInt {
 			ticketBean.setActionTaken(ticket.getActionTaken());	
 			
 			ticketBean.setAssignedTo(ticket.getEmployee().getFirstName() +" "+ticket.getEmployee().getLastName());
-			ticketBean.setTechEmail(ticket.getEmployee().getEmail());
+			ticketBean.setTechnicianEmail(ticket.getEmployee().getEmail());
 			
 			ticketBean.setTicketContactPersonFirstLastName(ticket.getFirstName()+ " "+ ticket.getLastName());
 			ticketBean.setTicketContactPersonCellphone(ticket.getContactCellNumber());

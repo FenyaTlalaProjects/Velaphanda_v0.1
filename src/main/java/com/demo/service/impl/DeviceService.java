@@ -98,9 +98,6 @@ public class DeviceService implements DeviceServiceInt {
 		return deviceDAO.getDeviceListDataSource();
 	}
 
-	@Override
-	public JRDataSource getDeviceHistoryDataSource(Long recordID) {	
-		return deviceDAO.getDeviceHistoryDataSource(recordID);
-	}
+	
 
 }

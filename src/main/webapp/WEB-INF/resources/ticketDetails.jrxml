@@ -48,6 +48,7 @@
 	<field name="ticketContactPersonCellphone" class="java.lang.String"/>
 	<field name="ticketContactPersonTellphone" class="java.lang.String"/>
 	<field name="ticketcontactPersonEmail" class="java.lang.String"/>
+	<field name="technicianEmail" class="java.lang.String"/>
 	<background>
 		<band height="220" splitType="Stretch"/>
 	</background>
@@ -197,7 +198,7 @@
 				<text><![CDATA[Assigned To:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="640" y="191" width="70" height="13">
+				<reportElement x="640" y="191" width="111" height="13">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
@@ -413,7 +414,7 @@ Bronberrik
 					<textElement verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{actionTaken}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{technicianEmail}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

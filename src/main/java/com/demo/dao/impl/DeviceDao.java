@@ -38,6 +38,7 @@ import com.demo.model.SiteStock;
 import com.demo.model.TicketHistory;
 import com.demo.model.Tickets;
 import com.demo.reports.initializer.DeviceReportBean;
+import com.demo.reports.initializer.TicketReportBean;
 import com.demo.service.TicketHistoryInt;
 
 @Repository("productDAO")
@@ -71,6 +72,7 @@ public class DeviceDao implements DeviceDaoInt {
 	ArrayList<Accessories> list = null;
 	Customer customer = null;
 	Device device = null;
+	
 	TicketHistory ticketHistory = null;
 	List<Accessories> accessoryList = null;
 	private DeviceBean deviceBean = null;
@@ -457,6 +459,50 @@ public class DeviceDao implements DeviceDaoInt {
 		}
 		return array;
 	}
+	
+
+	@Override
+	public List<TicketHistory> getHistoryByTicketNumber(Long ticketNumber) {
+		
+		List<TicketHistory> newList = null;
+		try{
+			
+			List<TicketHistory> list = getAllTicketHistoryByTicketNumber();
+			 newList = new ArrayList<TicketHistory>();
+			for(TicketHistory ticketHistory:list){
+				if(ticketHistory.getTicketNo().equals(ticketNumber)){
+					newList.add(ticketHistory);
+				}
+			}
+			
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return newList;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<TicketHistory> getAllTicketHistoryByTicketNumber() {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+				TicketHistory.class);
+		return (List<TicketHistory>) criteria.list();	
+	}
+	
+	@Override
+	public Tickets getLoggedTicketsByTicketNumber(Long ticketNumber) {
+
+		return (Tickets) sessionFactory.getCurrentSession().get(Tickets.class,
+				ticketNumber);
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<TicketHistory> getAllTicketHistoryByTicketNumber(Long recordID) {
+		return (List<TicketHistory>) sessionFactory.getCurrentSession().get(TicketHistory.class,
+				recordID);
+	}
+	
+	
 
 	@Override
 	public String replaceToner(String compitableSiteStock,
@@ -557,70 +603,5 @@ public class DeviceDao implements DeviceDaoInt {
 		return ds;
 	}
 	
-	@Override
-	public List<TicketHistory> getHistoryByTicketNumber(Long ticketNumber) {
-		
-		List<TicketHistory> newList = null;
-		try{
-			
-			List<TicketHistory> list = getAllTicketHistoryByTicketNumber();
-			 newList = new ArrayList<TicketHistory>();
-			for(TicketHistory ticketHistory:list){
-				if(ticketHistory.getTicketNo().equals(ticketNumber)){
-					newList.add(ticketHistory);
-				}
-			}
-			
-		}catch(Exception e){
-			e.getMessage();
-		}
-		return newList;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<TicketHistory> getAllTicketHistoryByTicketNumber() {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
-				TicketHistory.class);
-		return (List<TicketHistory>) criteria.list();	
-	}
-	
-	@Override
-	public JRDataSource getDeviceHistoryDataSource(Long recordID) {
-		JRDataSource ds = null;
-		List<DeviceReportBean> result = new ArrayList<DeviceReportBean>();
-		try{
-			//ticket = (Tickets) getHistoryByTicketNumber(recordID);
-			DeviceReportBean deviceBean = new DeviceReportBean();
-					
-			/*	
-			deviceBean.setCustomerName(ticket.getDevice().getCustomerDevice().getCustomerName());
-			deviceBean.setSerialNumber(ticket.getDevice().getSerialNumber());
-			deviceBean.setModelNumber(ticket.getDevice().getModelNumber());
-			deviceBean.setModelBrand(ticket.getDevice().getModelBrand());
-			deviceBean.setCustomerName(ticket.getStatus());
-			deviceBean.setDate(ticket.getDateTime());			
-			deviceBean.setMonoReading(ticket.getDevice().getMonoReading());
-			deviceBean.setColourReading(ticket.getDevice().getColourReading());		
-			deviceBean.setFirstName(ticket.getFirstName());
-			deviceBean.setLastName(ticket.getLastName());
-			deviceBean.setDescription(ticket.getDescription());
-			deviceBean.setComment(ticket.getComments());
-			deviceBean.setActionTaken(ticket.getActionTaken());			
-			
-			deviceBean.setContactPersonEmail(device.getContactPerson().getEmail());
-			deviceBean.setContactPersonFirstName(device.getContactPerson().getFirstName());
-			deviceBean.setContactPersonLastName(device.getContactPerson().getLastName());
-			deviceBean.setContactPersonCellphone(device.getContactPerson().getCellphone());
-			deviceBean.setContactPersonTellphone(device.getContactPerson().getTelephone());*/
-			result.add(deviceBean);
-			ds = new JRBeanCollectionDataSource(result);
-			
-	}catch(Exception e){
-		e.getMessage();
-	}
-	return ds;
-	}
-
 	
 }
