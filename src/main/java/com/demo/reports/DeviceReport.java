@@ -18,6 +18,7 @@ import com.demo.dao.TicketHistoryDaoInt;
 import com.demo.service.AccessoriesInt;
 import com.demo.service.DeviceServiceInt;
 import com.demo.service.TicketHistoryInt;
+import com.demo.service.TicketsServiceInt;
 
 
 
@@ -34,7 +35,8 @@ public class DeviceReport {
 	private TicketHistoryInt ticketHistoryInt;
 	@Autowired
 	private TicketHistoryDaoInt ticketHistoryDaoInt;
-	
+	@Autowired
+	private TicketsServiceInt ticketsServiceInt;
 	@Autowired
 	private AccessoriesInt accessoryInt;
 	

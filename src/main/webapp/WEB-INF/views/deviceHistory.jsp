@@ -50,10 +50,10 @@
 							</legend>
 							<div class="machinedetailsfloatright ">
 								<div class="orderDetails">
-									<li id="contactName">First & Last Name:<b>${ticketObject.firstName} ${ticketObject.lastName}</b></li>
-									<li id="cell">Cell No: ${ticketObject.contactCellNumber}</li>
-									<li id="telephone">Telephone No: ${ticketObject.contactTelephoneNumber}</li>
-									<li id="email">E-Mail: ${ticketObject.contactEmail}</li>
+									<li id="contactName">First & Last Name:<b>${ticket.firstName} ${ticket.lastName}</b></li>
+									<li id="cell">Cell No: ${ticket.contactCellNumber}</li>
+									<li id="telephone">Telephone No: ${ticket.contactTelephoneNumber}</li>
+									<li id="email">E-Mail: ${ticket.contactEmail}</li>
 								</div>
 								<br>
 							</div>

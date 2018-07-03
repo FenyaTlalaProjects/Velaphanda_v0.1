@@ -115,5 +115,4 @@ public interface TicketsDaoInt {
 	public String takeTicketsForTech(Long recordID);
 	JRDataSource getTicketDetailsDataSource(Long recordID);
 	
-	
 }

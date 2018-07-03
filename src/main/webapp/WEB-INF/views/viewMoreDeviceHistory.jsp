@@ -52,12 +52,10 @@
 										Contact person</legend>
 									<div class="machinedetailsfloatright ">
 										<div class="orderDetails">
-											<li id="contactName">First & Last Name: <b>${device.contactPerson.firstName}
-													${device.contactPerson.lastName}</b></li>
-											<li id="cell">Cell No: ${device.contactPerson.contactCellNumber}</li>
-											<li id="telephone">Telephone No:
-												${device.contactPerson.contactTelephoneNumber}</li>
-											<li id="email">E-Mail: ${device.contactPerson.contactEmail}</li>
+											<li id="contactName">First & Last Name:<b>${ticket.firstName} ${ticket.lastName}</b></li>
+										    <li id="cell">Cell No: ${ticket.contactCellNumber}</li>
+										    <li id="telephone">Telephone No: ${ticket.contactTelephoneNumber}</li>
+											<li id="email">E-Mail: ${ticket.contactEmail}</li>
 										</div>
 										<br>
 									</div>

@@ -175,7 +175,7 @@ public class DeviceController {
 		   model = new ModelAndView();
 		   userName = (Employee) session.getAttribute("loggedInUser");
 			if(userName != null){
-				List<TicketHistory>ticketHistory = ticketHistoryInt.getHistoryByTicketNumber(recordID);
+				List<TicketHistory> ticketHistory = ticketHistoryInt.getHistoryByTicketNumber(recordID);
 				model.addObject("ticket", logTicketService.getLoggedTicketByTicketNumber(recordID));
 				if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")) {	
 					

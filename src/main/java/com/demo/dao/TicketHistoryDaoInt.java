@@ -15,7 +15,6 @@ public interface TicketHistoryDaoInt {
 	List<TicketHistory> getHistoryByTicketNumber(Long ticketNumber);	
 	List<TicketHistory> getAllTicketHistoryByTicketNumber();
 	JRDataSource getDeviceHistoryDataSource(Long recordID);
-	TicketHistory getLoggedTicketsByTicketNumber(Long recordID);
-	TicketHistory getAllTicketHistoryByTicketNumber(Long recordID);
-	
+	Tickets getLoggedTicketsByTicketNumber(Long recordID);
+	List<TicketHistory> getAllTicketHistoryByTicketNumber(Long recordID);
 }

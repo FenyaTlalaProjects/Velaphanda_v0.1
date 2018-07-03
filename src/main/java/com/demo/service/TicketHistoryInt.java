@@ -5,10 +5,12 @@ import java.util.List;
 import net.sf.jasperreports.engine.JRDataSource;
 
 import com.demo.model.TicketHistory;
+import com.demo.model.Tickets;
 
 public interface TicketHistoryInt {
 	List<TicketHistory> getHistoryByTicketNumber(Long ticketNumber);
 
 	JRDataSource getDeviceHistoryDataSource(Long recordID);
-	TicketHistory getLoggedTicketsByTicketNumber(Long ticketNumber);
+	Tickets getLoggedTicketsByTicketNumber(Long ticketNumber);
+	List<TicketHistory> getAllTicketHistoryByTicketNumber(Long recordID);
 }

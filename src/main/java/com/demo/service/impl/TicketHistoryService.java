@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.demo.dao.TicketHistoryDaoInt;
 import com.demo.model.TicketHistory;
+import com.demo.model.Tickets;
 import com.demo.service.TicketHistoryInt;
 
 
@@ -31,9 +32,15 @@ public class TicketHistoryService implements TicketHistoryInt{
 	}
 
 	@Override
-	public TicketHistory getLoggedTicketsByTicketNumber(Long ticketNumber) {
+	public Tickets getLoggedTicketsByTicketNumber(Long ticketNumber) {
 		// TODO Auto-generated method stub
 		return historyDaoInt.getLoggedTicketsByTicketNumber(ticketNumber);
+	}
+
+	@Override
+	public List<TicketHistory> getAllTicketHistoryByTicketNumber(Long recordID) {
+		// TODO Auto-generated method stub
+		return historyDaoInt.getAllTicketHistoryByTicketNumber(recordID);
 	}
 
 }
