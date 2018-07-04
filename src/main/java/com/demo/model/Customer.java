@@ -55,11 +55,15 @@ public class Customer implements Serializable{
 	private String faxNumber;
 	@Column(name="Street_No")
 	private String streetNumber;
+	@Column(name="Quantity")
+	private String quantity;
 	@Column(name="DateTimeClientAdded")
 	//@Temporal(TemporalType.TIMESTAMP)
 	private String dateTime;
-	@Column(name="Quantity")
-	private String quantity;
+	@Column(name="DateTimeClientUpdated")
+	private String timeClientUpdate;	
+	@Column(name="ClientUpdatedBy")
+	private String ClientUpdatedBy;
 	
 	@OneToMany(mappedBy ="customerContactDetails", cascade= CascadeType.ALL,fetch=FetchType.LAZY)
 	private Set<CustomerContactDetails> customerContactDetails;
