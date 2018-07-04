@@ -35,6 +35,13 @@ public class CustomerBean {
 	private String contactCellNumber1;
 	private String contactEmail1;
 	private String contactType1;
+	//updating customer
+	private String clientAddedBy;
+	private String dateTimeClientAdded;
+	private String ClientUpdatedBy;
+	private String timeClientUpdated;
+	private String dateTime;
+	
 	
 	
 }

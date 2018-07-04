@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Builder;
 
 
 @Entity
@@ -26,6 +27,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Customer implements Serializable{
 
 	/**
@@ -59,11 +61,14 @@ public class Customer implements Serializable{
 	private String quantity;
 	@Column(name="DateTimeClientAdded")
 	//@Temporal(TemporalType.TIMESTAMP)
-	private String dateTime;
+	private String dateTimeClientAdded;
 	@Column(name="DateTimeClientUpdated")
-	private String timeClientUpdate;	
+	private String timeClientUpdated;	
 	@Column(name="ClientUpdatedBy")
 	private String ClientUpdatedBy;
+	@Column(name="ClientAddedBy")
+	private String clientAddedBy;
+	
 	
 	@OneToMany(mappedBy ="customerContactDetails", cascade= CascadeType.ALL,fetch=FetchType.LAZY)
 	private Set<CustomerContactDetails> customerContactDetails;

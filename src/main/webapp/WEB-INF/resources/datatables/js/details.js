@@ -36,19 +36,24 @@ $(document).ready(function () {
         
          // `d` is the original data object for the row
          return '<table  border="0">' +
+         	 '<c:forEach var="list" items="${displayCustomers}">'+
+	         '<tr>' +
+	         '<td>Captured By:</td>' +
+	         '<td>' + "${list.clientAddedBy}" + '</td>' +
+	         '</tr>' +
 		     '<tr>' +
-		         '<td>Date Captured:</td>' +
-		         '<td>' + " " + '</td>' +
+		         '<td>DateTime Captured:</td>' +
+		         '<td>' + d.dateTimeClientAdded + '</td>' +
 		     '</tr>' +
              '<tr>' +
                  '<td>Updated By:</td>' +
-                 '<td>' + " " + '</td>' +
+                 '<td>' + d.clientUpdatedBy+ '</td>' +
              '</tr>' +
              '<tr>' +
-                 '<td>Last Date Updated:</td>' +
-                 '<td>' + " " + '</td>' +
+                 '<td>Last DateTime Updated:</td>' +
+                 '<td>' + d.timeClientUpdated + '</td>' +
              '</tr>' +
-            
+            '</c:forEach>'+
          '</table>';  
     }
 
