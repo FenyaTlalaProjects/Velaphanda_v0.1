@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
@@ -20,6 +22,7 @@ import com.demo.dao.CustomerDaoInt;
 import com.demo.dao.CustomerContactDetailsDaoInt;
 import com.demo.model.Customer;
 import com.demo.model.CustomerContactDetails;
+import com.demo.model.Employee;
 import com.demo.reports.initializer.CustomerReportBean;
 import com.demo.service.CustomerContactDetailsServiceInt;
 import com.demo.service.CustomerServiceInt;
@@ -32,7 +35,8 @@ import com.demo.service.DeviceServiceInt;
 
 
 public class CustomerDao implements CustomerDaoInt {
-
+	@Autowired
+	private HttpSession session;
 	@Autowired
 	private SessionFactory sessionFactory;
 	@Autowired
@@ -47,6 +51,7 @@ public class CustomerDao implements CustomerDaoInt {
 	private String retMessage = null;
 	List<Customer> clientList = null;
 	Customer customer = null;
+	Employee userName, emp = null;
 
 	@Override
 	public Customer getClientByClientName(String clientName) {
@@ -55,7 +60,8 @@ public class CustomerDao implements CustomerDaoInt {
 	}
 	SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	Date now = new Date();
-	String timeClientRegistered = sdfDate.format(now);
+	String dateTimeClientAdded = sdfDate.format(now);
+	String dateTimeCleintUpdated = sdfDate.format(now);
 	@Override
 	public String saveCustomer(CustomerBean customerBean) {
 
@@ -66,8 +72,12 @@ public class CustomerDao implements CustomerDaoInt {
 
 			customer = getClientByClientName(customerBean.getCustomerName());
 			if (customer == null) {
-
+				
+				emp = (Employee) session.getAttribute("loggedInUser");
 				// Customer Object
+				
+				//Customer.builder().isActive(true).city_town(customerBean.getCity_town());
+				
 				tempCustomer.setActive(true);
 				tempCustomer.setCity_town(customerBean.getCity_town());
 				tempCustomer.setCustomerName(customerBean.getCustomerName());
@@ -76,11 +86,15 @@ public class CustomerDao implements CustomerDaoInt {
 				tempCustomer.setProvince(customerBean.getProvince());
 				tempCustomer.setStreetName(customerBean.getStreetName());
 				tempCustomer.setStreetNumber(customerBean.getStreetNumber());
-				tempCustomer.setContactEmail(customerBean.getContactEmail());
-				tempCustomer.setDateTime(timeClientRegistered);
-				tempCustomer.setTelephoneNumber(customerBean
-						.getTelephoneNumber());
+				tempCustomer.setContactEmail(customerBean.getContactEmail());				
+				tempCustomer.setTelephoneNumber(customerBean.getTelephoneNumber());				
 				tempCustomer.setZipcode(customerBean.getZipcode());
+				
+				tempCustomer.setDateTimeClientAdded(dateTimeClientAdded);
+				tempCustomer.setClientAddedBy(emp.getFirstName()+" "+emp.getLastName());				
+				tempCustomer.setClientUpdatedBy(customerBean.getClientUpdatedBy());
+				tempCustomer.setTimeClientUpdated(customerBean.getTimeClientUpdated());
+				
 
 				list = new ArrayList<CustomerContactDetails>();
 
@@ -133,7 +147,9 @@ public class CustomerDao implements CustomerDaoInt {
 		CustomerContactDetails contactDetails, contactDetails1 = null;
 		List<CustomerContactDetails> list = null;
 		Customer tempCustomer = new Customer();
-
+		
+		emp = (Employee) session.getAttribute("loggedInUser");
+		
 		try {
 			// Customer Object
 			tempCustomer.setActive(true);
@@ -145,9 +161,13 @@ public class CustomerDao implements CustomerDaoInt {
 			tempCustomer.setStreetName(customerBean.getStreetName());
 			tempCustomer.setStreetNumber(customerBean.getStreetNumber());
 			tempCustomer.setTelephoneNumber(customerBean.getTelephoneNumber());
-			tempCustomer.setContactEmail(customerBean.getContactEmail());
-			tempCustomer.setDateTime(timeClientRegistered);
+			tempCustomer.setContactEmail(customerBean.getContactEmail());			
 			tempCustomer.setZipcode(customerBean.getZipcode());
+			
+			tempCustomer.setClientAddedBy(customerBean.getClientAddedBy());
+			tempCustomer.setDateTimeClientAdded(customerBean.getDateTimeClientAdded());			
+			tempCustomer.setClientUpdatedBy(emp.getFirstName()+" "+emp.getLastName());
+			tempCustomer.setTimeClientUpdated(dateTimeCleintUpdated);
 
 			list = new ArrayList<CustomerContactDetails>();
 
@@ -210,9 +230,14 @@ public class CustomerDao implements CustomerDaoInt {
 			returnCustomerContact.setProvince(customer.getProvince());
 			returnCustomerContact.setStreetName(customer.getStreetName());
 			returnCustomerContact.setStreetNumber(customer.getStreetNumber());
-			returnCustomerContact.setTelephoneNumber(customer
-					.getTelephoneNumber());
+			returnCustomerContact.setTelephoneNumber(customer.getTelephoneNumber());
 			returnCustomerContact.setZipcode(customer.getZipcode());
+			//history for client
+			returnCustomerContact.setClientAddedBy(customer.getClientAddedBy());
+			returnCustomerContact.setDateTimeClientAdded(customer.getDateTimeClientAdded());			
+			returnCustomerContact.setClientUpdatedBy(customer.getClientUpdatedBy());
+			returnCustomerContact.setTimeClientUpdated(customer.getTimeClientUpdated());
+			
 		} catch (Exception ex) {
 
 		}

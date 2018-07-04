@@ -43,6 +43,7 @@
 										<th>Customer</th>
 										<th>Email</th>
 										<th>Tell No</th>
+										
 										<th>Update</th>
 										<th>View Device</th>
 										<th>Add Device</th>
@@ -58,6 +59,7 @@
 												href="viewCustomer?customerName=<c:out value='${list.customerName}'/>"> ${list.customerName}</a></td>
 											<td> ${list.contactEmail}</td>
 											<td> ${list.telephoneNumber}</td>
+											
 											<td><a
 												href="searchCustomer?customerName=<c:out value='${list.customerName}'/>"> Update
 													Customer</a></td>
@@ -67,6 +69,7 @@
 											<td><a
 												href="searchClientforProduct?customerName=<c:out value='${list.customerName}'/>"> Add
 													Device</a></td>
+												
 										</tr>
 									</c:forEach>
 								</tbody>

@@ -108,6 +108,26 @@
 								<br/>								
 								<!--/Contact Person 2 -->
 							</fieldset>
+							
+							
+							<fieldset>
+							<!-- //History Details-->
+								<legend>
+									<b class="optionalFields" style="font-size: 15px;">Customer History</b>
+								</legend>
+								<div class="row">															
+									<div class="col-sm-6">
+										<b>Client Registered By:</b> ${customer.clientAddedBy}<br/>
+										<b>Time Client Registered:</b> ${customer.dateTimeClientAdded}<br/>
+									   	<b>Client Updated By:</b> ${customer.clientUpdatedBy}<br/>
+									    <b>Time Client Updated:</b> ${customer.timeClientUpdated}<br/>
+									   
+								    </div>
+								    											
+								</div>
+								<br/>								
+								<!--/Contact Person 2 -->
+							</fieldset>
 
 						</form:form>
 
