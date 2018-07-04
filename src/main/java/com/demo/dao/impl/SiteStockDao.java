@@ -465,7 +465,7 @@ public class SiteStockDao implements SiteStocDaoInt {
 							toBootStockExst.setDateSparesMoved(dateFormat.format(date));
 							toBootStockExst.setMoveSparesFrom(fromCustomerName);
 							toBootStockExst.setMoveSparesTo(technicianName);
-							toBootStockExst.setTechnicianEmail(emp.getFirstName()+ " "+emp.getLastName());
+							toBootStockExst.setTechnicianEmail(emp.getEmail());
 							toBootStockExst.setTechnicianName(emp.getFirstName()+ " "+emp.getLastName());
 							
 							sessionFactory.getCurrentSession().update(toBootStockExst);
@@ -482,7 +482,7 @@ public class SiteStockDao implements SiteStocDaoInt {
 							bootSite.setMoveSparesTo(technicianName);
 							bootSite.setPartNumber(stock.getPartNumber());
 							bootSite.setQuantity(result);
-							bootSite.setTechnicianEmail(emp.getFirstName()+ " "+emp.getLastName());
+							bootSite.setTechnicianEmail(emp.getEmail());
 							bootSite.setTechnicianName(emp.getFirstName()+ " "+emp.getLastName());
 							sessionFactory.getCurrentSession().save(bootSite);
 						}
@@ -515,7 +515,7 @@ public class SiteStockDao implements SiteStocDaoInt {
 					    if (toBootStockExst !=null){
 					    	int incrQuantityForBoot = toBootStockExst.getQuantity()+result;
 					    	toBootStockExst.setQuantity(incrQuantityForBoot);
-					    	toBootStockExst.setTechnicianEmail(emp.getFirstName()+ " "+emp.getLastName());
+					    	toBootStockExst.setTechnicianEmail(emp.getEmail());
 					    	toBootStockExst.setTechnicianName(emp.getFirstName()+ " "+emp.getLastName());
 					    	toBootStockExst.setMoveSparesFrom(fromCustomerName);
 					    	toBootStockExst.setMoveSparesTo(technicianName);
@@ -535,7 +535,7 @@ public class SiteStockDao implements SiteStocDaoInt {
 							bootSite.setMoveSparesTo(technicianName);
 							bootSite.setPartNumber(bootStock.getPartNumber());
 							bootSite.setQuantity(result);
-							bootSite.setTechnicianEmail(emp.getFirstName()+ " "+emp.getLastName());
+							bootSite.setTechnicianEmail(emp.getEmail());
 							bootSite.setTechnicianName(emp.getFirstName()+ " "+emp.getLastName());
 							sessionFactory.getCurrentSession().save(bootSite);
 					    }

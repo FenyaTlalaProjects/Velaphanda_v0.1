@@ -153,7 +153,7 @@ public class TicketHistoryDao implements TicketHistoryDaoInt{
 			for(TicketHistory tickHistory:ticketsHistory){            	            	
             	            	
             	ticketBean.setTicketNo("VTC000"+tickHistory.getTicketNo());
-            	//ticketBean.setDate(tickHistory.getTickets().getDateTime())            	
+            	ticketBean.setDate(tickHistory.getTickets().getDateTime());           	
             	ticketBean.setStatus(tickHistory.getStatus());
             	ticketBean.setActionTaken(tickHistory.getActionTaken());
             	ticketBean.setAssignedTo(tickHistory.getEmployee().getFirstName() +" "+tickHistory.getEmployee().getLastName());

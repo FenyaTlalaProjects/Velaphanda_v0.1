@@ -185,7 +185,7 @@
 								<input type="hidden" id="fromCustomerName" name="fromCustomerName"
 									class="form-control" value="${customerName}" />
 								<input type="hidden" id="fromTechnicianName" name="fromTechnicianName"
-									class="form-control" value="${technician}" />
+									class="form-control" value="${technicianName.email}" />
 
 								<!-- part Number and Quantity Entered -->
 								<input type="hidden" id="quantityList" name="quantityList"
@@ -317,8 +317,8 @@
 																				<c:forEach items="${technicianList}"
 																					var="technician">
 																					<option value="${technician.email}">${technician.firstName}
-																						${technician.lastName}</option>
-
+																						${technician.lastName}</option> 
+																						
 																				</c:forEach>
 
 																			</select>

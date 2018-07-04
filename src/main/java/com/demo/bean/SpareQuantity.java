@@ -14,5 +14,5 @@ public class SpareQuantity {
 	private int tonerQuantity;
 	private int partQuanty;
 	private String techName;
-
+	
 }
