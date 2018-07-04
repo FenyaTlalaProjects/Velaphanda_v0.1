@@ -13,5 +13,6 @@ public class SpareQuantity {
 	private String customerName;
 	private int tonerQuantity;
 	private int partQuanty;
+	private String techName;
 
 }

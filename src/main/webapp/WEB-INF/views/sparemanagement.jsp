@@ -204,7 +204,7 @@
 											<c:choose>
 												<c:when test="${list.tonerQuantity > 0 || list.partQuanty > 0}">													
 													<tr>											
-														<td><a href="loadBootStock?technician=<c:out value='${list.customerName}'/>">${list.customerName}</a></td>												
+														<td><a href="loadBootStock?technician=<c:out value='${list.customerName}'/>">${list.techName}</a></td>												
 														<td>${list.partQuanty}</td>
 														<td>${list.tonerQuantity}</td>											
 													</tr>

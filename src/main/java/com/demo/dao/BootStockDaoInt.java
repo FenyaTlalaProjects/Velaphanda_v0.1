@@ -22,5 +22,6 @@ public interface BootStockDaoInt {
 	List<BootStock> getTonerForTechnician(String technicianName);
 	List<BootStock> getAllBootStock();
 	List<BootStock> getAllBootStockByTechnician(String technicianName);
+	String getTechName(String techEmail);
 
 }

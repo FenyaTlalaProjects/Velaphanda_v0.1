@@ -12,8 +12,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.dao.BootStockDaoInt;
+import com.demo.dao.EmployeeDaoInt;
 import com.demo.dao.TicketsDaoInt;
 import com.demo.model.BootStock;
+import com.demo.model.Employee;
 import com.demo.model.OrderDetails;
 import com.demo.model.Tickets;
 
@@ -28,10 +30,14 @@ public class BootSiteDao implements BootStockDaoInt{
 	@Autowired
 	private TicketsDaoInt ticketsDaoInt;
 	
+	@Autowired
+	private EmployeeDaoInt employeeDaoInt;
+	
 	private BootStock bootStock;
 	List<BootStock> bootStockList = null;
 	List<BootStock> bootStocks = null;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<BootStock> getAllBootStock() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
@@ -56,7 +62,7 @@ public class BootSiteDao implements BootStockDaoInt{
 	@Override
 	public void saveBootStock(List<OrderDetails> detailsDaos) {
 		try{
-			
+			System.err.println("Testing some s**t");
 			for(OrderDetails stock:detailsDaos){
 				bootStock = getSelectedBootStock(stock.getPartNumber());
 					if(bootStock !=null && stock.getPartNumber().equalsIgnoreCase(bootStock.getPartNumber()) && bootStock.getTechnicianEmail().equalsIgnoreCase(stock.getTechnician())){
@@ -66,13 +72,14 @@ public class BootSiteDao implements BootStockDaoInt{
 						bootStock.setColor(stock.getColor());
 						sessionFactory.getCurrentSession().update(bootStock);
 					}else{
+						
 						bootStock = new BootStock();
 						bootStock.setItemDescription(stock.getItemDescription());
 						bootStock.setItemType(stock.getItemType());
 						bootStock.setPartNumber(stock.getPartNumber());
 						bootStock.setQuantity(stock.getQuantity());
 						bootStock.setTechnicianEmail(stock.getTechnician());
-						bootStock.setTechnicianName(stock.getTechnician());
+						bootStock.setTechnicianName(stock.getOrderHeader().getEmployee().getFirstName()+" "+stock.getOrderHeader().getEmployee().getLastName());
 						bootStock.setCompatibleDevice(stock.getCompatibleDevice());
 						bootStock.setModelBrand(stock.getModelBrand());
 						bootStock.setColor(stock.getColor());
@@ -99,8 +106,8 @@ public class BootSiteDao implements BootStockDaoInt{
 		try{
 			bootStocks = getAllOrders();
 			 for(BootStock boot:bootStocks){
-				 String name = boot.getTechnicianName();
-				 if(name.equalsIgnoreCase(technician)&& boot.getQuantity()>0){
+				 String techEmail = boot.getTechnicianEmail();
+				 if(techEmail.equalsIgnoreCase(technician)&& boot.getQuantity()>0){
 					 bootStockList.add(boot);
 				 }
 			 }
@@ -157,6 +164,7 @@ public class BootSiteDao implements BootStockDaoInt{
 			for(BootStock tempStock:boot){
 				if(tempStock.getPartNumber().equalsIgnoreCase(partNumber)){
 					localStock= tempStock;
+					break;
 				}
 			}
 		}catch(Exception e){
@@ -202,11 +210,8 @@ public class BootSiteDao implements BootStockDaoInt{
 	public List<BootStock> getAllBootStockByTechnician(String technicianName) {
  		List<BootStock> currentList = new ArrayList<BootStock>();
  		List<BootStock> tempBootList = new ArrayList<BootStock>();
-		int bootCount = 0;
 		try{
 			currentList = getAllBootStock();
-			System.err.println("The technicianName is " + technicianName);
-			System.err.println("The count is new " + getAllBootStock().size());
 			for(BootStock stock:tempBootList){
 				if(stock.getTechnicianEmail().equalsIgnoreCase(technicianName)){
 					currentList.add(stock);
@@ -222,7 +227,6 @@ public class BootSiteDao implements BootStockDaoInt{
 	@Override
 	public List<BootStock> getPartsForTechnician(String technicianName) {
  		List<BootStock> currentList = new ArrayList<BootStock>();
-		int bootCount = 0;
 		try{
 			List<BootStock> tempBootList = getAllBootStock();
 			for(BootStock stock:tempBootList){
@@ -257,7 +261,6 @@ public class BootSiteDao implements BootStockDaoInt{
 	@Override
 	public List<BootStock> getTonerForTechnician(String technicianName) {
  		List<BootStock> currentList = new ArrayList<BootStock>();
-		int bootCount = 0;
 		try{
 			List<BootStock> tempBootList = getAllBootStock();
 			for(BootStock stock:tempBootList){
@@ -286,5 +289,17 @@ public class BootSiteDao implements BootStockDaoInt{
 			e.getMessage();
 		}
 		return bootCount;
+	}
+	@Override
+	public String getTechName(String techEmail) {
+		String techName = null;
+		try{
+			Employee emp = employeeDaoInt.getEmployeeByEmpNum(techEmail);
+			techName = emp.getFirstName() +" " + emp.getLastName();
+			
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return techName;
 	}
 }

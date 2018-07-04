@@ -354,7 +354,7 @@ public class OrderDao implements OrdersDaoInt {
   						orderDetails.setTechnician(orderBean.getTechnician());
   					}
   					else{
-  						orderDetails.setTechnician(emp.getFirstName()+" " +emp.getLastName());
+  						orderDetails.setTechnician(emp.getEmail());
   					}
   					
   					orderDetails.setOrderHeader(cusOrder);

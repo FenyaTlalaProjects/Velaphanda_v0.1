@@ -196,6 +196,7 @@ public class SiteStockDao implements SiteStocDaoInt {
 		for(SiteStock stock:siteStock){
 			if(stock.getPartNumber().equalsIgnoreCase(partNumber)){
 				localtemp=stock;
+				break;
 			}
 		}
 		return localtemp;
@@ -454,21 +455,37 @@ public class SiteStockDao implements SiteStocDaoInt {
 						
 						retMessage = "Spares successfully  moved to "+ customerName +" Site" ;
 					}else if(reasonForBoot.length()>3){
+						BootStock toBootStockExst = bootStockDaoInt.getBootStock(tempPartNumber, technicianName);
 						
-						bootSite.setCompatibleDevice(stock.getCompatibleDevice());
-						bootSite.setColor(stock.getColor());
-						bootSite.setModelBrand(stock.getModelBrand());
-						bootSite.setReasonForMovement(reasonForBoot);
-						bootSite.setDateSparesMoved(dateFormat.format(date));
-						bootSite.setItemDescription(stock.getItemDescription());
-						bootSite.setItemType(stock.getItemType());
-						bootSite.setMoveSparesFrom(fromCustomerName);
-						bootSite.setMoveSparesTo(technicianName);
-						bootSite.setPartNumber(stock.getPartNumber());
-						bootSite.setQuantity(result);
-						bootSite.setTechnicianEmail(emp.getFirstName()+ " "+emp.getLastName());
-						bootSite.setTechnicianName(emp.getFirstName()+ " "+emp.getLastName());
-						sessionFactory.getCurrentSession().saveOrUpdate(bootSite);
+						if(toBootStockExst != null){
+							
+							int bootQuantityExist = toBootStockExst.getQuantity()+result;
+							toBootStockExst.setQuantity(bootQuantityExist);
+							toBootStockExst.setReasonForMovement(reasonForBoot);
+							toBootStockExst.setDateSparesMoved(dateFormat.format(date));
+							toBootStockExst.setMoveSparesFrom(fromCustomerName);
+							toBootStockExst.setMoveSparesTo(technicianName);
+							toBootStockExst.setTechnicianEmail(emp.getFirstName()+ " "+emp.getLastName());
+							toBootStockExst.setTechnicianName(emp.getFirstName()+ " "+emp.getLastName());
+							
+							sessionFactory.getCurrentSession().update(toBootStockExst);
+							
+						}else{
+							bootSite.setCompatibleDevice(stock.getCompatibleDevice());
+							bootSite.setColor(stock.getColor());
+							bootSite.setModelBrand(stock.getModelBrand());
+							bootSite.setReasonForMovement(reasonForBoot);
+							bootSite.setDateSparesMoved(dateFormat.format(date));
+							bootSite.setItemDescription(stock.getItemDescription());
+							bootSite.setItemType(stock.getItemType());
+							bootSite.setMoveSparesFrom(fromCustomerName);
+							bootSite.setMoveSparesTo(technicianName);
+							bootSite.setPartNumber(stock.getPartNumber());
+							bootSite.setQuantity(result);
+							bootSite.setTechnicianEmail(emp.getFirstName()+ " "+emp.getLastName());
+							bootSite.setTechnicianName(emp.getFirstName()+ " "+emp.getLastName());
+							sessionFactory.getCurrentSession().save(bootSite);
+						}
 						
 						retMessage = "Spares successfully  moved to "+ emp.getFirstName()+ " "+emp.getLastName();
 						

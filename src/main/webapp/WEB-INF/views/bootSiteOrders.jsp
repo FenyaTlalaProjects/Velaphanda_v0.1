@@ -77,7 +77,7 @@
 						<div class="tab-content">
 
 							<div class="col-sm-6">
-								<b>Technician Name:${technician}</b>
+								<b>Technician Name:${technicianName.firstName} ${technicianName.lastName}</b>
 							</div>
 								<form:form method="post" class="well form-horizontal"
 								action="moveSpares" modelAttribute="moveSpares" id="moveSpares">

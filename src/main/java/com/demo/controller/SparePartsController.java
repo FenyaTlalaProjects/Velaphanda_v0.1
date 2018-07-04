@@ -55,7 +55,7 @@ public class SparePartsController {
 	private TicketsServiceInt ticketsServiceInt;
 	private String retMessage = null;
 	private ModelAndView model = null;
-	private Employee userName = null;
+	private Employee userName,technicianName = null;
 	public String[] getSerials = null;
 	private SpareMaster master;
 	private String globalTechnicianName = null;
@@ -292,6 +292,7 @@ public class SparePartsController {
 			model.addObject("countTonerForTech",bootStock.countTonerForTechnician(globalTechnicianName));
 			model.addObject("orders",bootStock.getAllOrders(technician));
 			model.addObject("technician",technician);
+			model.addObject("technicianName", employeeService.getEmployeeByEmpNumber(technician));
 			model.addObject("customerList",customerServiceInt.getClientList());
 			model.addObject("technicianList",employeeServiceInt.getAllTechnicians());
 			model.setViewName("bootSiteOrders");

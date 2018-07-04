@@ -1,11 +1,8 @@
 package com.demo.dao.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -71,9 +68,10 @@ public class SpareQuantityDao implements SpareQuantityDaoInt{
 		List<BootStock> tempSiteStock = bootStockDaoInt.getAllBootStock();
 		List<String> tecniciansNames = new ArrayList<String>();
 		temptQuanity = new ArrayList<SpareQuantity>();
-		
+		String technicianName =null;
 		for(BootStock stock: tempSiteStock){
-			tecniciansNames.add(stock.getTechnicianName());
+			tecniciansNames.add(stock.getTechnicianEmail());
+			technicianName = stock.getTechnicianName();
 		}
 		HashSet<String> hashset = new HashSet<String>();
 		   
@@ -91,6 +89,8 @@ public class SpareQuantityDao implements SpareQuantityDaoInt{
 			spareQuantity.setCustomerName(techName);
 			spareQuantity.setPartQuanty(bootStockDaoInt.countPartsForTechnician(techName));
 			spareQuantity.setTonerQuantity(bootStockDaoInt.countTonerForTechnician(techName));
+			spareQuantity.setTechName(technicianName);
+			
 			
 			temptQuanity.add(spareQuantity);
 		}
@@ -109,6 +109,7 @@ public class SpareQuantityDao implements SpareQuantityDaoInt{
 				tecniciansNames.add(stock.getTechnicianName());
 			}
 		}
+		
 		HashSet<String> hashset = new HashSet<String>();
 		   
 	    hashset.addAll(tecniciansNames);
@@ -124,6 +125,7 @@ public class SpareQuantityDao implements SpareQuantityDaoInt{
 			spareQuantity.setCustomerName(str);
 			spareQuantity.setPartQuanty(bootStockDaoInt.countPartsForTechnician(str));
 			spareQuantity.setTonerQuantity(bootStockDaoInt.countTonerForTechnician(str));
+			spareQuantity.setTechName(bootStockDaoInt.getTechName(str));
 			temptQuanity.add(spareQuantity);
 			
 		}
