@@ -11,9 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.bean.SpareQuantity;
 import com.demo.dao.BootStockDaoInt;
+import com.demo.dao.EmployeeDaoInt;
 import com.demo.dao.SiteStocDaoInt;
 import com.demo.dao.SpareQuantityDaoInt;
 import com.demo.model.BootStock;
+import com.demo.model.Employee;
 import com.demo.model.SiteStock;
 
 @Repository("spareQuantityDao")
@@ -24,7 +26,10 @@ public class SpareQuantityDao implements SpareQuantityDaoInt{
 	private SiteStocDaoInt siteStockInt;
 	@Autowired
 	private BootStockDaoInt bootStockDaoInt;
+	@Autowired
+	private EmployeeDaoInt employeeDaoInt;
 	
+	private Employee emp = null;
 	private SpareQuantity spareQuantity;
 	
 	@Override
@@ -65,31 +70,32 @@ public class SpareQuantityDao implements SpareQuantityDaoInt{
 	public List<SpareQuantity> spareQuantityForTechnicians() {
 		
 		List<SpareQuantity> temptQuanity = null;
-		List<BootStock> tempSiteStock = bootStockDaoInt.getAllBootStock();
-		List<String> tecniciansNames = new ArrayList<String>();
+		List<BootStock> tempSiteStock = bootStockDaoInt.getAllOrdersWithoutZeros();
+		List<String> techEmailsEmails = new ArrayList<String>();
 		temptQuanity = new ArrayList<SpareQuantity>();
-		String technicianName =null;
+		//String [] techNamesArray = new String[tempSiteStock.size()];
 		for(BootStock stock: tempSiteStock){
-			tecniciansNames.add(stock.getTechnicianEmail());
-			technicianName = stock.getTechnicianName();
+			techEmailsEmails.add(stock.getTechnicianEmail());
 		}
 		HashSet<String> hashset = new HashSet<String>();
+		HashSet<String> hashsetNames = new HashSet<String>();
 		   
-	    hashset.addAll(tecniciansNames);
+	    hashset.addAll(techEmailsEmails);
 	 
 	    // Removing ArrayList elements
-	    tecniciansNames.clear();
+	    techEmailsEmails.clear();
+	    hashsetNames.clear();
 	 
 	    // Adding LinkedHashSet elements to the ArrayList
-	    tecniciansNames.addAll(hashset );
-		
-		for(String techName:tecniciansNames){
-			
+	    techEmailsEmails.addAll(hashset );
+	
+		for(String techName:techEmailsEmails){
+			emp = employeeDaoInt.getEmployeeByEmpNum(techName);
 			spareQuantity = new SpareQuantity();
 			spareQuantity.setCustomerName(techName);
 			spareQuantity.setPartQuanty(bootStockDaoInt.countPartsForTechnician(techName));
 			spareQuantity.setTonerQuantity(bootStockDaoInt.countTonerForTechnician(techName));
-			spareQuantity.setTechName(technicianName);
+			spareQuantity.setTechName(emp.getFirstName()+" "+ emp.getLastName());
 			
 			
 			temptQuanity.add(spareQuantity);

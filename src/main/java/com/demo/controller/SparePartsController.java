@@ -2,6 +2,8 @@ package com.demo.controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.bean.SparePartsBean;
+import com.demo.bean.SpareQuantity;
 import com.demo.model.Employee;
 import com.demo.model.HOStock;
 import com.demo.model.SpareMaster;

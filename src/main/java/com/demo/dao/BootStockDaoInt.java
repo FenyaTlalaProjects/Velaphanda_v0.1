@@ -23,5 +23,5 @@ public interface BootStockDaoInt {
 	List<BootStock> getAllBootStock();
 	List<BootStock> getAllBootStockByTechnician(String technicianName);
 	String getTechName(String techEmail);
-
+	List<BootStock> getAllOrdersWithoutZeros();
 }

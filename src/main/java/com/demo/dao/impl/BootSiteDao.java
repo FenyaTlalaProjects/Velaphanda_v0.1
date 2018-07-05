@@ -302,4 +302,19 @@ public class BootSiteDao implements BootStockDaoInt{
 		}
 		return techName;
 	}
+	@Override
+	public List<BootStock> getAllOrdersWithoutZeros() {
+		bootStockList = getAllBootStock();
+		try{
+			bootStocks = new ArrayList<BootStock>();
+			for(BootStock stock:bootStockList){
+				if(stock.getQuantity()>0){
+					bootStocks.add(stock);
+				}
+			}
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return bootStocks;
+	}
 }
