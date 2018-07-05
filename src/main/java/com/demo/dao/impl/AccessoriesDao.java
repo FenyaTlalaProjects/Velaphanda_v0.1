@@ -43,6 +43,7 @@ public class AccessoriesDao implements AccessoriesDaoInt {
 	String timeDeviceAccessAdded = sdfDate.format(now);
 	private String retMessage = null;
 
+	
 	@Override
 	public String saveAccessories(List<Accessories> accessories) {
 
