@@ -104,7 +104,7 @@ TEL: 012 765 0200/087 701 1689 FAX: 086 403 7955
 E-MAIL: sales@velaphanda.co.za]]></text>
 			</staticText>
 			<frame>
-				<reportElement mode="Opaque" x="590" y="20" width="219" height="21" forecolor="#BDBAB7" backcolor="#DEDBD5"/>
+				<reportElement mode="Opaque" x="580" y="22" width="219" height="21" forecolor="#BDBAB7" backcolor="#DEDBD5"/>
 				<staticText>
 					<reportElement x="50" y="3" width="130" height="15"/>
 					<textElement textAlignment="Center">

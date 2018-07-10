@@ -482,6 +482,8 @@ public class SiteStockDao implements SiteStocDaoInt {
 							bootSite.setMoveSparesTo(technicianName);
 							bootSite.setPartNumber(stock.getPartNumber());
 							bootSite.setQuantity(result);
+							
+							
 							bootSite.setTechnicianEmail(emp.getEmail());
 							bootSite.setTechnicianName(emp.getFirstName()+ " "+emp.getLastName());
 							sessionFactory.getCurrentSession().save(bootSite);

@@ -39,7 +39,7 @@ $(document).ready(function () {
          	 '<c:forEach var="list" items="${displayCustomers}">'+
 	         '<tr>' +
 	         '<td>Captured By:</td>' +
-	         '<td>' + "${list.clientAddedBy}" + '</td>' +
+	         '<td>' + d.clientAddedBy + '</td>' +
 	         '</tr>' +
 		     '<tr>' +
 		         '<td>DateTime Captured:</td>' +

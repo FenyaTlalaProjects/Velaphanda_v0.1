@@ -53,7 +53,7 @@
 		<band height="220" splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="282" splitType="Stretch">
+		<band height="350" splitType="Stretch">
 			<staticText>
 				<reportElement style="Title" x="300" y="90" width="180" height="40"/>
 				<textElement>
@@ -219,7 +219,7 @@
 				<text><![CDATA[Description]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="612" y="247" width="184" height="35">
+				<reportElement x="612" y="247" width="184" height="103">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
