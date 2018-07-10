@@ -55,192 +55,192 @@
 	<title>
 		<band height="350" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="300" y="90" width="180" height="40"/>
+				<reportElement style="Title" x="300" y="90" width="200" height="40"/>
 				<textElement>
 					<font size="30" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Ticket Details]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="48" y="165" width="146" height="13">
+				<reportElement x="44" y="155" width="146" height="13">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{serialNumber}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="178" width="106" height="13">
+				<reportElement x="75" y="168" width="106" height="13">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA[$F{modelNumber}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="612" y="165" width="80" height="13"/>
+				<reportElement x="608" y="155" width="80" height="13"/>
 				<text><![CDATA[Cutomer Name:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="2" y="165" width="46" height="13"/>
+				<reportElement x="-2" y="155" width="46" height="13"/>
 				<text><![CDATA[Serial No:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="2" y="178" width="76" height="13"/>
+				<reportElement x="-2" y="168" width="76" height="13"/>
 				<text><![CDATA[Model Number:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="692" y="165" width="99" height="13">
+				<reportElement x="688" y="155" width="99" height="13">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="2" y="147" width="86" height="13"/>
+				<reportElement x="-2" y="137" width="86" height="13"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Device]]></text>
+				<text><![CDATA[Device Detials]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="80" y="191" width="120" height="13"/>
+				<reportElement x="76" y="181" width="120" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{modelBrand}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="2" y="160" width="197" height="1"/>
+				<reportElement x="-2" y="150" width="197" height="1"/>
 			</line>
 			<staticText>
-				<reportElement x="2" y="191" width="76" height="13"/>
+				<reportElement x="-2" y="181" width="76" height="13"/>
 				<text><![CDATA[Device Brand:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="389" y="165" width="181" height="13">
+				<reportElement x="385" y="155" width="181" height="13">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{ticketContactPersonFirstLastName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="340" y="178" width="178" height="13">
+				<reportElement x="336" y="168" width="178" height="13">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA[$F{ticketContactPersonCellphone}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="304" y="165" width="85" height="13"/>
+				<reportElement x="300" y="155" width="85" height="13"/>
 				<text><![CDATA[First & Last Name:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="304" y="178" width="38" height="13"/>
+				<reportElement x="300" y="168" width="38" height="13"/>
 				<text><![CDATA[Cell No:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="304" y="147" width="86" height="13"/>
+				<reportElement x="300" y="137" width="86" height="13"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Ticket Contact]]></text>
+				<text><![CDATA[Contact Person]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="372" y="191" width="183" height="13"/>
+				<reportElement x="368" y="181" width="183" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{ticketContactPersonTellphone}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="304" y="160" width="226" height="1"/>
+				<reportElement x="300" y="150" width="226" height="1"/>
 			</line>
 			<staticText>
-				<reportElement x="304" y="191" width="68" height="13"/>
+				<reportElement x="300" y="181" width="68" height="13"/>
 				<text><![CDATA[Telephone No: ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="304" y="204" width="36" height="13"/>
+				<reportElement x="300" y="194" width="36" height="13"/>
 				<text><![CDATA[Email: ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="335" y="204" width="188" height="13"/>
+				<reportElement x="331" y="194" width="188" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{ticketcontactPersonEmail}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="2" y="217" width="86" height="13"/>
+				<reportElement x="-2" y="207" width="86" height="13"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Location]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="2" y="260" width="93" height="13"/>
+				<reportElement x="-2" y="250" width="93" height="13"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{zipcode}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="612" y="147" width="78" height="13"/>
+				<reportElement x="608" y="137" width="158" height="13"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Ticket]]></text>
+				<text><![CDATA[Customer Infomartion]]></text>
 			</staticText>
 			<line>
-				<reportElement x="612" y="160" width="184" height="1"/>
+				<reportElement x="608" y="150" width="184" height="1"/>
 			</line>
 			<staticText>
-				<reportElement x="612" y="178" width="38" height="13"/>
+				<reportElement x="608" y="168" width="38" height="13"/>
 				<text><![CDATA[Status:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="612" y="191" width="28" height="13"/>
+				<reportElement x="608" y="181" width="28" height="13"/>
 				<text><![CDATA[Date:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="612" y="204" width="60" height="13"/>
+				<reportElement x="608" y="194" width="60" height="13"/>
 				<text><![CDATA[Assigned To:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="640" y="191" width="111" height="13">
+				<reportElement x="636" y="181" width="111" height="13">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="650" y="178" width="70" height="13">
+				<reportElement x="646" y="168" width="70" height="13">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="612" y="230" width="78" height="13"/>
+				<reportElement x="608" y="220" width="78" height="13"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Description]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="612" y="247" width="184" height="103">
+				<reportElement x="608" y="237" width="184" height="83">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="672" y="204" width="124" height="13">
+				<reportElement x="668" y="194" width="124" height="13">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{assignedTo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="230" width="198" height="15">
+				<reportElement x="-2" y="220" width="198" height="15">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="1" y="247" width="180" height="13">
+				<reportElement x="-3" y="237" width="180" height="13">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Top"/>
@@ -289,17 +289,6 @@ Bronberrik
 			</line>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="50" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="26" width="70" height="20"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Ticket Info]]></text>
-			</staticText>
-		</band>
-	</pageHeader>
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<line>
