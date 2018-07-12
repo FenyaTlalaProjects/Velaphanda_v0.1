@@ -66,7 +66,7 @@ public class DeviceReportBean {
 	
 	private String accessoryType;
 	private String accessory;
-	
+	private String accessotyType;
 	private String deviceContactPersonFirstLastName;
 	private String deviceContactPersonCellphone;
 	private String deviceContactPersonTellphone;
@@ -78,6 +78,8 @@ public class DeviceReportBean {
 	private String ticketContactPersonCellphone;
 	private String ticketContactPersonTellphone;
 	private String ticketcontactPersonEmail;
+	
+	private String contactPersonFirstAndLastName;
 	
 	
 }

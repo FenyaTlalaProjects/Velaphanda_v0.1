@@ -46,8 +46,7 @@
 						<div class="col-sm-4">
 							<b>Customer Name: </b>${ticket.device.customerDevice.customerName}</div>
 							
-								<div class="col-sm-6"><br/>
-						
+								<div class="col-sm-6"><br/>						
 									<legend style="font-size: 14px; line-height: 1.42857143;">
 										Contact person</legend>
 									<div class="machinedetailsfloatright ">
@@ -59,8 +58,18 @@
 										</div>
 										<br>
 									</div>
+								</div>								
+								<div class="col-sm-6"><br/>						
+									<legend style="font-size: 14px; line-height: 1.42857143;">
+										Problem Description</legend>
+									<div class="machinedetailsfloatright ">
+										${ticket.description}
+									<br>
+									</div>
 								</div>
 						<br />
+						<br />	<br />
+						<br />	<br />
 						<br />
 						<!-- table tckHistory -->
 						<table id="deviceHistory" data-toggle="table"
@@ -82,7 +91,7 @@
 										Reading</th>
 									<th data-field="monoreading" data-sortable="true">Mono
 										Reading</th>
-									<th data-field="description" data-sortable="true">Description</th> 
+									<!-- <th data-field="description" data-sortable="true">Description</th>  -->
 									<th data-field="comments" data-sortable="true">Comments</th>
 								</tr>
 							</thead>
@@ -130,7 +139,7 @@
 										<td><c:out value="${ticket.employee.firstName} ${ticket.employee.lastName}" /></td>
 										<td><c:out value="${ticket.colourReading }" /></td>
 										<td><c:out value="${ticket.monoReading }" /></td>
-										<td><c:out value="${ticket.description}" /></td>
+										<%-- <td><c:out value="${ticket.description}" /></td> --%>
 										<td><c:out value="${ticket.comment}" /></td>
 									</tr>
 								</c:forEach>

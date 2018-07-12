@@ -111,8 +111,8 @@
 												<c:when test="${list.quantity > 0}">											
 											
 												<tr>
-												<td><a href="#" name="moveSparesSubmit" data-toggle="modal"
-											data-target="#historyDetails">${list.partNumber}</a></td>
+												<td><!-- <a href="#" name="moveSparesSubmit" data-toggle="modal"
+											data-target="#historyDetails"> -->${list.partNumber}<!-- </a> --></td>
 												<td>${list.compatibleDevice}</td>
 												<td>${list.customerName}</td>
 												<td>${list.modelBrand}</td>
@@ -402,11 +402,10 @@
 								<!-- /.modal moveParts-->
 								
 								
-								
-								
-									<!-- Movement History Details -->
-								
-								<div id="historyDetails" class="modal fade" role="dialog" aria-hidden="true">
+								<!-- Movement History Details -->
+
+								<div id="historyDetails" class="modal fade" role="dialog"
+									aria-hidden="true">
 									<div class="modal-dialog modal-lg">
 
 										<div class="modal-content">
@@ -421,36 +420,46 @@
 
 												<div class="well form-horizontal">
 													<div class="row">
-														<div class="col-sm-6">
-																			
-																<div id="customerDeviceContainer"
-																	style="width: auto; display: table;">
-																	<div class="customerDeviceAddressTitle">
-																		<p class="customerAddressTitle">Date Moved:</p>
-																		<ul class="addressDeviceList" style="display: block;">
-																					
-																		</ul>
-																		<p class="customerAddressTitle">Moved From:</p>
-																		<ul class="addressDeviceList" style="display: block;">
-																					
-																		</ul>
-																		
-																		<p class="customerAddressTitle">Moved To:</p>
-																		<ul class="addressDeviceList" style="display: block;">
-																					
-																		</ul>
-																		<p class="customerAddressTitle">Moved By:</p>
-																		<ul class="addressDeviceList" style="display: block;">
-																					
-																		</ul>
-																		<p class="customerAddressTitle">Quantity Moved:</p>
-																		<ul class="addressDeviceList" style="display: block;">
-																					
-																		</ul>
-																	</div>										
-																			</div>
-										
-														</div>
+														<table data-toggle="table" data-url=""
+															data-show-refresh="true" data-show-toggle="true"
+															data-search="true" data-select-item-name="toolbar1"
+															data-pagination="true" data-sort-name="customername"
+															data-sort-order="aesc">
+															<thead>
+																<tr>
+																	<!-- <th></th> -->
+																	<th data-field="dateTimeMoved" data-sortable="true">Date
+																		& Time Moved</th>
+																	<th data-field="novedFrom" data-sortable="true">Moved
+																		From</th>
+																	<th data-field="movedTo" data-sortable="true">Moved
+																		To</th>
+																	<th data-field="movedBy" data-sortable="true">Moved
+																		By</th>
+																	<th data-field="quantityMoved" data-sortable="true">Quantity
+																		Moved</th>
+																	<th data-field="ReasonWhyMoved" data-sortable="true">Reason
+																		Why Moved</th>
+																</tr>
+															</thead>
+
+															<tbody>
+																<!-- Iterating over the list sent from Controller -->
+																<c:forEach var="list" items="">
+																	<tr>
+																		<!-- <td class="details-control"></td> -->
+																		<td></td>
+																		<td></td>
+																		<td></td>
+																		<td></td>
+																		<td></td>
+																		<td></td>
+
+																	</tr>
+																</c:forEach>
+															</tbody>
+														</table>
+
 													</div>
 
 												</div>

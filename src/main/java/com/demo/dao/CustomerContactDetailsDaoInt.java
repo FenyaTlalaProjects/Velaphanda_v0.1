@@ -14,4 +14,5 @@ public interface CustomerContactDetailsDaoInt {
 	List<CustomerContactDetails> contacts();
 	CustomerContactDetails getContactPerson(String customerName);
 	JRDataSource getCustomerContactDetailsDataSource(String customerName);
+	
 }

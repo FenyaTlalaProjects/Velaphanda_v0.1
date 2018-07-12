@@ -38,6 +38,7 @@ import com.demo.model.Employee;
 import com.demo.model.Device;
 import com.demo.model.OrderHeader;
 import com.demo.model.SiteStock;
+import com.demo.model.TicketHistory;
 import com.demo.model.Tickets;
 import com.demo.reports.initializer.TicketReportBean;
 
@@ -4439,51 +4440,117 @@ public class TicketsDao implements TicketsDaoInt {
 		}
 		return aList;
 	}
-	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<TicketHistory> getAllTicketHistoryByTicketNumber() {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+				TicketHistory.class);
+		return (List<TicketHistory>) criteria.list();	
+	}
 
 	
+	@Override
+	public List<TicketHistory>  getAllTicketHistoryByTicketNumber(Long recordID) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+				TicketHistory.class);
+		return (List<TicketHistory>) criteria.list();
+	}
+
+	@Override
+	public List<TicketHistory> getHistoryByTicketNumber(Long ticketNumber) {
+		
+		List<TicketHistory> newList = null;
+		try{
+			
+			List<TicketHistory> list = getAllTicketHistoryByTicketNumber();
+			newList = new ArrayList<TicketHistory>();
+			for(TicketHistory ticketHistory:list){
+				if(ticketHistory.getTicketNo().equals(ticketNumber)){
+					newList.add(ticketHistory);
+				}
+			}
+			
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return newList;
+	}
 	@Override
 	public JRDataSource getTicketDetailsDataSource(Long recordID) {
 		JRDataSource ds = null;
 		List<TicketReportBean> result = new ArrayList<TicketReportBean>();
 		try{
 			ticket = getLoggedTicketsByTicketNumber(recordID);
-			TicketReportBean ticketBean = new TicketReportBean();
-					
+			List<TicketHistory> ticketsHistory = getHistoryByTicketNumber(recordID);
+			
+			
+			for(TicketHistory tickHistory:ticketsHistory){
 				
-			ticketBean.setCustomerName(ticket.getDevice().getCustomerDevice().getCustomerName());
-			ticketBean.setSerialNumber(ticket.getDevice().getSerialNumber());
-			ticketBean.setModelNumber(ticket.getDevice().getModelNumber());
-			ticketBean.setModelBrand(ticket.getDevice().getModelBrand());
-			ticketBean.setStatus(ticket.getStatus());
-			ticketBean.setDate(ticket.getDateTime());			
-			ticketBean.setMonoReading(ticket.getDevice().getMonoReading());
-			ticketBean.setColourReading(ticket.getDevice().getColourReading());		
-			ticketBean.setDescription(ticket.getDescription());
-			ticketBean.setComment(ticket.getComments());
-			ticketBean.setActionTaken(ticket.getActionTaken());	
+				TicketReportBean ticketBean = new TicketReportBean();
+				            	
+            	ticketBean.setCustomerName(ticket.getDevice().getCustomerDevice().getCustomerName());
+    			ticketBean.setSerialNumber(ticket.getDevice().getSerialNumber());
+    			ticketBean.setModelNumber(ticket.getDevice().getModelNumber());
+    			ticketBean.setModelBrand(ticket.getDevice().getModelBrand());
+    			ticketBean.setStatus(ticket.getStatus());
+    			ticketBean.setDate(ticket.getDateTime());			
+    			ticketBean.setMonoReading(ticket.getDevice().getMonoReading());
+    			ticketBean.setColourReading(ticket.getDevice().getColourReading());		
+    			ticketBean.setProblemDescription(ticket.getDescription());
+    			ticketBean.setComment(ticket.getComments());
+    			ticketBean.setActionTaken(ticket.getActionTaken());	
+    			
+    			ticketBean.setAssignedTo(ticket.getEmployee().getFirstName() +" "+ticket.getEmployee().getLastName());
+    			ticketBean.setTechnicianEmail(ticket.getEmployee().getEmail());
+    			
+    			ticketBean.setTicketContactPersonFirstLastName(ticket.getFirstName()+ " "+ ticket.getLastName());
+    			ticketBean.setTicketContactPersonCellphone(ticket.getContactCellNumber());
+    			ticketBean.setTicketContactPersonTellphone(ticket.getContactTelephoneNumber());
+    			ticketBean.setTicketcontactPersonEmail(ticket.getContactEmail());
+    			ticketBean.setUsedSpareParts(ticket.getUsedPartNumbers());
+    			
+    			ticketBean.setTicketNo("VTC000"+ticket.getRecordID());
+    			ticketBean.setPriority(ticket.getPriority());    			
+    			
+    			ticketBean.setZipcode(ticket.getDevice().getAreaCode());
+    			ticketBean.setCity_town(ticket.getDevice().getCity_town());
+    			ticketBean.setProvince(ticket.getDevice().getProvince());
+    			ticketBean.setAddress(ticket.getDevice().getStreetNumber()+" "+ticket.getDevice().getStreetName());
+    			
+    			
+    			ticketBean.setTicketNo("VTC000"+tickHistory.getTicketNo());
+            	ticketBean.setDate(tickHistory.getEscalatedDate());           	
+                ticketBean.setStatus(tickHistory.getStatus());
+                if(tickHistory.getStatus().equalsIgnoreCase("Open")){
+	  				ticketBean.setActionTaken("Log Ticket");
+	  		    }else if(tickHistory.getStatus().equalsIgnoreCase("Taken")){
+	  				ticketBean.setActionTaken("Ticket Taken");
+	  			}else if(tickHistory.getStatus().equalsIgnoreCase("Acknowledged")){
+	  				ticketBean.setActionTaken("Ticket Acknowledged");
+	  			}else if(tickHistory.getStatus().equalsIgnoreCase("Resolved")){
+	  				ticketBean.setActionTaken(tickHistory.getActionTaken());
+	  			}else if(tickHistory.getStatus().equalsIgnoreCase("Closed")){
+	  				ticketBean.setActionTaken(tickHistory.getActionTaken());
+	  			}                               
+            	ticketBean.setAssignedTo(tickHistory.getEmployee().getFirstName() +" "+tickHistory.getEmployee().getLastName());
+            	ticketBean.setProblemDescription(ticket.getDescription());
+            	 if(tickHistory.getStatus().equalsIgnoreCase("Open")){
+ 	  				ticketBean.setComment("Log Ticket");
+ 	  		    }else{
+ 	  		    	ticketBean.setComment(tickHistory.getComment());
+ 	  		    }
+            	ticketBean.setMonoReading(tickHistory.getColourReading());
+            	ticketBean.setColourReading(tickHistory.getMonoReading());
+    			
+    			result.add(ticketBean);
+    			
+    			
+    			ds = new JRBeanCollectionDataSource(result);
+            	
+				
+			}
+				
 			
-			ticketBean.setAssignedTo(ticket.getEmployee().getFirstName() +" "+ticket.getEmployee().getLastName());
-			ticketBean.setTechnicianEmail(ticket.getEmployee().getEmail());
-			
-			ticketBean.setTicketContactPersonFirstLastName(ticket.getFirstName()+ " "+ ticket.getLastName());
-			ticketBean.setTicketContactPersonCellphone(ticket.getContactCellNumber());
-			ticketBean.setTicketContactPersonTellphone(ticket.getContactTelephoneNumber());
-			ticketBean.setTicketcontactPersonEmail(ticket.getContactEmail());
-			
-			ticketBean.setTicketNo("VTC000"+ticket.getRecordID());
-			ticketBean.setPriority(ticket.getPriority());
-			
-			
-			ticketBean.setZipcode(ticket.getDevice().getAreaCode());
-			ticketBean.setCity_town(ticket.getDevice().getCity_town());
-			ticketBean.setProvince(ticket.getDevice().getProvince());
-			ticketBean.setAddress(ticket.getDevice().getStreetNumber()+" "+ticket.getDevice().getStreetName());
-			
-			result.add(ticketBean);
-			
-			
-			ds = new JRBeanCollectionDataSource(result);
 			
 	}catch(Exception e){
 		e.getMessage();

@@ -106,10 +106,14 @@
 								<legend align=center>Head Office Stock</legend>
 
 
-								<table id="example" class="display">
+								<table data-toggle="table" data-url="${spareParts}"
+									data-show-refresh="true" data-show-toggle="true"
+									data-search="true" data-select-item-name="toolbar1"
+									data-pagination="true" data-sort-name="partNo"
+									data-sort-order="aesc">
 									<thead>
 										<tr>
-											<th data-field="" data-sortable="true"></th>
+											<!-- <th data-field="" data-sortable="true"></th> -->
 											<th data-field="partNo" data-sortable="true">Part No</th>
 											<th data-field="compatibledevices" data-sortable="true">Compatible
 												Devices</th>
@@ -125,7 +129,7 @@
 										<!-- Iterating over the list sent from Controller -->
 										<c:forEach var="list" items="${spareParts}">
 											<tr>
-												<td class="details-control"></td>
+												<!-- <td class="details-control"></td> -->
 												<td>${list.partNumber}</td>
 												<td>${list.compitableDevice}</td>
 												<td>${list.modelBrand}</td>

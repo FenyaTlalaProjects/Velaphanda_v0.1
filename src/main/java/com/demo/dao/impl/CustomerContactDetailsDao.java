@@ -143,7 +143,7 @@ public class CustomerContactDetailsDao implements CustomerContactDetailsDaoInt{
 
 		return contactDetails;
 	}
-
+	
 	@Override
 	public JRDataSource getCustomerContactDetailsDataSource(String customerName) {
 		JRDataSource ds = null;
@@ -165,6 +165,7 @@ public class CustomerContactDetailsDao implements CustomerContactDetailsDaoInt{
 
 						returnCustomerContact.setFirstName(temp.getFirstName());
 						returnCustomerContact.setLastName(temp.getLastName());
+						returnCustomerContact.setDeviceContactPersonFirstAndLastName(temp.getFirstName() +" "+temp.getLastName());	
 						returnCustomerContact.setContactEmail(temp.getContactEmail());
 						returnCustomerContact.setContactTelephoneNumber(temp.getContactTelephoneNumber());
 						returnCustomerContact.setContactCellNumber(temp.getContactCellNumber());
@@ -186,6 +187,7 @@ public class CustomerContactDetailsDao implements CustomerContactDetailsDaoInt{
 				    if(temp.getContactKey().equals(temp.getCustomerContactDetails().getCustomerName() + " " + "Seconday") == true)
 						returnCustomerContact.setFirstName1(temp.getFirstName());
 						returnCustomerContact.setLastName1(temp.getLastName());
+						returnCustomerContact.setDeviceContactPersonFirstAndLastName1(temp.getFirstName() +" "+ temp.getLastName());
 						returnCustomerContact.setContactEmail1(temp.getContactEmail());
 						returnCustomerContact.setContactTelephoneNumber1(temp.getContactTelephoneNumber());
 						returnCustomerContact.setContactCellNumber1(temp.getContactCellNumber());	
@@ -206,4 +208,6 @@ public class CustomerContactDetailsDao implements CustomerContactDetailsDaoInt{
 		}
 		return ds;
 		}
+	
+	
 }

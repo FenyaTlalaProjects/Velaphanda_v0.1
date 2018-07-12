@@ -23,9 +23,12 @@
 		</conditionalStyle>
 	</style>
 	<field name="customerName" class="java.lang.String"/>
+	<field name="deviceContactPersonFirstAndLastName" class="java.lang.String"/>
+	<field name="deviceContactPersonFirstAndLastName1" class="java.lang.String"/>
 	<field name="deviceContactPersonCellphone" class="java.lang.String"/>
 	<field name="deviceContactPersonTellphone" class="java.lang.String"/>
-	<field name="contactPersonEmail" class="java.lang.String"/>
+	<field name="deviceContactPersonEmail" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
 	<background>
 		<band height="220" splitType="Stretch"/>
 	</background>
@@ -87,7 +90,7 @@ Bronberrik
 	<columnHeader>
 		<band height="21" splitType="Stretch">
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="0" y="-4" width="270" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="0" y="-4" width="150" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
@@ -95,7 +98,7 @@ Bronberrik
 				<text><![CDATA[Customer]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="530" y="-4" width="263" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="540" y="-4" width="110" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
@@ -103,12 +106,36 @@ Bronberrik
 				<text><![CDATA[Tell No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Opaque" x="270" y="-4" width="260" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
+				<reportElement style="Column header" mode="Opaque" x="280" y="-4" width="150" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Email Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="150" y="-4" width="130" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[First & Last Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="430" y="-4" width="110" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Cell No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="650" y="-4" width="145" height="20" forecolor="#000000" backcolor="#CCC8C8"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Address]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -117,7 +144,7 @@ Bronberrik
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="-4" width="795" height="20"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="0" y="-1" width="270" height="21"/>
+					<reportElement style="Detail" x="0" y="-1" width="150" height="21"/>
 					<box leftPadding="3" rightPadding="3">
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -130,7 +157,7 @@ Bronberrik
 					<textFieldExpression><![CDATA[$F{customerName}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="530" y="-1" width="263" height="21"/>
+					<reportElement style="Detail" x="540" y="-1" width="110" height="21"/>
 					<box leftPadding="3" rightPadding="3">
 						<pen lineWidth="1.0"/>
 					</box>
@@ -140,14 +167,47 @@ Bronberrik
 					<textFieldExpression><![CDATA[$F{deviceContactPersonTellphone}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="270" y="-1" width="260" height="21"/>
+					<reportElement style="Detail" x="280" y="-1" width="150" height="21"/>
 					<box leftPadding="3" rightPadding="3">
 						<pen lineWidth="1.0"/>
 					</box>
 					<textElement verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{contactPersonEmail}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{deviceContactPersonEmail}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="150" y="-1" width="130" height="21"/>
+					<box leftPadding="3" rightPadding="3">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{deviceContactPersonFirstAndLastName}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="650" y="-1" width="145" height="21"/>
+					<box leftPadding="3" rightPadding="3">
+						<pen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="430" y="-1" width="110" height="21"/>
+					<box leftPadding="3" rightPadding="3">
+						<pen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{deviceContactPersonCellphone}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

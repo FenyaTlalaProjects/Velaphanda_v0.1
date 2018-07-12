@@ -182,16 +182,11 @@ public class AccessoriesDao implements AccessoriesDaoInt {
 				deviceBean.setColourReading(device.getColourReading());
 				deviceBean.setMonoCopyCost(device.getMonoCopyCost());
 				deviceBean.setColourCopyCost(device.getColourCopyCost());
+								
+				deviceBean.setAddress(device.getStreetNumber()+" "+device.getStreetName()+" "+"\n"+ device.getCity_town()+", "+"\n"+device.getProvince()+" "+"\n"+device.getAreaCode());
 				
-				deviceBean.setZipcode(device.getAreaCode());
-				deviceBean.setCity_town(device.getCity_town());
-				deviceBean.setProvince(device.getProvince());
-				deviceBean.setStreetName(device.getStreetName());
-				deviceBean.setStreetNumber(device.getStreetNumber());
-
 				deviceBean.setContactPersonEmail(device.getContactPerson().getEmail());
-				deviceBean.setContactPersonFirstName(device.getContactPerson().getFirstName());
-				deviceBean.setContactPersonLastName(device.getContactPerson().getLastName());
+				deviceBean.setContactPersonFirstAndLastName(device.getContactPerson().getFirstName()+" " +device.getContactPerson().getLastName());
 				deviceBean.setContactPersonCellphone(device.getContactPerson().getCellphone());
 				deviceBean.setContactPersonTellphone(device.getContactPerson().getTelephone());
 				
@@ -222,15 +217,10 @@ public class AccessoriesDao implements AccessoriesDaoInt {
 					deviceBean.setMonoCopyCost(acc.getDevice().getMonoCopyCost());
 					deviceBean.setColourCopyCost(acc.getDevice().getColourCopyCost());
 					
-					deviceBean.setZipcode(acc.getDevice().getAreaCode());
-					deviceBean.setCity_town(acc.getDevice().getCity_town());
-					deviceBean.setProvince(acc.getDevice().getProvince());
-					deviceBean.setStreetName(acc.getDevice().getStreetName());
-					deviceBean.setStreetNumber(acc.getDevice().getStreetNumber());
-
+					deviceBean.setAddress(acc.getDevice().getStreetNumber()+" "+acc.getDevice().getStreetName()+" "+"\n"+acc.getDevice().getCity_town()+", "+"\n"+acc.getDevice().getProvince()+" "+"\n"+acc.getDevice().getAreaCode());
+					
+					deviceBean.setContactPersonFirstAndLastName(acc.getDevice().getContactPerson().getFirstName()+" " +acc.getDevice().getContactPerson().getLastName());
 					deviceBean.setContactPersonEmail(acc.getDevice().getContactPerson().getEmail());
-					deviceBean.setContactPersonFirstName(acc.getDevice().getContactPerson().getFirstName());
-					deviceBean.setContactPersonLastName(acc.getDevice().getContactPerson().getLastName());
 					deviceBean.setContactPersonCellphone(acc.getDevice().getContactPerson().getCellphone());
 					deviceBean.setContactPersonTellphone(acc.getDevice().getContactPerson().getTelephone());
 					

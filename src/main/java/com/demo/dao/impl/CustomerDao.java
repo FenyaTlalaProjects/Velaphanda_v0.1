@@ -52,7 +52,7 @@ public class CustomerDao implements CustomerDaoInt {
 	List<Customer> clientList = null;
 	Customer customer = null;
 	Employee userName, emp = null;
-
+	private List<CustomerContactDetails> tempContacts = null;
 	@Override
 	public Customer getClientByClientName(String clientName) {
 		return (Customer) sessionFactory.getCurrentSession().get(
@@ -267,16 +267,36 @@ public class CustomerDao implements CustomerDaoInt {
 		List<CustomerReportBean> result = new ArrayList<CustomerReportBean>();
 		try{
 			clientList = getClientList();
+			tempContacts = contacts();
+			String currentContactType;
 			for(Customer cust:clientList){
 				CustomerReportBean custBean = new CustomerReportBean();
 				
-				custBean.setCustomerName(cust.getCustomerName());
-				custBean.setContactPersonEmail(cust.getContactEmail());
-				custBean.setDeviceContactPersonTellphone(cust.getTelephoneNumber());
-				custBean.setDeviceContactPersonCellphone(cust.getContactEmail());
+				custBean.setCustomerName(cust.getCustomerName());				
+				custBean.setDeviceContactPersonTellphone(cust.getTelephoneNumber());				
+				custBean.setDeviceContactPersonEmail(cust.getContactEmail());
+				custBean.setAddress(cust.getStreetNumber()+" "+cust.getStreetName()+" "+cust.getCity_town()+" "+cust.getProvince()+" "+cust.getZipcode());
+				
+				for(CustomerContactDetails temp:tempContacts ){
+					if(temp.getCustomerContactDetails().getCustomerName().equalsIgnoreCase(cust.getCustomerName())== true){
+						currentContactType = temp.getContactType();
+						if (currentContactType.equals("Primary") == true){
+							//Retrieve Primary Contact from Database
+							if (temp.getContactKey().equals(temp.getCustomerContactDetails().getCustomerName() + " " + "Primary") == true){	
+								  custBean.setDeviceContactPersonFirstAndLastName(temp.getFirstName() +" "+temp.getLastName());	
+								  custBean.setDeviceContactPersonCellphone(temp.getContactCellNumber());
+								
+							}
+						}
+				   } 
+				}
+				
 				result.add(custBean);
 				ds = new JRBeanCollectionDataSource(result);
-			}
+				
+			}			
+			
+			
 		}catch(Exception e){
 			e.getMessage();
 		}
@@ -289,6 +309,7 @@ public class CustomerDao implements CustomerDaoInt {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(CustomerContactDetails.class);
 		return (List<CustomerContactDetails>)criteria.list(); 
 	}
+	
 
 	@Override
 	public JRDataSource getCustomerDetailsDataSource(String customerName) {
@@ -296,7 +317,7 @@ public class CustomerDao implements CustomerDaoInt {
 		List<CustomerReportBean> result = new ArrayList<CustomerReportBean>();
 		try{
 				customer = getClientByClientName(customerName);			
-			
+				
 				CustomerReportBean custBean = new CustomerReportBean();				
 				custBean.setCustomerName(customer.getCustomerName());
 				custBean.setTelephoneNumber(customer.getTelephoneNumber());

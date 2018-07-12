@@ -38,28 +38,29 @@
 								PDF </a><br/><br/>
 							
 						<!-- Below table will be displayed as Data table -->
-						<table id="example" class="display">
+						<table  data-toggle="table" data-url="${deviceList}"
+									data-show-refresh="true" data-show-toggle="true"
+									data-search="true" data-select-item-name="toolbar1"
+									data-pagination="true" data-sort-name="customername"
+									data-sort-order="aesc">
 							<thead>
 								<tr>
-									<th></th>
-									<th>Customer</th>
-									<th>Serial No</th>
-									<th>Address</th>
-									<th>Model No</th>
-									<th>Brand</th>
-									<th>View
-										Details</th>
-									<th>Device
-										History</th>
-									<th>Update
-										Device</th>
+									<!-- <th></th> -->
+									<th data-field="customername" data-sortable="true">Customer</th>
+									<th data-field="serialNo" data-sortable="true">Serial No</th>
+									<th data-field="address" data-sortable="true">Address</th>
+									<th data-field="modelNo" data-sortable="true">Model No</th>
+									<th data-field="brand" data-sortable="true">Brand</th>
+									<th data-field="viewDetails" data-sortable="true">View Details</th>
+									<th data-field="deviceHistory" data-sortable="true">Device History</th>
+									<th data-field="UpdateDevice" data-sortable="true">Update Device</th>
 								</tr>
 							</thead>
 							<tbody>
 								<!-- Iterating over the list sent from Controller -->
 								<c:forEach var="list" items="${deviceList}">
 									<tr>
-										<td class="details-control"></td>
+										<!-- <td class="details-control"></td> -->
 										<td><a
 											href="viewCustomer?customerName=<c:out value='${list.customerDevice.customerName}'/>">
 												${list.customerDevice.customerName}</a></td>
@@ -96,7 +97,8 @@
 		<!--/ footer -->
 	</div>
 	<!--/.main-->
-<c:import url="templates/datatablesscripts.jsp"></c:import>
+    <%-- <c:import url="templates/datatablesscripts.jsp"></c:import> --%>
+	<c:import url="templates/javascriptslib.jsp"></c:import>
 	<c:import url="templates/sidebar-collapse.jsp"></c:import>
 	<!-- /Scripts -->
 </body>

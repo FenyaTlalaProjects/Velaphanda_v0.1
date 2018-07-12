@@ -77,9 +77,10 @@
 						<div class="tab-content">
 
 							<div class="col-sm-6">
-								<b>Technician Name:${technicianName.firstName} ${technicianName.lastName}</b>
+								<b>Technician Name:${technicianName.firstName}
+									${technicianName.lastName}</b>
 							</div>
-								<form:form method="post" class="well form-horizontal"
+							<form:form method="post" class="well form-horizontal"
 								action="moveSpares" modelAttribute="moveSpares" id="moveSpares">
 
 								<table id="stockOnSite" data-toggle="table" data-url="${orders}"
@@ -89,53 +90,57 @@
 									data-sort-order="desc">
 									<thead>
 										<tr>
-											<th data-toggle="true" data-field="partNo" data-sortable="true">Part No</th>
-											<th data-field="compatibleDevices" data-sortable="true">Compatible Devices</th>
-											
-											<th data-field="modelBrand" data-sortable="true">Model Brand</th>
+											<th data-toggle="true" data-field="partNo"
+												data-sortable="true">Part No</th>
+											<th data-field="compatibleDevices" data-sortable="true">Compatible
+												Devices</th>
+
+											<th data-field="modelBrand" data-sortable="true">Model
+												Brand</th>
 											<th data-field="description" data-sortable="true">Description</th>
-											<th data-field="stockType" data-sortable="true">Stock Type</th>
+											<th data-field="stockType" data-sortable="true">Stock
+												Type</th>
 											<th data-field="colour" data-sortable="true">Color</th>
 											<th data-field="quantity" data-sortable="true">Quantity</th>
-											<th colspan="2" data-field="provideqty" data-sortable="true">Provide QTY</th>
+											<th colspan="2" data-field="provideqty" data-sortable="true">Provide
+												QTY</th>
 											<th colspan="2" data-field="action" data-sortable="true">Action</th>
 										</tr>
 									</thead>
 									<tbody>
 										<c:forEach var="list" items="${orders}">
 											<c:choose>
-												<c:when test="${list.quantity > 0}">													
-											<tr>
-												<td><a href="#" name="moveSparesSubmit" data-toggle="modal"
-											data-target="#historyDetails">${list.partNumber}</a></td>
-												<td>${list.compatibleDevice}</td>
-												
-												<td>${list.modelBrand}</td>
-												<td>${list.itemDescription}</td>
-												<td>${list.itemType}</td>
-												<c:choose>
-													<c:when test="${list.itemType=='Toner'}">
-														<td>${list.color}</td>
-													</c:when>
-													<c:otherwise>
-														<td>-</td>
-													</c:otherwise>
-												</c:choose>
-												<td><input type="text"
-													id="${list.partNumber}_avaliableQuantity"
-													name="avaliableQuantity" class="form-control"
-													readonly="readonly" value="${list.quantity}"></td>
-												<td><input type="text" id="${list.partNumber}_quantity"
-													name="quantity" class="form-control"
-													onkeypress="return isNumber(event)"
-													onblur="compareQuantity(this, ${list.quantity})" value="" /></td>
-												<td><input class="addLineItem" type="button"
-													value="Move Part"></td>
-											</tr>
+												<c:when test="${list.quantity > 0}">
+													<tr>
+														<td><!-- <a href="#" name="moveSparesSubmit"
+															data-toggle="modal" data-target="#historyDetails"> -->${list.partNumber}<!-- </a> --></td>
+														<td>${list.compatibleDevice}</td>
+														<td>${list.modelBrand}</td>
+														<td>${list.itemDescription}</td>
+														<td>${list.itemType}</td>
+														<c:choose>
+															<c:when test="${list.itemType=='Toner'}">
+																<td>${list.color}</td>
+															</c:when>
+															<c:otherwise>
+																<td>-</td>
+															</c:otherwise>
+														</c:choose>
+														<td><input type="text"
+															id="${list.partNumber}_avaliableQuantity"
+															name="avaliableQuantity" class="form-control"
+															readonly="readonly" value="${list.quantity}"></td>
+														<td><input type="text"
+															id="${list.partNumber}_quantity" name="quantity"
+															class="form-control" onkeypress="return isNumber(event)"
+															onblur="compareQuantity(this, ${list.quantity})" value="" /></td>
+														<td><input class="addLineItem" type="button"
+															value="Move Part"></td>
+													</tr>
 												</c:when>
 												<c:otherwise>
 												</c:otherwise>
-											</c:choose>	
+											</c:choose>
 										</c:forEach>
 									</tbody>
 								</table>
@@ -148,37 +153,45 @@
 										</h5>
 									</legend>
 
-									<table id="spareToMove" class="table table-striped table-bordered table-hover table-condensed"
+									<table id="spareToMove"
+										class="table table-striped table-bordered table-hover table-condensed"
 										data-url="${orders}" data-show-refresh="true"
 										data-show-toggle="true" data-search="true"
 										data-select-item-name="toolbar1" data-pagination="true"
 										data-sort-name="partno" data-sort-order="desc">
 										<thead>
 											<tr>
-												<th data-toggle="true" data-field="partNo"	data-sortable="true">Part No</th>
-												<th data-field="compatibleDevices" data-sortable="true">Compatible Devices</th>												
-												<th data-field="modelBrand" data-sortable="true">Model Brand</th>
+												<th data-toggle="true" data-field="partNo"
+													data-sortable="true">Part No</th>
+												<th data-field="compatibleDevices" data-sortable="true">Compatible
+													Devices</th>
+												<th data-field="modelBrand" data-sortable="true">Model
+													Brand</th>
 												<th data-field="description" data-sortable="true">Description</th>
-												<th data-field="stockType" data-sortable="true">Stock Type</th>
+												<th data-field="stockType" data-sortable="true">Stock
+													Type</th>
 												<th data-field="colour" data-sortable="true">Color</th>
 												<th data-field="quantity" data-sortable="true">Quantity</th>
-												<th data-field="provideqty" data-sortable="true">QTY Provided</th>
+												<th data-field="provideqty" data-sortable="true">QTY
+													Provided</th>
 												<th data-field="action" data-sortable="true">Action</th>
 											</tr>
 										</thead>
 
 										<tbody>
-												
+
 										</tbody>
 
 									</table>
 								</fieldset>
 
 								<!-- Customer Name and Technician Name -->
-								<input type="hidden" id="fromCustomerName" name="fromCustomerName"
-									class="form-control" value="${customerName}" />
-								<input type="hidden" id="fromTechnicianName" name="fromTechnicianName"
-									class="form-control" value="${technicianName.email}" />
+								<input type="hidden" id="fromCustomerName"
+									name="fromCustomerName" class="form-control"
+									value="${customerName}" />
+								<input type="hidden" id="fromTechnicianName"
+									name="fromTechnicianName" class="form-control"
+									value="${technicianName.email}" />
 
 								<!-- part Number and Quantity Entered -->
 								<input type="hidden" id="quantityList" name="quantityList"
@@ -196,7 +209,8 @@
 									</div>
 								</div>
 
-								<div id="moveParts" class="modal fade" role="dialog" aria-hidden="true">
+								<div id="moveParts" class="modal fade" role="dialog"
+									aria-hidden="true">
 									<div class="modal-dialog modal-lg">
 
 										<div class="modal-content">
@@ -236,7 +250,7 @@
 																</label>
 															</div>
 															<br> <br>
-															
+
 															<div class="btn-group" data-toggle="buttons">
 																<label class="btn btn-primary"> <input
 																	type="radio" name="options"
@@ -246,7 +260,7 @@
 																</label>
 															</div>
 															<br> <br>
-															
+
 														</div>
 
 														<!-- move From Site Stock To Site Stock -->
@@ -308,9 +322,9 @@
 																				<option value="">Select Technician</option>
 																				<c:forEach items="${technicianList}"
 																					var="technician">
-																				<option value="${technician.email}">${technician.firstName}
+																					<option value="${technician.email}">${technician.firstName}
 																						${technician.lastName}</option>
-																				
+
 																				</c:forEach>
 																			</select>
 																		</div>
@@ -331,15 +345,15 @@
 																</div>
 															</div>
 														</div>
-														
-														
+
+
 														<!-- move From Site Stock To HO -->
 														<div class="moveFromBootStockToHO tick">
 
 
 															<div class="col-md-8">
-																<legend style="font-size: 12px;">Select
-																	Head Office </legend>
+																<legend style="font-size: 12px;">Select Head
+																	Office </legend>
 
 																<div class="form-group">
 																	<label class="col-md-4 control-label">Move To</label>
@@ -349,9 +363,9 @@
 																				class="glyphicon glyphicon-list"></i></span> <select
 																				id="headOffice" name="headOffice"
 																				class="form-control">
-																				<option value="">Select </option>
+																				<option value="">Select</option>
 																				<option value="Head Office">Head Office</option>
-																			</select>	
+																			</select>
 																		</div>
 																	</div>
 																</div>
@@ -378,8 +392,8 @@
 											<div class="modal-footer">
 												<button type="button" class="btn btn-default"
 													data-dismiss="modal">Cancel</button>
-												<button type="submit" class="moveSparesSubmit btn btn-default"
-													>Submit</button>
+												<button type="submit"
+													class="moveSparesSubmit btn btn-default">Submit</button>
 											</div>
 										</div>
 										<!-- /.modal-content -->
@@ -387,11 +401,12 @@
 									<!-- /.modal-dialog -->
 								</div>
 								<!-- /.modal moveParts-->
-								
-								
+
+
 								<!-- Movement History Details -->
-								
-								<div id="historyDetails" class="modal fade" role="dialog" aria-hidden="true">
+
+								<div id="historyDetails" class="modal fade" role="dialog"
+									aria-hidden="true">
 									<div class="modal-dialog modal-lg">
 
 										<div class="modal-content">
@@ -406,36 +421,46 @@
 
 												<div class="well form-horizontal">
 													<div class="row">
-														<div class="col-sm-6">
-																			
-																<div id="customerDeviceContainer"
-																	style="width: auto; display: table;">
-																	<div class="customerDeviceAddressTitle">
-																		<p class="customerAddressTitle">Date Moved:</p>
-																		<ul class="addressDeviceList" style="display: block;">
-																					
-																		</ul>
-																		<p class="customerAddressTitle">Moved From:</p>
-																		<ul class="addressDeviceList" style="display: block;">
-																					
-																		</ul>
-																		
-																		<p class="customerAddressTitle">Moved To:</p>
-																		<ul class="addressDeviceList" style="display: block;">
-																					
-																		</ul>
-																		<p class="customerAddressTitle">Moved By:</p>
-																		<ul class="addressDeviceList" style="display: block;">
-																					
-																		</ul>
-																		<p class="customerAddressTitle">Quantity Moved:</p>
-																		<ul class="addressDeviceList" style="display: block;">
-																					
-																		</ul>
-																	</div>										
-																			</div>
-										
-														</div>
+														<table data-toggle="table" data-url=""
+															data-show-refresh="true" data-show-toggle="true"
+															data-search="true" data-select-item-name="toolbar1"
+															data-pagination="true" data-sort-name="customername"
+															data-sort-order="aesc">
+															<thead>
+																<tr>
+																	<!-- <th></th> -->
+																	<th data-field="dateTimeMoved" data-sortable="true">Date
+																		& Time Moved</th>
+																	<th data-field="novedFrom" data-sortable="true">Moved
+																		From</th>
+																	<th data-field="movedTo" data-sortable="true">Moved
+																		To</th>
+																	<th data-field="movedBy" data-sortable="true">Moved
+																		By</th>
+																	<th data-field="quantityMoved" data-sortable="true">Quantity
+																		Moved</th>
+																	<th data-field="ReasonWhyMoved" data-sortable="true">Reason
+																		Why Moved</th>
+																</tr>
+															</thead>
+
+															<tbody>
+																<!-- Iterating over the list sent from Controller -->
+																<c:forEach var="list" items="">
+																	<tr>
+																		<!-- <td class="details-control"></td> -->
+																		<td></td>
+																		<td></td>
+																		<td></td>
+																		<td></td>
+																		<td></td>
+																		<td></td>
+
+																	</tr>
+																</c:forEach>
+															</tbody>
+														</table>
+
 													</div>
 
 												</div>
@@ -453,7 +478,7 @@
 								<!-- /.modal -- Movement History Details -->
 
 							</form:form>
-							
+
 
 						</div>
 						<!-- //tab content -->

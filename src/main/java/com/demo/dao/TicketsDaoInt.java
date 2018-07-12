@@ -8,6 +8,7 @@ import com.demo.bean.EmployeeBean;
 import com.demo.bean.PieChart;
 import com.demo.bean.TicketsBean;
 import com.demo.model.OrderHeader;
+import com.demo.model.TicketHistory;
 import com.demo.model.Tickets;
 
 public interface TicketsDaoInt {
@@ -114,5 +115,8 @@ public interface TicketsDaoInt {
 	public String acknowledgeTicketsForTech(Long recordID);
 	public String takeTicketsForTech(Long recordID);
 	JRDataSource getTicketDetailsDataSource(Long recordID);
+	List<TicketHistory> getHistoryByTicketNumber(Long ticketNumber);
+	List<TicketHistory> getAllTicketHistoryByTicketNumber(Long recordID);
+	List<TicketHistory> getAllTicketHistoryByTicketNumber();
 	
 }

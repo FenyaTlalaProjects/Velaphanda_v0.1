@@ -30,8 +30,8 @@
 				<div class="panel panel-default">
 					<div class="panel-heading" align="center">View Customer</div>
 					<div class="panel-body">
-					
-					<div align="right">
+
+						<div align="right">
 							<a target="_blank"
 								href="viewCustomerDownloadPDF?customerName=<c:out value='${customer.customerName}'/>">Download
 								PDF </a>
@@ -40,31 +40,31 @@
 						<form:form class="well form-horizontal" method="post"
 							action="viewCustomerData" modelAttribute="viewCustomerData"
 							id="updateClient">
-							
+
 							<fieldset>
 								<!-- Customer Details -->
 								<legend>
 									<b style="font-size: 15px;">Customer Details </b>
-								</legend>	
-														
-								<div class="row">															
+								</legend>
+
+								<div class="row">
 									<div class="col-sm-6">
-									    <b>Customer Name:</b> ${customer.customerName}<br/>
-									    <b>Telephone No:</b> ${customer.telephoneNumber}<br/>
-										<b>Fax Number:</b> ${customer.faxNumber}<br/>
-										<b>Street No:</b> ${customer.streetNumber}
-								    </div>
-								    <div class="col-sm-6">
-									    <b>Street Name:</b> ${customer.streetName}<br/>
-										<b>City/Town:</b> ${customer.city_town}<br/>
-									    <b>Province: ${customer.province}</b><br/>
-									    <b>Area Code:</b> ${customer.zipcode}<br/>
-									</div>												
+										<b>Customer Name:</b> ${customer.customerName}<br /> <b>Telephone
+											No:</b> ${customer.telephoneNumber}<br /> <b>Fax Number:</b>
+										${customer.faxNumber}<br /> <b>Street No:</b>
+										${customer.streetNumber}
+									</div>
+									<div class="col-sm-6">
+										<b>Street Name:</b> ${customer.streetName}<br /> <b>City/Town:</b>
+										${customer.city_town}<br /> <b>Province:
+											${customer.province}</b><br /> <b>Area Code:</b>
+										${customer.zipcode}<br />
+									</div>
 								</div>
-								<br/>
+								<br />
 								<!-- Customer Details -->
 							</fieldset>
-							
+
 
 							<fieldset>
 								<legend>
@@ -72,61 +72,91 @@
 								</legend>
 
 								<!-- Contact Person 1 -->
-								<div class="row">															
+								<div class="row">
 									<div class="col-sm-6">
-									    <b>First Name:</b> ${customerDetails.firstName}<br/>
-									    <b>Last Name:</b> ${customerDetails.lastName}<br/>
-										<b>Cell Phone No:</b> ${customerDetails.contactCellNumber}<br/>
-								    </div>
-								    <div class="col-sm-6">
-									    <b>Telephone No:</b> ${customerDetails.contactTelephoneNumber}<br/>
-										<b>Email:</b> ${customerDetails.contactEmail}<br/>									    
-									</div>												
+										<b>First Name:</b> ${customerDetails.firstName}<br /> <b>Last
+											Name:</b> ${customerDetails.lastName}<br /> <b>Cell Phone No:</b>
+										${customerDetails.contactCellNumber}<br />
+									</div>
+									<div class="col-sm-6">
+										<b>Telephone No:</b> ${customerDetails.contactTelephoneNumber}<br />
+										<b>Email:</b> ${customerDetails.contactEmail}<br />
+									</div>
 								</div>
-								<br/><!-- //Contact Person 1 -->
+								<br />
+								<!-- //Contact Person 1 -->
 
 							</fieldset>
 
 
 							<fieldset>
-							<!-- //Contact Person 2 -->
+								<!-- //Contact Person 2 -->
 								<legend>
 									<b class="optionalFields" style="color: red; font-size: 15px;">Contact
 										Person 2 (Optional)</b>
 								</legend>
-								<div class="row">															
+								<div class="row">
 									<div class="col-sm-6">
-									    <b>First Name:</b> ${customerDetails.firstName1}<br/>
-									    <b>Last Name:</b> ${customerDetails.lastName1}<br/>
-										<b>Cell Phone No:</b> ${customerDetails.contactCellNumber1}<br/>
-								    </div>
-								    <div class="col-sm-6">
-									    <b>Telephone No:</b> ${customerDetails.contactTelephoneNumber1}<br/>
-										<b>Email:</b> ${customerDetails.contactEmail1}<br/>									    
-									</div>												
+										<b>First Name:</b> ${customerDetails.firstName1}<br /> <b>Last
+											Name:</b> ${customerDetails.lastName1}<br /> <b>Cell Phone
+											No:</b> ${customerDetails.contactCellNumber1}<br />
+									</div>
+									<div class="col-sm-6">
+										<b>Telephone No:</b>
+										${customerDetails.contactTelephoneNumber1}<br /> <b>Email:</b>
+										${customerDetails.contactEmail1}<br />
+									</div>
 								</div>
-								<br/>								
+								<br />
 								<!--/Contact Person 2 -->
 							</fieldset>
-							
-							
+
+
 							<fieldset>
-							<!-- //History Details-->
+								<!-- //History Details-->
 								<legend>
-									<b class="optionalFields" style="font-size: 15px;">Customer History</b>
+									<b class="optionalFields" style="font-size: 15px;">Customer
+										History</b>
 								</legend>
-								<div class="row">															
-									<div class="col-sm-6">
-										<b>Client Registered By:</b> ${customer.clientAddedBy}<br/>
-										<b>Time Client Registered:</b> ${customer.dateTimeClientAdded}<br/>
-									   	<b>Client Updated By:</b> ${customer.clientUpdatedBy}<br/>
-									    <b>Time Client Updated:</b> ${customer.timeClientUpdated}<br/>
-									   
-								    </div>
-								    											
+								<div class="row">
+
+									<%-- <table data-toggle="table" data-url="${customerHistory}"
+										data-show-refresh="true" data-show-toggle="true"
+										data-search="true" data-select-item-name="toolbar1"
+										data-pagination="true" data-sort-name="cleintRegisteredBy"
+										data-sort-order="aesc">
+										<thead>
+											<tr>
+												<!-- <th></th> -->
+												<th data-field="cleintRegisteredBy" data-sortable="true">Client
+													Registered By</th>
+												<th data-field="timeClientRegistered" data-sortable="true">Time
+													Client Registered</th>
+												<th data-field="clientUpdatedBy" data-sortable="true">Client
+													Updated By</th>
+												<th data-field="timeClientUpdated" data-sortable="true">Time
+													Client Updated</th>
+
+											</tr>
+										</thead>
+
+										<tbody>
+											<!-- Iterating over the list sent from Controller -->
+											<c:forEach var="list" items="">
+												<tr>
+													<!-- <td class="details-control"></td> -->
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table> --%>
+									
 								</div>
-								<br/>								
-								<!--/Contact Person 2 -->
+								<br />
+								<!-- //end History Details-->
 							</fieldset>
 
 						</form:form>

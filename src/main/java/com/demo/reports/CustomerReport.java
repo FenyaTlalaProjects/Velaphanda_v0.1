@@ -38,6 +38,7 @@ public class CustomerReport {
     public ModelAndView customerListDownloadPDF() 
 		 {
     	logger.debug("Received request to download PDF report");
+    	//String customerName = null;
 		ModelAndView modelAndView = null;
 		// Retrieve our data from a custom data provider
 		// Our data comes from a DAO layer
@@ -45,6 +46,7 @@ public class CustomerReport {
 		// Assign the datasource to an instance of JRDataSource
 		// JRDataSource is the datasource that Jasper understands
 		// This is basically a wrapper to Java's collection classes
+		//JRDataSource customerContactPerson = customerContactDetailsDaoIntDaoInt.getCustomerContactPersonDetailsDataSource();
 		JRDataSource customerList  = custIntDao.getCustomerListDataSource();
 		
 		// In order to use Spring's built-in Jasper support, 
@@ -55,7 +57,8 @@ public class CustomerReport {
 		
 		// pdfReport is the View of our application
 		// This is declared inside the /WEB-INF/customerList-views.xml
-		modelAndView = new ModelAndView("customerListPdfReport", parameterMap);
+		modelAndView = new ModelAndView("customerListPdfReport",  parameterMap);
+		
 		
 		// Return the View and the Model combined
 		return modelAndView;

@@ -127,8 +127,7 @@ public class TicketHistoryDao implements TicketHistoryDaoInt{
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
 				TicketHistory.class);
 		return (List<TicketHistory>) criteria.list();
-	}
-	
+	}	
 	
 	@Override
 	public JRDataSource getDeviceHistoryDataSource(Long recordID) {
@@ -152,15 +151,28 @@ public class TicketHistoryDao implements TicketHistoryDaoInt{
 				ticketBean.setDeviceContactPersonFirstLastName(ticket.getFirstName()+ " "+ ticket.getLastName());
 				ticketBean.setDeviceContactPersonCellphone(ticket.getContactCellNumber());
 				ticketBean.setDeviceContactPersonTellphone(ticket.getContactTelephoneNumber());
-				ticketBean.setDeviceContactPersonEmail(ticket.getContactEmail());
-				
+				ticketBean.setDeviceContactPersonEmail(ticket.getContactEmail());				
             	ticketBean.setTicketNo("VTC000"+tickHistory.getTicketNo());
             	ticketBean.setDate(tickHistory.getEscalatedDate());           	
                 ticketBean.setStatus(tickHistory.getStatus());
-                ticketBean.setActionTaken(tickHistory.getActionTaken());
+                if(tickHistory.getStatus().equalsIgnoreCase("Open")){
+	  				ticketBean.setActionTaken("Log Ticket");
+	  		    }else if(tickHistory.getStatus().equalsIgnoreCase("Taken")){
+	  				ticketBean.setActionTaken("Ticket Taken");
+	  			}else if(tickHistory.getStatus().equalsIgnoreCase("Acknowledged")){
+	  				ticketBean.setActionTaken("Ticket Acknowledged");
+	  			}else if(tickHistory.getStatus().equalsIgnoreCase("Resolved")){
+	  				ticketBean.setActionTaken(tickHistory.getActionTaken());
+	  			}else if(tickHistory.getStatus().equalsIgnoreCase("Closed")){
+	  				ticketBean.setActionTaken(tickHistory.getActionTaken());
+	  			}                               
             	ticketBean.setAssignedTo(tickHistory.getEmployee().getFirstName() +" "+tickHistory.getEmployee().getLastName());
-            	ticketBean.setDescription(tickHistory.getDescription());
-               	ticketBean.setComment(tickHistory.getComment());
+            	ticketBean.setProblemDescription(ticket.getDescription());
+            	 if(tickHistory.getStatus().equalsIgnoreCase("Open")){
+ 	  				ticketBean.setComment("Log Ticket");
+ 	  		    }else{
+ 	  		    	ticketBean.setComment(tickHistory.getComment());
+ 	  		    }
             	ticketBean.setMonoReading(tickHistory.getColourReading());
             	ticketBean.setColourReading(tickHistory.getMonoReading());
             	

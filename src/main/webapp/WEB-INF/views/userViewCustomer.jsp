@@ -108,7 +108,53 @@
 								<br/>								
 								<!--/Contact Person 2 -->
 							</fieldset>
+							
+							<fieldset>
+								<!-- //History Details-->
+								<legend>
+									<b class="optionalFields" style="font-size: 15px;">Customer
+										History</b>
+								</legend>
+								<div class="row">
 
+									<%-- <table data-toggle="table" data-url="${customerHistory}"
+										data-show-refresh="true" data-show-toggle="true"
+										data-search="true" data-select-item-name="toolbar1"
+										data-pagination="true" data-sort-name="cleintRegisteredBy"
+										data-sort-order="aesc">
+										<thead>
+											<tr>
+												<!-- <th></th> -->
+												<th data-field="cleintRegisteredBy" data-sortable="true">Client
+													Registered By</th>
+												<th data-field="timeClientRegistered" data-sortable="true">Time
+													Client Registered</th>
+												<th data-field="clientUpdatedBy" data-sortable="true">Client
+													Updated By</th>
+												<th data-field="timeClientUpdated" data-sortable="true">Time
+													Client Updated</th>
+
+											</tr>
+										</thead>
+
+										<tbody>
+											<!-- Iterating over the list sent from Controller -->
+											<c:forEach var="list" items="">
+												<tr>
+													<!-- <td class="details-control"></td> -->
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table> --%>
+									
+								</div>
+								<br />
+								<!-- //end History Details-->
+							</fieldset>
 
 						</form:form>
 

@@ -18,6 +18,7 @@ public class CustomerReportBean {
 	private String deviceContactPersonTellphone;
 	private String contactPersonEmail;
 	
+	
 	private String telephoneNumber;
 	private String faxNumber;
 	private String streetNumber;
@@ -29,6 +30,9 @@ public class CustomerReportBean {
 	
 	private String firstName;
 	private String lastName;
+	private String deviceContactPersonFirstAndLastName;
+	private String deviceContactPersonFirstAndLastName1;
+	private String deviceContactPersonEmail;
 	private String contactCellNumber;
 	private String contactTelephoneNumber;
 	private String contactEmail;

@@ -150,6 +150,7 @@
 									${device.streetName}</li>
 								<li id="city_town">${device.city_town}</li>
 								<li id="province">${device.province}</li>
+								<li id="zipcode">${device.areaCode}</li>
 							</ul>
 							</p>
 							<p class="customerAddress_title">Contact Person

@@ -56,7 +56,7 @@ public class TicketReportBean {
 	private String ticketcontactPersonEmail;
 		
 	private String ticketNo;
-	private String description;
+	private String problemDescription;
 	private String comment;
 	private String actionTaken;
 	private String status;
@@ -70,5 +70,6 @@ public class TicketReportBean {
 	private String contactPersonEmail;
 	private String assignedTo;
 	private String technicianEmail;
+	private String usedSpareParts;
 	
 }

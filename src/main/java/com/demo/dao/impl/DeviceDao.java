@@ -593,7 +593,7 @@ public class DeviceDao implements DeviceDaoInt {
 				deviceBean.setSerialNumber(device.getSerialNumber());
 				deviceBean.setModelNumber(device.getModelNumber());
 				deviceBean.setModelBrand(device.getModelBrand());
-				deviceBean.setAddress(device.getStreetNumber()+" "+device.getStreetName()+" "+ device.getCity_town()+", "+device.getProvince());
+				deviceBean.setAddress(device.getStreetNumber()+" "+device.getStreetName()+" "+ device.getCity_town()+", "+device.getProvince()+" "+device.getAreaCode());
 				result.add(deviceBean);
 				ds = new JRBeanCollectionDataSource(result);
 			}
