@@ -113,14 +113,14 @@
 
 
 							<fieldset>
-								<!-- //History Details-->
+							 <%--<!-- //History Details-->
 								<legend>
 									<b class="optionalFields" style="font-size: 15px;">Customer
 										History</b>
 								</legend>
 								<div class="row">
 
-									<%-- <table data-toggle="table" data-url="${customerHistory}"
+								 <table data-toggle="table" data-url="${customerHistory}"
 										data-show-refresh="true" data-show-toggle="true"
 										data-search="true" data-select-item-name="toolbar1"
 										data-pagination="true" data-sort-name="cleintRegisteredBy"
@@ -152,12 +152,12 @@
 												</tr>
 											</c:forEach>
 										</tbody>
-									</table> --%>
+									</table> 
 									
 								</div>
 								<br />
 								<!-- //end History Details-->
-							</fieldset>
+							</fieldset>--%>
 
 						</form:form>
 
