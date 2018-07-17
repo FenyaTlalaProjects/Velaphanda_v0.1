@@ -36,14 +36,10 @@
 							<a target="_blank"
 								href="customerListDownloadPDF">Download
 								PDF </a><br/><br/>
-							<table data-toggle="table" data-url="${displayCustomers}"
-									data-show-refresh="true" data-show-toggle="true"
-									data-search="true" data-select-item-name="toolbar1"
-									data-pagination="true" data-sort-name="customername"
-									data-sort-order="aesc">
+							<table id="example" class="display">
 								<thead>
 									<tr>
-										<!-- <th></th> -->
+										<th></th>
 										<th data-field="customername" data-sortable="true">Customer</th>
 										<th data-field="email" data-sortable="true">Email</th>
 										<th data-field="tellNo" data-sortable="true">Tell No</th>										
@@ -57,7 +53,7 @@
 									<!-- Iterating over the list sent from Controller -->
 									<c:forEach var="list" items="${displayCustomers}">
 										<tr>
-											<!-- <td class="details-control"></td> -->
+											<td class="details-control"></td>
 											<td><a
 												href="viewCustomer?customerName=<c:out value='${list.customerName}'/>"> ${list.customerName}</a></td>
 											<td> ${list.contactEmail}</td>
@@ -89,8 +85,14 @@
 			<!--/ footer -->
 		</div>
 		<!--/.main-->
-		<<%-- c:import url="templates/datatablesscripts.jsp"></c:import> --%>
-		<c:import url="templates/javascriptslib.jsp"></c:import>
+		<c:import url="templates/datatablesscripts.jsp"></c:import>
+		
+		<script type="text/javascript">
+			//customer history table
+			function format() {
+				return '<table id="inner" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="4" style="text-align:center;">Customer History</th></tr><tr><th>Client Captured By</th><th>Date Client Captured</th><th>Updated By</th><th>Date Updated</th></tr></thead><tbody><c:forEach var="list" items="${displayCustomers}"><tr><td>${list.customerName}</td><td>Somedata</td><td>Some data</td><td>Some data</td></tr></c:forEach></tbody></table>';
+			}
+		</script>
 		<c:import url="templates/sidebar-collapse.jsp"></c:import>
 		<!-- /Scripts -->
 </body>

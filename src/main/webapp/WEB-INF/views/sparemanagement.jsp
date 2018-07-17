@@ -106,7 +106,7 @@
 								<legend align=center>Head Office Stock</legend>
 
 
-								<table data-toggle="table" data-url="${spareParts}"
+								<table data-toggle="table"
 									data-show-refresh="true" data-show-toggle="true"
 									data-search="true" data-select-item-name="toolbar1"
 									data-pagination="true" data-sort-name="partNo"
@@ -147,7 +147,7 @@
 							<div class="tab-pane" id="siteStock">
 								<legend align=center>Site Stock</legend>
 
-								<table data-toggle="table" data-url="${customer}"
+								<table data-toggle="table" 
 									data-show-refresh="true" data-show-toggle="true"
 									data-search="true" data-select-item-name="toolbar1"
 									data-pagination="true" data-sort-name="customername"
@@ -186,7 +186,7 @@
 							
 							<div class="tab-pane" id="bootStock">
 								<legend align=center>Boot Stock</legend>
-								<table data-toggle="table" data-url="${customer}"
+								<table data-toggle="table"
 									data-show-refresh="true" data-show-toggle="true"
 									data-search="true" data-select-item-name="toolbar1"
 									data-pagination="true" data-sort-name="technicianname"
@@ -234,34 +234,6 @@
 			</div>
 			<!--/.main-->
 			<c:import url="templates/javascriptslib.jsp"></c:import>
-			<c:import url="templates/datatablesscripts.jsp"></c:import>
 			<c:import url="templates/sidebar-collapse.jsp"></c:import>
-			
-			<script>
-			 function format(d){
-			        
-		         // `d` is the original data object for the row
-		         return '<table  border="0">' +
-				     '<tr>' +
-				         '<td>Name and Surname:</td>' +
-				         '<td>' + " " + '</td>' +
-				     '</tr>' +
-		             '<tr>' +
-		                 '<td>Date Time:</td>' +
-		                 '<td>' + " " + '</td>' +
-		             '</tr>' +
-		             '<tr>' +
-		                 '<td>Order number:</td>' +
-		                 '<td>' + " " + '</td>' +
-		             '</tr>' +
-		             '<tr>' +
-	                 '<td>Supplier details:</td>' +
-	                 '<td>' + " " + '</td>' +
-	            	 '</tr>' +		             
-		            
-		         '</table>';  
-		    }
-			</script>
-			<!-- /Scripts -->
 </body>
 </html>

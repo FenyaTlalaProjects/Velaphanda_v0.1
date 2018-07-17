@@ -105,7 +105,7 @@
 							<legend align=center>Head Office Stock</legend>
 
 						
-								<table data-toggle="table" data-url="${spareParts}"
+								<table data-toggle="table" 
 									data-show-refresh="true" data-show-toggle="true"
 									data-search="true" data-select-item-name="toolbar1"
 									data-pagination="true" data-sort-name="partNo"
@@ -142,7 +142,7 @@
 						<div class="tab-pane" id="siteStock">
 							<legend align=center>Site Stock</legend>
 
-							<table data-toggle="table" data-url="${customer}"
+							<table data-toggle="table" 
 								data-show-refresh="true" data-show-toggle="true"
 								data-search="true" data-select-item-name="toolbar1"
 								data-pagination="true" data-sort-name="customername"
@@ -174,7 +174,7 @@
 
 						<div class="tab-pane" id="bootStock">
 							<legend align=center>Boot Stock</legend>
-							<table data-toggle="table" data-url="${customer}"
+							<table data-toggle="table"
 								data-show-refresh="true" data-show-toggle="true"
 								data-search="true" data-select-item-name="toolbar1"
 								data-pagination="true" data-sort-name="technicianname"

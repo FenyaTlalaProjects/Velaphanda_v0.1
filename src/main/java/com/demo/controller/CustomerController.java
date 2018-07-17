@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.bean.CustomerBean;
 import com.demo.model.Customer;
+
 import com.demo.model.Device;
 import com.demo.model.Employee;
 import com.demo.service.AccessoriesInt;
@@ -32,7 +33,9 @@ public class CustomerController {
 	
 	@Autowired
 	private CustomerServiceInt customerServiceInt;
-	@Autowired
+	/*@Autowired
+	private CustomerHistoryInt customerHistoryServiceInt;
+	*/@Autowired
 	private DeviceServiceInt deviceServiceInt;
 	@Autowired
 	private CustomerContactDetailsServiceInt contactDetailsServiceInt;
@@ -40,8 +43,7 @@ public class CustomerController {
 	private TicketsServiceInt ticketsServiceInt;
 	/*Order inbox count on every page*/
 	@Autowired
-	private OrdersServiceInt ordersServiceInt;	
-	
+	private OrdersServiceInt ordersServiceInt;		
 	@Autowired
 	private HttpSession session;
 	@Autowired
@@ -258,7 +260,7 @@ public class CustomerController {
 		
 			if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")) {
 				
-				model.addObject("displayCustomers", customerServiceInt.getClientList());			
+				model.addObject("displayCustomers", customerServiceInt.getClientList());
 				model.setViewName("displayCustomers");
 			
 		   }else if(userName.getRole().equalsIgnoreCase("User")){			   

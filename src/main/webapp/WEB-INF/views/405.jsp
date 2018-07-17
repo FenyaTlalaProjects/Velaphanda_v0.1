@@ -39,9 +39,11 @@
 
 				<div class="panel-body">
 					<div class="errorLogin">
-						<h2 >Something went wrong!!</h2>
-						<p><b>Please report error below to system developer.</b>
-						 Error Message : ${exception} </p>
+						<h2>Something went wrong!!</h2>
+						<p>
+							<b>Please report error below to system developer.</b> Error
+							Message : ${exception}
+						</p>
 						or <a href="login.html">Login</a> with correct credentials
 					</div>
 					<!-- Footer -->
@@ -62,3 +64,5 @@
 	<!-- /Scripts -->
 </body>
 </html>
+
+

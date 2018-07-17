@@ -4,9 +4,6 @@ import java.util.List;
 
 import net.sf.jasperreports.engine.JRDataSource;
 
-import org.hibernate.Criteria;
-
-import com.demo.model.OrderHistory;
 import com.demo.model.TicketHistory;
 import com.demo.model.Tickets;
 

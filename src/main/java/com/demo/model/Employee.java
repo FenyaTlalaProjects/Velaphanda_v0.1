@@ -79,8 +79,7 @@ public class Employee implements Serializable{
 	
 	@OneToMany(mappedBy="employee",cascade=CascadeType.ALL)
 	private Set<TicketHistory> ticketHistory;
-
-	
+		
 	@OneToMany(mappedBy="employee")
 	private Set<UserLogDetails> userLogDetails;
 	

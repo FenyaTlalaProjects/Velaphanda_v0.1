@@ -63,8 +63,7 @@ public class TicketHistory implements Serializable{
 	@Column(name="Status")
 	private String status;
 	
-	
-	
+		
 	@ManyToOne
 	@JoinColumn(name="EscalatedTo")
 	private Employee employee;

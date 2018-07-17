@@ -94,10 +94,7 @@ public class Tickets implements Serializable{
 	private String reopenReason;
 	@Column(name="TicketLoggedBy")
 	private String ticketLoggedBy;
-	
-	
-	
-	
+		
 	@ManyToOne
 	@JoinColumn(name="AssignedTechnician")
 	private Employee employee;

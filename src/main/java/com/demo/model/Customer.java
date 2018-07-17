@@ -78,5 +78,9 @@ public class Customer implements Serializable{
 	
 	@OneToMany(mappedBy="customer")
 	private Set<TechnicianSite> technicianSites;
+	
+	/*@OneToMany(mappedBy= "customers",cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+	private Set<CustomerHistory> customerHistory; 
+*/
 
 }
