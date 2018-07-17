@@ -97,7 +97,6 @@ public class SpareQuantityDao implements SpareQuantityDaoInt{
 			spareQuantity.setTonerQuantity(bootStockDaoInt.countTonerForTechnician(techName));
 			spareQuantity.setTechName(emp.getFirstName()+" "+ emp.getLastName());
 			
-			
 			temptQuanity.add(spareQuantity);
 		}
 		return temptQuanity;

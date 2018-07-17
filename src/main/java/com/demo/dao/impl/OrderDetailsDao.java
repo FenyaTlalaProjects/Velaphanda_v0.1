@@ -13,9 +13,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.demo.dao.CustomerContactDetailsDaoInt;
 import com.demo.dao.EmployeeDaoInt;
 import com.demo.dao.OrderDetailsDaoInt;
 import com.demo.dao.OrdersDaoInt;
+import com.demo.model.CustomerContactDetails;
 import com.demo.model.Employee;
 import com.demo.model.OrderDetails;
 import com.demo.model.OrderHeader;
@@ -31,11 +33,14 @@ public class OrderDetailsDao implements OrderDetailsDaoInt {
 	private OrdersDaoInt orderDaoInt;
 	@Autowired
 	private EmployeeDaoInt employeeDaoInt;
+	@Autowired
+	private CustomerContactDetailsDaoInt contactDetailsDaoInt;
 
 	private String retMessage = null;
 
 	private List<OrderDetails> orders = null;
 	private List<OrderDetails> retOrder = null;
+	private CustomerContactDetails customerContacts;
 
 	@Override
 	public String saveOrderDetails(List<OrderDetails> orderDetails) {
@@ -231,6 +236,7 @@ public class OrderDetailsDao implements OrderDetailsDaoInt {
             List<OrderReportBean> orderResults = new ArrayList<OrderReportBean>();
             if(orderDetails.get(0).getOrderHeader().getStockType().equalsIgnoreCase("Site")){
             	ordHeader = orderDaoInt.getOrder(recordID);
+            	customerContacts = contactDetailsDaoInt.getContactPerson(ordHeader.getCustomer().getCustomerName());
             }
             
             Employee emp = employeeDaoInt.getEmployeeByEmpNum(orderDetails.get(0).getOrderHeader().getEmployee().getEmail());
@@ -243,10 +249,9 @@ public class OrderDetailsDao implements OrderDetailsDaoInt {
 				bean.setPartNumber(order.getPartNumber());
 				bean.setQuantity(order.getQuantity());
 				
-				
-				bean.setTechName(emp.getFirstName()+" "+emp.getLastName());
-				bean.setTechEmail(emp.getEmail());
-				bean.setTechCellNo(emp.getCellNumber());
+				bean.setDateDelivered("");
+				bean.setCustomerOrderNum("ORD00"+order.getOrderHeader().getRecordID());
+			
 				if(ordHeader !=null){
 					
 					bean.setCustomerName(ordHeader.getCustomer().getCustomerName());
@@ -254,19 +259,24 @@ public class OrderDetailsDao implements OrderDetailsDaoInt {
 					bean.setProvince(ordHeader.getCustomer().getCity_town()+" ,"+ordHeader.getCustomer().getProvince());
 					
 					String NoteNumber = ordHeader.getCustomer().getCustomerName().substring(0,3)+"/"+ "ORD00"+ordHeader.getRecordID();
-					bean.setDateDelivered("");
 					bean.setDeliveryNoteNo(NoteNumber);
-					bean.setCustomerOrderNum("ORD00"+ordHeader.getRecordID());
+				
+					
+					bean.setTechName(customerContacts.getFirstName()+" "+customerContacts.getLastName());
+					bean.setTechEmail(customerContacts.getContactEmail());
+					bean.setTechCellNo(customerContacts.getContactTelephoneNumber());
 				}
 				else{
+					
+					bean.setTechName(emp.getFirstName()+" "+emp.getLastName());
+					bean.setTechEmail(emp.getEmail());
+					bean.setTechCellNo(emp.getCellNumber());
 					bean.setCustomerName("");
 					bean.setAddress("");
 					bean.setProvince("");
 					
 					String NoteNumber = "ORD00"+order.getOrderHeader().getRecordID();
-					bean.setDateDelivered("");
 					bean.setDeliveryNoteNo(NoteNumber);
-					bean.setCustomerOrderNum("ORD00"+order.getOrderHeader().getRecordID());
 				}
 				orderResults.add(bean);
 				ds = new JRBeanCollectionDataSource(orderResults);
