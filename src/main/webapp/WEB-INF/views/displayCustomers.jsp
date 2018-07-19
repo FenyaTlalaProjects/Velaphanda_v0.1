@@ -90,7 +90,7 @@
 		<script type="text/javascript">
 			//customer history table
 			function customerHistory() {
-				return '<table id="customerHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="4" style="text-align:center;">Customer History</th></tr><tr><th>Name</th><th>Date Client Captured</th><th>Name</th><th>Date Updated</th></tr></thead><tbody><tr><td>Some Data</td><td>Some Data</td><td>Some Data</td><td>Some Data</td></tr></tbody></table>';
+				return '<table id="customerHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="4" style="text-align:center;">Customer History</th></tr><tr><th>Name</th><th>Action</th><th>Date</th><th>Cooment</th></tr></thead><tbody><tr><td>Some Data</td><td>Some Data</td><td>Some Data</td><td>Some Data</td></tr></tbody></table>';
 			}
 		</script>
 		<c:import url="templates/sidebar-collapse.jsp"></c:import>
