@@ -60,6 +60,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
+			      <value>com.demo.model.History</value>
 				 <value>com.demo.model.Employee</value> 
 				 <value>com.demo.model.Device</value>
 				 <value>com.demo.model.Customer</value>
@@ -89,6 +90,7 @@
 				 <value>com.demo.model.VelaphandaProfile</value>
 				 <value>com.demo.model.DeliveryNoteHeader</value>
 				 <value>com.demo.model.DeliveryNoteLineItem</value>
+				
 			</list>
 		</property>
 		<property name="hibernateProperties">

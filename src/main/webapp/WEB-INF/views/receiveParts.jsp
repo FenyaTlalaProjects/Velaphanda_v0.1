@@ -31,7 +31,7 @@
 
 <c:import url="templates/stylesheetlib.jsp"></c:import>
 </head>
-<body>
+<body onload="SelectedItemType()">
 	<c:import url="templates/navbar.jsp"></c:import>
 
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -150,9 +150,9 @@
 													<div class="input-group">
 														<span class="input-group-addon"><i
 															class="glyphicon glyphicon-list"></i></span><select
-															id="itemType" class="form-control" readOnly
+															id="itemType" class="form-control" 
 															name="itemType" class="form-control selectpicker" onchange="SelectColours(this.value);">
-															<option value="${sparePart.itemType}">${sparePart.itemType}</option>
+															<option value="${sparePart.itemType}" >${sparePart.itemType}</option>
 															<option value="Toner">Toner</option>
 															<option value="Part">Part</option>
 														</select>
@@ -160,8 +160,8 @@
 												</div>
 											</div>
 											
-											<!-- Select type Color Type-->
-											<div class="colors" id="colors" style="display: none;">
+											<!-- <!-- Select type Color Type-->
+											<div class="colors" id="colors" style="display: none;"> 
 												<div class="form-group">
 													<label class="col-md-3 control-label">Colour</label>
 													<div class="col-md-8 selectContainer">
@@ -236,6 +236,8 @@
 													</div>
 												</div>
 											</div>
+											
+											 
 
 										</div>
 
@@ -259,6 +261,40 @@
 											</c:forEach>
 
 										</table>
+										<br/><br/>
+										<legend>Supplier Details</legend>
+										
+										 <!-- Text input Supplier Name-->
+												<div class="form-group">
+													<label class="col-md-3 control-label">Supplier Name</label>
+													<div class="col-md-8 selectContainer">
+														<div class="input-group">
+														<span class="input-group-addon"><i
+															class="glyphicon glyphicon-list"></i></span><select id="supplierName"
+															class="form-control" name="supplierName"
+															class="form-control selectpicker">
+															<option value="">Select Supplier Name</option>
+															<option value="Canon South Africa">Canon South Africa</option>
+															<option value="Taropa Technologies">Taropa Technologies</option>
+															<option value="Magenta">Toshiba South Africa</option>
+															<option value="Riso South Africa">Riso South Africa</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											
+											<!-- Text input Supplier Order number-->
+											<div class="form-group">
+												<label class="col-md-3 control-label">Supplier Order No</label>
+												<div class="col-md-8 inputGroupContainer">
+													<div class="input-group">
+														<span class="input-group-addon"><i
+															class="glyphicon glyphicon-user"></i></span> <input type="text"
+															id="supplierOrderNo" name="supplierOrderNo" class="form-control"
+															value="" placeholder="Provide Supplier Order No">
+													</div>
+												</div>
+											</div>
 
 									</div>
 									<!-- //group search details -->
@@ -296,6 +332,7 @@
 		<!--/.main-->
 		<c:import url="templates/javascriptslib.jsp"></c:import>
 		<c:import url="templates/sidebar-collapse.jsp"></c:import>
+		
 		<!-- /Scripts -->
 </body>
 </html>

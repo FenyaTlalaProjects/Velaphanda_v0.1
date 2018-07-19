@@ -106,14 +106,10 @@
 								<legend align=center>Head Office Stock</legend>
 
 
-								<table data-toggle="table"
-									data-show-refresh="true" data-show-toggle="true"
-									data-search="true" data-select-item-name="toolbar1"
-									data-pagination="true" data-sort-name="partNo"
-									data-sort-order="aesc">
+								<table id="spareHistory" class="display">
 									<thead>
 										<tr>
-											<!-- <th data-field="" data-sortable="true"></th> -->
+											<th data-field="" data-sortable="true"></th>
 											<th data-field="partNo" data-sortable="true">Part No</th>
 											<th data-field="compatibledevices" data-sortable="true">Compatible
 												Devices</th>
@@ -128,16 +124,24 @@
 									<tbody>
 										<!-- Iterating over the list sent from Controller -->
 										<c:forEach var="list" items="${spareParts}">
-											<tr>
-												<!-- <td class="details-control"></td> -->
-												<td>${list.partNumber}</td>
-												<td>${list.compitableDevice}</td>
-												<td>${list.modelBrand}</td>
-												<td>${list.itemDescription}</td>
-												<td>${list.itemType}</td>
-											    <td>${list.quantity}</td>
-												<td>${list.color}</td>
-											</tr>
+										 	
+											<c:choose>
+												<c:when test="${list.quantity > 0}">
+												<tr>
+													<td class="details-control"></td>
+													<td>${list.partNumber}</td>
+													<td>${list.compitableDevice}</td>
+													<td>${list.modelBrand}</td>
+													<td>${list.itemDescription}</td>
+													<td>${list.itemType}</td>
+													<td>${list.quantity}</td>
+													<td>${list.color}</td>
+												</tr>
+												</c:when>
+												<c:otherwise>
+												</c:otherwise>												
+											</c:choose>
+										
 										</c:forEach>
 									</tbody>
 								</table>
@@ -147,11 +151,10 @@
 							<div class="tab-pane" id="siteStock">
 								<legend align=center>Site Stock</legend>
 
-								<table data-toggle="table" 
-									data-show-refresh="true" data-show-toggle="true"
-									data-search="true" data-select-item-name="toolbar1"
-									data-pagination="true" data-sort-name="customername"
-									data-sort-order="aesc">
+								<table data-toggle="table" data-show-refresh="true"
+									data-show-toggle="true" data-search="true"
+									data-select-item-name="toolbar1" data-pagination="true"
+									data-sort-name="customername" data-sort-order="aesc">
 									<thead>
 										<tr>
 											<th data-field="customername" data-sortable="true">Customer
@@ -160,37 +163,38 @@
 												Quantity</th>
 											<th data-field="modelbrand" data-sortable="true">Toners
 												Quantity</th>
-											
+
 										</tr>
 									</thead>
 									<tbody>
 										<!-- Iterating over the list sent from Controller -->
 										<c:forEach var="list" items="${customer}">
 											<c:choose>
-												<c:when test="${list.tonerQuantity > 0 || list.partQuanty > 0}">													
-													<tr>											
-														<td><a href="loadStockSite?customerName=<c:out value='${list.customerName}'/>">${list.customerName}</a></td>												
+												<c:when
+													test="${list.tonerQuantity > 0 || list.partQuanty > 0}">
+													<tr>
+														<td><a
+															href="loadStockSite?customerName=<c:out value='${list.customerName}'/>">${list.customerName}</a></td>
 														<td>${list.partQuanty}</td>
-														<td>${list.tonerQuantity}</td>											
+														<td>${list.tonerQuantity}</td>
 													</tr>
 												</c:when>
 												<c:otherwise>
 												</c:otherwise>
-											</c:choose>											
+											</c:choose>
 										</c:forEach>
 									</tbody>
 								</table>
 							</div>
 							<!-- siteStock -->
-							
-							
+
+
 							<div class="tab-pane" id="bootStock">
 								<legend align=center>Boot Stock</legend>
-								<table data-toggle="table"
-									data-show-refresh="true" data-show-toggle="true"
-									data-search="true" data-select-item-name="toolbar1"
-									data-pagination="true" data-sort-name="technicianname"
-									data-sort-order="aesc">
+								<table data-toggle="table" data-show-refresh="true"
+									data-show-toggle="true" data-search="true"
+									data-select-item-name="toolbar1" data-pagination="true"
+									data-sort-name="technicianname" data-sort-order="aesc">
 									<thead>
 										<tr>
 											<th data-field="technicianname" data-sortable="true">Technician
@@ -199,24 +203,26 @@
 												Quantity</th>
 											<th data-field="tonersquantity" data-sortable="true">Toners
 												Quantity</th>
-																					</tr>
+										</tr>
 									</thead>
 									<tbody>
 										<!-- Iterating over the list sent from Controller -->
 										<c:forEach var="list" items="${employees}">
-										
+
 											<c:choose>
-												<c:when test="${list.tonerQuantity > 0 || list.partQuanty > 0}">													
-													<tr>											
-														<td><a href="loadBootStock?technician=<c:out value='${list.customerName}'/>">${list.techName}</a></td>												
+												<c:when
+													test="${list.tonerQuantity > 0 || list.partQuanty > 0}">
+													<tr>
+														<td><a
+															href="loadBootStock?technician=<c:out value='${list.customerName}'/>">${list.techName}</a></td>
 														<td>${list.partQuanty}</td>
-														<td>${list.tonerQuantity}</td>											
+														<td>${list.tonerQuantity}</td>
 													</tr>
 												</c:when>
 												<c:otherwise>
 												</c:otherwise>
-											</c:choose>	
-										
+											</c:choose>
+
 										</c:forEach>
 									</tbody>
 								</table>
@@ -234,6 +240,13 @@
 			</div>
 			<!--/.main-->
 			<c:import url="templates/javascriptslib.jsp"></c:import>
+			<c:import url="templates/datatablesscripts.jsp"></c:import>
+			<script type="text/javascript">
+				//spare history table
+				function spareHistory() {
+					return '<table id="spareHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="4" style="text-align:center;">Spare History</th></tr><tr><th>Spare Recieved By</th><th>Date Spare Recieved</th><th>Spare Supplier</th><th>Quantity Recieved</th></tr></thead><tbody><tr><td>Some Data</td><td>Some Data</td><td>Some Data</td><td>Some Data</td></tr></tbody></table>';
+				}
+			</script>
 			<c:import url="templates/sidebar-collapse.jsp"></c:import>
 </body>
 </html>

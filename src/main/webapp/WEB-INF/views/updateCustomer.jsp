@@ -364,13 +364,66 @@
 							<!--/Contact Person 2 -->
 							</fieldset>
 							
+							
+								<!-- Movement History Details -->
+
+								<div id="customerUpdate" class="modal fade" role="dialog"
+									aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+
+										<div class="modal-content">
+
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">×</button>
+												<h3 class="modal-title">Udating Customer</h3>
+											</div>
+											<p >
+
+											<div class="modal-body">
+													<div class="row">
+														
+														<div class="alert alert-info" role="alert">
+														 <p><p>Note:<strong> Provide what you changed to new data!</p>
+														</div>												
+														<!-- Customer Action -->
+														<input type="hidden" id="customerAction" name="customerAction" class="form-control" value="Update Customer">
+														
+														<!-- Text area comments-->
+														<label class="col-md-3 control-label">Provide Commment</label>															
+														<div class="form-group">
+															<div class="col-md-6 inputGroupContainer">
+																<div class="input-group">
+																	<span class="input-group-addon"><i
+																		class="glyphicon glyphicon-edit"></i></span>
+																	<textarea class="form-control" style="height: 120px;"
+																		id="comments" name="comments" maxlength="150" placeholder="Please enter what was updated and new updated data"></textarea>
+																</div>
+															</div>
+														</div>
+														<!--// text area comments-->
+																									 
+													</div>
+												
+											</div>
+											<!-- modal-body -->
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+												<input type="submit" value="Update Customer" class="btn btn-primary">
+											</div>
+										</div>
+										<!-- /.modal-content -->
+									</div>
+									<!-- /.modal-dialog -->
+								</div>
+								<!-- /.modal -- Movement History Details -->							
+							
 							<div class="form-group row">
 								<div class="col-sm-offset-2 col-sm-8">
-									<br> <br> <input type="submit"
+									<br> <br> <input type="button"
 										value="Update Customer"
 										class="btn btn-primary btn-block btn-lg"
-										data-confirm="You are about to update the customer information, Make sure all information is correct before updating"
-										id="updateClnt">
+										href="#" name="customerUpdate" data-toggle="modal" data-target="#customerUpdate">
 								</div>
 							</div>
 

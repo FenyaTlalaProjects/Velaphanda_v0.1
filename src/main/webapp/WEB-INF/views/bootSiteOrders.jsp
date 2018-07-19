@@ -112,8 +112,8 @@
 											<c:choose>
 												<c:when test="${list.quantity > 0}">
 													<tr>
-														<td><!-- <a href="#" name="moveSparesSubmit"
-															data-toggle="modal" data-target="#historyDetails"> -->${list.partNumber}<!-- </a> --></td>
+														<td><a href="#" name="moveSparesSubmit"
+															data-toggle="modal" data-target="#historyDetails">${list.partNumber}</a></td>
 														<td>${list.compatibleDevice}</td>
 														<td>${list.modelBrand}</td>
 														<td>${list.itemDescription}</td>

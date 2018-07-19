@@ -84,7 +84,7 @@
 							<form:form method="post" class="well form-horizontal"
 								action="moveSpares" modelAttribute="moveSpares" id="moveSpares">
 
-								<table id="stockOnSite" data-toggle="table" data-url="${orders}"
+								<table id="stockOnSite" data-toggle="table" 
 									data-show-refresh="true" data-show-toggle="true"
 									data-search="true" data-select-item-name="toolbar1"
 									data-pagination="true" data-sort-name="partno"
@@ -111,8 +111,8 @@
 												<c:when test="${list.quantity > 0}">											
 											
 												<tr>
-												<td><!-- <a href="#" name="moveSparesSubmit" data-toggle="modal"
-											data-target="#historyDetails"> -->${list.partNumber}<!-- </a> --></td>
+												<td><a href="#" name="moveSparesSubmit" data-toggle="modal"
+											data-target="#historyDetails"> ${list.partNumber}</a> </td>
 												<td>${list.compatibleDevice}</td>
 												<td>${list.customerName}</td>
 												<td>${list.modelBrand}</td>

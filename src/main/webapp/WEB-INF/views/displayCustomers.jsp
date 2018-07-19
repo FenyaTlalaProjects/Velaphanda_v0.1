@@ -5,8 +5,8 @@
 <title>View Customers | Velaphanda Trading & Projects</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<c:import url="templates/tableresizefont.jsp"></c:import>
-<c:import url="templates/stylesheetlib.jsp"></c:import>
+ <c:import url="templates/tableresizefont.jsp"></c:import>
+ <c:import url="templates/datatablesstyles.jsp"></c:import>
 </head>
 <body>
 	<c:import url="templates/navbar.jsp"></c:import>
@@ -36,14 +36,10 @@
 							<a target="_blank"
 								href="customerListDownloadPDF">Download
 								PDF </a><br/><br/>
-							<table data-toggle="table"
-							data-show-refresh="true" data-show-toggle="true"
-							data-search="true" data-select-item-name="toolbar1"
-							data-pagination="true" data-sort-name="customername"
-							data-sort-order="aesc">
+							<table id="customerHistory" class="display">
 								<thead>
 									<tr>
-										<!-- <th></th> -->
+										<th></th>
 										<th data-field="customername" data-sortable="true">Customer</th>
 										<th data-field="email" data-sortable="true">Email</th>
 										<th data-field="tellNo" data-sortable="true">Tell No</th>										
@@ -57,7 +53,7 @@
 									<!-- Iterating over the list sent from Controller -->
 									<c:forEach var="list" items="${displayCustomers}">
 										<tr>
-											<!-- <td class="details-control"></td> -->
+											<td class="details-control"></td>
 											<td><a
 												href="viewCustomer?customerName=<c:out value='${list.customerName}'/>"> ${list.customerName}</a></td>
 											<td> ${list.contactEmail}</td>
@@ -89,8 +85,15 @@
 			<!--/ footer -->
 		</div>
 		<!--/.main-->
-		<c:import url="templates/javascriptslib.jsp"></c:import>
-	<c:import url="templates/sidebar-collapse.jsp"></c:import>
-	<!-- /Scripts -->
+		<c:import url="templates/datatablesscripts.jsp"></c:import>
+		
+		<script type="text/javascript">
+			//customer history table
+			function customerHistory() {
+				return '<table id="customerHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="4" style="text-align:center;">Customer History</th></tr><tr><th>Name</th><th>Date Client Captured</th><th>Name</th><th>Date Updated</th></tr></thead><tbody><tr><td>Some Data</td><td>Some Data</td><td>Some Data</td><td>Some Data</td></tr></tbody></table>';
+			}
+		</script>
+		<c:import url="templates/sidebar-collapse.jsp"></c:import>
+		<!-- /Scripts -->
 </body>
 </html>
