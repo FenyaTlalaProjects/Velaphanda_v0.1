@@ -8,7 +8,7 @@
  <c:import url="templates/tableresizefont.jsp"></c:import>
  <c:import url="templates/datatablesstyles.jsp"></c:import>
 </head>
-<body>
+<body onload="customerHistory()">
 	<c:import url="templates/navbar.jsp"></c:import>
 
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -53,7 +53,7 @@
 									<!-- Iterating over the list sent from Controller -->
 									<c:forEach var="list" items="${displayCustomers}">
 										<tr>
-											<td class="details-control"></td>
+											<td class="details-control" onclick="window.location='displayCustomers.html?action=actionExpand?customerName=<c:out value='${list.customerName}'/>';"></td>
 											<td><a
 												href="viewCustomer?customerName=<c:out value='${list.customerName}'/>"> ${list.customerName}</a></td>
 											<td> ${list.contactEmail}</td>
@@ -90,8 +90,9 @@
 		<script type="text/javascript">
 			//customer history table
 			function customerHistory() {
-				return '<table id="customerHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="4" style="text-align:center;">Customer History</th></tr><tr><th>Name</th><th>Action</th><th>Date</th><th>Cooment</th></tr></thead><tbody><tr><td>Some Data</td><td>Some Data</td><td>Some Data</td><td>Some Data</td></tr></tbody></table>';
+				return '<table id="customerHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="4" style="text-align:center;">Customer History</th></tr><tr><th>Name</th><th>Action</th><th>Date</th><th>Comment</th></tr></thead><tbody><tr><td>Some Data</td><td>Some Data</td><td>Some Data</td><td>Some Data</td></tr></tbody></table>';
 			}
+			
 		</script>
 		<c:import url="templates/sidebar-collapse.jsp"></c:import>
 		<!-- /Scripts -->

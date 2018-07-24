@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.bean.CustomerBean;
 import com.demo.model.Customer;
-
 import com.demo.model.Device;
 import com.demo.model.Employee;
 import com.demo.service.AccessoriesInt;
@@ -254,6 +253,29 @@ public class CustomerController {
 	
 	@RequestMapping(value={"displayCustomers","userDisplayCustomers"},method=RequestMethod.GET)
 	public ModelAndView displayCustomers(Integer offset,Integer maxResults){
+		model= new ModelAndView();
+		userName = (Employee) session.getAttribute("loggedInUser");
+		if(userName != null){
+		
+			if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")) {
+				
+				model.addObject("displayCustomers", customerServiceInt.getClientList());
+				model.setViewName("displayCustomers");
+			
+		   }else if(userName.getRole().equalsIgnoreCase("User")){			   
+			   model.addObject("displayCustomers", customerServiceInt.getClientList());				
+			   model.setViewName("userDisplayCustomers"); 
+			   
+		   }
+		}
+		else{
+			model.setViewName("login");
+		}
+		return model;
+	}
+	@RequestMapping(value={"displayCustomerHistory","userDisplayCustomerHistory"},method=RequestMethod.GET)
+	public ModelAndView displayCustomerHistory(@RequestParam("customerName") String customerName,
+			@RequestParam("action") String actionExpand,Integer offset,Integer maxResults){
 		model= new ModelAndView();
 		userName = (Employee) session.getAttribute("loggedInUser");
 		if(userName != null){
