@@ -18,8 +18,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.bean.CustomerBean;
+import com.demo.bean.HistoryBean;
 import com.demo.dao.CustomerDaoInt;
 import com.demo.dao.CustomerContactDetailsDaoInt;
+import com.demo.dao.HistoryDaoInt;
 import com.demo.model.Customer;
 import com.demo.model.CustomerContactDetails;
 import com.demo.model.Employee;
@@ -47,7 +49,10 @@ public class CustomerDao implements CustomerDaoInt {
 	private CustomerContactDetailsServiceInt contactDetailsServiceInt;
 	@Autowired
 	private CustomerContactDetailsDaoInt customerContactDetailsDaoIntDaoInt;
+	@Autowired
+	private HistoryDaoInt historyDaoInt;
 
+	HistoryBean historyBean = null;
 	private String retMessage = null;
 	List<Customer> clientList = null;
 	Customer customer = null;
@@ -125,10 +130,27 @@ public class CustomerDao implements CustomerDaoInt {
 					contactDetails1.setCustomerContactDetails(tempCustomer);
 					list.add(contactDetails1);
 				}
+				
+				historyBean = new HistoryBean();
+				//Prepare Customer Data for History Table
+				historyBean.setAction("Create");
+				historyBean.setClassification("Customer");
+				historyBean.setObjectId(customerBean.getCustomerName());
+				historyBean.setUserEmail(emp.getEmail());
+				historyBean.setDescription("Initial create of Customer");
+				historyBean.setDataField1(null);
+				historyBean.setDataField2(null);
+				historyBean.setQuantity(null);
+								
+				
+				
 				sessionFactory.getCurrentSession().save(tempCustomer);
 				customerContactDetailsDaoIntDaoInt.saveContactDetails(list);
+				historyDaoInt.saveHistory(historyBean);
 				retMessage = "Customer " + tempCustomer.getCustomerName() + " "
 						+ "successfully added.";
+				
+				
 			} else {
 				retMessage = "Customer " + customer.getCustomerName() + " "
 						+ "already exist. Please add new customer with a different name.";
