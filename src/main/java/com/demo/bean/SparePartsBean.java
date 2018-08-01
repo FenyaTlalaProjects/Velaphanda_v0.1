@@ -3,6 +3,8 @@ package com.demo.bean;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.persistence.Column;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,4 +23,7 @@ public class SparePartsBean {
 	private String color;
 	private String capturedBy;
 	private Date dateCaptured;
+	private String supplierName;
+	private String supplierOrderNo;
+	private String description;
 }

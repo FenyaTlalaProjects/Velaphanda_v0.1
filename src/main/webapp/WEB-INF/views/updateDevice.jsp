@@ -622,23 +622,158 @@
 									</div>
 
 								</div>
+							
+							<!-- History Details for Removing Accessories -->
+							<div id="updateDeviceRemoveAccessory" class="modal fade" role="dialog"
+								aria-hidden="true">
+								<div class="modal-dialog modal-lg">
+
+									<div class="modal-content">
+
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true">×</button>
+											<h3 class="modal-title">Udating Device</h3>
+										</div>
+										<p>
+										<div class="modal-body">
+											<div class="row">
+
+												<div class="col-sm-12">
+													<div class="form-group">
+														<div class="alert alert-info" role="alert">
+															<p>
+																<strong>Note:</strong>You need to provide what you have
+																changed and new data!
+															</p>
+														</div>
+													</div>
+
+
+													<!-- Customer Action -->
+													<input type="hidden" id="customerAction"
+														name="customerAction" class="form-control"
+														value="Update Customer">
+
+													<!-- Text area comments-->
+													<label class="col-md-3 control-label">Provide
+														Comment</label>
+													<div class="form-group">
+														<div class="col-md-6 inputGroupContainer">
+															<div class="input-group">
+																<span class="input-group-addon"><i
+																	class="glyphicon glyphicon-edit"></i></span>
+																<textarea class="form-control" style="height: 120px;"
+																	id="decription" name="decription" maxlength="150"
+																	placeholder="Please enter what was updated and new updated data"></textarea>
+															</div>
+														</div>
+													</div>
+													<!--// text area comments-->
+
+												</div>
+											</div>
+
+										</div>
+										<!-- modal-body -->
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">Cancel</button>
+											<input type="submit" value="Remove Accessory"
+												class="btn btn-primary" onclick="('Are sure you want to remove accessories');">
+										</div>
+									</div>
+									<!-- /.modal-content -->
+								</div>
+								<!-- /.modal-dialog -->
+							</div>
+							<!-- /.modal -- History Details for Removing Accessories -->
+							
+								
+							<!-- History Details -->
+							<div id="updateProduct" class="modal fade" role="dialog"
+								aria-hidden="true">
+								<div class="modal-dialog modal-lg">
+
+									<div class="modal-content">
+
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true">×</button>
+											<h3 class="modal-title">Udating Device</h3>
+										</div>
+										<p>
+										<div class="modal-body">
+											<div class="row">
+
+												<div class="col-sm-12">
+													<div class="form-group">
+														<div class="alert alert-info" role="alert">
+															<p>
+																<strong>Note:</strong>You need to provide what you have
+																changed and new data!
+															</p>
+														</div>
+													</div>
+
+
+													<!-- Customer Action -->
+													<input type="hidden" id="customerAction"
+														name="customerAction" class="form-control"
+														value="Update Customer">
+
+													<!-- Text area comments-->
+													<label class="col-md-3 control-label">Provide
+														Comment</label>
+													<div class="form-group">
+														<div class="col-md-6 inputGroupContainer">
+															<div class="input-group">
+																<span class="input-group-addon"><i
+																	class="glyphicon glyphicon-edit"></i></span>
+																<textarea class="form-control" style="height: 120px;"
+																	id="decription" name="decription" maxlength="150"
+																	placeholder="Please enter what was updated and new updated data"></textarea>
+															</div>
+														</div>
+													</div>
+													<!--// text area comments-->
+
+												</div>
+											</div>
+
+										</div>
+										<!-- modal-body -->
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">Cancel</button>
+											<input type="submit" value="Update Device"
+												class="btn btn-primary" onclick="('Are sure you want to Update Device');">
+										</div>
+									</div>
+									<!-- /.modal-content -->
+								</div>
+								<!-- /.modal-dialog -->
+							</div>
+							<!-- /.modal -- History Details -->								
 
 								<div id="removeAccessory" class="form-group row">
 									<div class="col-sm-offset-2 col-sm-8">
-										<br> <br> <input type="submit" id="removeAccessory"
+										<br> <br> <input type="button" id="removeAccessory"
 											name="removeAccessory" value="Remove Accessory"
 											class="btn btn-danger btn-block btn-lg" tabindex="9"
-											onclick="return confirm('Are you sure you want to delete this?');">
+											name="updateDeviceRemoveAccessory" data-toggle="modal"
+												data-target="#updateDeviceRemoveAccessory">
 									</div>
 								</div>
+								
 								<div id="hideUpdateProduct" class="hideUpdateProduct">
 									<div class="form-group row">
 										<div class="col-sm-offset-2 col-sm-8">
-											<br> <br> <input type="submit" id="updateProduct"
+											<br> <br> <input type="button" id="updateProduct"
 												name="updateProduct" value="Update Device"
 												class="btn btn-primary btn-block btn-lg" tabindex="9"
-												id="updateProduct"
-												onclick="return confirm('Are you sure you want to update device?');">
+												id="updateProduct" name="updateProduct" data-toggle="modal"
+												data-target="#updateProduct">
 										</div>
 									</div>
 								</div>

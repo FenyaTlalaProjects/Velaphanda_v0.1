@@ -24,6 +24,7 @@ import com.demo.service.CustomerContactDetailsServiceInt;
 import com.demo.service.CustomerServiceInt;
 import com.demo.service.EmployeeServiceInt;
 import com.demo.service.DeviceServiceInt;
+import com.demo.service.HistoryServiceInt;
 import com.demo.service.LeaveInt;
 import com.demo.service.OrdersServiceInt;
 import com.demo.service.SiteStockInt;
@@ -35,6 +36,8 @@ import com.demo.service.TicketsServiceInt;
 @Controller
 public class DeviceController {
 	
+	@Autowired
+	private HistoryServiceInt deviceHistoryServiceInt;
 	@Autowired
 	private SpareMasterServiceInt spareMasterServiceInt;
 	@Autowired
@@ -229,8 +232,9 @@ public class DeviceController {
 		return model;
 		
 	}
+	
 	@RequestMapping(value={"searchDevice","userSearchDevice"},method=RequestMethod.GET)
-	public ModelAndView searchDevice()
+	public ModelAndView searchDevice(String serialNumber)
 	{
 		model = new ModelAndView();
 		userName = (Employee) session.getAttribute("loggedInUser");
@@ -238,6 +242,7 @@ public class DeviceController {
 		if(userName != null){
 			if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")) {
 				model.addObject("deviceList", deviceServiceInt.getDeviceList());
+				model.addObject("displayDeviceHistory", deviceHistoryServiceInt.getHistoryBySerialNumber(serialNumber));
 				model.setViewName("searchDevice");
 			}else if(userName.getRole().equalsIgnoreCase("User")){
 				model.addObject("deviceList", deviceServiceInt.getDeviceList());

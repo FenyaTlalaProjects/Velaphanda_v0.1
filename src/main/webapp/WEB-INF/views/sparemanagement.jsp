@@ -128,7 +128,7 @@
 											<c:choose>
 												<c:when test="${list.quantity > 0}">
 												<tr>
-													<td class="details-control"></td>
+													<td class="details-control" onclick="window.location='sparemanagement.html?partNumber=<c:out value='${list.partNumber}'/>';"></td>
 													<td>${list.partNumber}</td>
 													<td>${list.compitableDevice}</td>
 													<td>${list.modelBrand}</td>
@@ -244,7 +244,7 @@
 			<script type="text/javascript">
 				//spare history table
 				function spareHistory() {
-					return '<table id="spareHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="4" style="text-align:center;">Spare History</th></tr><tr><th>Spare Recieved By</th><th>Date Spare Recieved</th><th>Spare Supplier</th><th>Quantity Recieved</th></tr></thead><tbody><tr><td>Some Data</td><td>Some Data</td><td>Some Data</td><td>Some Data</td></tr></tbody></table>';
+					return '<table id="spareHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="6" style="text-align:center;">Spare History</th></tr><tr><th>Spare Recieved By</th><th>Action</th><th>Date Spare Recieved</th><th>Supplier Name</th><th>Supplier Order No</th><th>Quantity Recieved</th><th>Description</th></tr></thead><tbody><c:forEach var="list" items="${displaySpareHistory}"><tr><td>${list.userName}</td><td>${list.action}</td><td>${list.dateTime}</td><td>${list.dataField1}</td><td>>${list.dataField2}</td><td>${list.quantity}</td><td>${list.description}</td></tr></c:forEach></tbody></table>';
 				}
 			</script>
 			<c:import url="templates/sidebar-collapse.jsp"></c:import>

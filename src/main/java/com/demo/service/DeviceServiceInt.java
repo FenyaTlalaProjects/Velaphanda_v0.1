@@ -15,7 +15,7 @@ public interface DeviceServiceInt {
 	List<Device> getDeviceList();
 	List<Device> getDeviceListByClientName(String clientName);
 	List<Accessories> accessories(Device device);
-	String updateDevice(Device device);
+	String updateDevice(Device device,DeviceBean deviceBean);
 	String prepareDeviceData(DeviceBean deviceBean);
 	DeviceBean getAccessoriesForUpdate(String serialNumber);
 	Integer count();

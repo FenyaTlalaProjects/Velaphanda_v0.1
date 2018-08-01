@@ -18,7 +18,7 @@ public interface DeviceDaoInt {
 	List<Device> getDeviceList(Integer offset, Integer maxResults,String clientName);
 	List<Device> getDeviceListByClientName(String clientName);
 	List<Accessories> accessories(Device device);
-	String updateDevice(Device device);
+	String updateDevice(Device device,DeviceBean deviceBean);
 	String prepareDeviceData(DeviceBean deviceBean);
 	DeviceBean getAccessoriesForUpdate(Long recordID);
 	Integer count();

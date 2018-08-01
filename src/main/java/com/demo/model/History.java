@@ -46,22 +46,20 @@ public class History implements  Serializable  {
 	private String objectId;
 	@Column(name="UserEmail")
 	private String userEmail;
+	@Column(name="UserName")
+	private String userName;
 	@Column(name="Action")
 	private String action;
 	@Column(name="DateTime")
 	private String dateTime;
 	@Column(name="Quantity")
-	private String quantity;
+	private int quantity;
 	@Column(name="DataField1")
 	private String dataField1;
 	@Column(name="DataField2")
 	private String dataField2;
 	@Column(name="Description")
-	private String description;
-	
-
-	
-	
+	private String description;	
 
 }
 

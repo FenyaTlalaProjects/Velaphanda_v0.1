@@ -22,6 +22,7 @@ import com.demo.model.SpareMaster;
 import com.demo.service.BootStockInt;
 import com.demo.service.CustomerServiceInt;
 import com.demo.service.EmployeeServiceInt;
+import com.demo.service.HistoryServiceInt;
 import com.demo.service.OrderDetailsInt;
 import com.demo.service.OrdersServiceInt;
 import com.demo.service.SiteStockInt;
@@ -56,6 +57,8 @@ public class SparePartsController {
 	private HttpSession session = null;
 	@Autowired
 	private TicketsServiceInt ticketsServiceInt;
+	@Autowired
+	private HistoryServiceInt spareHistoryServiceInt;
 	private String retMessage = null;
 	private ModelAndView model = null;
 	private Employee userName,technicianName = null;
@@ -66,7 +69,7 @@ public class SparePartsController {
 	
 	//spare management
 	@RequestMapping(value = {"sparemanagement","techsparemanagement","usersparemanagement"}, method = RequestMethod.GET)
-	public ModelAndView displayOrderTechManagement() {
+	public ModelAndView displayOrderTechManagement(String partNumber) {
 			
 			model = new ModelAndView();
 			globalCustomerName = null;
@@ -86,7 +89,9 @@ public class SparePartsController {
 				//Load Data Boot Site
 				model.addObject("employees",spareInt.spareQuantityForTechnicians());			
 				//Load Data of bootSite
-				model.addObject("customer",spareInt.spareQuantity());			
+				model.addObject("customer",spareInt.spareQuantity());
+				//Load Data of spare history for HO
+				model.addObject("displaySpareHistory", spareHistoryServiceInt.getHistoryByPartNumber(partNumber));
 				model.setViewName("sparemanagement");
 				
 			}else if (userName.getRole().equalsIgnoreCase("Technician")){
@@ -146,12 +151,12 @@ public class SparePartsController {
 	}
 	
 	@RequestMapping(value="addSparesParts", method=RequestMethod.POST)
-	public ModelAndView SaveSpareParts(@ModelAttribute("addSparesParts")HOStock spareParts){
+	public ModelAndView SaveSpareParts(@ModelAttribute("addSparesParts")HOStock spareParts,SparePartsBean sparePartsBean){
 		model = new ModelAndView();
 		String addSpares = "addSpares";
 		userName = (Employee) session.getAttribute("loggedInUser");
 		if(userName != null){			
-			retMessage = hOStockServeceInt.saveSpareparts(spareParts);	
+			retMessage = hOStockServeceInt.saveSpareparts(spareParts,sparePartsBean);	
 			model.addObject("addSpares", addSpares);
 			model.setViewName("confirmations");
 		}
@@ -207,13 +212,13 @@ public class SparePartsController {
 	}
 	
 	@RequestMapping(value="saveSpareParts", method=RequestMethod.POST)
-	public ModelAndView saveSaveSpareParts(@ModelAttribute("saveSpareParts")HOStock spareParts){
+	public ModelAndView saveSaveSpareParts(@ModelAttribute("saveSpareParts")HOStock spareParts,SparePartsBean sparePartsBean){
 		String receiveSpareParts = "receiveSpareParts";
 		model = new ModelAndView();
 		userName = (Employee) session.getAttribute("loggedInUser");
 		if(userName != null){
 			
-			retMessage = hOStockServeceInt.saveSpareparts(spareParts);			
+			retMessage = hOStockServeceInt.saveSpareparts(spareParts,sparePartsBean);		
 			model.addObject("retMessage", retMessage);			
 			model.addObject("receiveSpareParts", receiveSpareParts);
 			model.setViewName("confirmations");

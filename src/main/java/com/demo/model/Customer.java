@@ -62,14 +62,7 @@ public class Customer implements Serializable{
 	@Column(name="DateTimeClientAdded")
 	//@Temporal(TemporalType.TIMESTAMP)
 	private String dateTimeClientAdded;
-	@Column(name="DateTimeClientUpdated")
-	private String timeClientUpdated;	
-	@Column(name="ClientUpdatedBy")
-	private String ClientUpdatedBy;
-	@Column(name="ClientAddedBy")
-	private String clientAddedBy;
-	
-	
+		
 	@OneToMany(mappedBy ="customerContactDetails", cascade= CascadeType.ALL,fetch=FetchType.LAZY)
 	private Set<CustomerContactDetails> customerContactDetails;
 	
@@ -78,9 +71,5 @@ public class Customer implements Serializable{
 	
 	@OneToMany(mappedBy="customer")
 	private Set<TechnicianSite> technicianSites;
-	
-	/*@OneToMany(mappedBy= "customers",cascade= CascadeType.ALL,fetch=FetchType.LAZY)
-	private Set<CustomerHistory> customerHistory; 
-*/
 
 }

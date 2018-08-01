@@ -56,7 +56,7 @@
 								<!-- Iterating over the list sent from Controller -->
 								<c:forEach var="list" items="${deviceList}">
 									<tr>
-										<td class="details-control"></td>
+										<td class="details-control" onclick="window.location='searchDevice.html?serialNumber=<c:out value='${list.serialNumber}'/>';"></td>
 										<td><a
 											href="viewCustomer?customerName=<c:out value='${list.customerDevice.customerName}'/>">
 												${list.customerDevice.customerName}</a></td>
@@ -97,7 +97,7 @@
 	<script type="text/javascript">
 			//device history table
 			function deviceHistory() {
-				return '<table id="deviceHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="4" style="text-align:center;">Device History</th></tr><tr><th>Device Captured By</th><th>Date Device Captured</th><th>Updated By</th><th>Date Updated</th></tr></thead><tbody><tr><td>Some Data</td><td>Some Data</td><td>Some Data</td><td>Some Data</td></tr></tbody></table>';
+				return '<table id="deviceHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="4" style="text-align:center;">Customer History</th></tr><tr><th>Name</th><th>Action</th><th>Date</th><th>Comment</th></tr></thead><tbody><c:forEach var="list" items="${displayDeviceHistory}"><tr><td>${list.userName}</td><td>${list.action}</td><td>${list.dateTime}</td><td>${list.description}</td></tr></c:forEach></tbody></table>';
 			}
 	</script>
 	<c:import url="templates/sidebar-collapse.jsp"></c:import>

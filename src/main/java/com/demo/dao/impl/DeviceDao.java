@@ -22,10 +22,12 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.bean.DeviceBean;
+import com.demo.bean.HistoryBean;
 import com.demo.dao.AccessoriesDaoInt;
 import com.demo.dao.CustomerDaoInt;
 import com.demo.dao.DeviceDaoInt;
 import com.demo.dao.EmployeeDaoInt;
+import com.demo.dao.HistoryDaoInt;
 import com.demo.dao.SiteStocDaoInt;
 import com.demo.dao.TicketsDaoInt;
 import com.demo.dao.deviceContactPersonDaoInt;
@@ -63,6 +65,8 @@ public class DeviceDao implements DeviceDaoInt {
 	private TicketHistoryInt ticketHistoryInt;
 	@Autowired
 	private HttpSession session = null;
+	@Autowired
+	private HistoryDaoInt historyDaoInt;
 	private String retMessage = null;
 	@SuppressWarnings("unused")
 	private Date currentDate = null;
@@ -72,7 +76,9 @@ public class DeviceDao implements DeviceDaoInt {
 	ArrayList<Accessories> list = null;
 	Customer customer = null;
 	Device device = null;
-	
+
+	Employee userName, emp = null;
+	HistoryBean historyBean = null;
 	TicketHistory ticketHistory = null;
 	List<Accessories> accessoryList = null;
 	private DeviceBean deviceBean = null;
@@ -86,11 +92,26 @@ public class DeviceDao implements DeviceDaoInt {
 	String timeDeviceAdded = sdfDate.format(now);
 	@Override
 	public String saveDevice(Device device) {
+		
+		emp = (Employee) session.getAttribute("loggedInUser");
 		try {
 			 localdevice = getDeviceBySerialNumbuer(device.getSerialNumber());
 			if (localdevice == null) {
-				device.setDateTime(timeDeviceAdded);
+				historyBean = new HistoryBean();
+				//Prepare Device Data for History Table
+				historyBean.setAction("Create");
+				historyBean.setClassification("Device");
+				historyBean.setObjectId(device.getSerialNumber());
+				historyBean.setUserEmail(emp.getEmail());
+				historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
+				historyBean.setDescription("Initial create of Device");
+				historyBean.setDataField1(null);
+				historyBean.setDataField2(null);
+				//historyBean.setQuantity((Integer) null);
+				device.setDateTime(timeDeviceAdded);			
 				sessionFactory.getCurrentSession().saveOrUpdate(device);
+				System.err.println("Device History is inserted into DB when installing machine for client");
+				historyDaoInt.saveHistory(historyBean);
 				retMessage = "Device "
 						+ device.getSerialNumber()
 						+ " succefully added. The device belongs to customer : "
@@ -132,10 +153,28 @@ public class DeviceDao implements DeviceDaoInt {
 	}
 
 	@Override
-	public String updateDevice(Device device) {
+	public String updateDevice(Device device,DeviceBean deviceBean) {
+		
+		historyBean = new HistoryBean();
+		
+		emp = (Employee) session.getAttribute("loggedInUser");
+		
 		try {
 			System.err.println("Moleko");
-			sessionFactory.getCurrentSession().update(device);
+			historyBean = new HistoryBean();
+			//Prepare Device Data for History Table
+			historyBean.setAction("Update");
+			historyBean.setClassification("Device");
+			historyBean.setObjectId(device.getSerialNumber());
+			historyBean.setUserEmail(emp.getEmail());
+			historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
+			historyBean.setDescription(deviceBean.getDecription());
+			historyBean.setDataField1(null);
+			historyBean.setDataField2(null);
+			//historyBean.setQuantity((Integer) null);
+			sessionFactory.getCurrentSession().update(device);			
+			System.err.println("Device History is inserted into DB on Update");
+			historyDaoInt.saveHistory(historyBean);
 			device.setDateTime(timeDeviceAdded);
 			retMessage = "Device " + device.getSerialNumber()
 					+ " is successfully updated. Device belongs to customer : "
@@ -156,7 +195,8 @@ public class DeviceDao implements DeviceDaoInt {
 		contactPerson = new DeviceContactPerson();
 		device = new Device();
 		String oldSerial =null;
-		
+		historyBean = new HistoryBean();
+		emp = (Employee) session.getAttribute("loggedInUser");
 		try {
 
 			if(deviceBean.getChkAccessories()==null){
@@ -185,9 +225,10 @@ public class DeviceDao implements DeviceDaoInt {
 				contactPerson.setLastName(deviceBean.getLastName());
 				contactPerson.setCellphone(deviceBean.getCellphone());
 				contactPerson.setTelephone(deviceBean.getTelephone());
-
-				customer = customerDaoInt.getClientByClientName(deviceBean
-						.getCustomerName());
+				//get description on updating
+				historyBean.setDescription(deviceBean.getDecription());
+				
+				customer = customerDaoInt.getClientByClientName(deviceBean.getCustomerName());
 
 				if (customer != null) {
 					device.setCustomerDevice(customer);
@@ -306,7 +347,7 @@ public class DeviceDao implements DeviceDaoInt {
 						device.setContactPerson(contactPerson);
 						if(deviceBean.getUpdateFlag()== "YES")
 						{
-							retMessage= updateDevice(device);
+							retMessage= updateDevice(device,deviceBean);
 							if(retMessage.startsWith("Device " + device.getSerialNumber()
 									+ " is successfully updated.")){
 								if(list.size()>0){
@@ -318,7 +359,7 @@ public class DeviceDao implements DeviceDaoInt {
 								}
 							}
 						}else if(deviceBean.getUpdateFlag()==null){
-							retMessage = saveDevice(device);
+							retMessage = saveDevice(device);						
 							if(retMessage.startsWith("Device "+ device.getSerialNumber()+ " succefully added.")){
 								retAccessory = accessoriesDaoInt.saveAccessories(list);
 								if (retAccessory.equalsIgnoreCase("Error")) {
@@ -339,11 +380,14 @@ public class DeviceDao implements DeviceDaoInt {
 				}
 			}else{
 				retMessage = accessoriesDaoInt.removeAccessory(deviceBean.getChkAccessories());
+				
 			}
 
 		} catch (Exception e) {
 			retMessage = e.getMessage();
 		}
+		
+		
 		return retMessage;
 	}
 

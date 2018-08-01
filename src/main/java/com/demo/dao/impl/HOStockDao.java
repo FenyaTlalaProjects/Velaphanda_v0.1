@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,44 +15,63 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.demo.bean.CustomerBean;
+import com.demo.bean.HistoryBean;
+import com.demo.bean.SparePartsBean;
+import com.demo.dao.HistoryDaoInt;
 import com.demo.dao.SpareMasterDaoInt;
 import com.demo.dao.HOStockDaoInt;
+import com.demo.model.Employee;
 import com.demo.model.HOStock;
 import com.demo.model.SpareMaster;
 
 @Repository("HOStockDAO")
 @Transactional(propagation = Propagation.REQUIRED)
 public class HOStockDao implements HOStockDaoInt {
-
+	@Autowired
+	private HttpSession session;
 	@Autowired
 	private SessionFactory sessionFactory;
 	@Autowired
 	private SpareMasterDaoInt spareMasterDaoInt;
-
+	@Autowired
+	private HistoryDaoInt historyDaoInt;
 	private String retMessage = null;
-
+	HistoryBean historyBean = null;
 	private DateFormat dateFormat = null;
 	private Date date = null;
-
+	Employee userName, emp = null;
 	private SpareMaster spareMaster = null;
 	private HOStock hOStock;
 	private List<HOStock> tempList = null;
 	private List<HOStock> tempHOList = null;
 	
 	@Override
-	public String saveSpareparts(HOStock spareParts) {
+	public String saveSpareparts(HOStock spareParts,SparePartsBean sparePartsBean) {
 
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		date = new Date();
-
+		emp = (Employee) session.getAttribute("loggedInUser");
 		try {
 
 			hOStock = getSparePartBySerial(spareParts.getPartNumber());
 			if (hOStock != null) {
-				int updateQuantity = hOStock.getQuantity()
-						+ spareParts.getQuantity();
+				int updateQuantity = hOStock.getQuantity() + spareParts.getQuantity();
 				hOStock.setQuantity(updateQuantity);
+				historyBean = new HistoryBean();
+				//Prepare Spares Data for History Table
+				historyBean.setAction("Update");
+				historyBean.setClassification("Recieve Spare(s)");
+				historyBean.setObjectId(spareParts.getPartNumber());
+				historyBean.setUserEmail(emp.getEmail());
+				historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
+				historyBean.setDescription(sparePartsBean.getDescription());
+				historyBean.setDataField1(sparePartsBean.getSupplierName());
+				historyBean.setDataField2(sparePartsBean.getSupplierOrderNo());
+				historyBean.setQuantity(sparePartsBean.getQuantity());
 				sessionFactory.getCurrentSession().update(hOStock);
+				System.err.println("Spare History is inserted into DB when recieving spare");
+				historyDaoInt.saveHistory(historyBean);
 				retMessage = spareParts.getQuantity() + " Items added for PartNumber: " + hOStock.getPartNumber()+".";
 
 			} else {
@@ -64,10 +85,27 @@ public class HOStockDao implements HOStockDaoInt {
 					spareParts.setDateTime(dateFormat.format(date));
 					spareParts.setColor(spareMaster.getColor());
 					spareParts.setModelBrand(spareMaster.getModelBrand());
+					spareParts.setSupplierName(spareMaster.getSupplierName());
+					spareParts.setSupplierOrderNo(spareMaster.getSupplierOrderNo());
+					
+					historyBean = new HistoryBean();
+					//Prepare Spares Data for History Table
+					historyBean.setAction("Recieve");
+					historyBean.setClassification("Recieve Spare(s)");
+					historyBean.setObjectId(spareParts.getPartNumber());
+					historyBean.setUserEmail(emp.getEmail());
+					historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
+					historyBean.setDescription(sparePartsBean.getDescription());
+					historyBean.setDataField1(sparePartsBean.getSupplierName());
+					historyBean.setDataField2(sparePartsBean.getSupplierOrderNo());
+					historyBean.setQuantity(sparePartsBean.getQuantity());
+					
 					sessionFactory.getCurrentSession().save(spareParts);
-					retMessage = spareParts.getQuantity() +" Items added for PartNumber:  "
-							+ spareParts.getPartNumber()+".";
-				} else {
+					System.err.println("Spare History is inserted into DB when recieving spare");
+					historyDaoInt.saveHistory(historyBean);
+					retMessage = spareParts.getQuantity() +" Items added for PartNumber:  "	+ spareParts.getPartNumber()+".";
+				
+				}else{
 
 					spareMaster = new SpareMaster();
 					spareMaster.setCompitableDevice(spareParts.getCompitableDevice());
@@ -77,6 +115,8 @@ public class HOStockDao implements HOStockDaoInt {
 					spareMaster.setColor(spareParts.getColor());
 					spareMaster.setDateCaptured(date);
 					spareMaster.setCapturedBy(spareParts.getReceivedBy());
+					spareMaster.setSupplierName(spareParts.getSupplierName());
+					spareMaster.setSupplierOrderNo(spareParts.getSupplierOrderNo());
 
 					retMessage = spareMasterDaoInt.saveSpareMasterData(spareMaster);
 
@@ -87,14 +127,28 @@ public class HOStockDao implements HOStockDaoInt {
 					spareParts.setColor(spareMaster.getColor());
 					spareParts.setDateTime(dateFormat.format(date));
 					spareParts.setModelBrand(spareMaster.getModelBrand());
+					spareParts.setSupplierName(spareMaster.getSupplierName());
+					spareParts.setSupplierOrderNo(spareMaster.getSupplierOrderNo());
+					
+					historyBean = new HistoryBean();
+					//Prepare Spares Data for History Table
+					historyBean.setAction("Recieve");
+					historyBean.setClassification("Recieved Spare(s)");
+					historyBean.setObjectId(spareParts.getPartNumber());
+					historyBean.setUserEmail(emp.getEmail());
+					historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
+					historyBean.setDescription("Initial Recieve of Spare");
+					historyBean.setDataField1(sparePartsBean.getSupplierName());
+					historyBean.setDataField2(sparePartsBean.getSupplierOrderNo());
+					historyBean.setQuantity(sparePartsBean.getQuantity());
 					sessionFactory.getCurrentSession().save(spareParts);
+					historyDaoInt.saveHistory(historyBean);
 
 					retMessage = spareParts.getQuantity()+" Items added for PartNumber: "+ spareParts.getPartNumber()+".";
 				}
 			}
 		} catch (Exception e) {
-			retMessage = " Part Number : " + " " + spareParts.getPartNumber()
-					+ " not added " + e.getMessage()+".";
+			retMessage = " Part Number : " + " " + spareParts.getPartNumber() + " not added " + e.getMessage()+".";
 		}
 		return retMessage;
 	}

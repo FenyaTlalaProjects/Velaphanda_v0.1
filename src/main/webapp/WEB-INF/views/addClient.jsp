@@ -52,9 +52,14 @@
 								<legend>
 									<b style="font-size: 15px;">Customer Details </b>
 								</legend>
+								
+								<!-- Customer Action -->
+								<input type="hidden" id="customerAction" name="customerAction" class="form-control" value="Create">
+														
 
 								<!--First column Customer Fields-->
 								<div class="col-sm-6">
+								
 									<!-- Text input Client Name-->
 									<div class="form-group">
 										<label class="col-md-3 control-label">Customer</label>

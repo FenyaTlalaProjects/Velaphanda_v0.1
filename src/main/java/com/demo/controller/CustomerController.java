@@ -21,6 +21,7 @@ import com.demo.service.AccessoriesInt;
 import com.demo.service.CustomerContactDetailsServiceInt;
 import com.demo.service.CustomerServiceInt;
 import com.demo.service.DeviceServiceInt;
+import com.demo.service.HistoryServiceInt;
 import com.demo.service.OrdersServiceInt;
 import com.demo.service.TicketsServiceInt;
 
@@ -32,9 +33,11 @@ public class CustomerController {
 	
 	@Autowired
 	private CustomerServiceInt customerServiceInt;
-	/*@Autowired
-	private CustomerHistoryInt customerHistoryServiceInt;
-	*/@Autowired
+	@Autowired
+	private HistoryServiceInt customerHistoryServiceInt;
+	@Autowired
+	private HistoryServiceInt deviceHistoryServiceInt;
+	@Autowired
 	private DeviceServiceInt deviceServiceInt;
 	@Autowired
 	private CustomerContactDetailsServiceInt contactDetailsServiceInt;
@@ -252,7 +255,7 @@ public class CustomerController {
 	*/	
 	
 	@RequestMapping(value={"displayCustomers","userDisplayCustomers"},method=RequestMethod.GET)
-	public ModelAndView displayCustomers(Integer offset,Integer maxResults){
+	public ModelAndView displayCustomers(String customerName,Integer offset,Integer maxResults){
 		model= new ModelAndView();
 		userName = (Employee) session.getAttribute("loggedInUser");
 		if(userName != null){
@@ -260,6 +263,7 @@ public class CustomerController {
 			if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")) {
 				
 				model.addObject("displayCustomers", customerServiceInt.getClientList());
+				model.addObject("displayCustomerHistory", customerHistoryServiceInt.getHistoryByCustomer(customerName));
 				model.setViewName("displayCustomers");
 			
 		   }else if(userName.getRole().equalsIgnoreCase("User")){			   
@@ -283,6 +287,7 @@ public class CustomerController {
 			if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")) {
 				
 				model.addObject("displayCustomers", customerServiceInt.getClientList());
+				model.addObject("displayCustomerHistory", customerHistoryServiceInt.getAllHistoryByCustomer());
 				model.setViewName("displayCustomers");
 			
 		   }else if(userName.getRole().equalsIgnoreCase("User")){			   

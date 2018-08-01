@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.demo.bean.SparePartsBean;
 import com.demo.dao.HOStockDaoInt;
 import com.demo.model.HOStock;
 import com.demo.service.HOStockServeceInt;
@@ -20,9 +21,9 @@ public class HOStockService implements HOStockServeceInt{
 	
 	
 	@Override
-	public String saveSpareparts(HOStock spareParts) {
+	public String saveSpareparts(HOStock spareParts,SparePartsBean sparePartsBean) {
 		
-		retMessage =sparePartsDAO.saveSpareparts(spareParts);
+		retMessage =sparePartsDAO.saveSpareparts(spareParts,sparePartsBean);
 	    return retMessage;
 	}
 

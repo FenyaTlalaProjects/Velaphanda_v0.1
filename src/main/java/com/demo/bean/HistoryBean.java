@@ -15,11 +15,12 @@ public class HistoryBean {
 	private String classification;	
 	private String objectId;
 	private String userEmail;
+	private String userName;
 	private String action;
 	private String dateTime;
-	private String quantity;
+	private int quantity;
 	private String dataField1;
 	private String dataField2;
-	private String description;
+	private String description;	
 	
 }

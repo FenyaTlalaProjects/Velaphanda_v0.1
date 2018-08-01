@@ -2,6 +2,7 @@ package com.demo.dao.impl;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +36,6 @@ import com.demo.service.DeviceServiceInt;
 @Transactional(propagation = Propagation.REQUIRED)
 
 
-
 public class CustomerDao implements CustomerDaoInt {
 	@Autowired
 	private HttpSession session;
@@ -67,6 +67,12 @@ public class CustomerDao implements CustomerDaoInt {
 	Date now = new Date();
 	String dateTimeClientAdded = sdfDate.format(now);
 	String dateTimeCleintUpdated = sdfDate.format(now);
+	
+	//Get Current Time Stamp
+	Calendar cal = Calendar.getInstance();		
+	SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:s");
+	Date currentDate = new Date();
+	
 	@Override
 	public String saveCustomer(CustomerBean customerBean) {
 
@@ -95,12 +101,6 @@ public class CustomerDao implements CustomerDaoInt {
 				tempCustomer.setTelephoneNumber(customerBean.getTelephoneNumber());				
 				tempCustomer.setZipcode(customerBean.getZipcode());
 				
-				tempCustomer.setDateTimeClientAdded(dateTimeClientAdded);
-				tempCustomer.setClientAddedBy(emp.getFirstName()+" "+emp.getLastName());				
-				tempCustomer.setClientUpdatedBy(customerBean.getClientUpdatedBy());
-				tempCustomer.setTimeClientUpdated(customerBean.getTimeClientUpdated());
-				
-
 				list = new ArrayList<CustomerContactDetails>();
 
 				// Required contact person object
@@ -137,15 +137,16 @@ public class CustomerDao implements CustomerDaoInt {
 				historyBean.setClassification("Customer");
 				historyBean.setObjectId(customerBean.getCustomerName());
 				historyBean.setUserEmail(emp.getEmail());
+				historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
 				historyBean.setDescription("Initial create of Customer");
 				historyBean.setDataField1(null);
 				historyBean.setDataField2(null);
-				historyBean.setQuantity(null);
+				//historyBean.setQuantity((Integer) null);
 								
-				
-				
+					
 				sessionFactory.getCurrentSession().save(tempCustomer);
 				customerContactDetailsDaoIntDaoInt.saveContactDetails(list);
+				System.err.println("Customer History is inserted into DB when adding new client");
 				historyDaoInt.saveHistory(historyBean);
 				retMessage = "Customer " + tempCustomer.getCustomerName() + " "
 						+ "successfully added.";
@@ -186,10 +187,18 @@ public class CustomerDao implements CustomerDaoInt {
 			tempCustomer.setContactEmail(customerBean.getContactEmail());			
 			tempCustomer.setZipcode(customerBean.getZipcode());
 			
-			tempCustomer.setClientAddedBy(customerBean.getClientAddedBy());
-			tempCustomer.setDateTimeClientAdded(customerBean.getDateTimeClientAdded());			
-			tempCustomer.setClientUpdatedBy(emp.getFirstName()+" "+emp.getLastName());
-			tempCustomer.setTimeClientUpdated(dateTimeCleintUpdated);
+			historyBean = new HistoryBean();
+			//Prepare Customer Data for History Table
+			historyBean.setAction("Update");
+			historyBean.setClassification("Customer");
+			historyBean.setObjectId(customerBean.getCustomerName());
+			historyBean.setUserEmail(emp.getEmail());
+			historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
+			historyBean.setDescription(customerBean.getDecription());
+			historyBean.setDateTime(myFormat.format(currentDate));
+			historyBean.setDataField1(null);
+			historyBean.setDataField2(null);
+			//historyBean.setQuantity((Integer) null);
 
 			list = new ArrayList<CustomerContactDetails>();
 
@@ -226,6 +235,8 @@ public class CustomerDao implements CustomerDaoInt {
 					+ " successfully updated.";
 
 			customerContactDetailsDaoIntDaoInt.saveContactDetails(list);
+			System.err.println("Customer History is inserted into DB when updating client");
+			historyDaoInt.saveHistory(historyBean);
 		} catch (Exception e) {
 			retMessage = "Customer " + customer.getCustomerName()
 					+ " not updated\n" + e.getMessage()+".";
@@ -254,11 +265,7 @@ public class CustomerDao implements CustomerDaoInt {
 			returnCustomerContact.setStreetNumber(customer.getStreetNumber());
 			returnCustomerContact.setTelephoneNumber(customer.getTelephoneNumber());
 			returnCustomerContact.setZipcode(customer.getZipcode());
-			//history for client
-			returnCustomerContact.setClientAddedBy(customer.getClientAddedBy());
-			returnCustomerContact.setDateTimeClientAdded(customer.getDateTimeClientAdded());			
-			returnCustomerContact.setClientUpdatedBy(customer.getClientUpdatedBy());
-			returnCustomerContact.setTimeClientUpdated(customer.getTimeClientUpdated());
+			
 			
 		} catch (Exception ex) {
 
@@ -282,7 +289,7 @@ public class CustomerDao implements CustomerDaoInt {
 		}
 		return clientList;
 	}
-
+	
 	@Override
 	public JRDataSource getCustomerListDataSource() {
 		JRDataSource ds = null;

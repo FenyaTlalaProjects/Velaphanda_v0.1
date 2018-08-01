@@ -1,12 +1,14 @@
 package com.demo.dao.impl;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +19,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.demo.bean.HistoryBean;
 import com.demo.dao.EmployeeDaoInt;
 import com.demo.dao.HistoryDaoInt;
+import com.demo.model.Customer;
 import com.demo.model.Employee;
 import com.demo.model.History;
 import com.demo.model.Leave;
+import com.demo.model.TicketHistory;
 
 
 @Repository("HistoryDAO")
@@ -27,30 +31,19 @@ import com.demo.model.Leave;
 public class HistoryDao implements HistoryDaoInt {
 
 	@Autowired
-	private SessionFactory sessionFactory;
-	private Session session2;
+	private SessionFactory sessionFactory;	
 	@Autowired
 	private HttpSession session;
 	@Autowired
 	private EmployeeDaoInt employeeDaoInt;
-	private List<History> tempHistory = null;
-	private List<History> historyList = null;
-
 	private History globalHistory;
-
 	private String retMessage = null;
-	private Date currentDate, secondDate = null;
-	private SimpleDateFormat myFormat = null;
-	private int recordID = 0;
-	private Employee emp = null;
 	History temp = null;
-
+	Customer customer = null;
 	@Override
 	public String saveHistory (HistoryBean history) {
-		Employee employee = (Employee) session.getAttribute("loggedInUser");
-		globalHistory = new History();
-		String userName = null;
 		
+		globalHistory = new History();	
 		//Get Current Time Stamp
 		Calendar cal = Calendar.getInstance();		
 		SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:s");
@@ -64,6 +57,7 @@ public class HistoryDao implements HistoryDaoInt {
 			globalHistory.setAction(history.getAction());
 			globalHistory.setClassification(history.getClassification());
 			globalHistory.setUserEmail(history.getUserEmail());
+			globalHistory.setUserName(history.getUserName());
 			globalHistory.setObjectId(history.getObjectId());
 			globalHistory.setQuantity(history.getQuantity());
 			globalHistory.setDataField1(history.getDataField1());
@@ -71,14 +65,96 @@ public class HistoryDao implements HistoryDaoInt {
 			globalHistory.setDateTime(myFormat.format(currentDate));
 			globalHistory.setDescription(history.getDescription());
 			sessionFactory.getCurrentSession().save(globalHistory);
-				retMessage = "Leave successfully submited.";
-		
-
-		} catch (Exception e) {
-			retMessage = "Leave not submitted " + e.getMessage() + ".";
+			
+			} catch (Exception e) {
+		retMessage = "History not saved " + e.getMessage() + ".";
 		}
 		return retMessage;
 	}
+	
+	@Override
+	public List<History> getHistoryByCustomer(String customerName) {
 		
+		List<History> newList = null;
+		try{
+			
+			List<History> list = getAllHistoryByCustomer();
+			newList = new ArrayList<History>();
+			for(History customerHistory:list){
+				if(customerHistory.getObjectId().equals(customerName)){
+					newList.add(customerHistory);
+				}
+			}
+			
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return newList;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<History> getAllHistoryByCustomer() {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+				History.class);
+		return (List<History>) criteria.list();	
+	}
+	
+	@Override
+	public List<History> getHistoryBySerialNumber(String serialNumber) {
+		
+		List<History> newList = null;
+		try{
+			
+			List<History> list = getAllHistoryBySerialNumber();
+			newList = new ArrayList<History>();
+			for(History deviceHistory:list){
+				if(deviceHistory.getObjectId().equals(serialNumber)){
+					newList.add(deviceHistory);
+				}
+			}
+			
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return newList;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<History> getAllHistoryBySerialNumber() {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+				History.class);
+		return (List<History>) criteria.list();	
+	}
+	
+	@Override
+	public List<History> getHistoryByPartNumber(String partNumber) {
+		
+		List<History> newList = null;
+		try{
+			
+			List<History> list = getAllHistoryByPartNumber();
+			newList = new ArrayList<History>();
+			for(History deviceHistory:list){
+				if(deviceHistory.getObjectId().equals(partNumber)){
+					newList.add(deviceHistory);
+				}
+			}
+			
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return newList;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<History> getAllHistoryByPartNumber() {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+				History.class);
+		return (List<History>) criteria.list();	
+	}
+
 	
 }

@@ -51,8 +51,8 @@ public class DeviceService implements DeviceServiceInt {
 	}
 
 	@Override
-	public String updateDevice(Device device) {
-		retMessage = deviceDAO.updateDevice(device);
+	public String updateDevice(Device device,DeviceBean deviceBean) {
+		retMessage = deviceDAO.updateDevice(device,deviceBean);
 		return retMessage;
 	}
 
