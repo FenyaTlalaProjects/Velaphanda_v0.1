@@ -36,8 +36,6 @@ public class CustomerController {
 	@Autowired
 	private HistoryServiceInt customerHistoryServiceInt;
 	@Autowired
-	private HistoryServiceInt deviceHistoryServiceInt;
-	@Autowired
 	private DeviceServiceInt deviceServiceInt;
 	@Autowired
 	private CustomerContactDetailsServiceInt contactDetailsServiceInt;

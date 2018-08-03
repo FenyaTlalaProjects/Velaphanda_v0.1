@@ -58,7 +58,8 @@ public class SparePartsController {
 	@Autowired
 	private TicketsServiceInt ticketsServiceInt;
 	@Autowired
-	private HistoryServiceInt spareHistoryServiceInt;
+	private HistoryServiceInt spareHOHistoryServiceInt;
+	
 	private String retMessage = null;
 	private ModelAndView model = null;
 	private Employee userName,technicianName = null;
@@ -90,8 +91,8 @@ public class SparePartsController {
 				model.addObject("employees",spareInt.spareQuantityForTechnicians());			
 				//Load Data of bootSite
 				model.addObject("customer",spareInt.spareQuantity());
-				//Load Data of spare history for HO
-				model.addObject("displaySpareHistory", spareHistoryServiceInt.getHistoryByPartNumber(partNumber));
+				//Load Data of Spares HO History
+				model.addObject("displayHOSparesHistory",spareHOHistoryServiceInt.getHistoryByPartNumber(partNumber));
 				model.setViewName("sparemanagement");
 				
 			}else if (userName.getRole().equalsIgnoreCase("Technician")){
@@ -218,7 +219,7 @@ public class SparePartsController {
 		userName = (Employee) session.getAttribute("loggedInUser");
 		if(userName != null){
 			
-			retMessage = hOStockServeceInt.saveSpareparts(spareParts,sparePartsBean);		
+			retMessage = hOStockServeceInt.saveSpareparts(spareParts,sparePartsBean);			
 			model.addObject("retMessage", retMessage);			
 			model.addObject("receiveSpareParts", receiveSpareParts);
 			model.setViewName("confirmations");

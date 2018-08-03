@@ -84,7 +84,7 @@
 							<form:form method="post" class="well form-horizontal"
 								action="moveSpares" modelAttribute="moveSpares" id="moveSpares">
 
-								<table id="stockOnSite" data-toggle="table" 
+								<table id="stockOnSite" data-toggle="table" data-url="${orders}"
 									data-show-refresh="true" data-show-toggle="true"
 									data-search="true" data-select-item-name="toolbar1"
 									data-pagination="true" data-sort-name="partno"
@@ -112,7 +112,7 @@
 											
 												<tr>
 												<td><a href="#" name="moveSparesSubmit" data-toggle="modal"
-											data-target="#historyDetails"> ${list.partNumber}</a> </td>
+											data-target="#historyDetails"> ${list.partNumber}</a></td>
 												<td>${list.compatibleDevice}</td>
 												<td>${list.customerName}</td>
 												<td>${list.modelBrand}</td>
@@ -427,15 +427,14 @@
 															data-sort-order="aesc">
 															<thead>
 																<tr>
-																	<!-- <th></th> -->
+																	<th data-field="movedBy" data-sortable="true">Moved
+																		By</th>
 																	<th data-field="dateTimeMoved" data-sortable="true">Date
 																		& Time Moved</th>
 																	<th data-field="novedFrom" data-sortable="true">Moved
 																		From</th>
 																	<th data-field="movedTo" data-sortable="true">Moved
-																		To</th>
-																	<th data-field="movedBy" data-sortable="true">Moved
-																		By</th>
+																		To</th>																
 																	<th data-field="quantityMoved" data-sortable="true">Quantity
 																		Moved</th>
 																	<th data-field="ReasonWhyMoved" data-sortable="true">Reason
@@ -447,14 +446,12 @@
 																<!-- Iterating over the list sent from Controller -->
 																<c:forEach var="list" items="">
 																	<tr>
-																		<!-- <td class="details-control"></td> -->
 																		<td></td>
 																		<td></td>
 																		<td></td>
 																		<td></td>
 																		<td></td>
 																		<td></td>
-
 																	</tr>
 																</c:forEach>
 															</tbody>

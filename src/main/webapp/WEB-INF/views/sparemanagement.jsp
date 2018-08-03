@@ -45,8 +45,7 @@
 												<h5>Receive Parts</h5>
 												<div class="easypiechart" id="easypiechart-darkgreen"
 													data-percent="">
-													<span class="percent" style="font-size: 15px;">Receive
-														Parts</span>
+													<span class="percent"></span>
 												</div>
 											</div>
 										</a>
@@ -106,7 +105,7 @@
 								<legend align=center>Head Office Stock</legend>
 
 
-								<table id="spareHistory" class="display">
+								<table id="spareHeadOfficeHistory" class="display">
 									<thead>
 										<tr>
 											<th data-field="" data-sortable="true"></th>
@@ -124,24 +123,16 @@
 									<tbody>
 										<!-- Iterating over the list sent from Controller -->
 										<c:forEach var="list" items="${spareParts}">
-										 	
-											<c:choose>
-												<c:when test="${list.quantity > 0}">
-												<tr>
-													<td class="details-control" onclick="window.location='sparemanagement.html?partNumber=<c:out value='${list.partNumber}'/>';"></td>
-													<td>${list.partNumber}</td>
-													<td>${list.compitableDevice}</td>
-													<td>${list.modelBrand}</td>
-													<td>${list.itemDescription}</td>
-													<td>${list.itemType}</td>
-													<td>${list.quantity}</td>
-													<td>${list.color}</td>
-												</tr>
-												</c:when>
-												<c:otherwise>
-												</c:otherwise>												
-											</c:choose>
-										
+											<tr>
+												<td class="details-control" onclick="window.location='sparemanagement.html?partNumber=<c:out value='${list.partNumber}'/>';"></td>
+												<td>${list.partNumber}</td>
+												<td>${list.compitableDevice}</td>
+												<td>${list.modelBrand}</td>
+												<td>${list.itemDescription}</td>
+												<td>${list.itemType}</td>
+											    <td>${list.quantity}</td>
+												<td>${list.color}</td>
+											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
@@ -151,10 +142,11 @@
 							<div class="tab-pane" id="siteStock">
 								<legend align=center>Site Stock</legend>
 
-								<table data-toggle="table" data-show-refresh="true"
-									data-show-toggle="true" data-search="true"
-									data-select-item-name="toolbar1" data-pagination="true"
-									data-sort-name="customername" data-sort-order="aesc">
+								<table data-toggle="table" 
+									data-show-refresh="true" data-show-toggle="true"
+									data-search="true" data-select-item-name="toolbar1"
+									data-pagination="true" data-sort-name="customername"
+									data-sort-order="aesc">
 									<thead>
 										<tr>
 											<th data-field="customername" data-sortable="true">Customer
@@ -162,39 +154,36 @@
 											<th data-field="compatibledevices" data-sortable="true">Parts
 												Quantity</th>
 											<th data-field="modelbrand" data-sortable="true">Toners
-												Quantity</th>
-
+												Quantity</th>											
 										</tr>
 									</thead>
 									<tbody>
 										<!-- Iterating over the list sent from Controller -->
 										<c:forEach var="list" items="${customer}">
 											<c:choose>
-												<c:when
-													test="${list.tonerQuantity > 0 || list.partQuanty > 0}">
-													<tr>
-														<td><a
-															href="loadStockSite?customerName=<c:out value='${list.customerName}'/>">${list.customerName}</a></td>
+												<c:when test="${list.tonerQuantity > 0 || list.partQuanty > 0}">													
+													<tr>											
+														<td><a href="loadStockSite?customerName=<c:out value='${list.customerName}'/>">${list.customerName}</a></td>												
 														<td>${list.partQuanty}</td>
-														<td>${list.tonerQuantity}</td>
+														<td>${list.tonerQuantity}</td>											
 													</tr>
 												</c:when>
 												<c:otherwise>
 												</c:otherwise>
-											</c:choose>
+											</c:choose>											
 										</c:forEach>
 									</tbody>
 								</table>
 							</div>
-							<!-- siteStock -->
-
-
+							<!-- siteStock -->							
+							
 							<div class="tab-pane" id="bootStock">
 								<legend align=center>Boot Stock</legend>
-								<table data-toggle="table" data-show-refresh="true"
-									data-show-toggle="true" data-search="true"
-									data-select-item-name="toolbar1" data-pagination="true"
-									data-sort-name="technicianname" data-sort-order="aesc">
+								<table data-toggle="table"
+									data-show-refresh="true" data-show-toggle="true"
+									data-search="true" data-select-item-name="toolbar1"
+									data-pagination="true" data-sort-name="technicianname"
+									data-sort-order="aesc">
 									<thead>
 										<tr>
 											<th data-field="technicianname" data-sortable="true">Technician
@@ -203,26 +192,24 @@
 												Quantity</th>
 											<th data-field="tonersquantity" data-sortable="true">Toners
 												Quantity</th>
-										</tr>
+																					</tr>
 									</thead>
 									<tbody>
 										<!-- Iterating over the list sent from Controller -->
 										<c:forEach var="list" items="${employees}">
-
+										
 											<c:choose>
-												<c:when
-													test="${list.tonerQuantity > 0 || list.partQuanty > 0}">
-													<tr>
-														<td><a
-															href="loadBootStock?technician=<c:out value='${list.customerName}'/>">${list.techName}</a></td>
+												<c:when test="${list.tonerQuantity > 0 || list.partQuanty > 0}">													
+													<tr>											
+														<td><a href="loadBootStock?technician=<c:out value='${list.customerName}'/>">${list.techName}</a></td>												
 														<td>${list.partQuanty}</td>
-														<td>${list.tonerQuantity}</td>
+														<td>${list.tonerQuantity}</td>											
 													</tr>
 												</c:when>
 												<c:otherwise>
 												</c:otherwise>
-											</c:choose>
-
+											</c:choose>	
+										
 										</c:forEach>
 									</tbody>
 								</table>
@@ -243,8 +230,8 @@
 			<c:import url="templates/datatablesscripts.jsp"></c:import>
 			<script type="text/javascript">
 				//spare history table
-				function spareHistory() {
-					return '<table id="spareHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="6" style="text-align:center;">Spare History</th></tr><tr><th>Spare Recieved By</th><th>Action</th><th>Date Spare Recieved</th><th>Supplier Name</th><th>Supplier Order No</th><th>Quantity Recieved</th><th>Description</th></tr></thead><tbody><c:forEach var="list" items="${displaySpareHistory}"><tr><td>${list.userName}</td><td>${list.action}</td><td>${list.dateTime}</td><td>${list.dataField1}</td><td>>${list.dataField2}</td><td>${list.quantity}</td><td>${list.description}</td></tr></c:forEach></tbody></table>';
+				function spareHeadOfficeHistory() {
+					return '<table id="spareHeadOfficeHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="6" style="text-align:center;">Spare History</th></tr><tr><th>Spare Recieved By</th><th>Action</th><th>Date Spare Recieved</th><th>Supplier Name</th><th>Supplier Order No</th><th>Quantity Recieved</th></tr></thead><tbody><c:forEach var="list" items="${displayHOSparesHistory}"><tr><td>${list.userName}</td><td>${list.action}</td><td>${list.dateTime}</td><td>${list.dataField1}</td><td>${list.dataField2}</td><td>${list.quantity}</td></tr></c:forEach></tbody></table>';
 				}
 			</script>
 			<c:import url="templates/sidebar-collapse.jsp"></c:import>

@@ -46,9 +46,5 @@ public class SpareMaster implements Serializable{/**
 	private String modelBrand;
 	@Column(name="Colour")
 	private String color;
-	@Column(name="Supplier_Name")
-	private String supplierName;
-	@Column(name="Supplier_Order_No")
-	private String supplierOrderNo;
 
 }

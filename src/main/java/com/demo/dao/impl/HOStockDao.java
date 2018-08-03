@@ -85,8 +85,7 @@ public class HOStockDao implements HOStockDaoInt {
 					spareParts.setDateTime(dateFormat.format(date));
 					spareParts.setColor(spareMaster.getColor());
 					spareParts.setModelBrand(spareMaster.getModelBrand());
-					spareParts.setSupplierName(spareMaster.getSupplierName());
-					spareParts.setSupplierOrderNo(spareMaster.getSupplierOrderNo());
+				
 					
 					historyBean = new HistoryBean();
 					//Prepare Spares Data for History Table
@@ -115,8 +114,7 @@ public class HOStockDao implements HOStockDaoInt {
 					spareMaster.setColor(spareParts.getColor());
 					spareMaster.setDateCaptured(date);
 					spareMaster.setCapturedBy(spareParts.getReceivedBy());
-					spareMaster.setSupplierName(spareParts.getSupplierName());
-					spareMaster.setSupplierOrderNo(spareParts.getSupplierOrderNo());
+					
 
 					retMessage = spareMasterDaoInt.saveSpareMasterData(spareMaster);
 
@@ -127,8 +125,7 @@ public class HOStockDao implements HOStockDaoInt {
 					spareParts.setColor(spareMaster.getColor());
 					spareParts.setDateTime(dateFormat.format(date));
 					spareParts.setModelBrand(spareMaster.getModelBrand());
-					spareParts.setSupplierName(spareMaster.getSupplierName());
-					spareParts.setSupplierOrderNo(spareMaster.getSupplierOrderNo());
+					
 					
 					historyBean = new HistoryBean();
 					//Prepare Spares Data for History Table

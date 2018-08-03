@@ -12,7 +12,7 @@
     var partNumberList = [];
     var quantityList = [];
     //move selected line items to table 2
-    $('#stockOnSite').on('click', '.addLineItem', function() {
+    $('#stockOnBoot').on('click', '.addLineItem', function() {
     
        var quantity;
        row = $(this).closest("tr").clone(); 
@@ -42,7 +42,7 @@
     $('#spareToMove').on('click', '.RemoveRow', function(){
     	 //debugger;
     	row = $(this).closest("tr").clone();
-        row.appendTo($("#stockOnSite"));
+        row.appendTo($("#stockOnBoot"));
          $(this).closest('tr').remove();
         $('input[type="button"]', row).removeClass('RemoveRow').addClass('addLineItem').val('Move Part');
          //hide the all of the element class oderSumbmit
@@ -50,7 +50,7 @@
     });
      
     //send selected items when user clicks submit button
-     $('#stockOnSite').on('click', function(){
+     $('#stockOnBoot').on('click', function(){
            var row;
            $('#spareToMove tr').each(function(row, tr){
              partNumberList[row]=[$(tr).find('td:eq(0)').text()];

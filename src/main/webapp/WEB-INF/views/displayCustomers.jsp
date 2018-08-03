@@ -91,9 +91,9 @@
 			//customer history table
 			function customerHistory() {
 				return '<table id="customerHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="4" style="text-align:center;">Customer History</th></tr><tr><th>Name</th><th>Action</th><th>Date</th><th>Comment</th></tr></thead><tbody><c:forEach var="list" items="${displayCustomerHistory}"><tr><td>${list.userName}</td><td>${list.action}</td><td>${list.dateTime}</td><td>${list.description}</td></tr></c:forEach></tbody></table>';
-			}
-			
+			}			
 		</script>
+		
 		<c:import url="templates/sidebar-collapse.jsp"></c:import>
 		<!-- /Scripts -->
 </body>

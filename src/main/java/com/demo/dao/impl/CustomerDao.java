@@ -65,8 +65,8 @@ public class CustomerDao implements CustomerDaoInt {
 	}
 	SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	Date now = new Date();
-	String dateTimeClientAdded = sdfDate.format(now);
-	String dateTimeCleintUpdated = sdfDate.format(now);
+	String dateTimeClientAdded = sdfDate.format(now);	
+	String dateTimeClientUpdated = sdfDate.format(now);
 	
 	//Get Current Time Stamp
 	Calendar cal = Calendar.getInstance();		
@@ -100,6 +100,7 @@ public class CustomerDao implements CustomerDaoInt {
 				tempCustomer.setContactEmail(customerBean.getContactEmail());				
 				tempCustomer.setTelephoneNumber(customerBean.getTelephoneNumber());				
 				tempCustomer.setZipcode(customerBean.getZipcode());
+				tempCustomer.setDateTimeClientAdded(dateTimeClientAdded);
 				
 				list = new ArrayList<CustomerContactDetails>();
 
@@ -186,6 +187,7 @@ public class CustomerDao implements CustomerDaoInt {
 			tempCustomer.setTelephoneNumber(customerBean.getTelephoneNumber());
 			tempCustomer.setContactEmail(customerBean.getContactEmail());			
 			tempCustomer.setZipcode(customerBean.getZipcode());
+			tempCustomer.setDateTimeClientAdded(dateTimeClientUpdated);
 			
 			historyBean = new HistoryBean();
 			//Prepare Customer Data for History Table

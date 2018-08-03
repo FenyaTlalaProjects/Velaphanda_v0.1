@@ -301,7 +301,7 @@
 														class="glyphicon glyphicon-user"></i></span> <input type="text"
 														id="supplierOrderNo" name="supplierOrderNo"
 														class="form-control" value=""
-														placeholder="Provide Supplier Order No">
+														placeholder="Provide Supplier Order No" >
 												</div>
 											</div>
 										</div>

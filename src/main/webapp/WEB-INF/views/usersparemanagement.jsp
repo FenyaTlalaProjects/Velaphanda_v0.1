@@ -125,20 +125,14 @@
 									<tbody>
 										<!-- Iterating over the list sent from Controller -->
 										<c:forEach var="list" items="${spareParts}">
-											<c:choose>
-												<c:when test="${list.quantity > 0}">
-													<tr>
-														<td> ${list.partNumber}</td>
-														<td> ${list.compitableDevice}</td>
-														<td> ${list.modelBrand}</td>
-														<td> ${list.itemDescription}</td>
-														<td> ${list.itemType}</td>
-														<td> ${list.quantity}</td>													
-													</tr>
-												</c:when>
-												<c:otherwise>
-												</c:otherwise>
-											</c:choose>	
+											<tr>
+												<td> ${list.partNumber}</td>
+												<td> ${list.compitableDevice}</td>
+												<td> ${list.modelBrand}</td>
+												<td> ${list.itemDescription}</td>
+												<td> ${list.itemType}</td>
+												<td> ${list.quantity}</td>
+											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
