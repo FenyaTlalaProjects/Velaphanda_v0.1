@@ -111,8 +111,8 @@
 												<c:when test="${list.quantity > 0}">											
 											
 												<tr>
-												<td><a href="#" name="moveSparesSubmit" data-toggle="modal"
-											data-target="#historyDetails"> ${list.partNumber}</a></td>
+												<td><a onclick="window.open='loadStockSite?customerName=<c:out value='${list.customerName}'/>?partNumber=<c:out value='${list.partNumber}'/>';" href="#" name="moveSparesSubmit" data-toggle="modal"
+											       data-target="#historyDetails"> ${list.partNumber}</a></td>
 												<td>${list.compatibleDevice}</td>
 												<td>${list.customerName}</td>
 												<td>${list.modelBrand}</td>
@@ -443,15 +443,15 @@
 															</thead>
 
 															<tbody>
-																<!-- Iterating over the list sent from Controller -->
-																<c:forEach var="list" items="">
+																	<!-- Iterating over the list sent from Controller -->
+																<c:forEach var="list" items="${displaySiteStockMovement}">
 																	<tr>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
+																		<td>${list.userName}</td>
+																		<td>${list.dateTime}</td>																		
+																		<td>${list.datafield1}</td>
+																		<td>${list.datafield2}</td>
+																		<td>${list.quantity}</td>
+																		<td>${list.decription}</td>
 																	</tr>
 																</c:forEach>
 															</tbody>
@@ -503,6 +503,8 @@
 			$('.tick').hide();
 			$('.' + $('.trigger:checked').data('rel')).show();
 		}).change(); //Show content on page load
+		
+		
 	</script>
 </body>
 </html>

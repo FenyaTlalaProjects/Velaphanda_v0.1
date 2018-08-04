@@ -136,9 +136,9 @@ public class HistoryDao implements HistoryDaoInt {
 			
 			List<History> list = getAllHistoryByPartNumber();
 			newList = new ArrayList<History>();
-			for(History deviceHistory:list){
-				if(deviceHistory.getObjectId().equals(partNumber)){
-					newList.add(deviceHistory);
+			for(History partNumberHOHistory:list){
+				if(partNumberHOHistory.getObjectId().equals(partNumber)){
+					newList.add(partNumberHOHistory);
 				}
 			}
 			
@@ -151,6 +151,62 @@ public class HistoryDao implements HistoryDaoInt {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<History> getAllHistoryByPartNumber() {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+				History.class);
+		return (List<History>) criteria.list();	
+	}
+	
+	@Override
+	public List<History> getSiteStockHistoryByPartNumber(String partNumber) {
+		
+		List<History> newList = null;
+		try{
+			
+			List<History> list = getAllSiteStockHistoryByPartNumber();
+			newList = new ArrayList<History>();
+			for(History siteStockHistory:list){
+				if(siteStockHistory.getObjectId().equals(partNumber)){
+					newList.add(siteStockHistory);
+				}
+			}
+			
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return newList;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<History> getAllSiteStockHistoryByPartNumber() {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+				History.class);
+		return (List<History>) criteria.list();	
+	}
+	
+	@Override
+	public List<History> getBootStockHistoryByPartNumber(String partNumber) {
+		
+		List<History> newList = null;
+		try{
+			
+			List<History> list = getAllBootStockHistoryByPartNumber();
+			newList = new ArrayList<History>();
+			for(History siteStockHistory:list){
+				if(siteStockHistory.getObjectId().equals(partNumber)){
+					newList.add(siteStockHistory);
+				}
+			}
+			
+		}catch(Exception e){
+			e.getMessage();
+		}
+		return newList;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<History> getAllBootStockHistoryByPartNumber() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
 				History.class);
 		return (List<History>) criteria.list();	

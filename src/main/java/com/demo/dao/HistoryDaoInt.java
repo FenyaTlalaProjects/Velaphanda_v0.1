@@ -14,4 +14,8 @@ public interface HistoryDaoInt {
 	List<History> getHistoryBySerialNumber(String serialNumber);
 	List<History> getHistoryByPartNumber(String partNumber);
 	List<History> getAllHistoryByPartNumber();
+	List<History> getSiteStockHistoryByPartNumber(String partNumber);
+	List<History> getAllSiteStockHistoryByPartNumber();
+	List<History> getBootStockHistoryByPartNumber(String partNumber);
+	List<History> getAllBootStockHistoryByPartNumber();
 }

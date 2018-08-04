@@ -59,6 +59,10 @@ public class SparePartsController {
 	private TicketsServiceInt ticketsServiceInt;
 	@Autowired
 	private HistoryServiceInt spareHOHistoryServiceInt;
+	@Autowired
+	private HistoryServiceInt spareBootStockHistoryServiceInt;
+	@Autowired
+	private HistoryServiceInt spareSiteStockHistoryServiceInt;
 	
 	private String retMessage = null;
 	private ModelAndView model = null;
@@ -312,7 +316,7 @@ public class SparePartsController {
 		return model;
 	}
 	@RequestMapping(value="loadStockSite")
-	public ModelAndView loadStockSite(@RequestParam("customerName") String customerName){
+	public ModelAndView loadStockSite(@RequestParam("customerName")String customerName, String partNumber){
 		model = new ModelAndView();
 		userName = (Employee) session.getAttribute("loggedInUser");
 		globalTechnicianName = null;
@@ -324,6 +328,7 @@ public class SparePartsController {
 			model.addObject("countTonerForCustomer",siteStock.countTonerForCustomer(globalCustomerName));
 			//Load customers/technician lists
 			model.addObject("customerList",customerServiceInt.getClientList(customerName));
+			model.addObject("displaySiteStockMovement",spareSiteStockHistoryServiceInt.getSiteStockHistoryByPartNumber(partNumber));
 			model.addObject("customerName",customerName);			
 			model.addObject("technicianList",employeeServiceInt.getAllTechnicians());
 			model.setViewName("stockSiteOrders");

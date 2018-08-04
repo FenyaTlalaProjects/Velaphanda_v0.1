@@ -219,7 +219,7 @@
 						<!-- .panel panel-default -->
 					</div>
 					<!-- /.col-->
-				</div>
+				
 				<!-- /.row -->
 				<!-- Footer -->
 				<c:import url="templates/footer.jsp"></c:import>
@@ -228,12 +228,13 @@
 			<!--/.main-->
 			<c:import url="templates/javascriptslib.jsp"></c:import>
 			<c:import url="templates/datatablesscripts.jsp"></c:import>
+			<c:import url="templates/sidebar-collapse.jsp"></c:import>
 			<script type="text/javascript">
 				//spare history table
 				function spareHeadOfficeHistory() {
 					return '<table id="spareHeadOfficeHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="6" style="text-align:center;">Spare History</th></tr><tr><th>Spare Recieved By</th><th>Action</th><th>Date Spare Recieved</th><th>Supplier Name</th><th>Supplier Order No</th><th>Quantity Recieved</th></tr></thead><tbody><c:forEach var="list" items="${displayHOSparesHistory}"><tr><td>${list.userName}</td><td>${list.action}</td><td>${list.dateTime}</td><td>${list.dataField1}</td><td>${list.dataField2}</td><td>${list.quantity}</td></tr></c:forEach></tbody></table>';
 				}
 			</script>
-			<c:import url="templates/sidebar-collapse.jsp"></c:import>
+			
 </body>
 </html>

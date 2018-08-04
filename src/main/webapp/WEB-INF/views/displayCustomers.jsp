@@ -85,8 +85,10 @@
 			<!--/ footer -->
 		</div>
 		<!--/.main-->
+		<c:import url="templates/javascriptslib.jsp"></c:import>
 		<c:import url="templates/datatablesscripts.jsp"></c:import>
-		
+		<c:import url="templates/sidebar-collapse.jsp"></c:import>
+			
 		<script type="text/javascript">
 			//customer history table
 			function customerHistory() {
@@ -94,7 +96,7 @@
 			}			
 		</script>
 		
-		<c:import url="templates/sidebar-collapse.jsp"></c:import>
+	
 		<!-- /Scripts -->
 </body>
 </html>

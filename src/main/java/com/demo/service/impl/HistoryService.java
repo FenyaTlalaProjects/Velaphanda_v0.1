@@ -54,5 +54,21 @@ public class HistoryService implements HistoryServiceInt {
 	public List<History> getHistoryByPartNumber(String partNumber){	
 		return historyDAO.getHistoryByPartNumber(partNumber);
 	}
+	@Override
+	public List<History> getSiteStockHistoryByPartNumber(String partNumber) {
+		return historyDAO.getSiteStockHistoryByPartNumber(partNumber);
+	}
+	@Override
+	public List<History> getAllSiteStockHistoryByPartNumber() {
+		return historyDAO.getAllSiteStockHistoryByPartNumber();
+	}
+	@Override
+	public List<History> getBootStockHistoryByPartNumber(String partNumber) {
+		return historyDAO.getBootStockHistoryByPartNumber(partNumber);
+	}
+	@Override
+	public List<History> getAllBootStockHistoryByPartNumber() {
+		return historyDAO.getAllBootStockHistoryByPartNumber();
+	}
 		
 }
