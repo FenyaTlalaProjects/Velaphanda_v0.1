@@ -6,13 +6,15 @@ var options = {
 	bLengthChange : true,
 	bFilter : true,
 	bInfo : true,
-	bSearch : true
+	bSearch : true,
+	"order": [[ 0, 'asc' ], [ 1, 'asc' ]]
 };
 
 $(document).ready(function() {
 	var table = $('#customerHistory').DataTable(options);
+	var table = $('#customerHistoryDetails').DataTable(options);
 	$('#customerHistory tbody').on('click', 'td.details-control', function() {
-		var tr = $(this).closest('tr');
+	/*	var tr = $(this).closest('tr');
 		var row = table.row(tr);
 		
 		if (row.child.isShown()) {
@@ -24,14 +26,17 @@ $(document).ready(function() {
 			row.child(customerHistory()).show();
 			$('#customerHistoryDetails').DataTable(options);
 			tr.addClass('shown');
-		}
+		}*/
 	});
 		
 });
+
+
 $(document).ready(function() {
 	var table = $('#deviceHistory').DataTable(options);
+	var table = $('#deviceHistoryDetails').DataTable(options);
 	$('#deviceHistory tbody').on('click', 'td.details-control', function() {
-		var tr = $(this).closest('tr');
+	/*	var tr = $(this).closest('tr');
 		var row = table.row(tr);
 
 		if (row.child.isShown()) {
@@ -44,7 +49,7 @@ $(document).ready(function() {
 			$('#deviceHistoryDetails').DataTable(options);
 
 			tr.addClass('shown');
-		}
+		}*/
 	});
 });
 $(document).ready(function() {
@@ -59,33 +64,17 @@ $(document).ready(function() {
 			tr.removeClass('shown');
 		} else {
 			// Open this row
-			row.child(spareHeadOfficeHistory()).show();
-			$('#spareHeadOfficeHistoryDetails').DataTable(options);
+			//row.child(spareHeadOfficeHistory()).show();
+			//$('#spareHeadOfficeHistoryDetails').DataTable(options);
 
 			tr.addClass('shown');
 		}
 	});
 });
 
-/*
+
 $(document).ready(function() {
-	var table = $('#stockOnBoot').DataTable(options);
-	$('#stockOnBoot tbody').on('click', 'td.details-control', function() {
-		var tr = $(this).closest('tr');
-		var row = table.row(tr);
-
-		if (row.child.isShown()) {
-			// This row is already open - close it
-			row.child.hide();
-			tr.removeClass('shown');
-		} else {
-			// Open this row
-			row.child(bootStockMovementHistory()).show();
-			$('#bootStockMovementHistoryDetails').DataTable(options);
-
-			tr.addClass('shown');
-		}
-	});
+	var table = $('#spareHOHistoryDetails').DataTable(options);
 });
 
 $(document).ready(function() {
@@ -107,5 +96,5 @@ $(document).ready(function() {
 		}
 	});
 });
-*/
+
 

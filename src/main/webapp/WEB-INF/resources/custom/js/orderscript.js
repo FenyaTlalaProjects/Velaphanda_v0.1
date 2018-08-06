@@ -41,6 +41,7 @@
     //remove selected line items from table 1 to table 2
     $('#toOrder').on('click', '.RemoveRow', function(){
     	 //debugger;
+    	row.find("input[name=quantity]").val("");    	
     	row = $(this).closest("tr").clone();
         row.appendTo($("#stockForOrder"));
          $(this).closest('tr').remove();

@@ -59,6 +59,10 @@ public class SparePartsController {
 	private TicketsServiceInt ticketsServiceInt;
 	@Autowired
 	private HistoryServiceInt spareHOHistoryServiceInt;
+	@Autowired
+	private HistoryServiceInt spareBootStockHistoryServiceInt;
+	@Autowired
+	private HistoryServiceInt spareSiteStockHistoryServiceInt;
 	
 	private String retMessage = null;
 	private ModelAndView model = null;
@@ -67,6 +71,7 @@ public class SparePartsController {
 	private SpareMaster master;
 	private String globalTechnicianName = null;
 	private String globalCustomerName = null;
+	private String globalPartNumber = null;
 	
 	//spare management
 	@RequestMapping(value = {"sparemanagement","techsparemanagement","usersparemanagement"}, method = RequestMethod.GET)
@@ -133,6 +138,76 @@ public class SparePartsController {
 			}
 			return model;
 		}
+	
+	
+	//spare management
+		@RequestMapping(value = {"headOfficeSpareHistory","techsparemanagement","usersparemanagement"}, method = RequestMethod.GET)
+		public ModelAndView displayHistoryHOMovement(String partNumber) {
+				
+				model = new ModelAndView();
+				globalCustomerName = null;
+				globalTechnicianName = null;
+				globalPartNumber = partNumber;
+				userName = (Employee) session.getAttribute("loggedInUser");
+				if (userName != null) {
+					if(userName.getRole().equalsIgnoreCase("Manager") || (userName.getRole().equalsIgnoreCase("Admin"))){
+					//HO Count
+					model.addObject("hoCount", hOStockServeceInt.countHeadOfficeStock());
+					//Site Count
+					model.addObject("siteCount", siteStock.countSiteStock());
+					//Boot Count
+					model.addObject("bootCount", bootStock.countBootStock());			
+					//Load Data of HO 
+					model.addObject("spareParts", hOStockServeceInt.getAllSparePartsWithoutZero());			
+					//Load Data Boot Site
+					model.addObject("employees",spareInt.spareQuantityForTechnicians());			
+					//Load Data of bootSite
+					model.addObject("customer",spareInt.spareQuantity());
+					//Load Data of Spares HO History
+					model.addObject("partNumber",partNumber);
+					model.addObject("displayHOSparesHistory",spareHOHistoryServiceInt.getHistoryByPartNumber(partNumber));
+					model.setViewName("sparemanagement");
+					
+				}else if (userName.getRole().equalsIgnoreCase("Technician")){
+					//HO Count
+					model.addObject("hoCount", hOStockServeceInt.countHeadOfficeStock());
+					//Site Count
+					model.addObject("siteCount", siteStock.countSiteStock());
+					//Boot Count
+					model.addObject("bootCount", bootStock.countBootStock(userName.getFirstName()+" "+ userName.getLastName()));
+					//Load Data of HO 
+					/*model.addObject("firstName", userName.getFirstName());
+					model.addObject("lastName", userName.getLastName());
+					model.addObject("email", userName.getEmail());*/
+					//Load Data Boot Site
+					model.addObject("employees",spareInt.spareQuantityForTechnician(userName.getFirstName()+" "+ userName.getLastName()));
+					//Load Data of bootSite
+					model.addObject("customer",spareInt.spareQuantityForTechnicianSiteStock());			
+					model.setViewName("techsparemanagement");
+					
+				}else if(userName.getRole().equalsIgnoreCase("User")){	
+					//HO Count
+					model.addObject("hoCount", hOStockServeceInt.countHeadOfficeStock());
+					//Site Count
+					model.addObject("siteCount", siteStock.countSiteStock());
+					//Boot Count
+					model.addObject("bootCount", bootStock.countBootStock());			
+					//Load Data of HO 
+					model.addObject("spareParts", hOStockServeceInt.getAllSparePartsWithoutZero());			
+					//Load Data Boot Site
+					model.addObject("employees",spareInt.spareQuantityForTechnicians());			
+					//Load Data of bootSite
+					model.addObject("customer",spareInt.spareQuantity());	
+					model.setViewName("usersparemanagement");
+				}
+					
+				}else {
+					model.setViewName("login");
+				}
+				return model;
+			}
+	
+	
 	
 	@RequestMapping(value="addSpares", method=RequestMethod.GET)
 	public ModelAndView loadAddSpares()
@@ -311,19 +386,40 @@ public class SparePartsController {
 		}
 		return model;
 	}
-	@RequestMapping(value="loadStockSite")
-	public ModelAndView loadStockSite(@RequestParam("customerName") String customerName){
+	
+	@RequestMapping(value={"loadBootStockHistoryMovement"}, method=RequestMethod.GET)
+	public ModelAndView loadBootStockHistoryMovement(String technician,String partNumber){
+		model = new ModelAndView();
+		userName = (Employee) session.getAttribute("loggedInUser");
+		globalTechnicianName = technician;
+		globalPartNumber = partNumber;
+		if(userName != null){
+			//Load technician,display Boot Stock Movement history lists
+			model.addObject("technician",technician);
+			model.addObject("partNumber",partNumber);
+			model.addObject("displayBootStockMovement", spareBootStockHistoryServiceInt.getBootStockHistoryByPartNumber(partNumber));
+			model.setViewName("bootSiteOrders");
+			}
+		else{
+			model.setViewName("login");
+		}
+		return model;
+	}	
+	
+	@RequestMapping(value={"loadStockSite"},method=RequestMethod.GET)
+	public ModelAndView loadStockSite(@RequestParam("customerName")String customerName, String partNumber){
 		model = new ModelAndView();
 		userName = (Employee) session.getAttribute("loggedInUser");
 		globalTechnicianName = null;
 		globalCustomerName = customerName;
-		
+		globalPartNumber = partNumber;
 		if(userName != null){
 			model.addObject("orders", siteStock.getOrdersForCustomer(globalCustomerName));
 			model.addObject("countPartForCustomer",siteStock.countPartsForCustomer(globalCustomerName));
 			model.addObject("countTonerForCustomer",siteStock.countTonerForCustomer(globalCustomerName));
 			//Load customers/technician lists
 			model.addObject("customerList",customerServiceInt.getClientList(customerName));
+			model.addObject("displaySiteStockMovement",spareSiteStockHistoryServiceInt.getSiteStockHistoryByPartNumber(partNumber));
 			model.addObject("customerName",customerName);			
 			model.addObject("technicianList",employeeServiceInt.getAllTechnicians());
 			model.setViewName("stockSiteOrders");
@@ -333,6 +429,28 @@ public class SparePartsController {
 		}
 		return model;
 	}
+	
+	@RequestMapping(value={"loadStockSiteHistoryMovement"},method=RequestMethod.GET)
+	public ModelAndView loadStockSiteMistoryMovement(String customerName,String partNumber){
+		model = new ModelAndView();
+		userName = (Employee) session.getAttribute("loggedInUser");
+		globalTechnicianName = null;
+		globalCustomerName = customerName;
+		globalPartNumber = partNumber;
+		if(userName != null){
+			//Load customer,display Site Stock Movement history lists
+			model.addObject("customerName",customerName);
+			model.addObject("partNumber",partNumber);
+			model.addObject("displaySiteStockMovement",spareSiteStockHistoryServiceInt.getSiteStockHistoryByPartNumber(partNumber));
+			model.setViewName("stockSiteOrders");
+		}
+		else{
+			model.setViewName("login");
+		}
+		return model;
+	}
+	
+	
 	@RequestMapping(value="loadStockSiteForTechnician")
 	public ModelAndView loadStockSiteforTechnician(@RequestParam("customerName") String customerName){
 		model = new ModelAndView();

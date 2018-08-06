@@ -73,6 +73,7 @@ public class DeviceController {
     private String retMessage = null;
     public String[] getSerials = null;
     public String[] getSerialNumbers = null;
+    private String globalSeialNumber = null;
     
    //Add Device
 	@RequestMapping(value="addProduct", method=RequestMethod.GET)
@@ -255,6 +256,33 @@ public class DeviceController {
 		return model;
 		
 	}
+	
+	@RequestMapping(value={"displayDeviceHistory","userDisplayDeviceHistory"},method=RequestMethod.GET)
+	public ModelAndView displayDeviceHistory(String serialNumber)
+	{
+		model = new ModelAndView();
+		globalSeialNumber = serialNumber;
+		userName = (Employee) session.getAttribute("loggedInUser");
+		
+		if(userName != null){
+			if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")) {
+				model.addObject("serialNumber", serialNumber);				
+				model.addObject("displayDeviceHistory", deviceHistoryServiceInt.getHistoryBySerialNumber(serialNumber));
+				model.setViewName("searchDevice");
+			}else if(userName.getRole().equalsIgnoreCase("User")){
+				model.addObject("serialNumber", serialNumber);				
+				model.addObject("displayDeviceHistory", deviceHistoryServiceInt.getHistoryBySerialNumber(serialNumber));
+				model.setViewName("userSearchDevice");
+			}
+		}
+		else{
+			model.setViewName("login");
+		}
+		return model;
+		
+	}
+	
+	
 	@RequestMapping(value="searchDeviceSerialNumber")
 	public ModelAndView searchDeviceBySerialNo(@RequestParam("serialNumber") String serialNumber,Device device,DeviceBean deviceBean){
 		model= new ModelAndView();

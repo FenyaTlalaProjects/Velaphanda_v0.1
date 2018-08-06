@@ -310,7 +310,7 @@
 									<!-- //group search details -->
 
 
-									<!-- History Details -->
+									<!--  History Details 
 									<div id="recieveSpare" class="modal fade" role="dialog"
 										aria-hidden="true">
 										<div class="modal-dialog modal-lg">
@@ -337,12 +337,12 @@
 															</div>
 
 
-															<!-- Customer Action -->
+															Customer Action
 															<input type="hidden" id="customerAction"
 																name="customerAction" class="form-control"
 																value="Update Customer">
 
-															<!-- Text area comments-->
+															Text area comments
 															<label class="col-md-3 control-label">Provide
 																Comment</label>
 															<div class="form-group">
@@ -356,13 +356,13 @@
 																	</div>
 																</div>
 															</div>
-															<!--// text area comments-->
+															// text area comments
 
 														</div>
 													</div>
 
 												</div>
-												<!-- modal-body -->
+												modal-body
 												<div class="modal-footer">
 													<button type="button" class="btn btn-default"
 														data-dismiss="modal">Cancel</button>
@@ -371,19 +371,18 @@
 														onclick="return confirm('Are you sure you want to recieve parts?');">
 												</div>
 											</div>
-											<!-- /.modal-content -->
+											/.modal-content
 										</div>
-										<!-- /.modal-dialog -->
+										/.modal-dialog
 									</div>
-									<!-- /.modal -- History Details -->
+									/.modal -- History Details -->
 
 
 									<div class="form-group row">
 										<div class="col-sm-offset-2 col-sm-8">
-											<br> <br> <input type="button" value="Add Spare"
+											<br> <br> <input type="submit" value="Recieve Spare(s)"
 												class="btn btn-primary btn-block btn-lg" tabindex="9"
-												id="addSpare" data-toggle="modal"
-												data-target="#recieveSpare">
+												id="addSpare" >
 										</div>
 									</div>
 

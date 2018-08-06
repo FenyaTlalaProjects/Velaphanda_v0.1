@@ -53,6 +53,7 @@ public class CustomerController {
 	List<Device> deviceList =null;
 	Customer customer = null;
 	Employee userName = null;
+	private String globalCustomerName = null;
 	
 	@RequestMapping(value="addClient",method=RequestMethod.GET)
 	public ModelAndView loadAddClient() {
@@ -276,20 +277,20 @@ public class CustomerController {
 		return model;
 	}
 	@RequestMapping(value={"displayCustomerHistory","userDisplayCustomerHistory"},method=RequestMethod.GET)
-	public ModelAndView displayCustomerHistory(@RequestParam("customerName") String customerName,
-			@RequestParam("action") String actionExpand,Integer offset,Integer maxResults){
+	public ModelAndView displayCustomerHistory(@RequestParam("customerName") String customerName){
 		model= new ModelAndView();
 		userName = (Employee) session.getAttribute("loggedInUser");
+		globalCustomerName = customerName;
 		if(userName != null){
 		
 			if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")) {
-				
-				model.addObject("displayCustomers", customerServiceInt.getClientList());
-				model.addObject("displayCustomerHistory", customerHistoryServiceInt.getAllHistoryByCustomer());
+				model.addObject("customerName", customerName);
+				model.addObject("displayCustomerHistory", customerHistoryServiceInt.getHistoryByCustomer(customerName));
 				model.setViewName("displayCustomers");
 			
 		   }else if(userName.getRole().equalsIgnoreCase("User")){			   
-			   model.addObject("displayCustomers", customerServiceInt.getClientList());				
+			   model.addObject("customerName", customerName);
+			   model.addObject("displayCustomerHistory", customerHistoryServiceInt.getHistoryByCustomer(customerName));			
 			   model.setViewName("userDisplayCustomers"); 
 			   
 		   }

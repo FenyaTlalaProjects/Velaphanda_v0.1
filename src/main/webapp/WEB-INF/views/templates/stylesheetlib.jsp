@@ -5,4 +5,5 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap-3.3.7/css/daterangepicker.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap-3.3.7/css/bootstrap.min.css" />"/>
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap-3.3.7/css/bootstrap-table.css" />"/>
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/datatables/css/details.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrapValidator-0.5.3/css/bootstrapValidator.min.css" />"/>
