@@ -140,8 +140,8 @@ public class SparePartsController {
 		}
 	
 	
-	//spare management
-		@RequestMapping(value = {"headOfficeSpareHistory","techsparemanagement","usersparemanagement"}, method = RequestMethod.GET)
+		//spare history movement
+		@RequestMapping(value = {"headOfficeSpareHistory","techSpareHistory","userHeadOfficeSpareHistory"}, method = RequestMethod.GET)
 		public ModelAndView displayHistoryHOMovement(String partNumber) {
 				
 				model = new ModelAndView();
@@ -197,7 +197,10 @@ public class SparePartsController {
 					//Load Data Boot Site
 					model.addObject("employees",spareInt.spareQuantityForTechnicians());			
 					//Load Data of bootSite
-					model.addObject("customer",spareInt.spareQuantity());	
+					model.addObject("customer",spareInt.spareQuantity());
+					//Load Data of Spares HO History
+					model.addObject("partNumber",partNumber);
+					model.addObject("displayHOSparesHistory",spareHOHistoryServiceInt.getHistoryByPartNumber(partNumber));
 					model.setViewName("usersparemanagement");
 				}
 					

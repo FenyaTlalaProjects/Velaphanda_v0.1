@@ -37,9 +37,9 @@
 
 						<ul id="ticket-summary" class="nav nav-tabs">
 							<div class="row">
-								
-								
-								
+
+
+
 								<div class="col-xs-6 col-md-3">
 									<div class="panel panel-default">
 										<a href='receiveParts.html'>
@@ -92,12 +92,12 @@
 										</a>
 									</div>
 								</div>
-								
-								
+
+
 								<div class="col-xs-6 col-md-3">
 									<div class="panel panel-default">
-										<a  href='#spareHOHistoryDetailsRecieve' data-toggle="tab">
-											
+										<a href='#spareHOHistoryDetailsRecieve' data-toggle="tab">
+
 										</a>
 									</div>
 								</div>
@@ -150,44 +150,44 @@
 								</table>
 								<!-- table order -->
 							</div>
-							
-						<!--  History Details -->
-						<c:if test="${not empty partNumber}">
-							<div  class="tab-pane active" id="spareHOHistoryDetailsRecieve" >
-								<legend align=center>Head Office Stock</legend>								
-								<table id="spareHOHistoryDetails" class="display">
-									<thead>
-										<tr>
-											<th colspan="6" style="text-align: center; font-size:18px;">Spare
-												History for: ${partNumber}</th>
-										</tr>
-										<tr>
-											<th>Spare Recieved By</th>
-											<th>Action</th>
-											<th>Date Spare Recieved</th>
-											<th>Supplier Name</th>
-											<th>Supplier Order No</th>
-											<th>Quantity Recieved</th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach var="list" items="${displayHOSparesHistory}">
+
+							<!--  History Details -->
+							<c:if test="${not empty partNumber}">
+								<div class="tab-pane active" id="spareHOHistoryDetailsRecieve">
+									<legend align=center>Head Office Stock</legend>
+									<table id="spareHOHistoryDetails" class="display">
+										<thead>
 											<tr>
-												<td>${list.userName}</td>
-												<td>${list.action}</td>
-												<td>${list.dateTime}</td>
-												<td>${list.dataField1}</td>
-												<td>${list.dataField2}</td>
-												<td>${list.quantity}</td>
+												<th colspan="6" style="text-align: center; font-size: 18px;">Spare
+													History for: ${partNumber}</th>
 											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
-						</c:if>						
-						<c:if test="${empty partNumber}">							
-						</c:if>
-							
+											<tr>
+												<th>Spare Recieved By</th>
+												<th>Action</th>
+												<th>Date Spare Recieved</th>
+												<th>Supplier Name</th>
+												<th>Supplier Order No</th>
+												<th>Quantity Recieved</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach var="list" items="${displayHOSparesHistory}">
+												<tr>
+													<td>${list.userName}</td>
+													<td>${list.action}</td>
+													<td>${list.dateTime}</td>
+													<td>${list.dataField1}</td>
+													<td>${list.dataField2}</td>
+													<td>${list.quantity}</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
+							</c:if>
+							<c:if test="${empty partNumber}">
+							</c:if>
+
 							<div class="tab-pane" id="siteStock">
 								<legend align=center>Site Stock</legend>
 
@@ -285,6 +285,6 @@
 				function spareHeadOfficeHistory() {
 					return '<table id="spareHeadOfficeHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="6" style="text-align:center;">Spare History</th></tr><tr><th>Spare Recieved By</th><th>Action</th><th>Date Spare Recieved</th><th>Supplier Name</th><th>Supplier Order No</th><th>Quantity Recieved</th></tr></thead><tbody><c:forEach var="list" items="${displayHOSparesHistory}"><tr><td>${list.userName}</td><td>${list.action}</td><td>${list.dateTime}</td><td>${list.dataField1}</td><td>${list.dataField2}</td><td>${list.quantity}</td></tr></c:forEach></tbody></table>';
 				}
-			</script>
+				</script>
 </body>
 </html>

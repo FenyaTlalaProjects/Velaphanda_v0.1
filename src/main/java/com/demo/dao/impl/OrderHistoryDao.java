@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.demo.dao.OrderHistoryDaoInt;
 import com.demo.dao.OrdersDaoInt;
 import com.demo.dao.TicketsDaoInt;
+import com.demo.model.Employee;
+import com.demo.model.OrderDetails;
 import com.demo.model.OrderHeader;
 import com.demo.model.OrderHistory;
 import com.demo.model.Tickets;
@@ -31,35 +35,41 @@ public class OrderHistoryDao implements OrderHistoryDaoInt{
 	private OrdersDaoInt daoInt;
 	@Autowired
 	private TicketsDaoInt ticketsDaoInt;
-	
+	@Autowired
+	private HttpSession session;
 	private OrderHistory orderHistory = null;
 	private OrderHeader orderHeader = null;
 	
 	private DateFormat dateFormat = null;
 	private Date date = null;
 	private String orderNumber ="ORD000";
-	
+	Employee userName, emp, empLoggedIn = null;
 	
 	@Override
 	public void insetOrderHistory(OrderHeader order) {
 		dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		date = new Date();
 		orderHistory = new OrderHistory();
+		empLoggedIn = (Employee) session.getAttribute("loggedInUser");
 		try{
-			
+			//List<OrderDetails> orderDetails = getOrderDetailsByOrderNum(recordID);
 			orderHistory.setOrderNum(orderNumber+ order.getRecordID());
 			orderHistory.setOrderStatus(order.getStatus());
 			
 			if(order.getStatus().equalsIgnoreCase("Approved") ){
 				orderHistory.setStatusDateTime(order.getDateApproved());
+				//orderHistory.setUserOrderAction(order.getApprover());
 			}else if(order.getStatus().equalsIgnoreCase("Pending")){
 				orderHistory.setStatusDateTime(order.getDateOrdered());
+				//orderHistory.getUserOrderAction();
 			}
 			else if(order.getStatus().equalsIgnoreCase("Shipped")){
 				orderHistory.setStatusDateTime(order.getShippingDate());
+				//orderHistory.setUserOrderAction(order.getApprover());
 			}
 			else if(order.getStatus().equalsIgnoreCase("Received")){
 				orderHistory.setStatusDateTime(order.getOrderReceivedDateTime());
+				//orderHistory.getUserOrderAction();
 			}else{
 				orderHistory.setStatusDateTime(dateFormat.format(date));
 			}

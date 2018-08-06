@@ -200,18 +200,16 @@ li {
 													<tr>
 														<th>Order Status</th>
 														<th>Date/Time</th>
-														<!-- <th>User</th>
- -->
+														<!-- <th>User</th> -->
 													</tr>
 												</thead>
 												<tbody>
 													<!-- Iterating over the list sent from Controller -->
 													<c:forEach var="list" items="${status}">
 														<tr>
-
 															<td>${list.orderStatus}</td>
 															<td>${list.statusDateTime}</td>
-															<!-- <td>Who Approved/Recieved/Shipped</td> -->
+															<%-- <td>${list.userOrderAction}</td> --%>
 														</tr>
 													</c:forEach>
 												</tbody>

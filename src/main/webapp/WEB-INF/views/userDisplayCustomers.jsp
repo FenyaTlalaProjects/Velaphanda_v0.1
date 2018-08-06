@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <c:import url="templates/tableresizefont.jsp"></c:import>
-<c:import url="templates/stylesheetlib.jsp"></c:import>
+<c:import url="templates/datatablesstyles.jsp"></c:import>
 </head>
 <body>
 	<c:import url="templates/usernavbar.jsp"></c:import>
@@ -33,40 +33,76 @@
 					<div class="panel-heading" align="center">Customers</div>
 					<div class="panel-body">
 
-						<a target="_blank"
-							href="customerListDownloadPDF?clientName=<c:out value='${customer.clientName}' />">Download
-							PDF </a>
-						<table data-toggle="table" data-url="${displayCustomers}"
-							data-show-refresh="true" data-show-toggle="true"
-							data-search="true" data-select-item-name="toolbar1"
-							data-pagination="true" data-sort-name="customername"
-							data-sort-order="aesc">
-							<thead>
-								<tr>
-									<th data-toggle="true" data-field="customername"
-										data-sortable="true">Customer</th>
-									<th data-field="email" data-sortable="true">Email</th>
-									<th data-field="tellno" data-sortable="true">Tell No</th>
+						<c:if test="${empty customerName}">
 
-									<th data-field="viewdevice" data-sortable="true">View
-										Device</th>
-								</tr>
-							</thead>
-							<tbody>
-								<!-- Iterating over the list sent from Controller -->
-								<c:forEach var="list" items="${displayCustomers}">
+							<a target="_blank"
+								href="customerListDownloadPDF?clientName=<c:out value='${customer.clientName}' />">Download
+								PDF </a>
+							<table id="customerHistory" class="display">
+
+								<thead>
 									<tr>
-										<td><a
-											href="userViewCustomer?customerName=<c:out value='${list.customerName}'/>">${list.customerName}</a></td>
-										<td>${list.contactEmail}</td>
-										<td>${list.telephoneNumber}</td>
-										<td><a
-											href="userSearchCustomerDevices?customerName=<c:out value='${list.customerName}'/>">View
-												Devices</a></td>
+										<th></th>
+										<th data-toggle="true" data-field="customername"
+											data-sortable="true">Customer</th>
+										<th data-field="email" data-sortable="true">Email</th>
+										<th data-field="tellno" data-sortable="true">Tell No</th>
+
+										<th data-field="viewdevice" data-sortable="true">View
+											Device</th>
 									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+								</thead>
+								<tbody>
+									<!-- Iterating over the list sent from Controller -->
+									<c:forEach var="list" items="${displayCustomers}">
+										<tr>
+											<td class="details-control"
+												onclick="window.location='userDisplayCustomerHistory?customerName=<c:out value='${list.customerName}'/>';"></td>
+
+											<td><a
+												href="userViewCustomer?customerName=<c:out value='${list.customerName}'/>">${list.customerName}</a></td>
+											<td>${list.contactEmail}</td>
+											<td>${list.telephoneNumber}</td>
+											<td><a
+												href="userSearchCustomerDevices?customerName=<c:out value='${list.customerName}'/>">View
+													Devices</a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+
+						</c:if>
+
+						<!-- Customer History Details -->
+						<c:if test="${not empty customerName}">
+
+							<table id="customerHistoryDetails" class="display">
+								<thead>
+									<tr>
+										<th colspan="4" style="text-align: center; font-size: 18px;">History
+											of Capturing Data for : ${customerName}</th>
+									</tr>
+									<tr>
+										<th>Name</th>
+										<th>Action</th>
+										<th>Date</th>
+										<th>Comment</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="list" items="${displayCustomerHistory}">
+										<tr>
+											<td>${list.userName}</td>
+											<td>${list.action}</td>
+											<td>${list.dateTime}</td>
+											<td>${list.description}</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+
+						</c:if>
+
 					</div>
 					<!-- .panel-body -->
 				</div>
@@ -81,6 +117,7 @@
 	</div>
 	<!--/.main-->
 	<c:import url="templates/javascriptslib.jsp"></c:import>
+	<c:import url="templates/datatablesscripts.jsp"></c:import>
 	<c:import url="templates/sidebar-collapse.jsp"></c:import>
 	<!-- /Scripts -->
 </body>
