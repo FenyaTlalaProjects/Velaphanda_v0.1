@@ -256,6 +256,8 @@
 									</div>
 									<!--/S Column-->
 
+									
+
 									<!--Second column-->
 									<div class="col-sm-4">
 
@@ -263,7 +265,7 @@
 											<legend>
 												<b style="font-size: 12px;">Current Readings</b>
 											</legend>
-
+											<c:if test="${not empty productObject.monoReading }">
 											<!-- Text input Mono-->
 											<div class="form-group">
 												<label class="col-md-3 control-label">Mono</label>
@@ -277,6 +279,10 @@
 													</div>
 												</div>
 											</div>
+											</c:if>
+											<c:if test="${empty productObject.monoReading }">
+											</c:if>
+											<c:if test="${not empty productObject.colourReading}">
 											<!-- Text input Color-->
 											<div class="form-group">
 												<label class="col-md-3 control-label">Colour</label>
@@ -290,13 +296,15 @@
 													</div>
 												</div>
 											</div>
+											</c:if>											
+											<c:if test="${empty productObject.colourReading }">
+											</c:if>
 
 										</fieldset>
 
 
 									</div>
 									<!--/S Column-->
-
 								</fieldset>
 
 								<fieldset>

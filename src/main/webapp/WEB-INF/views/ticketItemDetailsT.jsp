@@ -2126,32 +2126,13 @@ li {
 												
 												<!-- Text input Serial No-->
 												<div class="form-group">
-													<label class="col-md-3 control-label">Serial No</label>
-													<div class="col-md-6 inputGroupContainer">
-														<div class="input-group">
-															<span class="input-group-addon"><i
-																class="glyphicon glyphicon-barcode"></i></span> <input
-																name="serialNumber" placeholder="Serial Number"
-																value="${ticketObject.getDevice().getSerialNumber() }"
-																class="form-control" type="text" readonly>
-														</div>
-													</div>
+													<label class="col-md-2">Serial No</label>													
+													${ticketObject.getDevice().getSerialNumber() }
 												</div>
 
 												<!-- Text area Action Taken-->
 												<div class="actionTaken">
-													<div class="form-group">
-														<label class="col-md-3 control-label">Action Taken</label>
-														<div class="col-md-6 inputGroupContainer">
-															<div class="input-group">
-																<span class="input-group-addon"><i
-																	class="glyphicon glyphicon-barcode"></i></span> <input
-																	id="actionTaken" class="form-control" type="text"
-																	name="actionTaken" value="${ticketObject.actionTaken }"
-																	readonly="readonly">
-															</div>
-														</div>
-													</div>
+													<label class="col-md-2">Action Taken</label>"${ticketObject.actionTaken }
 												</div>
 
 												<c:if test="${empty ticketObject.comments}">
@@ -2159,15 +2140,8 @@ li {
 												<c:if test="${not empty ticketObject.comments}">
 													<!-- Text area Comment-->
 													<div class="form-group">
-														<label class="col-md-3 control-label">Comments</label>
-														<div class="col-md-6 inputGroupContainer">
-															<div class="input-group">
-																<span class="input-group-addon"><i
-																	class="glyphicon glyphicon-pencil"></i></span>
-																<textarea class="form-control" name="comments"
-																	id="comment" readonly="readonly" style="height: 120px;">${ticketObject.comments}</textarea>
-															</div>
-														</div>
+														<label class="col-md-2">Comments</label>
+														${ticketObject.comments}
 													</div>
 												</c:if>
 
@@ -2177,18 +2151,8 @@ li {
 													<!-- display Bridged-->
 													<div class="reseanBridged" id="reseanBridged">
 														<div class="form-group">
-															<label class="col-md-3 control-label">Bridged
-																Reason</label>
-															<div class="col-md-6 inputGroupContainer">
-																<div class="input-group">
-																	<span class="input-group-addon"><i
-																		class="glyphicon glyphicon-edit"></i></span>
-																	<textarea class="form-control" style="height: 120px;"
-																		id="bridgedReason" readonly="readonly"
-																		name="bridgedReason" maxlength="150"
-																		onkeydown="upperCaseF(this)">${ticketObject.bridgedReason}</textarea>
-																</div>
-															</div>
+															<label class="col-md-2">Bridged
+																Reason</label>${ticketObject.bridgedReason}
 														</div>
 													</div>
 													<!-- //End display Bridged-->
@@ -2201,19 +2165,8 @@ li {
 													<!-- Text area Used Spare Part-->
 													<div class="usedPartNumbersDetails">
 														<div class="form-group">
-															<label class="col-md-3 control-label">Used
-																Spare/Part</label>
-															<div class="col-md-6 inputGroupContainer">
-																<div class="input-group">
-																	<span class="input-group-addon"><i
-																		class="glyphicon glyphicon-barcode"></i></span> <input
-																		id="usedPartNumbers" class="form-control" type="text"
-																		name="usedPartNumbers"
-																		value="${ticketObject.usedPartNumbers}"
-																		readonly="readonly"
-																		style="height: 60px; font-size: 11px;">
-																</div>
-															</div>
+															<label class="col-md-2">Used
+																Spare/Part</label>${ticketObject.usedPartNumbers}
 														</div>
 													</div>
 												</c:if>
@@ -2224,20 +2177,10 @@ li {
 
 													<!-- Text checkbox Colour Reading-->
 													<div class="form-group">
-														<label class="col-md-3 control-label">Colour
+														<label class="col-md-2">Colour
 															Reading</label>
-														<div class="col-md-6 inputGroupContainer">
-															<div class="input-group">
-																<span class="input-group-addon"><i
-																	class="glyphicon glyphicon-barcode"></i></span> <input
-																	type="text" class="form-control" readonly="readonly"
-																	onkeypress="return isNumber(event)"
-																	placeholder="Enter Colour Reading" id="colour"
-																	name="colourReading"
-																	value="${ticketObject.getDevice().getColourReading() }"
-																	name="colourReading">
-															</div>
-														</div>
+														${ticketObject.getDevice().getColourReading() }"
+																
 													</div>
 
 												</c:if>
@@ -2249,18 +2192,8 @@ li {
 													test="${not empty ticketObject.getDevice().getMonoReading() }">
 
 													<div class="form-group">
-														<label class="col-md-3 control-label">Mono Reading</label>
-														<div class="col-md-6 inputGroupContainer">
-															<div class="input-group">
-																<span class="input-group-addon"><i
-																	class="glyphicon glyphicon-barcode"></i></span> <input
-																	type="text" class="form-control"
-																	onkeypress="return isNumber(event)" id="mono"
-																	readonly="readonly" name="monoReading"
-																	placeholder="Enter Mono Reading" name="monoReading"
-																	value="${ticketObject.getDevice().getMonoReading() }">
-															</div>
-														</div>
+														<label class="col-md-3">Mono Reading</label>
+														${ticketObject.getDevice().getMonoReading() }
 													</div>
 												</c:if>
 
@@ -2291,17 +2224,9 @@ li {
 												<c:if test="${not empty ticketObject.reopenReason}">
 													<!-- Text area reopenReason-->
 													<div class="form-group">
-														<label class="col-md-3 control-label">Re-Open
+														<label class="col-md-2">Re-Open
 															Reason</label>
-														<div class="col-md-6 inputGroupContainer">
-															<div class="input-group">
-																<span class="input-group-addon"><i
-																	class="glyphicon glyphicon-pencil"></i></span>
-																<textarea class="form-control" readonly="readonly"
-																	name="reopenReason" id="reopenReason"
-																	onkeydown="upperCaseF(this)" style="height: 120px;">${ticketObject.reopenReason}</textarea>
-															</div>
-														</div>
+														${ticketObject.reopenReason}
 													</div>
 													<!-- Text area reopenReason-->
 												</c:if>
@@ -2309,8 +2234,6 @@ li {
 											</form:form>
 										</div>
 										<!-- pane body -->
-
-									</div>
 
 								</c:when>
 							</c:choose>
