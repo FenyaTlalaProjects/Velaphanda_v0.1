@@ -451,7 +451,7 @@ public class SiteStockDao implements SiteStocDaoInt {
 							historyBean.setDataField1(fromCustomerName);
 							historyBean.setDataField2(customerName);
 							historyBean.setQuantity(result);
-							System.err.println("Spare History Movement is inserted into DB when moving part from client to cleint");
+							System.err.println("Spare History Movement is inserted into DB when adding new client");
 							historyDaoInt.saveHistory(historyBean);	
 							
 							sessionFactory.getCurrentSession().update(stockExist);
@@ -487,7 +487,7 @@ public class SiteStockDao implements SiteStocDaoInt {
 							historyBean.setDataField1(fromCustomerName);
 							historyBean.setDataField2(customerName);
 							historyBean.setQuantity(result);
-							System.err.println("Spare History Movement is inserted into DB when moving part from client to cleint");
+							System.err.println("Spare History Movement is inserted into DB when adding new client");
 							historyDaoInt.saveHistory(historyBean);		
 							
 							sessionFactory.getCurrentSession().save(siteStock);
@@ -510,22 +510,6 @@ public class SiteStockDao implements SiteStocDaoInt {
 							toBootStockExst.setTechnicianEmail(emp.getEmail());
 							toBootStockExst.setTechnicianName(emp.getFirstName()+ " "+emp.getLastName());
 							
-							//Prepare Movement Data for History Table
-							emp = (Employee) session.getAttribute("loggedInUser");
-							historyBean = new HistoryBean();						
-							historyBean.setAction("Update");
-							historyBean.setClassification("Spare Movement");
-							historyBean.setObjectId(stock.getPartNumber());
-							historyBean.setUserEmail(emp.getEmail());
-							historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
-							historyBean.setDescription(reasonForBoot);
-							historyBean.setDataField1(fromCustomerName);
-							historyBean.setDataField2(technicianName);
-							historyBean.setQuantity(result);
-							System.err.println("Spare History Movement is inserted into DB when moving part from client to technician");
-							historyDaoInt.saveHistory(historyBean);	
-							
-							
 							sessionFactory.getCurrentSession().update(toBootStockExst);
 							
 						}else{
@@ -544,23 +528,6 @@ public class SiteStockDao implements SiteStocDaoInt {
 							
 							bootSite.setTechnicianEmail(emp.getEmail());
 							bootSite.setTechnicianName(emp.getFirstName()+ " "+emp.getLastName());
-							
-							
-							//Prepare Movement Data for History Table
-							emp = (Employee) session.getAttribute("loggedInUser");
-							historyBean = new HistoryBean();						
-							historyBean.setAction("Create");
-							historyBean.setClassification("Spare Movement");
-							historyBean.setObjectId(stock.getPartNumber());
-							historyBean.setUserEmail(emp.getEmail());
-							historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
-							historyBean.setDescription(reasonForBoot);
-							historyBean.setDataField1(fromCustomerName);
-							historyBean.setDataField2(technicianName);
-							historyBean.setQuantity(result);
-							System.err.println("Spare History Movement is inserted into DB when moving part from client to technician");
-							historyDaoInt.saveHistory(historyBean);	
-							
 							sessionFactory.getCurrentSession().save(bootSite);
 						}
 						
@@ -598,24 +565,6 @@ public class SiteStockDao implements SiteStocDaoInt {
 					    	toBootStockExst.setMoveSparesTo(technicianName);
 					    	toBootStockExst.setReasonForMovement(reasonForBoot);
 					    	toBootStockExst.setDateSparesMoved(dateFormat.format(date));
-					    	
-					    	
-					    	//Prepare Movement Data for History Table
-							emp = (Employee) session.getAttribute("loggedInUser");
-							historyBean = new HistoryBean();						
-							historyBean.setAction("Update");
-							historyBean.setClassification("Spare Movement");
-							historyBean.setObjectId(bootStock.getPartNumber());
-							historyBean.setUserEmail(emp.getEmail());
-							historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
-							historyBean.setDescription(reasonForBoot);
-							historyBean.setDataField1(fromCustomerName);
-							historyBean.setDataField2(technicianName);
-							historyBean.setQuantity(result);
-							System.err.println("Spare History Movement is inserted into DB when moving part from client to technician");
-							historyDaoInt.saveHistory(historyBean);	
-					    	
-					    	
 					    	sessionFactory.getCurrentSession().update(toBootStockExst);
 					    	
 					    }else{
@@ -632,27 +581,10 @@ public class SiteStockDao implements SiteStocDaoInt {
 							bootSite.setQuantity(result);
 							bootSite.setTechnicianEmail(emp.getEmail());
 							bootSite.setTechnicianName(emp.getFirstName()+ " "+emp.getLastName());
-							
-							
-							//Prepare Movement Data for History Table
-							emp = (Employee) session.getAttribute("loggedInUser");
-							historyBean = new HistoryBean();						
-							historyBean.setAction("Create");
-							historyBean.setClassification("Spare Movement");
-							historyBean.setObjectId(bootStock.getPartNumber());
-							historyBean.setUserEmail(emp.getEmail());
-							historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
-							historyBean.setDescription(reasonForBoot);
-							historyBean.setDataField1(fromTechnicianName);
-							historyBean.setDataField2(technicianName);
-							historyBean.setQuantity(result);
-							System.err.println("Spare History Movement is inserted into DB when moving part from technician to technician");
-							historyDaoInt.saveHistory(historyBean);
-							
 							sessionFactory.getCurrentSession().save(bootSite);
 					    }
-					    Employee techEmp = daoInt.getEmployeeByEmpNum(technicianName);
-						retMessage = "Spares successfully  moved to "+ techEmp.getFirstName()+ " "+techEmp.getLastName() ;
+						
+						retMessage = "Spares successfully  moved to "+ emp.getFirstName()+ " "+emp.getLastName() ;
 						
 						
 					}else if(reasonForSite.length()>3){
@@ -665,23 +597,6 @@ public class SiteStockDao implements SiteStocDaoInt {
 							partExistForSite.setReasonForMovement(reasonForSite);
 							partExistForSite.setDateSparesMoved(dateFormat.format(date));
 							partExistForSite.setMoveSparesFrom(fromTechnicianName);
-							
-							
-							//Prepare Movement Data for History Table
-							emp = (Employee) session.getAttribute("loggedInUser");
-							historyBean = new HistoryBean();						
-							historyBean.setAction("Update");
-							historyBean.setClassification("Spare Movement");
-							historyBean.setObjectId(bootStock.getPartNumber());
-							historyBean.setUserEmail(emp.getEmail());
-							historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
-							historyBean.setDescription(reasonForSite);
-							historyBean.setDataField1(fromTechnicianName);
-							historyBean.setDataField2(customerName);
-							historyBean.setQuantity(result);
-							System.err.println("Spare History Movement is inserted into DB when moving part from technician to client");
-							historyDaoInt.saveHistory(historyBean);
-							
 							sessionFactory.getCurrentSession().update(partExistForSite);
 						}else{
 							    siteStock.setCustomerName(customerName);
@@ -699,23 +614,6 @@ public class SiteStockDao implements SiteStocDaoInt {
 								siteStock.setQuantity(result);
 								
 								siteStock.setReasonForMovement(reasonForSite);
-								
-								//Prepare Movement Data for History Table
-								emp = (Employee) session.getAttribute("loggedInUser");
-								historyBean = new HistoryBean();						
-								historyBean.setAction("Create");
-								historyBean.setClassification("Spare Movement");
-								historyBean.setObjectId(bootStock.getPartNumber());
-								historyBean.setUserEmail(emp.getEmail());
-								historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
-								historyBean.setDescription(reasonForSite);
-								historyBean.setDataField1(fromTechnicianName);
-								historyBean.setDataField2(customerName);
-								historyBean.setQuantity(result);
-								System.err.println("Spare History Movement is inserted into DB when moving part from technician to technician");
-								historyDaoInt.saveHistory(historyBean);
-								
-								
 								sessionFactory.getCurrentSession().save(siteStock);
 						}
 						

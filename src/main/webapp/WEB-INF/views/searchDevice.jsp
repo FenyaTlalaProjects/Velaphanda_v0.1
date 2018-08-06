@@ -93,15 +93,14 @@
 		<!--/ footer -->
 	</div>
 	<!--/.main-->
-    <c:import url="templates/javascriptslib.jsp"></c:import>
-	<c:import url="templates/datatablesscripts.jsp"></c:import>
-	<c:import url="templates/sidebar-collapse.jsp"></c:import>
+    <c:import url="templates/datatablesscripts.jsp"></c:import>	
 	<script type="text/javascript">
 			//device history table
 			function deviceHistory() {
 				return '<table id="deviceHistoryDetails" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;"><thead><tr><th colspan="4" style="text-align:center;">Customer History</th></tr><tr><th>Name</th><th>Action</th><th>Date</th><th>Comment</th></tr></thead><tbody><c:forEach var="list" items="${displayDeviceHistory}"><tr><td>${list.userName}</td><td>${list.action}</td><td>${list.dateTime}</td><td>${list.description}</td></tr></c:forEach></tbody></table>';
 			}
 	</script>
-	<!-- /Scripts -->
+	<c:import url="templates/sidebar-collapse.jsp"></c:import>
+    <!-- /Scripts -->
 </body>
 </html>

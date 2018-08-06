@@ -445,14 +445,14 @@
 
 															<tbody>
 																<!-- Iterating over the list sent from Controller -->
-																<c:forEach var="list" items="${displayBootStockMovement}">
+																<c:forEach var="list" items="">
 																	<tr>
-																		<td>${list.userName}</td>
-																		<td>${list.dateTime}</td>																		
-																		<td>${list.datafield1}</td>
-																		<td>${list.datafield2}</td>
-																		<td>${list.quantity}</td>
-																		<td>${list.decription}</td>
+																		<td></td>
+																		<td></td>
+																		<td></td>
+																		<td></td>
+																		<td></td>
+																		<td></td>
 																	</tr>
 																</c:forEach>
 															</tbody>

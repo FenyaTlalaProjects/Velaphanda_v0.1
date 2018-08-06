@@ -111,8 +111,8 @@
 												<c:when test="${list.quantity > 0}">											
 											
 												<tr>
-												<td><a onclick="window.open='loadStockSite?customerName=<c:out value='${list.customerName}'/>?partNumber=<c:out value='${list.partNumber}'/>';" href="#" name="moveSparesSubmit" data-toggle="modal"
-											       data-target="#historyDetails"> ${list.partNumber}</a></td>
+												<td><!-- <a href="#" name="moveSparesSubmit" data-toggle="modal"
+											data-target="#historyDetails"> -->${list.partNumber}<!-- </a> --></td>
 												<td>${list.compatibleDevice}</td>
 												<td>${list.customerName}</td>
 												<td>${list.modelBrand}</td>
@@ -427,14 +427,15 @@
 															data-sort-order="aesc">
 															<thead>
 																<tr>
-																	<th data-field="movedBy" data-sortable="true">Moved
-																		By</th>
+																	<!-- <th></th> -->
 																	<th data-field="dateTimeMoved" data-sortable="true">Date
 																		& Time Moved</th>
 																	<th data-field="novedFrom" data-sortable="true">Moved
 																		From</th>
 																	<th data-field="movedTo" data-sortable="true">Moved
-																		To</th>																
+																		To</th>
+																	<th data-field="movedBy" data-sortable="true">Moved
+																		By</th>
 																	<th data-field="quantityMoved" data-sortable="true">Quantity
 																		Moved</th>
 																	<th data-field="ReasonWhyMoved" data-sortable="true">Reason
@@ -443,15 +444,17 @@
 															</thead>
 
 															<tbody>
-																	<!-- Iterating over the list sent from Controller -->
-																<c:forEach var="list" items="${displaySiteStockMovement}">
+																<!-- Iterating over the list sent from Controller -->
+																<c:forEach var="list" items="">
 																	<tr>
-																		<td>${list.userName}</td>
-																		<td>${list.dateTime}</td>																		
-																		<td>${list.datafield1}</td>
-																		<td>${list.datafield2}</td>
-																		<td>${list.quantity}</td>
-																		<td>${list.decription}</td>
+																		<!-- <td class="details-control"></td> -->
+																		<td></td>
+																		<td></td>
+																		<td></td>
+																		<td></td>
+																		<td></td>
+																		<td></td>
+
 																	</tr>
 																</c:forEach>
 															</tbody>
@@ -503,8 +506,6 @@
 			$('.tick').hide();
 			$('.' + $('.trigger:checked').data('rel')).show();
 		}).change(); //Show content on page load
-		
-		
 	</script>
 </body>
 </html>
