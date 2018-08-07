@@ -14,8 +14,8 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="userdashboard.html"><svg class="glyph stroked home">
-						<use xlink:href="#stroked-home"></use></svg></a></li>
+				<li><a href="userdashboard.html"><svg
+							class="glyph stroked home"> <use xlink:href="#stroked-home"></use></svg></a></li>
 				<div class="nav navbar-nav navbar-right" style="margin-top: -1%;">
 					<a href="#" onclick="history.go(-1);"><span
 						class="glyphicon glyphicon-circle-arrow-left btn-lg"
@@ -32,60 +32,65 @@
 					<div class="panel-heading" align="center">Site Stock</div>
 					<div class="panel-body">
 
+						<c:if test="${not empty customerName}">
 
-						<div class="col-sm-12">
-							<div class="row">
-								<br />
-								<div class="col-6 col-md-6">
-									<a href='numberOfParts'>
-										<div class="well" style="background-color: #ffffff;">
-											<h5 class="text-danger">
-												<span class="label label-danger pull-right">${countPartForCustomer}</span>
-												Parts
-											</h5>
-										</div>
-									</a>
-								</div>
-								<div class="col-6 col-md-6">
-									<a href='numberOfToners'>
-										<div class="well" style="background-color: #ffffff;">
-											<h5 class="text-success">
-												<span class="label label-success pull-right">${countTonerForCustomer}</span>
-												Toners
-											</h5>
-										</div>
-									</a>
+							<div class="col-sm-12">
+								<div class="row">
+									<br />
+									<div class="col-6 col-md-6">
+										<a href='numberOfParts'>
+											<div class="well" style="background-color: #ffffff;">
+												<h5 class="text-danger">
+													<span class="label label-danger pull-right">${countPartForCustomer}</span>
+													Parts
+												</h5>
+											</div>
+										</a>
+									</div>
+									<div class="col-6 col-md-6">
+										<a href='numberOfToners'>
+											<div class="well" style="background-color: #ffffff;">
+												<h5 class="text-success">
+													<span class="label label-success pull-right">${countTonerForCustomer}</span>
+													Toners
+												</h5>
+											</div>
+										</a>
+									</div>
 								</div>
 							</div>
-						</div>
-					<!-- tab nav -->
-						<div class="tab-content">
+							<!-- tab nav -->
+							<div class="tab-content">
 
-							<div class="col-sm-6">
-								<b>Customer Name:${customerName}</b>
-							</div>
+								<div class="col-sm-6">
+									<b>Customer Name:${customerName}</b>
+								</div>
 
-								<table  data-toggle="table" data-url="${orders}"
-									data-show-refresh="true" data-show-toggle="true"
-									data-search="true" data-select-item-name="toolbar1"
-									data-pagination="true" data-sort-name="partno"
-									data-sort-order="desc">
+								<table data-toggle="table" data-show-refresh="true"
+									data-show-toggle="true" data-search="true"
+									data-select-item-name="toolbar1" data-pagination="true"
+									data-sort-name="partno" data-sort-order="desc">
 									<thead>
 										<tr>
-											<th data-toggle="true" data-field="partNo" data-sortable="true">Part No</th>
-											<th data-field="compatibleDevices" data-sortable="true">Compatible Devices</th>
+											<th data-toggle="true" data-field="partNo"
+												data-sortable="true">Part No</th>
+											<th data-field="compatibleDevices" data-sortable="true">Compatible
+												Devices</th>
 											<th data-field="customer" data-sortable="true">Customer</th>
-											<th data-field="modelBrand" data-sortable="true">Model Brand</th>
+											<th data-field="modelBrand" data-sortable="true">Model
+												Brand</th>
 											<th data-field="description" data-sortable="true">Description</th>
-											<th data-field="stockType" data-sortable="true">Stock Type</th>
+											<th data-field="stockType" data-sortable="true">Stock
+												Type</th>
 											<th data-field="colour" data-sortable="true">Color</th>
 											<th data-field="quantity" data-sortable="true">Quantity</th>
-											</tr>
+										</tr>
 									</thead>
 									<tbody>
 										<c:forEach var="list" items="${orders}">
 											<tr>
-												<td>${list.partNumber}</td>
+												<td><a
+													href="loadSiteStockHistoryMovement?partNumber=<c:out value='${list.partNumber}'/>">${list.partNumber}</a></td>
 												<td>${list.compatibleDevice}</td>
 												<td>${list.customerName}</td>
 												<td>${list.modelBrand}</td>
@@ -100,33 +105,76 @@
 													</c:otherwise>
 												</c:choose>
 												<td>${list.quantity}</td>
-												
+
 											</tr>
 										</c:forEach>
 
 									</tbody>
 								</table>
+						</c:if>
 
-								
-						</div>
-						<!-- //tab content -->
+						<!-- Movement History Details -->
+						<c:if test="${empty customerName}">
+							<div class="col-sm-6">
+								<h3>History Movement for ${partNumber}</h3>
+							</div>
+							<table data-toggle="table" data-url="" data-show-refresh="true"
+								data-show-toggle="true" data-search="true"
+								data-select-item-name="toolbar1" data-pagination="true"
+								data-sort-name="customername" data-sort-order="aesc">
+								<thead>
+									<tr>
+										<th data-field="movedBy" data-sortable="true">Moved By</th>
+										<th data-field="dateTimeMoved" data-sortable="true">Date
+											& Time Moved</th>
+										<th data-field="novedFrom" data-sortable="true">Moved
+											From</th>
+										<th data-field="movedTo" data-sortable="true">Moved To</th>
+										<th data-field="quantityMoved" data-sortable="true">Quantity
+											Moved</th>
+										<th data-field="ReasonWhyMoved" data-sortable="true">Reason
+											Why Moved</th>
+									</tr>
+								</thead>
 
-						<!-- .panel-body -->
+								<tbody>
+									<!-- Iterating over the list sent from Controller -->
+									<c:forEach var="list" items="${displaySiteStockMovement}">
+										<tr>
+											<td>${list.userName}</td>
+											<td>${list.dateTime}</td>
+											<td>${list.dataField1}</td>
+											<td>${list.dataField2}</td>
+											<td>${list.quantity}</td>
+											<td>${list.description}</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+
+						</c:if>
+						<!-- End Movement History Details -->
+
+
 					</div>
-					<!-- .panel panel-default -->
-				</div>
-				<!-- /.col-->
-			</div>
-		</div>
+					<!-- //tab content -->
 
-		<!-- /.row -->
-		<!-- Footer -->
-		<c:import url="templates/footer.jsp"></c:import>
-		<!--/ Footer -->
+					<!-- .panel-body -->
+				</div>
+				<!-- .panel panel-default -->
+			</div>
+			<!-- /.col-->
+		</div>
+	</div>
+
+	<!-- /.row -->
+	<!-- Footer -->
+	<c:import url="templates/footer.jsp"></c:import>
+	<!--/ Footer -->
 	</div>
 	<!--/.main-->
 	<c:import url="templates/javascriptslib.jsp"></c:import>
 	<c:import url="templates/ticketmanagementscript.jsp"></c:import>
-	<c:import url="templates/sidebar-collapse.jsp"></c:import>		
+	<c:import url="templates/sidebar-collapse.jsp"></c:import>
 </body>
 </html>

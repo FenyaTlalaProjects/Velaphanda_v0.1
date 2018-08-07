@@ -31,7 +31,8 @@
 				<div class="panel panel-default">
 					<div class="panel-heading" align="center">Site Stock</div>
 					<div class="panel-body">
-
+						
+							<c:if test="${not empty customerName}">
 
 							<div class="col-sm-12">
 							<div class="row">
@@ -66,8 +67,7 @@
 							</div>
 							
 
-							<table data-toggle="table" data-url="${orders}"
-								data-show-refresh="true" data-show-toggle="true"
+							<table data-toggle="table" data-show-refresh="true" data-show-toggle="true"
 								data-search="true" data-select-item-name="toolbar1"
 								data-pagination="true" data-sort-name="partNo"
 								data-sort-order="aesc">
@@ -92,7 +92,8 @@
 									<!-- Iterating over the list sent from Controller -->
 									<c:forEach var="list" items="${orders}">
 										<tr>
-											<td>${list.partNumber}</td>
+											<td><a
+												href="loadSiteStockHistoryMovement?partNumber=<c:out value='${list.partNumber}'/>">${list.partNumber}</a></td>
 											<td>${list.compatibleDevice}</td>
 											<td>${list.modelBrand}</td>
 											<td>${list.itemDescription}</td>
@@ -103,6 +104,49 @@
 									</c:forEach>
 								</tbody>
 							</table>
+							</c:if>
+							
+							<!-- Movement History Details -->
+							<c:if test="${empty customerName}">
+								<div class="col-sm-6">
+									<h3>History Movement for ${partNumber}</h3>
+								</div>
+								<table data-toggle="table" data-url="" data-show-refresh="true"
+									data-show-toggle="true" data-search="true"
+									data-select-item-name="toolbar1" data-pagination="true"
+									data-sort-name="customername" data-sort-order="aesc">
+									<thead>
+										<tr>
+											<th data-field="movedBy" data-sortable="true">Moved By</th>
+											<th data-field="dateTimeMoved" data-sortable="true">Date
+												& Time Moved</th>
+											<th data-field="novedFrom" data-sortable="true">Moved
+												From</th>
+											<th data-field="movedTo" data-sortable="true">Moved To</th>
+											<th data-field="quantityMoved" data-sortable="true">Quantity
+												Moved</th>
+											<th data-field="ReasonWhyMoved" data-sortable="true">Reason
+												Why Moved</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<!-- Iterating over the list sent from Controller -->
+										<c:forEach var="list" items="${displaySiteStockMovement}">
+											<tr>
+												<td>${list.userName}</td>
+												<td>${list.dateTime}</td>
+												<td>${list.dataField1}</td>
+												<td>${list.dataField2}</td>
+												<td>${list.quantity}</td>
+												<td>${list.description}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+
+							</c:if>
+							<!-- End Movement History Details -->
 
 							<!-- .panel-body -->
 						</div>

@@ -86,7 +86,7 @@
 
 
 									<table id="stockOnSite" data-toggle="table"
-										data-url="${orders}" data-show-refresh="true"
+										data-show-refresh="true"
 										data-show-toggle="true" data-search="true"
 										data-select-item-name="toolbar1" data-pagination="true"
 										data-sort-name="partno" data-sort-order="desc">
@@ -117,7 +117,7 @@
 
 														<tr>
 															<td><a
-																href="loadStockSiteHistoryMovement?partNumber=<c:out value='${list.partNumber}'/>">${list.partNumber}</a></td>
+																href="loadSiteStockHistoryMovement?partNumber=<c:out value='${list.partNumber}'/>">${list.partNumber}</a></td>
 															<td>${list.compatibleDevice}</td>
 															<td>${list.customerName}</td>
 															<td>${list.modelBrand}</td>

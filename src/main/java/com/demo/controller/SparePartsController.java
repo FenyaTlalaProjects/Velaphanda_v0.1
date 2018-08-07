@@ -390,24 +390,6 @@ public class SparePartsController {
 		return model;
 	}
 	
-	@RequestMapping(value={"loadBootStockHistoryMovement"}, method=RequestMethod.GET)
-	public ModelAndView loadBootStockHistoryMovement(String technician,String partNumber){
-		model = new ModelAndView();
-		userName = (Employee) session.getAttribute("loggedInUser");
-		globalTechnicianName = technician;
-		globalPartNumber = partNumber;
-		if(userName != null){
-			//Load technician,display Boot Stock Movement history lists
-			model.addObject("technician",technician);
-			model.addObject("partNumber",partNumber);
-			model.addObject("displayBootStockMovement", spareBootStockHistoryServiceInt.getBootStockHistoryByPartNumber(partNumber));
-			model.setViewName("bootSiteOrders");
-			}
-		else{
-			model.setViewName("login");
-		}
-		return model;
-	}	
 	
 	@RequestMapping(value={"loadStockSite"},method=RequestMethod.GET)
 	public ModelAndView loadStockSite(@RequestParam("customerName")String customerName, String partNumber){
@@ -433,19 +415,72 @@ public class SparePartsController {
 		return model;
 	}
 	
-	@RequestMapping(value={"loadStockSiteHistoryMovement"},method=RequestMethod.GET)
-	public ModelAndView loadStockSiteMistoryMovement(String customerName,String partNumber){
+	@RequestMapping(value={"loadBootStockHistoryMovement"}, method=RequestMethod.GET)
+	public ModelAndView loadBootStockHistoryMovement(String technician,String partNumber){
+		model = new ModelAndView();
+		userName = (Employee) session.getAttribute("loggedInUser");
+		globalTechnicianName = technician;
+		globalPartNumber = partNumber;
+		if(userName != null){
+			if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")){
+				//Load technician,display Boot Stock Movement history lists
+				model.addObject("technician",technician);
+				model.addObject("partNumber",partNumber);
+				model.addObject("displayBootStockMovement", spareBootStockHistoryServiceInt.getBootStockHistoryByPartNumber(partNumber));
+				model.setViewName("bootSiteOrders");	
+			}
+			if(userName.getRole().equalsIgnoreCase("User")){
+				//Load customer,display Site Stock Movement history lists
+				model.addObject("technician",technician);
+				model.addObject("partNumber",partNumber);
+				model.addObject("displayBootStockMovement", spareBootStockHistoryServiceInt.getBootStockHistoryByPartNumber(partNumber));
+				model.setViewName("bootSiteOrdersForUser");
+			}else if (userName.getRole().equalsIgnoreCase("Technician")){
+				model.addObject("technician",technician);
+				model.addObject("partNumber",partNumber);
+				model.addObject("displayBootStockMovement", spareBootStockHistoryServiceInt.getBootStockHistoryByPartNumber(partNumber));
+				model.setViewName("bootSiteOrdersForTechnician");
+			}
+			
+		}
+		else{
+			model.setViewName("login");
+		}
+		return model;
+	}
+	
+	@RequestMapping(value={"loadSiteStockHistoryMovement"},method=RequestMethod.GET)
+	public ModelAndView loadSiteStockMistoryMovement(String customerName,String partNumber, String technician){
 		model = new ModelAndView();
 		userName = (Employee) session.getAttribute("loggedInUser");
 		globalTechnicianName = null;
 		globalCustomerName = customerName;
 		globalPartNumber = partNumber;
+		globalTechnicianName = technician;
 		if(userName != null){
-			//Load customer,display Site Stock Movement history lists
-			model.addObject("customerName",customerName);
-			model.addObject("partNumber",partNumber);
-			model.addObject("displaySiteStockMovement",spareSiteStockHistoryServiceInt.getSiteStockHistoryByPartNumber(partNumber));
-			model.setViewName("stockSiteOrders");
+
+			if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")){
+				//Load customer,display Site Stock Movement history lists
+				model.addObject("customerName",customerName);
+				model.addObject("partNumber",partNumber);
+				model.addObject("displaySiteStockMovement",spareSiteStockHistoryServiceInt.getSiteStockHistoryByPartNumber(partNumber));
+				model.setViewName("stockSiteOrders");
+			}if(userName.getRole().equalsIgnoreCase("User")){
+				//Load customer,display Site Stock Movement history lists
+				model.addObject("customerName",customerName);
+				model.addObject("partNumber",partNumber);
+				model.addObject("displaySiteStockMovement",spareSiteStockHistoryServiceInt.getSiteStockHistoryByPartNumber(partNumber));
+				model.setViewName("stockSiteOrdersForUser");
+			}else if (userName.getRole().equalsIgnoreCase("Technician")){
+				//Load customer,display Site Stock Movement history lists
+				model.addObject("customerName",customerName);
+				model.addObject("partNumber",partNumber);
+				model.addObject("technician",technician);
+				model.addObject("displaySiteStockMovement",spareSiteStockHistoryServiceInt.getSiteStockHistoryByPartNumber(partNumber));
+				model.setViewName("stockSiteOrdersForTechnician");
+			}
+			
+			
 		}
 		else{
 			model.setViewName("login");
@@ -501,9 +536,11 @@ public class SparePartsController {
 			model.addObject("technicianList",employeeServiceInt.getAllTechnicians(technician));
 			if (userName.getRole().equalsIgnoreCase("Technician"))
 			{
-				model.addObject("countPartForTech",bootStock.countPartsForTechnician(techfullname));
-				model.addObject("countTonerForTech",bootStock.countTonerForTechnician(techfullname));
-				model.addObject("orders",bootStock.getAllOrders(techfullname));				
+				model.addObject("countPartForTech",bootStock.countPartsForTechnician(technician));
+				model.addObject("countTonerForTech",bootStock.countTonerForTechnician(technician));
+				model.addObject("orders",bootStock.getAllOrders(technician));
+				model.addObject("technician",technician);
+				model.addObject("technicianName", employeeService.getEmployeeByEmpNumber(technician));
 				model.setViewName("bootSiteOrdersForTechnician");
 				
 			}else if(userName.getRole().equalsIgnoreCase("User")){
@@ -512,6 +549,7 @@ public class SparePartsController {
 				model.addObject("orders",bootStock.getAllOrders(technician));
 				model.addObject("technician",technician);
 				//model.addObject("customerList",customerServiceInt.getClientList(customerName));
+				model.addObject("technicianName", employeeService.getEmployeeByEmpNumber(technician));
 				model.addObject("technicianList",employeeServiceInt.getAllTechnicians());			
 				model.setViewName("bootSiteOrdersForUser");
 			}

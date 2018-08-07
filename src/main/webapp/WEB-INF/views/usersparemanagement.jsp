@@ -42,7 +42,7 @@
 									<div class="panel panel-default">
 										<a href='receiveParts.html'>
 											<div class="panel-body easypiechart-panel">
-												<h5>Receive Parts</h5>
+												<h5>&nbsp;&nbsp;</h5>
 												<div class="easypiechart" id="easypiechart-darkgreen"
 													data-percent="">
 													<span class="percent" style="font-size: 15px;">Receive
@@ -232,7 +232,7 @@
 											<tr>
 
 												<td><a
-													href="loadBootStockForTechnician?technician=<c:out value='${list.customerName}'/>">${list.customerName}</a></td>
+													href="loadBootStockForTechnician?technician=<c:out value='${list.customerName}'/>">${list.techName}</a></td>
 												<td>${list.partQuanty}</td>
 												<td>${list.tonerQuantity}</td>
 											</tr>

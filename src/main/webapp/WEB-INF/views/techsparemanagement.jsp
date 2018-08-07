@@ -174,7 +174,7 @@
 										<c:forEach var="list" items="${employees}">
 											<tr>
 												<td><a
-													href="loadBootStockForTechnician?technician=<c:out value='${list.customerName}'/>">${list.customerName}</a></td>
+													href="loadBootStockForTechnician?technician=<c:out value='${list.customerName}'/>">${list.techName}</a></td>
 												<td>${list.partQuanty}</td>
 												<td>${list.tonerQuantity}</td>
 											</tr>

@@ -408,8 +408,7 @@
 
 							<!-- Movement History Details -->
 							<c:if test="${empty technician}">
-							
-								
+
 								<div class="col-sm-6">
 									<h3>History Movement for ${partNumber}</h3>
 								</div>

@@ -32,83 +32,130 @@
 					<div class="panel-heading" align="center">Boot Stock</div>
 					<div class="panel-body">
 
-						<div class="col-sm-12">
-							<div class="row">
-								<br />
-								<div class="col-6 col-md-6">
-									<a href='numberOfParts'>
-										<div class="well" style="background-color: #ffffff;">
-											<h5 class="text-danger">
-												<span class="label label-danger pull-right">${countPartForTech}</span>
-												Parts
-											</h5>
-										</div>
-									</a>
-								</div>
-								<div class="col-6 col-md-6">
-									<a href='numberOfToners'>
-										<div class="well" style="background-color: #ffffff;">
-											<h5 class="text-success">
-												<span class="label label-success pull-right">${countTonerForTech}</span>
-												Toners
-											</h5>
-										</div>
-									</a>
+						<c:if test="${not empty technician}">
+
+							<div class="col-sm-12">
+								<div class="row">
+									<br />
+									<div class="col-6 col-md-6">
+										<a href='numberOfParts'>
+											<div class="well" style="background-color: #ffffff;">
+												<h5 class="text-danger">
+													<span class="label label-danger pull-right">${countPartForTech}</span>
+													Parts
+												</h5>
+											</div>
+										</a>
+									</div>
+									<div class="col-6 col-md-6">
+										<a href='numberOfToners'>
+											<div class="well" style="background-color: #ffffff;">
+												<h5 class="text-success">
+													<span class="label label-success pull-right">${countTonerForTech}</span>
+													Toners
+												</h5>
+											</div>
+										</a>
+									</div>
 								</div>
 							</div>
-						</div>
 
-						<!-- tab nav -->
-						<div class="tab-content">
+							<!-- tab nav -->
+							<div class="tab-content">
 
 
-							<table data-toggle="table" data-url="${orders}"
-								data-show-refresh="true" data-show-toggle="true"
-								data-search="true" data-select-item-name="toolbar1"
-								data-pagination="true" data-sort-name="partNo"
-								data-sort-order="aesc">
+								<table data-toggle="table" data-show-refresh="true"
+									data-show-toggle="true" data-search="true"
+									data-select-item-name="toolbar1" data-pagination="true"
+									data-sort-name="partNo" data-sort-order="aesc">
+									<thead>
+										<tr>
+											<th data-toggle="true" data-field="partNo"
+												data-sortable="true">Part No</th>
+											<th data-field="compatibleDevices" data-sortable="true">Compatible
+												Devices</th>
+											<th data-field="modelBrand" data-sortable="true">Model
+												Brand</th>
+											<th data-field="description" data-sortable="true">Description</th>
+											<th data-field="quantity" data-sortable="true">Quantity</th>
+											<th data-field="itemType" data-sortable="true">Item type</th>
+
+										</tr>
+									</thead>
+
+									<tbody>
+										<!-- Iterating over the list sent from Controller -->
+										<c:forEach var="list" items="${orders}">
+											<tr>
+												<td><a
+													href="loadBootStockHistoryMovement?partNumber=<c:out value='${list.partNumber}'/>">${list.partNumber}</a></td>
+												<td>${list.compatibleDevice}</td>
+												<td>${list.modelBrand}</td>
+												<td>${list.itemDescription}</td>
+												<td>${list.quantity}</td>
+												<td>${list.itemType}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+						</c:if>
+
+						<!-- Movement History Details -->
+						<c:if test="${empty technician}">
+
+
+							<div class="col-sm-6">
+								<h3>History Movement for ${partNumber}</h3>
+							</div>
+							<table data-toggle="table" data-url="" data-show-refresh="true"
+								data-show-toggle="true" data-search="true"
+								data-select-item-name="toolbar1" data-pagination="true"
+								data-sort-name="customername" data-sort-order="aesc">
 								<thead>
 									<tr>
-										<th data-toggle="true" data-field="partNo"
-											data-sortable="true">Part No</th>
-										<th data-field="compatibleDevices" data-sortable="true">Compatible
-											Devices</th>
-										<th data-field="modelBrand" data-sortable="true">Model
-											Brand</th>
-										<th data-field="description" data-sortable="true">Description</th>
-										<th data-field="quantity" data-sortable="true">Quantity</th>
-										<th data-field="itemType" data-sortable="true">Item type</th>
-
+										<th data-field="movedBy" data-sortable="true">Moved By</th>
+										<th data-field="dateTimeMoved" data-sortable="true">Date
+											& Time Moved</th>
+										<th data-field="novedFrom" data-sortable="true">Moved
+											From</th>
+										<th data-field="movedTo" data-sortable="true">Moved To</th>
+										<th data-field="quantityMoved" data-sortable="true">Quantity
+											Moved</th>
+										<th data-field="ReasonWhyMoved" data-sortable="true">Reason
+											Why Moved</th>
 									</tr>
 								</thead>
 
 								<tbody>
 									<!-- Iterating over the list sent from Controller -->
-									<c:forEach var="list" items="${orders}">
+									<c:forEach var="list" items="${displayBootStockMovement}">
 										<tr>
-											<td>${list.partNumber}</td>
-											<td>${list.compatibleDevice}</td>
-											<td>${list.modelBrand}</td>
-											<td>${list.itemDescription}</td>
+											<td>${list.userName}</td>
+											<td>${list.dateTime}</td>
+											<td>${list.dataField1}</td>
+											<td>${list.dataField2}</td>
 											<td>${list.quantity}</td>
-											<td>${list.itemType}</td>
+											<td>${list.description}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
 
-							<!-- .panel-body -->
-						</div>
-						<!-- .panel panel-default -->
+						</c:if>
+						<!-- End Movement History Details -->
+
+						<!-- .panel-body -->
 					</div>
-					<!-- /.col-->
+					<!-- .panel panel-default -->
 				</div>
+				<!-- /.col-->
 			</div>
 		</div>
-		<!-- /.row -->
-		<!-- Footer -->
-		<c:import url="templates/footer.jsp"></c:import>
-		<!--/ Footer -->
+	</div>
+	<!-- /.row -->
+	<!-- Footer -->
+	<c:import url="templates/footer.jsp"></c:import>
+	<!--/ Footer -->
 	</div>
 	<!--/.main-->
 	<c:import url="templates/javascriptslib.jsp"></c:import>

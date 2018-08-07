@@ -7,7 +7,7 @@
  * Last Date Modified	:16-01-2018
  */
 
-/*-- Validate add and update client --*/
+/*-- Validate add and logTicket --*/
 $(document)
 				.ready(
 						function() {
@@ -432,6 +432,16 @@ $(document)
 													}
 												}
 											},
+											description : {
+												validators : {
+													notEmpty : {
+														stringLength : {
+															min : 4,
+														},
+														message : 'Comment is required of what was updated and updated to what, this cannot be empty'
+													}
+												}
+											},
 
 										}
 
@@ -504,7 +514,7 @@ $(document)
 														message : 'Password is required and cannot be empty'
 													}
 												}
-											},
+											},											
 											cellphoneNumber : {
 												validators : {
 													notEmpty : {
@@ -1061,6 +1071,16 @@ $(document)
 														message : 'Additional paper tray is required and cannot be empty'
 													}
 												}
+											},
+											description : {
+												validators : {
+													notEmpty : {
+														stringLength : {
+															min : 4,
+														},
+														message : 'Comment is required of what was updated and updated to what, this cannot be empty'
+													}
+												}
 											}
 										}
 									});
@@ -1178,6 +1198,22 @@ $(document).ready(function() {
 					}
 				}
 			},
+			supplierName : {
+				validators : {
+					notEmpty : {
+						message : 'supplier Name is required and cannot be empty'
+					}
+				}
+			},
+			supplierOrderNo : {
+				validators : {
+					notEmpty : {
+						message : 'Supplier Order Number is required and cannot be empty'
+					}
+				}
+			},
+			
+			
 		}
 	});
 });/* --  Validate save Spare Parts -- */

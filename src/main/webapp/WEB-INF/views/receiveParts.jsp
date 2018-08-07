@@ -144,6 +144,12 @@
 												</div>
 											</div>
 
+											<div class="alert alert-info alert-dismissible"
+												style="margin-left: 15%; width: 77%;">
+												<a href="#" class="close" data-dismiss="alert"
+													aria-label="close">&times;</a> <strong>Info!</strong>
+												Please note colour is mandatory if Item Type is a Toner.
+											</div>
 
 											<!-- Select type Item Type-->
 											<div class="form-group">
@@ -163,27 +169,24 @@
 												</div>
 											</div>
 
-											<!-- <!-- Select type Color Type-->
-											<div class="colors" id="colors" style="display: none;">
-												<div class="form-group">
-													<label class="col-md-3 control-label">Colour</label>
-													<div class="col-md-8 selectContainer">
-														<div class="input-group">
-															<span class="input-group-addon"><i
-																class="glyphicon glyphicon-list"></i></span><select id="color"
-																class="form-control" name="color"
-																class="form-control selectpicker">
-																<option value="${sparePart.color}">Select
-																	Colour</option>
-																<option value="Cyan">Cyan</option>
-																<option value="Yellow">Yellow</option>
-																<option value="Magenta">Magenta</option>
-																<option value="Black">Black</option>
-															</select>
-														</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">Colour</label>
+												<div class="col-md-8 selectContainer">
+													<div class="input-group">
+														<span class="input-group-addon"><i
+															class="glyphicon glyphicon-list"></i></span><select id="color"
+															class="form-control" name="color"
+															class="form-control selectpicker">
+															<option value="${sparePart.color}">Select Colour</option>
+															<option value="Cyan">Cyan</option>
+															<option value="Yellow">Yellow</option>
+															<option value="Magenta">Magenta</option>
+															<option value="Black">Black</option>
+														</select>
 													</div>
 												</div>
 											</div>
+
 
 											<!-- Select type Brand-->
 											<div class="form-group">
@@ -206,7 +209,7 @@
 													<div class="input-group">
 														<span class="input-group-addon"><i
 															class="glyphicon glyphicon-barcode"></i></span> <input
-															id="description" readOnly name="itemDescription"
+															id="itemDescription" readOnly name="itemDescription"
 															type="text" class="form-control"
 															value="${sparePart.itemDescription}">
 													</div>
@@ -226,7 +229,6 @@
 												</div>
 											</div>
 
-
 											<!-- Text input Received By-->
 											<div class="form-group">
 												<label class="col-md-3 control-label">Received By</label>
@@ -240,9 +242,6 @@
 													</div>
 												</div>
 											</div>
-
-
-
 										</div>
 
 									</div>
@@ -265,8 +264,10 @@
 											</c:forEach>
 
 										</table>
-										<br />
-										<br />
+										<!-- //group search details -->
+										
+										<br /> <br />
+										<!-- Supplier Details -->
 										<legend>Supplier Details</legend>
 
 										<!-- Text input Supplier Name-->
@@ -301,13 +302,12 @@
 														class="glyphicon glyphicon-user"></i></span> <input type="text"
 														id="supplierOrderNo" name="supplierOrderNo"
 														class="form-control" value=""
-														placeholder="Provide Supplier Order No" >
+														placeholder="Provide Supplier Order No">
 												</div>
 											</div>
 										</div>
-
 									</div>
-									<!-- //group search details -->
+									<!-- //Supplier Details -->
 
 
 									<!--  History Details 
@@ -380,9 +380,10 @@
 
 									<div class="form-group row">
 										<div class="col-sm-offset-2 col-sm-8">
-											<br> <br> <input type="submit" value="Recieve Spare(s)"
+											<br> <br> <input type="submit"
+												value="Recieve Spare(s)"
 												class="btn btn-primary btn-block btn-lg" tabindex="9"
-												id="addSpare" >
+												id="addSpare">
 										</div>
 									</div>
 

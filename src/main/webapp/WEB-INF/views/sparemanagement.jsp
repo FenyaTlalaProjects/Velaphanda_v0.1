@@ -44,10 +44,10 @@
 									<div class="panel panel-default">
 										<a href='receiveParts.html'>
 											<div class="panel-body easypiechart-panel">
-												<h5>Receive Parts</h5>
+												<h5>&nbsp;&nbsp;</h5>
 												<div class="easypiechart" id="easypiechart-darkgreen"
 													data-percent="">
-													<span class="percent"></span>
+													<span class="percent" style="font-size: 15px;">Receive Parts</span>
 												</div>
 											</div>
 										</a>

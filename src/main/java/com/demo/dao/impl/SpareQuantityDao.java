@@ -92,11 +92,11 @@ public class SpareQuantityDao implements SpareQuantityDaoInt{
 		for(String techName:techEmailsEmails){
 			emp = employeeDaoInt.getEmployeeByEmpNum(techName);
 			spareQuantity = new SpareQuantity();
-			spareQuantity.setCustomerName(techName);
+			spareQuantity.setCustomerName(techName);			
 			spareQuantity.setPartQuanty(bootStockDaoInt.countPartsForTechnician(techName));
 			spareQuantity.setTonerQuantity(bootStockDaoInt.countTonerForTechnician(techName));
 			spareQuantity.setTechName(emp.getFirstName()+" "+ emp.getLastName());
-			
+						
 			temptQuanity.add(spareQuantity);
 		}
 		return temptQuanity;
@@ -107,25 +107,40 @@ public class SpareQuantityDao implements SpareQuantityDaoInt{
 	
 		List<SpareQuantity> temptQuanity = new ArrayList<SpareQuantity>();
 		List<BootStock> tempSiteStock = bootStockDaoInt.getAllBootStockByTechnician(technicianName);
-		List<String> tecniciansNames = new ArrayList<String>();
-		
+		List<String> techEmailsEmails = new ArrayList<String>();
+		//List<String> tecniciansNames = new ArrayList<String>();
+			
 		for(BootStock stock: tempSiteStock){
 			if(stock.getTechnicianName().equalsIgnoreCase(technicianName)){
-				tecniciansNames.add(stock.getTechnicianName());
+				//tecniciansNames.add(stock.getTechnicianName());
+				techEmailsEmails.add(stock.getTechnicianEmail());
 			}
 		}
 		
 		HashSet<String> hashset = new HashSet<String>();
-		   
-	    hashset.addAll(tecniciansNames);
+		hashset.addAll(techEmailsEmails);   
+	    //hashset.addAll(tecniciansNames);
 	 
 	    // Removing ArrayList elements
-	    tecniciansNames.clear();
+		techEmailsEmails.clear();
+	    //tecniciansNames.clear();
 	 
 	    // Adding LinkedHashSet elements to the ArrayList
-	    tecniciansNames.addAll(hashset );
+		techEmailsEmails.addAll(hashset );
+	    //tecniciansNames.addAll(hashset );
 		
-		for(String str: tecniciansNames){
+		for(String techName:techEmailsEmails){
+			emp = employeeDaoInt.getEmployeeByEmpNum(techName);
+			spareQuantity = new SpareQuantity();
+			spareQuantity.setCustomerName(techName);			
+			spareQuantity.setPartQuanty(bootStockDaoInt.countPartsForTechnician(techName));
+			spareQuantity.setTonerQuantity(bootStockDaoInt.countTonerForTechnician(techName));
+			spareQuantity.setTechName(emp.getFirstName()+" "+ emp.getLastName());
+						
+			temptQuanity.add(spareQuantity);
+		}
+	    
+		/*for(String str: tecniciansNames){
 			spareQuantity = new SpareQuantity();
 			spareQuantity.setCustomerName(str);
 			spareQuantity.setPartQuanty(bootStockDaoInt.countPartsForTechnician(str));
@@ -133,7 +148,7 @@ public class SpareQuantityDao implements SpareQuantityDaoInt{
 			spareQuantity.setTechName(bootStockDaoInt.getTechName(str));
 			temptQuanity.add(spareQuantity);
 			
-		}
+		}*/
 		return temptQuanity;
 	}
 

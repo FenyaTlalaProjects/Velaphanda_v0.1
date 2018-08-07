@@ -142,6 +142,12 @@
 												</div>
 											</div>
 
+											<div class="alert alert-info alert-dismissible"
+												style="margin-left: 15%; width: 77%;">
+												<a href="#" class="close" data-dismiss="alert"
+													aria-label="close">&times;</a> <strong>Info!</strong>
+												Please note colour is mandatory if Item Type is a Toner.
+											</div>
 
 											<!-- Select type Item Type-->
 											<div class="form-group">
@@ -150,8 +156,9 @@
 													<div class="input-group">
 														<span class="input-group-addon"><i
 															class="glyphicon glyphicon-list"></i></span><select
-															id="itemType" class="form-control" readOnly
-															name="itemType" class="form-control selectpicker">
+															id="itemType" class="form-control" name="itemType"
+															class="form-control selectpicker"
+															onchange="SelectColours(this.value);">
 															<option value="${sparePart.itemType}">${sparePart.itemType}</option>
 															<option value="Toner">Toner</option>
 															<option value="Part">Part</option>
@@ -159,6 +166,25 @@
 													</div>
 												</div>
 											</div>
+
+											<div class="form-group">
+												<label class="col-md-3 control-label">Colour</label>
+												<div class="col-md-8 selectContainer">
+													<div class="input-group">
+														<span class="input-group-addon"><i
+															class="glyphicon glyphicon-list"></i></span><select id="color"
+															class="form-control" name="color"
+															class="form-control selectpicker">
+															<option value="${sparePart.color}">Select Colour</option>
+															<option value="Cyan">Cyan</option>
+															<option value="Yellow">Yellow</option>
+															<option value="Magenta">Magenta</option>
+															<option value="Black">Black</option>
+														</select>
+													</div>
+												</div>
+											</div>
+
 
 											<!-- Select type Brand-->
 											<div class="form-group">
@@ -181,7 +207,7 @@
 													<div class="input-group">
 														<span class="input-group-addon"><i
 															class="glyphicon glyphicon-barcode"></i></span> <input
-															id="description" readOnly name="itemDescription"
+															id="itemDescription" readOnly name="itemDescription"
 															type="text" class="form-control"
 															value="${sparePart.itemDescription}">
 													</div>
@@ -201,7 +227,6 @@
 												</div>
 											</div>
 
-
 											<!-- Text input Received By-->
 											<div class="form-group">
 												<label class="col-md-3 control-label">Received By</label>
@@ -215,38 +240,146 @@
 													</div>
 												</div>
 											</div>
-
 										</div>
 
 									</div>
 									<!-- //group spare details -->
 
 									<!-- group search details -->
-									<div class="groupsearchdetails">
+									<div class="col-sm-6">
 										<legend>Compatible Devices </legend>
 
-										<div class="tableContect">
+										<table
+											class="table table-striped table-bordered table-hover table-condensed">
+											<label class="model">Model No</label>
+											<c:forEach var="compitableDevice" items="${models}">
+												<tr>
 
-											<table id="dataTable" width="300px" style="width: 300px"
-												class="table table-striped table-bordered table-hover table-condensed">
-												<label class="model">Model No</label>
-												<c:forEach var="compitableDevice" items="${models}">
-													<tr>
+													<td><input type="text" readOnly class="form-control"
+														id="compitableDevice" name="compitableDevice"
+														value="${compitableDevice}"></td>
+												</tr>
+											</c:forEach>
 
-														<td><input type="text" readOnly class="form-control"
-															id="compitableDevice" name="compitableDevice"
-															value="${compitableDevice}"></td>
-													</tr>
-												</c:forEach>
+										</table>
+										<!-- //group search details -->
 
-											</table>
+										<br /> <br />
+										<!-- Supplier Details -->
+										<legend>Supplier Details</legend>
+
+										<!-- Text input Supplier Name-->
+										<div class="form-group">
+											<label class="col-md-3 control-label">Supplier Name</label>
+											<div class="col-md-8 selectContainer">
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="glyphicon glyphicon-list"></i></span><select
+														id="supplierName" class="form-control" name="supplierName"
+														class="form-control selectpicker">
+														<option value="">Select Supplier Name</option>
+														<option value="Canon South Africa">Canon South
+															Africa</option>
+														<option value="Taropa Technologies">Taropa
+															Technologies</option>
+														<option value="Magenta">Toshiba South Africa</option>
+														<option value="Riso South Africa">Riso South
+															Africa</option>
+													</select>
+												</div>
+											</div>
+										</div>
+
+										<!-- Text input Supplier Order number-->
+										<div class="form-group">
+											<label class="col-md-3 control-label">Supplier Order
+												No</label>
+											<div class="col-md-8 inputGroupContainer">
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="glyphicon glyphicon-user"></i></span> <input type="text"
+														id="supplierOrderNo" name="supplierOrderNo"
+														class="form-control" value=""
+														placeholder="Provide Supplier Order No">
+												</div>
+											</div>
 										</div>
 									</div>
-									<!-- //group search details -->
+									<!-- //Supplier Details -->
+
+
+									<!--  History Details 
+									<div id="recieveSpare" class="modal fade" role="dialog"
+										aria-hidden="true">
+										<div class="modal-dialog modal-lg">
+
+											<div class="modal-content">
+
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal"
+														aria-hidden="true">×</button>
+													<h3 class="modal-title">Spare Recieve Comment</h3>
+												</div>
+												<p>
+												<div class="modal-body">
+													<div class="row">
+
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="alert alert-info" role="alert">
+																	<p>
+																		<strong>Note:</strong>You need to provide what you
+																		have are updating and new data!
+																	</p>
+																</div>
+															</div>
+
+
+															Customer Action
+															<input type="hidden" id="customerAction"
+																name="customerAction" class="form-control"
+																value="Update Customer">
+
+															Text area comments
+															<label class="col-md-3 control-label">Provide
+																Comment</label>
+															<div class="form-group">
+																<div class="col-md-6 inputGroupContainer">
+																	<div class="input-group">
+																		<span class="input-group-addon"><i
+																			class="glyphicon glyphicon-edit"></i></span>
+																		<textarea class="form-control" style="height: 120px;"
+																			id="description" name="description" maxlength="150"
+																			placeholder="Please enter what was updated and new updated data"></textarea>
+																	</div>
+																</div>
+															</div>
+															// text area comments
+
+														</div>
+													</div>
+
+												</div>
+												modal-body
+												<div class="modal-footer">
+													<button type="button" class="btn btn-default"
+														data-dismiss="modal">Cancel</button>
+													<input type="submit" value="Recieve Spare"
+														class="btn btn-primary"
+														onclick="return confirm('Are you sure you want to recieve parts?');">
+												</div>
+											</div>
+											/.modal-content
+										</div>
+										/.modal-dialog
+									</div>
+									/.modal -- History Details -->
+
 
 									<div class="form-group row">
 										<div class="col-sm-offset-2 col-sm-8">
-											<br> <br> <input type="submit" value="Add Spare"
+											<br> <br> <input type="submit"
+												value="Recieve Spare(s)"
 												class="btn btn-primary btn-block btn-lg" tabindex="9"
 												id="addSpare">
 										</div>
@@ -267,7 +400,7 @@
 				<!-- /.col-->
 			</div>
 			<!-- /.row -->
-			</div>
+
 			<!-- Footer -->
 			<c:import url="templates/footer.jsp"></c:import>
 			<!--/ Footer -->
@@ -276,8 +409,7 @@
 		<!--/.main-->
 		<c:import url="templates/javascriptslib.jsp"></c:import>
 		<c:import url="templates/sidebar-collapse.jsp"></c:import>
+
 		<!-- /Scripts -->
 </body>
-</html>
-
 </html>
