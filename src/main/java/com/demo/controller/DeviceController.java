@@ -475,14 +475,14 @@ public class DeviceController {
 
 	
 	@RequestMapping(value="removeAccessory")
-	public ModelAndView removeAccessory(@ModelAttribute("removeAccessory")DeviceBean removeAccessory)
+	public ModelAndView removeAccessory(@ModelAttribute("removeAccessory")DeviceBean removeAccessory,DeviceBean deviceBean)
 	{
 		String updateDevice ="updateDevice";
 		model = new ModelAndView();
 		userName = (Employee) session.getAttribute("loggedInUser");
 		if(userName != null){
 			
-			model.addObject("retMessage",accessoriesInt.removeAccessory(removeAccessory.getChkAccessories()));
+			model.addObject("retMessage",accessoriesInt.removeAccessory(removeAccessory.getChkAccessories(),deviceBean));
 			model.addObject("updateDevice",updateDevice);
 			model.setViewName("confirmations");
 		}

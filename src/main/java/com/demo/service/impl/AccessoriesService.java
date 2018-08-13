@@ -8,8 +8,10 @@ import net.sf.jasperreports.engine.JRDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.demo.bean.DeviceBean;
 import com.demo.dao.AccessoriesDaoInt;
 import com.demo.model.Accessories;
+import com.demo.model.Device;
 import com.demo.service.AccessoriesInt;
 
 
@@ -50,8 +52,8 @@ public class AccessoriesService implements AccessoriesInt{
 		return accessoriesDaoInt.getAccessoriesList(deviceSerialNumber);
 	}
 	@Override
-	public String removeAccessory(String[] serialNumbers) {
-		return accessoriesDaoInt.removeAccessory(serialNumbers);
+	public String removeAccessory(String[]serialNumbers,DeviceBean deviceBean) {
+		return accessoriesDaoInt.removeAccessory(serialNumbers,deviceBean);
 	}
 
 	@Override

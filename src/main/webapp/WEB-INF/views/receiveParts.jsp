@@ -126,7 +126,6 @@
 									<div class="col-sm-6">
 										<legend>Spares</legend>
 
-
 										<!--First Column-->
 										<div class="col-md-12">
 											<!-- Text input Part Number-->
@@ -143,54 +142,34 @@
 													</div>
 												</div>
 											</div>
-
-											<div class="alert alert-info alert-dismissible"
-												style="margin-left: 15%; width: 77%;">
-												<a href="#" class="close" data-dismiss="alert"
-													aria-label="close">&times;</a> <strong>Info!</strong>
-												Please note colour is mandatory if Item Type is a Toner.
-											</div>
-
+											
 											<!-- Select type Item Type-->
-											<div class="form-group">
+												<div class="form-group">
 												<label class="col-md-3 control-label">Item Type</label>
-												<div class="col-md-8 selectContainer">
+												<div class="col-md-8 inputGroupContainer">
 													<div class="input-group">
 														<span class="input-group-addon"><i
-															class="glyphicon glyphicon-list"></i></span><select
-															id="itemType" class="form-control" name="itemType"
-															class="form-control selectpicker"
-															onchange="SelectColours(this.value);">
-															<option value="${sparePart.itemType}">${sparePart.itemType}</option>
-															<option value="Toner">Toner</option>
-															<option value="Part">Part</option>
-														</select>
+															class="glyphicon glyphicon-barcode"></i></span> <input
+															id="itemType" readOnly name="itemType" class="form-control"
+															type="text" value="${sparePart.itemType}">
 													</div>
 												</div>
 											</div>
-
+											
 											<div class="form-group">
 												<label class="col-md-3 control-label">Colour</label>
 												<div class="col-md-8 selectContainer">
 													<div class="input-group">
 														<span class="input-group-addon"><i
-															class="glyphicon glyphicon-list"></i></span><select id="color"
-															class="form-control" name="color"
-															class="form-control selectpicker">
-															<option value="${sparePart.color}">Select Colour</option>
-															<option value="Cyan">Cyan</option>
-															<option value="Yellow">Yellow</option>
-															<option value="Magenta">Magenta</option>
-															<option value="Black">Black</option>
-														</select>
+															class="glyphicon glyphicon-list"></i></span> <input id="color"
+															class="form-control" readOnly name="color"  value="${sparePart.color}" />
 													</div>
 												</div>
 											</div>
 
-
 											<!-- Select type Brand-->
 											<div class="form-group">
-												<label class="col-md-3 control-label">Model Brand</label>
+												<label class="col-md-3 control-label">Brand</label>
 												<div class="col-md-8 selectContainer">
 													<div class="input-group">
 														<span class="input-group-addon"><i

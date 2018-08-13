@@ -379,7 +379,7 @@ public class DeviceDao implements DeviceDaoInt {
 							+ " does not exist on database. Please make sure that the customer exist before assigning a device.";
 				}
 			}else{
-				retMessage = accessoriesDaoInt.removeAccessory(deviceBean.getChkAccessories());
+				retMessage = accessoriesDaoInt.removeAccessory(deviceBean.getChkAccessories(), deviceBean);
 				
 			}
 

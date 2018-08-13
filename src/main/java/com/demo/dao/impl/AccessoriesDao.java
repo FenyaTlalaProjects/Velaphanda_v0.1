@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
@@ -15,11 +17,15 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.demo.bean.DeviceBean;
+import com.demo.bean.HistoryBean;
 import com.demo.dao.AccessoriesDaoInt;
 import com.demo.dao.DeviceDaoInt;
 import com.demo.dao.EmployeeDaoInt;
+import com.demo.dao.HistoryDaoInt;
 import com.demo.model.Accessories;
 import com.demo.model.Device;
+import com.demo.model.Employee;
 import com.demo.reports.initializer.DeviceReportBean;
 
 @Repository("accessoriesDAO")
@@ -28,13 +34,15 @@ public class AccessoriesDao implements AccessoriesDaoInt {
 
 	@Autowired
 	SessionFactory sessionFactory;
-	
+	@Autowired
+	private HttpSession session = null;
 	@Autowired
 	private DeviceDaoInt deviceDaoInt;
 	
 	@Autowired
 	private EmployeeDaoInt employeeDaoInt;
-
+	@Autowired
+	private HistoryDaoInt historyDaoInt;
 	List<Accessories> accessoriesList = null;
 	List<Accessories> aList = null;
 	Accessories acc = null;
@@ -42,7 +50,8 @@ public class AccessoriesDao implements AccessoriesDaoInt {
 	Date now = new Date();
 	String timeDeviceAccessAdded = sdfDate.format(now);
 	private String retMessage = null;
-
+	HistoryBean historyBean = null;
+	Employee userName, emp = null;
 	
 	@Override
 	public String saveAccessories(List<Accessories> accessories) {
@@ -109,14 +118,28 @@ public class AccessoriesDao implements AccessoriesDaoInt {
 	}
 
 	@Override
-	public String removeAccessory(String []serialNumbers) {
+	public String removeAccessory(String []serialNumbers,DeviceBean deviceBean) {
 		String serialNo = null;
+		emp = (Employee) session.getAttribute("loggedInUser");
 		try {
 			
 			for(int i=0;i < serialNumbers.length; i++){
 				serialNo = serialNumbers[i];
-				Long serialNUmber = Long.parseLong(serialNo);
-				Accessories accessories = getAccessories(serialNUmber);
+				Long serialNumber = Long.parseLong(serialNo);
+				Accessories accessories = getAccessories(serialNumber);
+				historyBean = new HistoryBean();
+				//Prepare Device Data for History Table
+				historyBean.setAction("Update");
+				historyBean.setClassification("Device");
+				historyBean.setObjectId(deviceBean.getSerialNumber());
+				historyBean.setUserEmail(emp.getEmail());
+				historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
+				historyBean.setDescription(deviceBean.getDecription());
+				historyBean.setDataField1(null);
+				historyBean.setDataField2(null);
+				//historyBean.setQuantity((Integer) null);
+				System.err.println("Device History is inserted into DB on Update");
+				historyDaoInt.saveHistory(historyBean);
 				sessionFactory.getCurrentSession().delete(accessories);
 			}
 			retMessage = "Accessories removed,";

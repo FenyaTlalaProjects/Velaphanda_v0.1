@@ -228,7 +228,6 @@
 													<option value="Kyocera">Kyocera</option>
 													<option value="Nasua">Nasua</option>
 													<option value="Oce">Oce</option>
-													<option value="Ricoh">Ricoh</option>
 													<option value="Riso">Riso</option>
 													<option value="Samsung">Samsung</option>
 													<option value="Toshiba">Toshiba</option>
