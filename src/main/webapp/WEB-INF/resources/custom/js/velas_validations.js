@@ -1106,6 +1106,14 @@ $(document)
 													}
 												}
 											},
+											modelNumber : {
+												validators : {
+
+													notEmpty : {
+														message : 'Model number is required to search and cannot be empty'
+													}
+												}
+											},
 											itemType : {
 												validators : {
 													notEmpty : {
@@ -1120,6 +1128,7 @@ $(document)
 													}
 												}
 											},
+											
 											quantity : {
 												validators : {
 													notEmpty : {
@@ -1138,6 +1147,20 @@ $(document)
 												validators : {
 													notEmpty : {
 														message : 'Model brand is required and cannot be empty'
+													}
+												}
+											},
+											brand : {
+												validators : {
+													notEmpty : {
+														message : 'Brand is required and cannot be empty'
+													}
+												}
+											},
+											supplierName : {
+												validators : {
+													notEmpty : {
+														message : 'Supplier Name is required and cannot be empty'
 													}
 												}
 											},

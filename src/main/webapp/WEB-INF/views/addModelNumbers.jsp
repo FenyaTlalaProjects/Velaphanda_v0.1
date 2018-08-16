@@ -59,7 +59,7 @@
 							<div class="alert alert-danger alert-dismissible fade in">
 								<a href="#" class="close" data-dismiss="alert"
 									aria-label="close">&times;</a> <strong>Danger!</strong> Model
-								Number must be in the following format. Eg: CLX-9290. If Model number does not have a color, it wont be required.
+								Number must be in the following format. Eg: CLX-9290.
 							</div>
 
 							<!-- Text input Part Number-->
@@ -126,7 +126,7 @@
 								<div class="col-md-6 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i
-											class="glyphicon glyphicon-list"></i></span><select id="color"
+											class="glyphicon glyphicon-list"></i></span><select id="coloure"
 											class="form-control" name="color"
 											class="form-control selectpicker">
 											<option value="">Select Colour</option>
