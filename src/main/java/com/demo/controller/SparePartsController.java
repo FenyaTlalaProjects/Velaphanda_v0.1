@@ -14,15 +14,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.demo.bean.ModelNumbersBean;
 import com.demo.bean.SparePartsBean;
 import com.demo.bean.SpareQuantity;
 import com.demo.model.Employee;
 import com.demo.model.HOStock;
+import com.demo.model.ModelNumbers;
 import com.demo.model.SpareMaster;
 import com.demo.service.BootStockInt;
 import com.demo.service.CustomerServiceInt;
 import com.demo.service.EmployeeServiceInt;
 import com.demo.service.HistoryServiceInt;
+import com.demo.service.ModelNumbersMasterServiceInt;
 import com.demo.service.OrderDetailsInt;
 import com.demo.service.OrdersServiceInt;
 import com.demo.service.SiteStockInt;
@@ -63,6 +66,8 @@ public class SparePartsController {
 	private HistoryServiceInt spareBootStockHistoryServiceInt;
 	@Autowired
 	private HistoryServiceInt spareSiteStockHistoryServiceInt;
+	@Autowired
+	private ModelNumbersMasterServiceInt modelNumbersMasterServiceInt;
 	
 	private String retMessage = null;
 	private ModelAndView model = null;
@@ -72,6 +77,7 @@ public class SparePartsController {
 	private String globalTechnicianName = null;
 	private String globalCustomerName = null;
 	private String globalPartNumber = null;
+	public String[] getModelNumbers = null;
 	
 	//spare management
 	@RequestMapping(value = {"sparemanagement","techsparemanagement","usersparemanagement"}, method = RequestMethod.GET)
@@ -222,6 +228,23 @@ public class SparePartsController {
 			getSerials = spareMasterServiceInt.getSerials();
 			model.addObject("spareParts",getSerials);		
 			model.setViewName("addSpares");
+		}
+		else{
+			model.setViewName("login");
+		}
+		return model;
+	}
+	
+	@RequestMapping(value="addModelNumbers", method=RequestMethod.GET)
+	public ModelAndView loadAddModelNumbers()
+	{
+	    model = new ModelAndView("addSpares");
+	    userName = (Employee) session.getAttribute("loggedInUser");
+		if(userName != null){
+			model.addObject("saveModelNumberData", new ModelNumbersBean());
+			getModelNumbers = modelNumbersMasterServiceInt.getModelNumbers();
+			model.addObject("modelNumbers",getModelNumbers);	
+			model.setViewName("addModelNumbers");
 		}
 		else{
 			model.setViewName("login");
@@ -606,6 +629,29 @@ public class SparePartsController {
 				model.addObject("retMessage", retMessage);
 			}			
 			model.setViewName("addSpares");
+		}
+		else{
+			model.setViewName("login");
+		}
+		return model;
+	}
+	
+	@RequestMapping(value="modelNumbersToMasterData", method=RequestMethod.POST)
+	public ModelAndView addModelNumbersToMasterData(@ModelAttribute("modelNumbersToMasterData")ModelNumbers modelNumber){
+		model = new ModelAndView();
+		userName = (Employee) session.getAttribute("loggedInUser");
+		if(userName != null){
+			
+			
+			retMessage = modelNumbersMasterServiceInt.saveModelNumberData(modelNumber);
+			
+			if(retMessage.startsWith("Model Number already exist")){
+				String errorRetMessage = retMessage;
+				model.addObject("errorRetMessage", errorRetMessage);
+			}else{
+				model.addObject("retMessage", retMessage);
+			}			
+			model.setViewName("addModelNumbers");
 		}
 		else{
 			model.setViewName("login");

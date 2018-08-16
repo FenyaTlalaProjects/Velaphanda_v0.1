@@ -26,6 +26,7 @@ import com.demo.service.EmployeeServiceInt;
 import com.demo.service.DeviceServiceInt;
 import com.demo.service.HistoryServiceInt;
 import com.demo.service.LeaveInt;
+import com.demo.service.ModelNumbersMasterServiceInt;
 import com.demo.service.OrdersServiceInt;
 import com.demo.service.SiteStockInt;
 import com.demo.service.SpareMasterServiceInt;
@@ -40,6 +41,8 @@ public class DeviceController {
 	private HistoryServiceInt deviceHistoryServiceInt;
 	@Autowired
 	private SpareMasterServiceInt spareMasterServiceInt;
+	@Autowired
+	private ModelNumbersMasterServiceInt modelNumbersMasterServiceInt;
 	@Autowired
 	private TicketHistoryInt ticketHistoryInt;
 	@Autowired
@@ -73,6 +76,7 @@ public class DeviceController {
     private String retMessage = null;
     public String[] getSerials = null;
     public String[] getSerialNumbers = null;
+    public String[] getModelNumbers = null;
     private String globalSeialNumber = null;
     
    //Add Device
@@ -84,6 +88,9 @@ public class DeviceController {
 		if(userName != null){
 		
 			model.addObject("saveProduct", new DeviceBean());
+			System.err.print( "We have a lit of model numbers?" );
+			getModelNumbers = modelNumbersMasterServiceInt.getModelNumbers();
+			model.addObject("modelNumbers",getModelNumbers);
 			model.setViewName("addProduct");
 		}
 		else{
@@ -101,7 +108,9 @@ public class DeviceController {
 			if(userName != null){
 				model.addObject("customer", customerServiceInt.getClientByClientName(customerName));
 				retMessage =deviceServiceInt.prepareDeviceData(deviceBean);
+				getModelNumbers = modelNumbersMasterServiceInt.getModelNumbers();
 		        model.addObject("retMessage", retMessage);
+		        model.addObject("modelNumbers",getModelNumbers);
 		        model.addObject("customerName", customerName);
 		        model.addObject("addDevice", addDevice);
 		        model.setViewName("confirmations");
@@ -202,9 +211,11 @@ public class DeviceController {
 		if(userName != null){
 		device = deviceServiceInt.getDeviceBySerialNumber(serialNumber);
 		if(device != null){
-			
+			getModelNumbers = modelNumbersMasterServiceInt.getModelNumbers();
+			model.addObject("modelNumbers",getModelNumbers);
 			model.addObject("technicians",employeeServiceInt.getAllTechnicians());
 			model.addObject("product", device);
+			
 		}
 		else{
 			model.addObject("product", null);

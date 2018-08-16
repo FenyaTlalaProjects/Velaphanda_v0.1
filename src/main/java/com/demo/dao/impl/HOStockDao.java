@@ -124,8 +124,7 @@ public class HOStockDao implements HOStockDaoInt {
 					spareParts.setItemType(spareMaster.getItemType());
 					spareParts.setColor(spareMaster.getColor());
 					spareParts.setDateTime(dateFormat.format(date));
-					spareParts.setModelBrand(spareMaster.getModelBrand());
-					
+					spareParts.setModelBrand(spareMaster.getModelBrand());					
 					
 					historyBean = new HistoryBean();
 					//Prepare Spares Data for History Table
@@ -210,8 +209,7 @@ public class HOStockDao implements HOStockDaoInt {
 			e.getMessage();
 		}
 		return headCount;
-	}
-	
+	}	
 	
 
 }

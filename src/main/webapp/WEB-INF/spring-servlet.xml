@@ -89,7 +89,8 @@
 				 <value>com.demo.model.VelaphandaProfile</value>
 				 <value>com.demo.model.DeliveryNoteHeader</value>
 				 <value>com.demo.model.DeliveryNoteLineItem</value>
-				  <value>com.demo.model.History</value>
+				 <value>com.demo.model.History</value>
+				 <value>com.demo.model.ModelNumbers</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

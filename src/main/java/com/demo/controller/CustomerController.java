@@ -22,6 +22,7 @@ import com.demo.service.CustomerContactDetailsServiceInt;
 import com.demo.service.CustomerServiceInt;
 import com.demo.service.DeviceServiceInt;
 import com.demo.service.HistoryServiceInt;
+import com.demo.service.ModelNumbersMasterServiceInt;
 import com.demo.service.OrdersServiceInt;
 import com.demo.service.TicketsServiceInt;
 
@@ -41,6 +42,8 @@ public class CustomerController {
 	private CustomerContactDetailsServiceInt contactDetailsServiceInt;
 	@Autowired
 	private TicketsServiceInt ticketsServiceInt;
+	@Autowired
+	private ModelNumbersMasterServiceInt modelNumbersMasterServiceInt;
 	/*Order inbox count on every page*/
 	@Autowired
 	private OrdersServiceInt ordersServiceInt;		
@@ -54,6 +57,7 @@ public class CustomerController {
 	Customer customer = null;
 	Employee userName = null;
 	private String globalCustomerName = null;
+	public String[] getModelNumbers = null;
 	
 	@RequestMapping(value="addClient",method=RequestMethod.GET)
 	public ModelAndView loadAddClient() {
@@ -134,6 +138,8 @@ public class CustomerController {
 				model.addObject("escalatedTickets", ticketsServiceInt.countEscalatedTickets());
 				model.addObject("awaitingSparesTickets", ticketsServiceInt.countAwaitingSparesTickets());
 				model.addObject("inboxCount",ordersServiceInt.pendingOrdersCount(userName.getEmail()));
+				getModelNumbers = modelNumbersMasterServiceInt.getModelNumbers();
+				model.addObject("modelNumbers",getModelNumbers);
 				model.addObject("customerContact",contactDetailsServiceInt.contactDetails(customerName));
 			}
 			else
@@ -144,6 +150,8 @@ public class CustomerController {
 			model.addObject("escalatedTickets", ticketsServiceInt.countEscalatedTickets());
 			model.addObject("awaitingSparesTickets", ticketsServiceInt.countAwaitingSparesTickets());
 			model.addObject("inboxCount",ordersServiceInt.pendingOrdersCount(userName.getEmail()));
+			getModelNumbers = modelNumbersMasterServiceInt.getModelNumbers();
+			model.addObject("modelNumbers",getModelNumbers);
 			model.setViewName("addProduct");
 		}
 		else{

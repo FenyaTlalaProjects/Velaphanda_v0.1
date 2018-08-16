@@ -40,6 +40,7 @@ public class SpareMasterDao implements SpareMasterDaoInt{
 		
 		return (SpareMaster) sessionFactory.getCurrentSession().get(SpareMaster.class, partNumber);
 	}
+	
 	@Override
 	public String[] getSerials() {
 		List<SpareMaster> list = null;
@@ -64,6 +65,7 @@ public class SpareMasterDao implements SpareMasterDaoInt{
 		}
 		return array;
 	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<String> getModelDevice(String partNumber) {

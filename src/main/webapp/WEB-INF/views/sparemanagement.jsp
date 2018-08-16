@@ -41,16 +41,16 @@
 
 
 								<div class="col-xs-6 col-md-3">
-									<div class="panel panel-default">
-										<a href='receiveParts.html'>
+									<div class="panel panel-default">			
 											<div class="panel-body easypiechart-panel">
 												<h5>&nbsp;&nbsp;</h5>
 												<div class="easypiechart" id="easypiechart-darkgreen"
 													data-percent="">
+													<a href='receiveParts.html'>
 													<span class="percent" style="font-size: 15px;">Receive Parts</span>
+													</a>
 												</div>
-											</div>
-										</a>
+											</div>									
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-3">

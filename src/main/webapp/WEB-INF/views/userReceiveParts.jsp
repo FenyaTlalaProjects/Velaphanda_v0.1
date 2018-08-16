@@ -262,7 +262,7 @@
 															Africa</option>
 														<option value="Taropa Technologies">Taropa
 															Technologies</option>
-														<option value="Magenta">Toshiba South Africa</option>
+														<option value="Toshiba South Africa">Toshiba South Africa</option>
 														<option value="Riso South Africa">Riso South
 															Africa</option>
 													</select>

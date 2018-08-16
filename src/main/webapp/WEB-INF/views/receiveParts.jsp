@@ -105,10 +105,17 @@
 												<input class="btn btn-success" type='submit' value='Search' />
 											</div>
 										</div>
+										
 									</div>
 									<hr>
 								</form:form>
 								<!--Search-->
+								
+								<div class="alert alert-info alert-dismissible fade in">
+								<a href="#" class="close" data-dismiss="alert"
+									aria-label="close">&times;</a> <strong>Info!</strong> Click on <a href='addModelNumbers.html'> Add Model Number</a> only if you want to add Model Number which does not exist. You always can click X to hide the Alert.
+								</div>																
+													
 
 							</c:if>
 							<c:if test="${not empty sparePart.partNumber }">
@@ -263,7 +270,7 @@
 															Africa</option>
 														<option value="Taropa Technologies">Taropa
 															Technologies</option>
-														<option value="Magenta">Toshiba South Africa</option>
+														<option value="Toshiba South Africa">Toshiba South Africa</option>
 														<option value="Riso South Africa">Riso South
 															Africa</option>
 													</select>

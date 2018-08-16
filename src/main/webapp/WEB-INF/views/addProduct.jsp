@@ -200,18 +200,26 @@
 											</div>
 										</div>
 									</div>
-									<!-- Text input Machine Model-->
+									
+									<!-- Text input Model No-->
 									<div class="form-group">
-										<label class="col-md-3 control-label">Model No</label>
-										<div class="col-md-8 inputGroupContainer">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-barcode"></i></span> <input
-													name="modelNumber" onkeydown="upperCaseF(this)"
-													id="modelNumber" placeholder="Model Number"
-													class="form-control" type="text">
+											<label class="col-md-3 control-label">Model No</label>
+											<div class="col-md-8 inputGroupContainer">
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="glyphicon glyphicon-hdd"></i></span> <input
+														name="modelNumber" list="modelNumbers"
+														onkeydown="upperCaseF(this)" id="modelNumber"
+														class="form-control" type="text"
+														placeholder='Search Model Number'>
+												</div>
 											</div>
-										</div>
+											<!-- Iterating over the list sent from Controller -->
+											<datalist id="modelNumbers"> <c:forEach var="list"
+												items="${modelNumbers}">
+												<option value="${list}">
+											</c:forEach> </datalist>
+										
 									</div>
 
 									<!-- Select type Brand-->
@@ -621,6 +629,60 @@
 	<!--/.main-->
 	<!-- Scripts -->
 	<c:import url="templates/javascriptslib.jsp"></c:import>
+	
+	<script>
+	/*---Create datalist to populate search---*/
+
+	//Get the <datalist> and <input> elements.
+	var dataList = document.getElementById('json-datalist');
+	var input = document.getElementById('ajax');
+
+	//Create a new XMLHttpRequest.
+	var request = new XMLHttpRequest();
+
+	//Handle state changes for the request.
+	request.onreadystatechange = function(response) {
+		if (request.readyState === 4) {
+			if (request.status === 200) {
+				// Parse the JSON
+				var jsonOptions = JSON.parse(request.responseText);
+
+				// Loop over the JSON array.
+				jsonOptions.forEach(function(item) {
+					// Create a new <option> element.
+					var option = document.createElement('option');
+					// Set the value using the item in the JSON array.
+					option.value = item;
+					// Add the <option> element to the <datalist>.
+					var appendChild = "Lets See";
+					console.log("WE SEE JUSES:",dataList.appendChild(option));
+					dataList.appendChild(option);
+					console.log("WE SEE JUSES:",option);
+				});
+
+				// Update the placeholder text.
+				input.placeholder = "e.g. datalist";
+			} else {
+				// An error occured :(
+				input.placeholder = "Couldn't load datalist options :(";
+			}
+		}
+	};
+
+	//Update the placeholder text.
+	var input = "Loading options";
+	input.placeholder = "Loading options...";
+	console.log("What do we have here : ", input.placeholder);
+	console.log("Mine : ", input);
+
+	//Set up and make the request.
+	request.open('GET',
+			'https://s3-us-west-2.amazonaws.com/s.cdpn.io/4621/html-elements.json',
+			true);
+	request.send();
+
+	/*---End Create datalist to populate search---*/
+	</script>
 	<c:import url="templates/sidebar-collapse.jsp"></c:import>
 	<!-- /Scripts -->
 </body>
