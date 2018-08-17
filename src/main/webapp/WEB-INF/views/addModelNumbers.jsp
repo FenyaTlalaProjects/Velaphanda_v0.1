@@ -121,7 +121,7 @@
 								</div>
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label class="col-md-3 control-label">Colour</label>
 								<div class="col-md-6 selectContainer">
 									<div class="input-group">
@@ -137,7 +137,7 @@
 										</select>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 							<!-- Text input Added By-->
 							<div class="form-group">
