@@ -40,11 +40,13 @@ public class SpareMaster implements Serializable{/**
 	@Column(name="Captured_By")
 	private String capturedBy;
 	@Column(name="Date_Captured")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateCaptured;
+	//@Temporal(TemporalType.TIMESTAMP)
+	private String dateCaptured;
 	@Column(name="Model_Brand")
 	private String modelBrand;
 	@Column(name="Colour")
 	private String color;
+	@Column(name="Supplier")
+	private String supplierName;
 
 }

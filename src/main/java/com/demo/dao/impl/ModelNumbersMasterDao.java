@@ -33,9 +33,11 @@ public class ModelNumbersMasterDao implements ModelNumbersMasterDaoInt{
 	@SuppressWarnings("unchecked")
 	private String retMessage = null;
 	private String errorRetMessage = null;
+	
+	//Get current Date time
 	SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	Date now = new Date();
-	String timeAdded = sdfDate.format(now);
+	String dateTimeStamp = sdfDate.format(now);
 	
 	@Override
 	public List<ModelNumbers> getModelNumbersFromMasterData() {
@@ -104,7 +106,7 @@ public class ModelNumbersMasterDao implements ModelNumbersMasterDaoInt{
 				
 			}else{
 				
-				modelNumber.setDateTime(timeAdded);
+				modelNumber.setDateTime(dateTimeStamp);
 				sessionFactory.getCurrentSession().save(modelNumber);
 			
 				retMessage = "Model Number "+ modelNumber.getModelNumber()+" successfully added.";

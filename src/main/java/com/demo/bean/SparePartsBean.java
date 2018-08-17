@@ -22,7 +22,7 @@ public class SparePartsBean {
 	private String modelBrand;
 	private String color;
 	private String capturedBy;
-	private Date dateCaptured;
+	private String dateCaptured;
 	private String supplierName;
 	private String supplierOrderNo;
 	private String description;

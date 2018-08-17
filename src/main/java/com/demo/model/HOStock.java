@@ -45,5 +45,6 @@ public class HOStock implements Serializable{
 	private String modelBrand;
 	@Column(name="Colour")
 	private String color;
-	
+	@Column(name="Supplier")
+	private String supplierName;
 }

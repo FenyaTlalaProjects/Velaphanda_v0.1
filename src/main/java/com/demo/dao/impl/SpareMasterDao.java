@@ -1,6 +1,8 @@
 package com.demo.dao.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -29,6 +31,12 @@ public class SpareMasterDao implements SpareMasterDaoInt{
 	@SuppressWarnings("unchecked")
 	private String retMessage = null;
 	private String errorRetMessage = null;
+	
+	//Get current Date time
+	SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	Date now = new Date();
+	String dateTimeStamp = sdfDate.format(now);
+	
 	@Override
 	public List<SpareMaster> getSparesFromMastaData() {
 		
@@ -98,6 +106,7 @@ public class SpareMasterDao implements SpareMasterDaoInt{
 				retMessage = "Part number already exist";
 				
 			}else{
+				spareMaster.setDateCaptured(dateTimeStamp);
 				sessionFactory.getCurrentSession().save(spareMaster);
 			
 				retMessage = "Part "+ spareMaster.getPartNumber()+" successfully added.";

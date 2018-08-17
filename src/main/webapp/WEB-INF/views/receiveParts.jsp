@@ -105,17 +105,28 @@
 												<input class="btn btn-success" type='submit' value='Search' />
 											</div>
 										</div>
-										
+
 									</div>
 									<hr>
 								</form:form>
 								<!--Search-->
-								
-								<div class="alert alert-info alert-dismissible fade in">
-								<a href="#" class="close" data-dismiss="alert"
-									aria-label="close">&times;</a> <strong>Info!</strong> Click on <a href='addModelNumbers.html'> Add Model Number</a> only if you want to add Model Number which does not exist. You always can click X to hide the Alert.
-								</div>																
-													
+								<fieldset>
+
+									<div class="alert alert-info alert-dismissible fade in">
+										<legend>
+											<div class="panel-heading" align="center"
+												style="padding: 0px 0px; background: none;">Maintain
+												Model Numbers</div>
+										</legend>
+										<a href="#" class="close" data-dismiss="alert"
+											aria-label="close">&times;</a> <strong>Info!</strong> To add
+										Model Number which does not exist on the System. Click <a
+											href='addModelNumbers.html'> Add Model Number</a>. You can
+										click X to hide the Alert.
+									</div>
+
+								</fieldset>
+
 
 							</c:if>
 							<c:if test="${not empty sparePart.partNumber }">
@@ -149,27 +160,29 @@
 													</div>
 												</div>
 											</div>
-											
+
 											<!-- Select type Item Type-->
-												<div class="form-group">
+											<div class="form-group">
 												<label class="col-md-3 control-label">Item Type</label>
 												<div class="col-md-8 inputGroupContainer">
 													<div class="input-group">
 														<span class="input-group-addon"><i
 															class="glyphicon glyphicon-barcode"></i></span> <input
-															id="itemType" readOnly name="itemType" class="form-control"
-															type="text" value="${sparePart.itemType}">
+															id="itemType" readOnly name="itemType"
+															class="form-control" type="text"
+															value="${sparePart.itemType}">
 													</div>
 												</div>
 											</div>
-											
+
 											<div class="form-group">
 												<label class="col-md-3 control-label">Colour</label>
 												<div class="col-md-8 selectContainer">
 													<div class="input-group">
 														<span class="input-group-addon"><i
 															class="glyphicon glyphicon-list"></i></span> <input id="color"
-															class="form-control" readOnly name="color"  value="${sparePart.color}" />
+															class="form-control" readOnly name="color"
+															value="${sparePart.color}" />
 													</div>
 												</div>
 											</div>
@@ -251,29 +264,22 @@
 
 										</table>
 										<!-- //group search details -->
-										
+
 										<br /> <br />
 										<!-- Supplier Details -->
 										<legend>Supplier Details</legend>
 
 										<!-- Text input Supplier Name-->
 										<div class="form-group">
-											<label class="col-md-3 control-label">Supplier Name</label>
-											<div class="col-md-8 selectContainer">
+											<label class="col-md-3 control-label">Supplier Namer</label>
+											<div class="col-md-8 inputGroupContainer">
 												<div class="input-group">
 													<span class="input-group-addon"><i
-														class="glyphicon glyphicon-list"></i></span><select
-														id="supplierName" class="form-control" name="supplierName"
-														class="form-control selectpicker">
-														<option value="">Select Supplier Name</option>
-														<option value="Canon South Africa">Canon South
-															Africa</option>
-														<option value="Taropa Technologies">Taropa
-															Technologies</option>
-														<option value="Toshiba South Africa">Toshiba South Africa</option>
-														<option value="Riso South Africa">Riso South
-															Africa</option>
-													</select>
+														class="glyphicon glyphicon-barcode"></i></span> <input
+														id="supplierName" readOnly name="supplierName"
+														onkeydown="upperCaseF(this)"
+														placeholder="Enter Part Number" class="form-control"
+														type="text" value="${sparePart.supplierName}">
 												</div>
 											</div>
 										</div>

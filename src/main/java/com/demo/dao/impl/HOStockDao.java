@@ -49,8 +49,9 @@ public class HOStockDao implements HOStockDaoInt {
 	@Override
 	public String saveSpareparts(HOStock spareParts,SparePartsBean sparePartsBean) {
 
-		dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		date = new Date();
+		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date now = new Date();
+		String dateTimeStamp = sdfDate.format(now);
 		emp = (Employee) session.getAttribute("loggedInUser");
 		try {
 
@@ -82,11 +83,12 @@ public class HOStockDao implements HOStockDaoInt {
 					spareParts.setCompitableDevice(spareMaster.getCompitableDevice());
 					spareParts.setItemDescription(spareMaster.getItemDescription());
 					spareParts.setItemType(spareMaster.getItemType());
-					spareParts.setDateTime(dateFormat.format(date));
+					spareParts.setDateTime(dateTimeStamp);
 					spareParts.setColor(spareMaster.getColor());
 					spareParts.setModelBrand(spareMaster.getModelBrand());
-				
+					spareParts.setSupplierName(spareMaster.getSupplierName());
 					
+										
 					historyBean = new HistoryBean();
 					//Prepare Spares Data for History Table
 					historyBean.setAction("Recieve");
@@ -112,9 +114,9 @@ public class HOStockDao implements HOStockDaoInt {
 					spareMaster.setItemType(spareParts.getItemType());
 					spareMaster.setPartNumber(spareParts.getPartNumber());
 					spareMaster.setColor(spareParts.getColor());
-					spareMaster.setDateCaptured(date);
-					spareMaster.setCapturedBy(spareParts.getReceivedBy());
-					
+					spareMaster.setDateCaptured(dateTimeStamp);
+					spareMaster.setSupplierName(spareParts.getSupplierName());
+					spareMaster.setCapturedBy(spareParts.getReceivedBy());					
 
 					retMessage = spareMasterDaoInt.saveSpareMasterData(spareMaster);
 
@@ -123,8 +125,9 @@ public class HOStockDao implements HOStockDaoInt {
 					spareParts.setItemDescription(spareMaster.getItemDescription());
 					spareParts.setItemType(spareMaster.getItemType());
 					spareParts.setColor(spareMaster.getColor());
-					spareParts.setDateTime(dateFormat.format(date));
-					spareParts.setModelBrand(spareMaster.getModelBrand());					
+					spareParts.setDateTime(dateTimeStamp);
+					spareParts.setModelBrand(spareMaster.getModelBrand());	
+					spareParts.setSupplierName(spareMaster.getSupplierName());
 					
 					historyBean = new HistoryBean();
 					//Prepare Spares Data for History Table

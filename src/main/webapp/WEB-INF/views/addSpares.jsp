@@ -88,7 +88,29 @@
 									</div>
 								</div>
 							</div>
-
+							
+							<!-- Text input Supplier Name-->
+							<div class="form-group">
+								<label class="col-md-3 control-label">Supplier Name</label>
+								<div class="col-md-6 selectContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-list"></i></span><select
+											id="supplierName" class="form-control" name="supplierName"
+											class="form-control selectpicker">
+											<option value="">Select Supplier Name</option>
+											<option value="Canon South Africa">Canon South
+												Africa</option>
+											<option value="Taropa Technologies">Taropa
+												Technologies</option>
+											<option value="Toshiba South Africa">Toshiba South
+												Africa</option>
+											<option value="Riso South Africa">Riso South Africa</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							
 							<!-- Select type Item Type-->
 							<div class="form-group">
 								<label class="col-md-3 control-label">Item Type</label>

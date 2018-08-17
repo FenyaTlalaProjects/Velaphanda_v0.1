@@ -11,9 +11,9 @@
             
     var partNumberList = [];
     var quantityList = [];
+   
     //move selected line items to table 2
-    $('#stockForOrder').on('click', '.addLineItem', function() {
-    
+    $('#stockForOrder').on('click', '.addLineItem', function() {    
        var quantity;
        row = $(this).closest("tr").clone(); 
        quantity = $(this).closest('tr').find('td:eq(4)').find('input').val();
@@ -32,48 +32,49 @@
             document.getElementById("partNumberList").value = partNumberList;
                                     
             items.push(row);
-            row.appendTo($("#toOrder"));
-            //debugger;
+            row.appendTo($("#toOrder"));           
+            debugger;
             $(this).closest('tr').remove();
+          
+            //row.find("input[name=quantity]").prop("disabled",true);
             $('input[type="button"]', row).removeClass('AddNew').addClass('RemoveRow').val('Remove');
         }
      });
     //remove selected line items from table 1 to table 2
     $('#toOrder').on('click', '.RemoveRow', function(){
-    	 //debugger;
-    	row.find("input[name=quantity]").val("");    	
-    	row = $(this).closest("tr").clone();
-        row.appendTo($("#stockForOrder"));
-         $(this).closest('tr').remove();
-        $('input[type="button"]', row).removeClass('RemoveRow').addClass('addLineItem').val('Add');
-         //hide the all of the element class oderSumbmit
-        
+    	    debugger;
+    	  	quantity = $(this).closest('tr').find('td:eq(4)').find('input').val();
+	    	row.find("input[name=quantity]").val(null);
+	    	row = $(this).closest("tr").clone();
+	        row.appendTo($("#stockForOrder"));
+	         $(this).closest('tr').remove();
+	        $('input[type="button"]', row).removeClass('RemoveRow').addClass('addLineItem').val('Add');
+	         //hide the all of the element class oderSumbmit
+	   /* }*/
+      
     });
      
     //send selected items when user clicks submit button
      $('#putorder').on('click', function(){
            var row;
            $('#toOrder tr').each(function(row, tr){
-             partNumberList[row]=[$(tr).find('td:eq(0)').text()];
-             quantityList[row]=[$(this).closest('tr').find('td:eq(4)').find('input').val()];
+           partNumberList[row]=[$(tr).find('td:eq(0)').text()];
+           quantityList[row]=[$(this).closest('tr').find('td:eq(4)').find('input').val()];
       }); 
       partNumberList.shift();
       quantityList.shift();
       document.getElementById("quantityList").value = quantityList;
       document.getElementById("partNumberList").value = partNumberList;
+      
     });
      
-     $(document).ready(function(){
+    $(document).ready(function(){
     	    $('.orderSubmit').attr('disabled',true);
-    	    
-    	    $('input[name$=quantity]').keyup(function(){
-    	        if($(this).val().length !=0){
-    	            $('.orderSubmit').attr('disabled', false);
-    	        }
+    	    $('input[name=quantity]').keyup(function(){
+    	        if($(this).val().length != 0)
+    	            $('.orderSubmit').attr('disabled', false);            
     	        else
-    	        {
-    	            $('.orderSubmit').attr('disabled', true);        
-    	        }
+    	            $('.orderSubmit').attr('disabled',true);
     	    })
-    	});	
-			
+    });
+    
