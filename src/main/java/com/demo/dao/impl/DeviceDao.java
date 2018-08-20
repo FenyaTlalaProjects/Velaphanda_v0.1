@@ -28,6 +28,7 @@ import com.demo.dao.CustomerDaoInt;
 import com.demo.dao.DeviceDaoInt;
 import com.demo.dao.EmployeeDaoInt;
 import com.demo.dao.HistoryDaoInt;
+import com.demo.dao.ModelNumbersMasterDaoInt;
 import com.demo.dao.SiteStocDaoInt;
 import com.demo.dao.TicketsDaoInt;
 import com.demo.dao.deviceContactPersonDaoInt;
@@ -36,6 +37,7 @@ import com.demo.model.Customer;
 import com.demo.model.Device;
 import com.demo.model.DeviceContactPerson;
 import com.demo.model.Employee;
+import com.demo.model.ModelNumbers;
 import com.demo.model.SiteStock;
 import com.demo.model.TicketHistory;
 import com.demo.model.Tickets;
@@ -67,6 +69,9 @@ public class DeviceDao implements DeviceDaoInt {
 	private HttpSession session = null;
 	@Autowired
 	private HistoryDaoInt historyDaoInt;
+	
+	@Autowired
+	private ModelNumbersMasterDaoInt modelNumbersMasterDaoInt;
 	private String retMessage = null;
 	@SuppressWarnings("unused")
 	private Date currentDate = null;
@@ -80,6 +85,7 @@ public class DeviceDao implements DeviceDaoInt {
 	Employee userName, emp = null;
 	HistoryBean historyBean = null;
 	TicketHistory ticketHistory = null;
+	private ModelNumbers modelNum = null;
 	List<Accessories> accessoryList = null;
 	private DeviceBean deviceBean = null;
 	private DeviceContactPerson contactPerson;
@@ -201,7 +207,16 @@ public class DeviceDao implements DeviceDaoInt {
 
 			if(deviceBean.getChkAccessories()==null){
 				device.setEndDate(deviceBean.getEndDate());
-				device.setModelNumber(deviceBean.getModelNumber());
+				
+				modelNum = modelNumbersMasterDaoInt.getModelNumbersMaster(deviceBean.getModelNumber());
+				if(modelNum != null){
+					device.setModelNumber(deviceBean.getModelNumber());
+				}else{
+					
+					retMessage ="Put a propper message here";
+					return retMessage;
+					
+				}
 				device.setSerialNumber(deviceBean.getSerialNumber());
 				device.setStartDate(deviceBean.getStartDate());
 				device.setInstallationDate(deviceBean.getInstallationDate());

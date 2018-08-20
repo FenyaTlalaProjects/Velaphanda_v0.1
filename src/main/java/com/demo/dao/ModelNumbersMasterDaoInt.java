@@ -3,7 +3,7 @@ package com.demo.dao;
 import java.util.List;
 
 import com.demo.model.ModelNumbers;
-import com.demo.model.SpareMaster;
+
 
 
 public interface ModelNumbersMasterDaoInt {

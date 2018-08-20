@@ -30,9 +30,7 @@ public class ModelNumbersMasterDao implements ModelNumbersMasterDaoInt{
 	private SessionFactory sessionFactory;
 	
 	private ModelNumbers modelNumbers = null;
-	@SuppressWarnings("unchecked")
 	private String retMessage = null;
-	private String errorRetMessage = null;
 	
 	//Get current Date time
 	SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
