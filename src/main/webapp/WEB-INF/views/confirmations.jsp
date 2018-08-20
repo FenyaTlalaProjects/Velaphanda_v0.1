@@ -107,7 +107,8 @@
 												href="searchDevice.html" class="confirmtions"><b>
 													here</b></a> to view list of Devices or click <a
 												href="searchClientforProduct?customerName=<c:out value='${customerName}'/>"
-												class="confirmtions"><b> here</b></a> to add another Device for ${customerName}.
+												class="confirmtions"><b> here</b></a> to add another Device for ${customerName}. Click <a
+												href='addModelNumbers.html'> <b>here</b> </a> to add Model Number.
 				 	    </c:when>
 									</c:choose>
 									<!-- update Device -->
@@ -119,7 +120,7 @@
 				 	   		     
 				 	   					 </c:when>
 									</c:choose>
-								
+
 									<c:choose>
 										<c:when test="${removeAcessory =='removeAcessory' }">
 											<c:out value="${retMessage}"></c:out> Click<a
@@ -145,20 +146,21 @@
 							   </c:if>
 										</c:when>
 									</c:choose>
-									
+
 									<!-- Replace Toner -->
 									<c:choose>
 										<c:when test="${replaceToner =='replaceToner' }">
 											<c:out value="${retMessage}"></c:out>. Click<a
-												href="tonerReplacement.html" class="confirmtions"><b> here</b></a> to replace another toner.
+												href="tonerReplacement.html" class="confirmtions"><b>
+													here</b></a> to replace another toner.
 							   </c:when>
 									</c:choose>
 									<c:choose>
 										<c:when test="${replaceToner =='replaceToner' }">
 											<c:if test="${not empty message}">
 												<c:out value="${message}"></c:out>  Click<a
-													href="tonerReplacement.html" class="confirmtions" class="danger"><b>
-														here</b></a> to replace another toner.
+													href="tonerReplacement.html" class="confirmtions"
+													class="danger"><b> here</b></a> to replace another toner.
 							   </c:if>
 										</c:when>
 									</c:choose>
@@ -235,7 +237,7 @@
 												class="confirmtions"><b> here</b></a> to go to leave management.                         
 					 	  			  </c:when>
 									</c:choose>
-									
+
 									<!-- Add Spares Parts-->
 									<c:choose>
 										<c:when test="${addSpares =='addSpares' }">
@@ -245,7 +247,7 @@
 													here</b></a> to view available stock in HO.                            
 					 	   				 </c:when>
 									</c:choose>
-																										
+
 									<!-- Receive Spares Parts -->
 									<c:choose>
 										<c:when test="${receiveSpareParts =='receiveSpareParts' }">
@@ -256,7 +258,7 @@
 													here</b></a> to view available stock in HO.                            
 					 	    			</c:when>
 									</c:choose>
-									
+
 									<!-- move Spare Parts -->
 									<c:choose>
 										<c:when test="${moveSpares =='moveSpares' }">
@@ -264,8 +266,8 @@
 												href="sparemanagement.html" class="confirmtions"><b>
 													here</b></a> to go to spare management.				 	   		     
 				 	   					 </c:when>
-									</c:choose>									
-									
+									</c:choose>
+
 									<!-- performTicketAction -->
 									<c:choose>
 										<c:when test="${performTicketAction =='performTicketAction' }">
@@ -274,16 +276,17 @@
 												class="confirmtions"><b> here</b></a> to go to ticket management.	                            
 					 	   			 </c:when>
 									</c:choose>
-									
+
 									<!-- acknowledge Tickets For Tech -->
 									<c:choose>
-										<c:when test="${acknowledgeTicketsForTech =='acknowledgeTicketsForTech' }">
+										<c:when
+											test="${acknowledgeTicketsForTech =='acknowledgeTicketsForTech' }">
 											<c:out value="${retMessage}"></c:out> 
 					 	       			   Click<a href="ticketmanagement.html"
 												class="confirmtions"><b> here</b></a> to go to ticket management.	                            
 					 	   			 </c:when>
 									</c:choose>
-									
+
 									<!-- acknowledge Tickets For Tech -->
 									<c:choose>
 										<c:when test="${takeTicketsForTech =='takeTicketsForTech' }">
@@ -449,7 +452,7 @@
 														here</b></a> to go to order management.</c:out>
 										</c:when>
 									</c:choose>
-									
+
 									<!-- moveSpares -->
 									<c:choose>
 										<c:when test="${moveSpares == 'moveSpares'}">

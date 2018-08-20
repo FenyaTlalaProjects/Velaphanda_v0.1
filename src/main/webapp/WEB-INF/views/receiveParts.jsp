@@ -110,7 +110,8 @@
 									<hr>
 								</form:form>
 								<!--Search-->
-								<fieldset>
+								
+								<!-- <fieldset>
 
 									<div class="alert alert-info alert-dismissible fade in">
 										<legend>
@@ -125,7 +126,7 @@
 										click X to hide the Alert.
 									</div>
 
-								</fieldset>
+								</fieldset> -->
 
 
 							</c:if>

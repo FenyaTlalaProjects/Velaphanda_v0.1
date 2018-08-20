@@ -213,7 +213,8 @@ public class DeviceDao implements DeviceDaoInt {
 					device.setModelNumber(deviceBean.getModelNumber());
 				}else{
 					
-					retMessage ="Put a propper message here";
+					retMessage =  deviceBean.getModelNumber()
+							+ " does not exist on database. Please make sure that the model number exist.";
 					return retMessage;
 					
 				}
