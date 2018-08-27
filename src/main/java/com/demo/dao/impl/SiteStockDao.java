@@ -516,8 +516,8 @@ public class SiteStockDao implements SiteStocDaoInt {
 							historyBean.setAction("Update");
 							historyBean.setClassification("Spare Movement");
 							historyBean.setObjectId(stock.getPartNumber());
-							historyBean.setUserEmail(emp.getEmail());
-							historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
+							historyBean.setUserEmail(empLoggedIn.getEmail());
+							historyBean.setUserName(empLoggedIn.getFirstName() + " " + empLoggedIn.getLastName());
 							historyBean.setDescription(reasonForBoot);
 							historyBean.setDataField1(fromCustomerName);
 							historyBean.setDataField2(technicianName);
@@ -666,7 +666,7 @@ public class SiteStockDao implements SiteStocDaoInt {
 							historyBean.setAction("Update");
 							historyBean.setClassification("Spare Movement");
 							historyBean.setObjectId(bootStock.getPartNumber());
-							historyBean.setUserEmail(emp.getEmail());
+							historyBean.setUserEmail(empLoggedIn.getEmail());
 							historyBean.setUserName(empLoggedIn.getFirstName() + " " + empLoggedIn.getLastName());
 							historyBean.setDescription(reasonForSite);
 							historyBean.setDataField1(fromTechnicianName);

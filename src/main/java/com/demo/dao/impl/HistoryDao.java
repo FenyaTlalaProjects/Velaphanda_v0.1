@@ -63,6 +63,16 @@ public class HistoryDao implements HistoryDaoInt {
 			globalHistory.setDataField1(history.getDataField1());
 			globalHistory.setDataField2(history.getDataField2());
 			globalHistory.setDateTime(myFormat.format(currentDate));
+			/*//for Head Office
+			globalHistory.setHoObjectId(history.getHoObjectId());
+			globalHistory.setHoSpareRecievedBy(history.getHoSpareRecievedBy());
+			globalHistory.setHoActionSpares(history.getHoActionSpares());
+			globalHistory.setHoSupplierName(history.getHoSupplierName());
+			globalHistory.setHoSupplierOrderNo(history.getHoSupplierOrderNo());
+			globalHistory.setHoQuantityRecieved(history.getHoQuantityRecieved());
+			globalHistory.setHoDateSpareRecieved(myFormat.format(currentDate));*/
+			
+			
 			globalHistory.setDescription(history.getDescription());
 			sessionFactory.getCurrentSession().save(globalHistory);
 			

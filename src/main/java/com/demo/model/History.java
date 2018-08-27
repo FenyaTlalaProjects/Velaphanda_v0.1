@@ -59,7 +59,23 @@ public class History implements  Serializable  {
 	@Column(name="DataField2")
 	private String dataField2;
 	@Column(name="Description")
-	private String description;	
+	private String description;
+	
+	/*//for Head Office
+	@Column(name="HO_ObjectID")
+	private String hoObjectId;
+	@Column(name="Spares_Recieved_By")
+	private String hoSpareRecievedBy;
+	@Column(name="Action_HO_Spares")
+	private String hoActionSpares;
+	@Column(name="Date_Spares_Recieved")
+	private String hoDateSpareRecieved;
+	@Column(name="Supplier_Name")
+	private String hoSupplierName;
+	@Column(name="Supplier_Order_No")
+	private String hoSupplierOrderNo;
+	@Column(name="Quantity_Recieved")
+	private int hoQuantityRecieved;*/
 
 }
 
