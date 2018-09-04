@@ -3056,8 +3056,7 @@ public class TicketsDao implements TicketsDaoInt {
 				for (int i = 0; i < spare.size(); i++) {
 					BootStock boot = bootStockDaoIn.getBootStock(
 							spare.get(i),
-							technician.getFirstName() + " "
-									+ technician.getLastName());
+							technician.getEmail());
 					if (boot != null && boot.getQuantity() > 0) {
 
 						if (boot.getQuantity() > 0) {

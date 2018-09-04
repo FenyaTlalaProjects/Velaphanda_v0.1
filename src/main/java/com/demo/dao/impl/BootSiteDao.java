@@ -62,7 +62,6 @@ public class BootSiteDao implements BootStockDaoInt{
 	@Override
 	public void saveBootStock(List<OrderDetails> detailsDaos) {
 		try{
-			System.err.println("Testing some s**t");
 			for(OrderDetails stock:detailsDaos){
 				bootStock = getSelectedBootStock(stock.getPartNumber());
 					if(bootStock !=null && stock.getPartNumber().equalsIgnoreCase(bootStock.getPartNumber()) && bootStock.getTechnicianEmail().equalsIgnoreCase(stock.getTechnician())){
