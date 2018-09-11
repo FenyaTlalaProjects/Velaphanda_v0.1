@@ -241,6 +241,7 @@ li {
 												<tr>
 													<th>Order Status</th>
 													<th>Date/Time</th>
+													<th>User</th>
 
 												</tr>
 											</thead>
@@ -251,7 +252,7 @@ li {
 
 														<td>${list.orderStatus}</td>
 														<td>${list.statusDateTime}</td>
-
+														<td>${list.userOrderAction}</td>
 													</tr>
 												</c:forEach>
 											</tbody>

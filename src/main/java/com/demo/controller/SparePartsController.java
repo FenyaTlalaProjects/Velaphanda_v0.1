@@ -24,6 +24,7 @@ import com.demo.model.SpareMaster;
 import com.demo.service.BootStockInt;
 import com.demo.service.CustomerServiceInt;
 import com.demo.service.EmployeeServiceInt;
+import com.demo.service.HistoryMovementServiceInt;
 import com.demo.service.HistoryServiceInt;
 import com.demo.service.ModelNumbersMasterServiceInt;
 import com.demo.service.OrderDetailsInt;
@@ -68,7 +69,12 @@ public class SparePartsController {
 	private HistoryServiceInt spareSiteStockHistoryServiceInt;
 	@Autowired
 	private ModelNumbersMasterServiceInt modelNumbersMasterServiceInt;
+	@Autowired
+	private HistoryMovementServiceInt spareBootStockHistoryMovementServiceInt;
+	@Autowired
+	private HistoryMovementServiceInt spareSiteStockHistoryMovementServiceInt;
 	
+		
 	private String retMessage = null;
 	private ModelAndView model = null;
 	private Employee userName,technicianName = null;
@@ -104,24 +110,8 @@ public class SparePartsController {
 				model.addObject("customer",spareInt.spareQuantity());
 				//Load Data of Spares HO History
 				model.addObject("displayHOSparesHistory",spareHOHistoryServiceInt.getHistoryByPartNumber(partNumber));
-				model.setViewName("sparemanagement");
 				
-			}else if (userName.getRole().equalsIgnoreCase("Technician")){
-				//HO Count
-				model.addObject("hoCount", hOStockServeceInt.countHeadOfficeStock());
-				//Site Count
-				model.addObject("siteCount", siteStock.countSiteStock());
-				//Boot Count
-				model.addObject("bootCount", bootStock.countBootStock(userName.getFirstName()+" "+ userName.getLastName()));
-				//Load Data of HO 
-				/*model.addObject("firstName", userName.getFirstName());
-				model.addObject("lastName", userName.getLastName());
-				model.addObject("email", userName.getEmail());*/
-				//Load Data Boot Site
-				model.addObject("employees",spareInt.spareQuantityForTechnician(userName.getFirstName()+" "+ userName.getLastName()));
-				//Load Data of bootSite
-				model.addObject("customer",spareInt.spareQuantityForTechnicianSiteStock());			
-				model.setViewName("techsparemanagement");
+				model.setViewName("sparemanagement");
 				
 			}else if(userName.getRole().equalsIgnoreCase("User")){	
 				//HO Count
@@ -135,8 +125,26 @@ public class SparePartsController {
 				//Load Data Boot Site
 				model.addObject("employees",spareInt.spareQuantityForTechnicians());			
 				//Load Data of bootSite
-				model.addObject("customer",spareInt.spareQuantity());	
+				model.addObject("customer",spareInt.spareQuantity());
+				//Load Data of Spares HO History
+				model.addObject("displayHOSparesHistory",spareHOHistoryServiceInt.getHistoryByPartNumber(partNumber));	
+				
 				model.setViewName("usersparemanagement");
+				
+			}else if (userName.getRole().equalsIgnoreCase("Technician")){
+				//HO Count
+				model.addObject("hoCount", hOStockServeceInt.countHeadOfficeStock());
+				//Site Count
+				model.addObject("siteCount", siteStock.countSiteStock());
+				//Boot Count
+				model.addObject("bootCount", bootStock.countBootStock(userName.getFirstName()+" "+ userName.getLastName()));
+				//Load Data Boot Site
+				model.addObject("employees",spareInt.spareQuantityForTechnician(userName.getFirstName()+" "+ userName.getLastName()));
+				//Load Data of bootSite
+				model.addObject("customer",spareInt.spareQuantityForTechnicianSiteStock());			
+				
+				model.setViewName("techsparemanagement");
+				
 			}
 				
 			}else {
@@ -428,6 +436,7 @@ public class SparePartsController {
 			//Load customers/technician lists
 			model.addObject("customerList",customerServiceInt.getClientList(customerName));
 			model.addObject("displaySiteStockMovement",spareSiteStockHistoryServiceInt.getSiteStockHistoryByPartNumber(partNumber));
+			model.addObject("displayHOSparesHistory",spareHOHistoryServiceInt.getHistoryByPartNumber(partNumber));
 			model.addObject("customerName",customerName);			
 			model.addObject("technicianList",employeeServiceInt.getAllTechnicians());
 			model.setViewName("stockSiteOrders");
@@ -449,19 +458,22 @@ public class SparePartsController {
 				//Load technician,display Boot Stock Movement history lists
 				model.addObject("technician",technician);
 				model.addObject("partNumber",partNumber);
-				model.addObject("displayBootStockMovement", spareBootStockHistoryServiceInt.getBootStockHistoryByPartNumber(partNumber));
+				model.addObject("displayBootStockMovement", spareBootStockHistoryMovementServiceInt.getBootStockHistoryMovementByPartNumber(partNumber));
+				model.addObject("displayHOSparesHistory",spareHOHistoryServiceInt.getHistoryByPartNumber(partNumber));
 				model.setViewName("bootSiteOrders");	
 			}
 			if(userName.getRole().equalsIgnoreCase("User")){
 				//Load customer,display Site Stock Movement history lists
 				model.addObject("technician",technician);
 				model.addObject("partNumber",partNumber);
-				model.addObject("displayBootStockMovement", spareBootStockHistoryServiceInt.getBootStockHistoryByPartNumber(partNumber));
+				model.addObject("displayBootStockMovement", spareBootStockHistoryMovementServiceInt.getBootStockHistoryMovementByPartNumber(partNumber));
+				model.addObject("displayHOSparesHistory",spareHOHistoryServiceInt.getHistoryByPartNumber(partNumber));
 				model.setViewName("bootSiteOrdersForUser");
 			}else if (userName.getRole().equalsIgnoreCase("Technician")){
 				model.addObject("technician",technician);
 				model.addObject("partNumber",partNumber);
-				model.addObject("displayBootStockMovement", spareBootStockHistoryServiceInt.getBootStockHistoryByPartNumber(partNumber));
+				model.addObject("displayBootStockMovement", spareBootStockHistoryMovementServiceInt.getBootStockHistoryMovementByPartNumber(partNumber));
+				model.addObject("displayHOSparesHistory",spareHOHistoryServiceInt.getHistoryByPartNumber(partNumber));
 				model.setViewName("bootSiteOrdersForTechnician");
 			}
 			
@@ -486,20 +498,24 @@ public class SparePartsController {
 				//Load customer,display Site Stock Movement history lists
 				model.addObject("customerName",customerName);
 				model.addObject("partNumber",partNumber);
-				model.addObject("displaySiteStockMovement",spareSiteStockHistoryServiceInt.getSiteStockHistoryByPartNumber(partNumber));
+				model.addObject("displaySiteStockMovement",spareSiteStockHistoryMovementServiceInt.getSiteStockHistoryMovementByPartNumber(partNumber));
+				model.addObject("displayHOSparesHistory",spareHOHistoryServiceInt.getHistoryByPartNumber(partNumber));
 				model.setViewName("stockSiteOrders");
+				
 			}if(userName.getRole().equalsIgnoreCase("User")){
 				//Load customer,display Site Stock Movement history lists
 				model.addObject("customerName",customerName);
 				model.addObject("partNumber",partNumber);
-				model.addObject("displaySiteStockMovement",spareSiteStockHistoryServiceInt.getSiteStockHistoryByPartNumber(partNumber));
+				model.addObject("displaySiteStockMovement",spareSiteStockHistoryMovementServiceInt.getSiteStockHistoryMovementByPartNumber(partNumber));
+				model.addObject("displayHOSparesHistory",spareHOHistoryServiceInt.getHistoryByPartNumber(partNumber));
 				model.setViewName("stockSiteOrdersForUser");
 			}else if (userName.getRole().equalsIgnoreCase("Technician")){
 				//Load customer,display Site Stock Movement history lists
 				model.addObject("customerName",customerName);
 				model.addObject("partNumber",partNumber);
 				model.addObject("technician",technician);
-				model.addObject("displaySiteStockMovement",spareSiteStockHistoryServiceInt.getSiteStockHistoryByPartNumber(partNumber));
+				model.addObject("displaySiteStockMovement",spareSiteStockHistoryMovementServiceInt.getSiteStockHistoryMovementByPartNumber(partNumber));
+				model.addObject("displayHOSparesHistory",spareHOHistoryServiceInt.getHistoryByPartNumber(partNumber));
 				model.setViewName("stockSiteOrdersForTechnician");
 			}
 			

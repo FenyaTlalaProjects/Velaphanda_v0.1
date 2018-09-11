@@ -63,15 +63,14 @@ public class HistoryDao implements HistoryDaoInt {
 			globalHistory.setDataField1(history.getDataField1());
 			globalHistory.setDataField2(history.getDataField2());
 			globalHistory.setDateTime(myFormat.format(currentDate));
-			/*//for Head Office
+			//for Head Office
 			globalHistory.setHoObjectId(history.getHoObjectId());
 			globalHistory.setHoSpareRecievedBy(history.getHoSpareRecievedBy());
 			globalHistory.setHoActionSpares(history.getHoActionSpares());
 			globalHistory.setHoSupplierName(history.getHoSupplierName());
 			globalHistory.setHoSupplierOrderNo(history.getHoSupplierOrderNo());
 			globalHistory.setHoQuantityRecieved(history.getHoQuantityRecieved());
-			globalHistory.setHoDateSpareRecieved(myFormat.format(currentDate));*/
-			
+			globalHistory.setHoDateSpareRecieved(myFormat.format(currentDate));
 			
 			globalHistory.setDescription(history.getDescription());
 			sessionFactory.getCurrentSession().save(globalHistory);
@@ -147,9 +146,10 @@ public class HistoryDao implements HistoryDaoInt {
 			List<History> list = getAllHistoryByPartNumber();
 			newList = new ArrayList<History>();
 			for(History partNumberHOHistory:list){
-				if(partNumberHOHistory.getObjectId().equals(partNumber)){
+				if( partNumberHOHistory.getHoObjectId().equals(partNumber) ){
 					newList.add(partNumberHOHistory);
-				}
+					System.err.println("Site Stock: History By Part Number for Receiving");
+				}		
 			}
 			
 		}catch(Exception e){
@@ -175,11 +175,12 @@ public class HistoryDao implements HistoryDaoInt {
 			List<History> list = getAllSiteStockHistoryByPartNumber();
 			newList = new ArrayList<History>();
 			for(History siteStockHistory:list){
-				if(siteStockHistory.getObjectId().equals(partNumber)){
+				if(siteStockHistory.getHoObjectId().equals(partNumber)){
 					newList.add(siteStockHistory);
-					System.err.println("Site Stock: History By Part Number for Movement");
+					System.err.println("Site Stock: History By Part Number for Receiving");
 				}
-			}			
+			}
+			
 			
 		}catch(Exception e){
 			e.getMessage();
@@ -205,6 +206,9 @@ public class HistoryDao implements HistoryDaoInt {
 			newList = new ArrayList<History>();
 			for(History siteStockHistory:list){
 				if(siteStockHistory.getObjectId().equals(partNumber)){
+					newList.add(siteStockHistory);
+				}
+				else if(siteStockHistory.getHoObjectId().equals(partNumber)){
 					newList.add(siteStockHistory);
 				}
 			}

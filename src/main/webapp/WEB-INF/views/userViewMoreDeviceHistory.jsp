@@ -50,27 +50,26 @@
 						
 									<legend style="font-size: 14px; line-height: 1.42857143;">
 										Contact person</legend>
-									<div class="machinedetailsfloatright ">
-										<div class="orderDetails">
+									
 											<li id="contactName">First & Last Name:<b>${ticket.firstName} ${ticket.lastName}</b></li>
 										    <li id="cell">Cell No: ${ticket.contactCellNumber}</li>
 										    <li id="telephone">Telephone No: ${ticket.contactTelephoneNumber}</li>
 											<li id="email">E-Mail: ${ticket.contactEmail}</li>
 										</div>
 										<br>
-									</div>
+									
 								</div>
 								
 								<div class="col-sm-6"><br/>
 						
 									<legend style="font-size: 14px; line-height: 1.42857143;">
 										Problem Description</legend>
-									<div class="machinedetailsfloatright ">
-										<div class="orderDetails">
+									
+										
 											${ticket.description}
-										</div>
+										
 										<br>
-									</div>
+									
 								</div>
 					    <br />
 						<br />

@@ -22,13 +22,13 @@ public class HistoryBean {
 	private String dataField1;
 	private String dataField2;
 	private String description;
-	/*//for Head Office
+	//for Head Office
 	private String hoObjectId;
 	private String hoSpareRecievedBy;
 	private String hoActionSpares;
 	private String hoDateSpareRecieved;
 	private String hoSupplierName;
 	private String hoSupplierOrderNo;
-	private int hoQuantityRecieved;*/
+	private int hoQuantityRecieved;
 	
 }

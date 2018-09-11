@@ -87,6 +87,7 @@
 									</div>
 								</div>
 								<hr>
+								
 							</form:form>
 							<!--Search-->
 						</c:if>

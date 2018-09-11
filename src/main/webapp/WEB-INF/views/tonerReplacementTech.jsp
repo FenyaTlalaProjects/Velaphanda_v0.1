@@ -51,7 +51,7 @@
 						</c:if>
 						<c:if test="${not empty message }">
 							<div class="alert alert-danger" role="alert">
-								<c:out value="${ message}">
+								<c:out value="${message}">
 								</c:out>
 							</div>
 						</c:if>
@@ -87,6 +87,7 @@
 									</div>
 								</div>
 								<hr>
+								
 							</form:form>
 							<!--Search-->
 						</c:if>

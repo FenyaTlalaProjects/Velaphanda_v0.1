@@ -91,6 +91,7 @@
 				 <value>com.demo.model.DeliveryNoteLineItem</value>
 				 <value>com.demo.model.History</value>
 				 <value>com.demo.model.ModelNumbers</value>
+				 <value>com.demo.model.HistoryMovement</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

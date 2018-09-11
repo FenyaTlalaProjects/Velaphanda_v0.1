@@ -52,6 +52,7 @@ public class HOStockDao implements HOStockDaoInt {
 		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date now = new Date();
 		String dateTimeStamp = sdfDate.format(now);
+		Integer myQuantiy = null;
 		emp = (Employee) session.getAttribute("loggedInUser");
 		try {
 
@@ -59,17 +60,19 @@ public class HOStockDao implements HOStockDaoInt {
 			if (hOStock != null) {
 				int updateQuantity = hOStock.getQuantity() + spareParts.getQuantity();
 				hOStock.setQuantity(updateQuantity);
+				
 				historyBean = new HistoryBean();
-				//Prepare Spares Data for History Table
-				historyBean.setAction("Update");
-				historyBean.setClassification("Recieve Spare(s)");
-				historyBean.setObjectId(spareParts.getPartNumber());
-				historyBean.setUserEmail(emp.getEmail());
-				historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
-				historyBean.setDescription(sparePartsBean.getDescription());
-				historyBean.setDataField1(sparePartsBean.getSupplierName());
-				historyBean.setDataField2(sparePartsBean.getSupplierOrderNo());
-				historyBean.setQuantity(sparePartsBean.getQuantity());
+				//Prepare Spares Data for History Table				
+				historyBean.setClassification("Receive Spare(s)");
+			    historyBean.setUserEmail(emp.getEmail());				
+				//for Head Office
+				historyBean.setHoActionSpares("Update");
+				historyBean.setHoObjectId(spareParts.getPartNumber());
+				historyBean.setHoSpareRecievedBy(emp.getFirstName() + " " + emp.getLastName());				
+				historyBean.setHoSupplierName(sparePartsBean.getSupplierName());
+				historyBean.setHoSupplierOrderNo(sparePartsBean.getSupplierOrderNo());
+				historyBean.setHoQuantityRecieved(sparePartsBean.getQuantity());
+								
 				sessionFactory.getCurrentSession().update(hOStock);
 				System.err.println("Spare History is inserted into DB when recieving spare");
 				historyDaoInt.saveHistory(historyBean);
@@ -91,15 +94,15 @@ public class HOStockDao implements HOStockDaoInt {
 										
 					historyBean = new HistoryBean();
 					//Prepare Spares Data for History Table
-					historyBean.setAction("Recieve");
-					historyBean.setClassification("Recieve Spare(s)");
-					historyBean.setObjectId(spareParts.getPartNumber());
+					historyBean.setClassification("Receive Spare(s)");
 					historyBean.setUserEmail(emp.getEmail());
-					historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
-					historyBean.setDescription(sparePartsBean.getDescription());
-					historyBean.setDataField1(sparePartsBean.getSupplierName());
-					historyBean.setDataField2(sparePartsBean.getSupplierOrderNo());
-					historyBean.setQuantity(sparePartsBean.getQuantity());
+					//for Head Office
+					historyBean.setHoActionSpares("Receive");
+					historyBean.setHoObjectId(spareParts.getPartNumber());
+					historyBean.setHoSpareRecievedBy(emp.getFirstName() + " " + emp.getLastName());				
+					historyBean.setHoSupplierName(sparePartsBean.getSupplierName());
+					historyBean.setHoSupplierOrderNo(sparePartsBean.getSupplierOrderNo());
+					historyBean.setHoQuantityRecieved(sparePartsBean.getQuantity());
 					
 					sessionFactory.getCurrentSession().save(spareParts);
 					System.err.println("Spare History is inserted into DB when recieving spare");
@@ -131,15 +134,19 @@ public class HOStockDao implements HOStockDaoInt {
 					
 					historyBean = new HistoryBean();
 					//Prepare Spares Data for History Table
-					historyBean.setAction("Recieve");
-					historyBean.setClassification("Recieved Spare(s)");
-					historyBean.setObjectId(spareParts.getPartNumber());
+					historyBean.setClassification("Receive Spare(s)");
 					historyBean.setUserEmail(emp.getEmail());
-					historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
 					historyBean.setDescription("Initial Recieve of Spare");
-					historyBean.setDataField1(sparePartsBean.getSupplierName());
-					historyBean.setDataField2(sparePartsBean.getSupplierOrderNo());
-					historyBean.setQuantity(sparePartsBean.getQuantity());
+					//for Head Office
+					historyBean.setHoActionSpares("Receive");
+					historyBean.setHoObjectId(spareParts.getPartNumber());
+					historyBean.setHoSpareRecievedBy(emp.getFirstName() + " " + emp.getLastName());				
+					historyBean.setHoSupplierName(sparePartsBean.getSupplierName());
+					historyBean.setHoSupplierOrderNo(sparePartsBean.getSupplierOrderNo());
+					historyBean.setHoQuantityRecieved(sparePartsBean.getQuantity());
+					//historyBean.setDateTime(null);
+					//historyBean.setQuantity(myQuantiy);
+					
 					sessionFactory.getCurrentSession().save(spareParts);
 					historyDaoInt.saveHistory(historyBean);
 

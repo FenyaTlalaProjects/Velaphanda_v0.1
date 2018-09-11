@@ -13,7 +13,7 @@
 </head>
 <body>
 	<c:import url="templates/navbar.jsp"></c:import>
-
+	
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
@@ -173,12 +173,12 @@
 										<tbody>
 											<c:forEach var="list" items="${displayHOSparesHistory}">
 												<tr>
-													<td>${list.userName}</td>
-													<td>${list.action}</td>
-													<td>${list.dateTime}</td>
-													<td>${list.dataField1}</td>
-													<td>${list.dataField2}</td>
-													<td>${list.quantity}</td>
+													<td>${list.hoSpareRecievedBy}</td>
+													<td>${list.hoActionSpares}</td>
+													<td>${list.hoDateSpareRecieved}</td>
+													<td>${list.hoSupplierName}</td>
+													<td>${list.hoSupplierOrderNo}</td>
+													<td>${list.hoQuantityRecieved}</td>
 												</tr>
 											</c:forEach>
 										</tbody>

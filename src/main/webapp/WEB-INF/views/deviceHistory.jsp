@@ -37,27 +37,28 @@
 				<div class="panel panel-default">
 					<div class="panel-heading" align="center">Device History</div>
 					<div class="panel-body">
+												
 						<div class="col-sm-4">
 							<b>Serial Number: </b>${device.serialNumber}</div>
 						<div class="col-sm-4">
 							<b>Model Number: </b>${device.modelNumber}</div>
 						<div class="col-sm-4">
 							<b>Customer Name: </b>${device.customerDevice.customerName}</div>
-						<%-- <div class="col-sm-6">
-							<br />
-							<legend style="font-size: 14px; line-height: 1.42857143;">
-								<b>Contact person</b>
-							</legend>
-							<div class="machinedetailsfloatright ">
-								<div class="orderDetails">
-									<li id="contactName">First & Last Name:<b>${ticket.firstName} ${ticket.lastName}</b></li>
-									<li id="cell">Cell No: ${ticket.contactCellNumber}</li>
-									<li id="telephone">Telephone No: ${ticket.contactTelephoneNumber}</li>
-									<li id="email">E-Mail: ${ticket.contactEmail}</li>
-								</div>
-								<br>
-							</div>
-						</div> --%>
+						
+						 <div class="col-sm-6">
+						 	<br />
+							<p class="customerAddress_title">Contact Person
+							<ul class="address_list" style="display: block;">
+								<li id="firstNameLastname">First & Last Name:${device.contactPerson.firstName}
+									${device.contactPerson.lastName}</li>
+								<li id="cellphone">Cell No: ${device.contactPerson.cellphone}</li>
+								<li id="telephone">Telephone No:${device.contactPerson.telephone}</li>
+								<li id="email">E-Mail: ${device.contactPerson.email}</li>
+
+							</ul>
+							</p>
+						</div>
+						
 						<br />
 						<br />
 						<!-- table tckHistory -->

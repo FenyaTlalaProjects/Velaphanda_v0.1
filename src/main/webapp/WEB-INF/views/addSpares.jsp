@@ -111,6 +111,29 @@
 								</div>
 							</div>
 							
+							<!-- Select type Brand-->
+							<div class="form-group">
+								<label class="col-md-3 control-label">Brand</label>
+								<div class="col-md-6 selectContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-list"></i></span> <select id="modelBrand"
+											name="modelBrand" class="form-control">
+											<option value="">Select Brand</option>											
+											<option value="Canon">Canon</option>											
+											<option value="HP">HP</option>
+											<option value="Kyocera">Kyocera</option>
+											<option value="Nasua">Nasua</option>
+											<option value="Oce">Oce</option>
+											<option value="Riso">Riso</option>
+											<option value="Samsung">Samsung</option>
+											<option value="Toshiba">Toshiba</option>
+
+										</select>
+									</div>
+								</div>
+							</div>
+							
 							<!-- Select type Item Type-->
 							<div class="form-group">
 								<label class="col-md-3 control-label">Item Type</label>
@@ -149,28 +172,7 @@
 								</div>
 							</div>
 							
-							<!-- Select type Brand-->
-							<div class="form-group">
-								<label class="col-md-3 control-label">Brand</label>
-								<div class="col-md-6 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i
-											class="glyphicon glyphicon-list"></i></span> <select id="modelBrand"
-											name="modelBrand" class="form-control">
-											<option value="">Select Brand</option>											
-											<option value="Canon">Canon</option>											
-											<option value="HP">HP</option>
-											<option value="Kyocera">Kyocera</option>
-											<option value="Nasua">Nasua</option>
-											<option value="Oce">Oce</option>
-											<option value="Riso">Riso</option>
-											<option value="Samsung">Samsung</option>
-											<option value="Toshiba">Toshiba</option>
-
-										</select>
-									</div>
-								</div>
-							</div>
+							
 							<!-- Text input Description-->
 							<div class="form-group">
 								<label class="col-md-3 control-label">Description</label>

@@ -74,51 +74,6 @@
 						<!-- tab nav -->
 						<div class="tab-content">
 
-							<div class="tab-pane active" id="receiveParts"></div>
-							<div class="tab-pane" id="hoSpareParts">
-								<legend align=center>Head Office Stock</legend>
-								<form:form modelAttribute="hoSpareParts" method="post"
-									action="hoSpareParts" id="hoSpareParts" name="hoSpareParts">
-
-									<table data-toggle="table" data-url="${spareParts}"
-										data-show-refresh="true" data-show-toggle="true"
-										data-search="true" data-select-item-name="toolbar1"
-										data-pagination="true" data-sort-name="partNo"
-										data-sort-order="aesc">
-										<thead>
-											<tr>
-												<th data-field="partNo" data-sortable="true">Part No</th>
-												<th data-field="compatibledevices" data-sortable="true">Compatible
-													Devices</th>
-												<th data-field="modelbrand" data-sortable="true">Model
-													Brand</th>
-												<th data-field="description" data-sortable="true">Description</th>
-												<th data-field="itemtype" data-sortable="true">Item
-													Type</th>
-												<th data-field="qty" data-sortable="true">QTY</th>
-											</tr>
-										</thead>
-										<tbody>
-											<!-- Iterating over the list sent from Controller -->
-											<c:forEach var="list" items="${TechnicianSpareParts}">
-												<tr>
-
-													<td>${list.partNumber}</td>
-													<td>${list.compatibleDevice}</td>
-													<td>${list.modelBrand}</td>
-													<td>${list.itemDescription}</td>
-													<td>${list.itemType}</td>
-													<td>${list.quantity}</td>
-
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-									<!-- table order -->
-								</form:form>
-								<!-- form order -->
-							</div>
-
 							<div class="tab-pane" id="siteStock">
 								<legend align=center>Site Stock</legend>
 
@@ -138,15 +93,23 @@
 												Quantity</th>
 										</tr>
 									</thead>
+									
 									<tbody>
 										<!-- Iterating over the list sent from Controller -->
 										<c:forEach var="list" items="${customer}">
-											<tr>
-												<td><a
-													href="loadStockSiteForTechnician?customerName=<c:out value='${list.customerName}'/>">${list.customerName}</a></td>
-												<td>${list.partQuanty}</td>
-												<td>${list.tonerQuantity}</td>
-											</tr>
+											<c:choose>
+												<c:when
+													test="${list.tonerQuantity > 0 || list.partQuanty > 0}">
+													<tr>
+														<td><a
+															href="loadStockSiteForTechnician?customerName=<c:out value='${list.customerName}'/>">${list.customerName}</a></td>
+														<td>${list.partQuanty}</td>
+														<td>${list.tonerQuantity}</td>
+													</tr>
+												</c:when>
+												<c:otherwise>
+												</c:otherwise>
+											</c:choose>
 										</c:forEach>
 									</tbody>
 								</table>
@@ -169,15 +132,23 @@
 												Quantity</th>
 										</tr>
 									</thead>
+									
 									<tbody>
 										<!-- Iterating over the list sent from Controller -->
 										<c:forEach var="list" items="${employees}">
-											<tr>
-												<td><a
-													href="loadBootStockForTechnician?technician=<c:out value='${list.customerName}'/>">${list.techName}</a></td>
-												<td>${list.partQuanty}</td>
-												<td>${list.tonerQuantity}</td>
-											</tr>
+											<c:choose>
+												<c:when
+													test="${list.tonerQuantity > 0 || list.partQuanty > 0}">
+													<tr>
+														<td><a
+															href="loadBootStockForTechnician?technician=<c:out value='${list.customerName}'/>">${list.techName}</a></td>
+														<td>${list.partQuanty}</td>
+														<td>${list.tonerQuantity}</td>
+													</tr>
+												</c:when>
+												<c:otherwise>
+												</c:otherwise>
+											</c:choose>
 										</c:forEach>
 									</tbody>
 								</table>

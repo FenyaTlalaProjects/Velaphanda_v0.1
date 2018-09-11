@@ -121,9 +121,8 @@
 									id="saveSpareParts">
 
 									<!-- group spare details -->
-									<div class="groupsparedetails">
+									<div class="col-sm-6">
 										<legend>Spares</legend>
-
 
 										<!--First Column-->
 										<div class="col-md-12">
@@ -142,26 +141,28 @@
 												</div>
 											</div>
 
-												<!-- Select type Item Type-->
-												<div class="form-group">
+											<!-- Select type Item Type-->
+											<div class="form-group">
 												<label class="col-md-3 control-label">Item Type</label>
 												<div class="col-md-8 inputGroupContainer">
 													<div class="input-group">
 														<span class="input-group-addon"><i
 															class="glyphicon glyphicon-barcode"></i></span> <input
-															id="itemType" readOnly name="itemType" class="form-control"
-															type="text" value="${sparePart.itemType}">
+															id="itemType" readOnly name="itemType"
+															class="form-control" type="text"
+															value="${sparePart.itemType}">
 													</div>
 												</div>
 											</div>
-											
+
 											<div class="form-group">
 												<label class="col-md-3 control-label">Colour</label>
 												<div class="col-md-8 selectContainer">
 													<div class="input-group">
 														<span class="input-group-addon"><i
 															class="glyphicon glyphicon-list"></i></span> <input id="color"
-															class="form-control" readOnly name="color"  value="${sparePart.color}" />
+															class="form-control" readOnly name="color"
+															value="${sparePart.color}" />
 													</div>
 												</div>
 											</div>
@@ -250,22 +251,15 @@
 
 										<!-- Text input Supplier Name-->
 										<div class="form-group">
-											<label class="col-md-3 control-label">Supplier Name</label>
-											<div class="col-md-8 selectContainer">
+											<label class="col-md-3 control-label">Supplier Namer</label>
+											<div class="col-md-8 inputGroupContainer">
 												<div class="input-group">
 													<span class="input-group-addon"><i
-														class="glyphicon glyphicon-list"></i></span><select
-														id="supplierName" class="form-control" name="supplierName"
-														class="form-control selectpicker">
-														<option value="">Select Supplier Name</option>
-														<option value="Canon South Africa">Canon South
-															Africa</option>
-														<option value="Taropa Technologies">Taropa
-															Technologies</option>
-														<option value="Toshiba South Africa">Toshiba South Africa</option>
-														<option value="Riso South Africa">Riso South
-															Africa</option>
-													</select>
+														class="glyphicon glyphicon-barcode"></i></span> <input
+														id="supplierName" readOnly name="supplierName"
+														onkeydown="upperCaseF(this)"
+														placeholder="Enter Part Number" class="form-control"
+														type="text" value="${sparePart.supplierName}">
 												</div>
 											</div>
 										</div>
@@ -286,74 +280,6 @@
 										</div>
 									</div>
 									<!-- //Supplier Details -->
-
-
-									<!--  History Details 
-									<div id="recieveSpare" class="modal fade" role="dialog"
-										aria-hidden="true">
-										<div class="modal-dialog modal-lg">
-
-											<div class="modal-content">
-
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal"
-														aria-hidden="true">×</button>
-													<h3 class="modal-title">Spare Recieve Comment</h3>
-												</div>
-												<p>
-												<div class="modal-body">
-													<div class="row">
-
-														<div class="col-sm-12">
-															<div class="form-group">
-																<div class="alert alert-info" role="alert">
-																	<p>
-																		<strong>Note:</strong>You need to provide what you
-																		have are updating and new data!
-																	</p>
-																</div>
-															</div>
-
-
-															Customer Action
-															<input type="hidden" id="customerAction"
-																name="customerAction" class="form-control"
-																value="Update Customer">
-
-															Text area comments
-															<label class="col-md-3 control-label">Provide
-																Comment</label>
-															<div class="form-group">
-																<div class="col-md-6 inputGroupContainer">
-																	<div class="input-group">
-																		<span class="input-group-addon"><i
-																			class="glyphicon glyphicon-edit"></i></span>
-																		<textarea class="form-control" style="height: 120px;"
-																			id="description" name="description" maxlength="150"
-																			placeholder="Please enter what was updated and new updated data"></textarea>
-																	</div>
-																</div>
-															</div>
-															// text area comments
-
-														</div>
-													</div>
-
-												</div>
-												modal-body
-												<div class="modal-footer">
-													<button type="button" class="btn btn-default"
-														data-dismiss="modal">Cancel</button>
-													<input type="submit" value="Recieve Spare"
-														class="btn btn-primary"
-														onclick="return confirm('Are you sure you want to recieve parts?');">
-												</div>
-											</div>
-											/.modal-content
-										</div>
-										/.modal-dialog
-									</div>
-									/.modal -- History Details -->
 
 
 									<div class="form-group row">

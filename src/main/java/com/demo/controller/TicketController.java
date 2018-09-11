@@ -4586,8 +4586,7 @@ public class TicketController {
 			model.addObject("ticketList", logTicketService
 					.getAllAwaitingSparesTickets(startDate, endDate));
 
-			if (userName.getRole().equalsIgnoreCase("Manager")
-					|| userName.getRole().equalsIgnoreCase("Admin")) {
+			if (userName.getRole().equalsIgnoreCase("Manager")	|| userName.getRole().equalsIgnoreCase("Admin")) {
 
 				model.setViewName("awaitingSpares");
 			}

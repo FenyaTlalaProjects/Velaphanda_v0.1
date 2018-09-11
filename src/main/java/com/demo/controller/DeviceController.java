@@ -165,15 +165,17 @@ public class DeviceController {
 	   model = new ModelAndView();
 	   userName = (Employee) session.getAttribute("loggedInUser");
 		if(userName != null){
+			
 			if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")) {	
 				
 				model.addObject("tickets",ticketsServiceInt.getAllTicketsBySerialNumber(serialNumber));
-				model.addObject("device",deviceServiceInt.getDeviceBySerialNumber(serialNumber) );				
-		        model.setViewName("deviceHistory");
+				model.addObject("device",deviceServiceInt.getDeviceBySerialNumber(serialNumber) );
+				model.setViewName("deviceHistory");
 			}else if(userName.getRole().equalsIgnoreCase("User")){
 				
 				model.addObject("tickets",ticketsServiceInt.getAllTicketsBySerialNumber(serialNumber));
 				model.addObject("device",deviceServiceInt.getDeviceBySerialNumber(serialNumber) );
+				
 		        model.setViewName("userDeviceHistory");
 			}
 	   }else{
@@ -184,7 +186,7 @@ public class DeviceController {
 	
 	// Device History
 	@RequestMapping(value={"viewMoreDeviceHistory","userViewMoreDeviceHistory"}, method = RequestMethod.GET)
-	public ModelAndView moreDeviceHistory(@RequestParam("recordID")Long recordID){
+	public ModelAndView moreDeviceHistory(@RequestParam("recordID")Long recordID,@ModelAttribute Accessories accessory,@ModelAttribute Tickets ticket){
 		   model = new ModelAndView();
 		   userName = (Employee) session.getAttribute("loggedInUser");
 			if(userName != null){
@@ -442,46 +444,46 @@ public class DeviceController {
 			return model;
 		}
 	
-		// search Serial Number to Replace Toner as user and admin /manager
-		@RequestMapping(value = { "searchSerialNumberReplaceToner","searchSerialNumberUserReplaceToner" , "searchSerialNumberTechReplaceToner"})
-			public ModelAndView searchSerialForReplaceToner(@RequestParam("serialNumber") String serialNumber,@ModelAttribute Device device) {
-				
-				model = new ModelAndView();
-				//String tickets ="tickets";		
-				userName = (Employee) session.getAttribute("loggedInUser");
+	// search Serial Number to Replace Toner as user and admin /manager
+	@RequestMapping(value = {"searchSerialNumberReplaceToner","searchSerialNumberUserReplaceToner" , "searchSerialNumberTechReplaceToner"})
+		public ModelAndView searchSerialForReplaceToner(@RequestParam("serialNumber") String serialNumber,@ModelAttribute Device device) {
+			
+			model = new ModelAndView();
+			//String tickets ="tickets";		
+			userName = (Employee) session.getAttribute("loggedInUser");
 
-				if (userName != null) {
+			if (userName != null) {
 
-					device = deviceServiceInt.getDeviceBySerialNumber(serialNumber);
+				device = deviceServiceInt.getDeviceBySerialNumber(serialNumber);
 
-					if (device != null) {
-						model.addObject("product", device);
-					}else {
-						
-						model.addObject("message", "Device does not exist.");				
-					}
-					if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")) {
-						//model.addObject("tickets", tickets);
-						model.addObject("compitableSiteStock",stockInt.getOrdersForCustomer(device.getCustomerDevice().getCustomerName(),device.getModelNumber()));
-						model.addObject("productObject", device);
-						model.setViewName("tonerReplacement");
-						
-					} else if (userName.getRole().equalsIgnoreCase("User")) {
-						//model.addObject("tickets", tickets);						
-						model.addObject("compitableSiteStock",stockInt.getOrdersForCustomer(device.getCustomerDevice().getCustomerName(),device.getModelNumber()));
-						model.addObject("productObject", device);
-						model.setViewName("tonerReplacementUser");
-					}else if (userName.getRole().equalsIgnoreCase("Technician")) {
-						//model.addObject("tickets", tickets);						
-						model.addObject("compitableSiteStock",stockInt.getOrdersForCustomer(device.getCustomerDevice().getCustomerName(),device.getModelNumber()));
-						model.addObject("productObject", device);
-						model.setViewName("tonerReplacementTech");
-					}
-				}else{
-					model.setViewName("login");
+				if (device != null) {
+					model.addObject("product", device);
+				}else {
+					
+					model.addObject("message", "Device does not exist.");				
 				}
-				return model;
-	}
+				if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")) {
+					//model.addObject("tickets", tickets);
+					model.addObject("compitableSiteStock",stockInt.getOrdersForCustomer(device.getCustomerDevice().getCustomerName(),device.getModelNumber()));
+					model.addObject("productObject", device);
+					model.setViewName("tonerReplacement");
+					
+				} else if (userName.getRole().equalsIgnoreCase("User")) {
+					//model.addObject("tickets", tickets);						
+					model.addObject("compitableSiteStock",stockInt.getOrdersForCustomer(device.getCustomerDevice().getCustomerName(),device.getModelNumber()));
+					model.addObject("productObject", device);
+					model.setViewName("tonerReplacementUser");
+				}else if (userName.getRole().equalsIgnoreCase("Technician")) {
+					//model.addObject("tickets", tickets);						
+					model.addObject("compitableSiteStock",stockInt.getOrdersForCustomer(device.getCustomerDevice().getCustomerName(),device.getModelNumber()));
+					model.addObject("productObject", device);
+					model.setViewName("tonerReplacementTech");
+				}
+			}else{
+				model.setViewName("login");
+			}
+			return model;
+}
 
 
 	

@@ -25,21 +25,21 @@ import lombok.experimental.Builder;
 
 
 @Entity
-@Table(name="History")
+@Table(name="HistoryMovement")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Builder
 
-public class History implements  Serializable  {
+public class HistoryMovement implements  Serializable  {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GenericGenerator(name="gen",strategy="increment")
 	@GeneratedValue(generator="gen")
 	@Column(name="History_ID", unique = true, nullable = false, precision = 15, scale = 0)
-	private Long historyID;
+	private Long historyMovementID;
 	@Column(name="Classification")
 	private String classification;	
 	@Column(name="ObjectId")
@@ -50,31 +50,17 @@ public class History implements  Serializable  {
 	private String userName;
 	@Column(name="Action")
 	private String action;
-	@Column(name="DateTime")
-	private String dateTime;
-	@Column(name="Quantity")
-	private int quantity;
-	@Column(name="DataField1")
-	private String dataField1;
-	@Column(name="DataField2")
-	private String dataField2;
+	@Column(name="DateTimeMoved")
+	private String dateTimeMoved;
+	@Column(name="QuantityMoved")
+	private int quantityMoved;
+	@Column(name="MovedFrom")
+	private String movedFrom;
+	@Column(name="MovedTo")
+	private String movedTo;
 	@Column(name="Description")
 	private String description;
 	
-	//for Head Office
-	@Column(name="HO_ObjectID")
-	private String hoObjectId;
-	@Column(name="Spares_Recieved_By")
-	private String hoSpareRecievedBy;
-	@Column(name="Action_HO_Spares")
-	private String hoActionSpares;
-	@Column(name="Date_Spares_Recieved")
-	private String hoDateSpareRecieved;
-	@Column(name="Supplier_Name")
-	private String hoSupplierName;
-	@Column(name="Supplier_Order_No")
-	private String hoSupplierOrderNo;
-	@Column(name="Quantity_Recieved")
-	private int hoQuantityRecieved;
+	
 }
 

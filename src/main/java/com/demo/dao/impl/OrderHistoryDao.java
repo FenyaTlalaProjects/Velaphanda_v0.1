@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.demo.dao.EmployeeDaoInt;
 import com.demo.dao.OrderHistoryDaoInt;
 import com.demo.dao.OrdersDaoInt;
 import com.demo.dao.TicketsDaoInt;
@@ -37,13 +38,15 @@ public class OrderHistoryDao implements OrderHistoryDaoInt{
 	private TicketsDaoInt ticketsDaoInt;
 	@Autowired
 	private HttpSession session;
+	@Autowired
+	private EmployeeDaoInt employeeDaoInt;
 	private OrderHistory orderHistory = null;
 	private OrderHeader orderHeader = null;
 	
 	private DateFormat dateFormat = null;
 	private Date date = null;
 	private String orderNumber ="ORD000";
-	Employee userName, emp, empLoggedIn = null;
+	Employee userName, emp, empLoggedIn, technician = null;
 	
 	@Override
 	public void insetOrderHistory(OrderHeader order) {
@@ -53,23 +56,26 @@ public class OrderHistoryDao implements OrderHistoryDaoInt{
 		empLoggedIn = (Employee) session.getAttribute("loggedInUser");
 		try{
 			//List<OrderDetails> orderDetails = getOrderDetailsByOrderNum(recordID);
+			String [] managerEmails = employeeDaoInt.managersEmails();
+			technician = employeeDaoInt.getEmployeeByEmpNum(order.getStatus());
+			
 			orderHistory.setOrderNum(orderNumber+ order.getRecordID());
 			orderHistory.setOrderStatus(order.getStatus());
 			
 			if(order.getStatus().equalsIgnoreCase("Approved") ){
 				orderHistory.setStatusDateTime(order.getDateApproved());
-				//orderHistory.setUserOrderAction(order.getApprover());
+				orderHistory.setUserOrderAction(empLoggedIn.getFirstName() +" "+ empLoggedIn.getLastName());
 			}else if(order.getStatus().equalsIgnoreCase("Pending")){
 				orderHistory.setStatusDateTime(order.getDateOrdered());
-				//orderHistory.getUserOrderAction();
+				orderHistory.setUserOrderAction(empLoggedIn.getFirstName() +" "+ empLoggedIn.getLastName());
 			}
 			else if(order.getStatus().equalsIgnoreCase("Shipped")){
 				orderHistory.setStatusDateTime(order.getShippingDate());
-				//orderHistory.setUserOrderAction(order.getApprover());
+				orderHistory.setUserOrderAction(empLoggedIn.getFirstName() +" "+ empLoggedIn.getLastName());
 			}
 			else if(order.getStatus().equalsIgnoreCase("Received")){
 				orderHistory.setStatusDateTime(order.getOrderReceivedDateTime());
-				//orderHistory.getUserOrderAction();
+				orderHistory.setUserOrderAction(empLoggedIn.getFirstName() +" "+ empLoggedIn.getLastName());
 			}else{
 				orderHistory.setStatusDateTime(dateFormat.format(date));
 			}
