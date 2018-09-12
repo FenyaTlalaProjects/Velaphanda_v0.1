@@ -561,8 +561,7 @@ public class DeviceDao implements DeviceDaoInt {
 		return (List<TicketHistory>) sessionFactory.getCurrentSession().get(TicketHistory.class,
 				recordID);
 	}
-	
-	
+		
 
 	@Override
 	public String replaceToner(String compitableSiteStock,

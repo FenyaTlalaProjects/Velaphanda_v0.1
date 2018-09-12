@@ -424,7 +424,7 @@
 												</div>
 											</div>
 											
-												<!-- Text input Contact Person Cellphone Number-->
+											<!-- Text input Contact Person Cellphone Number-->
 											<div class="form-group">
 												<div class="col-md-10 inputGroupContainer">
 													<div class="input-group">
@@ -437,9 +437,7 @@
 													</div>
 												</div>
 											</div>
-											
-											
-
+										
 										</fieldset>
 
 									</div>
@@ -478,8 +476,6 @@
 	<!--/.main-->
 	<c:import url="templates/javascriptslib.jsp"></c:import>
 	<c:import url="templates/sidebar-collapse.jsp"></c:import>
-
-
 	<script type="text/javascript">
 		function validate(form) {
 			var checkboxs = document.getElementsByName("compitableSiteStock");

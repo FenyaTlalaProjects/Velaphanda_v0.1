@@ -3324,7 +3324,7 @@ public class TicketController {
 	public ModelAndView tonerReplaceAdmin(
 			@RequestParam("compitableSiteStock") String compitableSiteStock,
 			@RequestParam("currentMonoReading") String currentMonoReading,
-			@RequestParam("currentColourReading") String currentColourReading,
+			@RequestParam("currentColourReading") String currentColourReading,			
 			@RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName,
 			@RequestParam("loggedInUser") String loggedInUser,

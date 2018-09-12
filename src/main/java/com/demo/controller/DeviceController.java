@@ -444,48 +444,63 @@ public class DeviceController {
 			return model;
 		}
 	
-	// search Serial Number to Replace Toner as user and admin /manager
-	@RequestMapping(value = {"searchSerialNumberReplaceToner","searchSerialNumberUserReplaceToner" , "searchSerialNumberTechReplaceToner"})
-		public ModelAndView searchSerialForReplaceToner(@RequestParam("serialNumber") String serialNumber,@ModelAttribute Device device) {
+	@RequestMapping(value = { "searchSerialNumberReplaceToner","searchSerialNumberUserReplaceToner" , "searchSerialNumberTechReplaceToner"})
+	public ModelAndView searchSerialForReplaceToner(@RequestParam("serialNumber") String serialNumber,@ModelAttribute Device device) {
+		
+		model = new ModelAndView();
+		
+		userName = (Employee) session.getAttribute("loggedInUser");
+		
+		if (userName != null) {
 			
-			model = new ModelAndView();
-			//String tickets ="tickets";		
-			userName = (Employee) session.getAttribute("loggedInUser");
-
-			if (userName != null) {
-
+			if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")) {
 				device = deviceServiceInt.getDeviceBySerialNumber(serialNumber);
 
-				if (device != null) {
+				if (device != null) {				
+					model.addObject("technicians", employeeServiceInt.getAllTechnicians());
 					model.addObject("product", device);
-				}else {
-					
-					model.addObject("message", "Device does not exist.");				
+					model.addObject("compitableSiteStock",stockInt.getOrdersForCustomer(device.getCustomerDevice().getCustomerName(),device.getModelNumber()));
+					model.addObject("productObject", device);
 				}
-				if (userName.getRole().equalsIgnoreCase("Manager") || userName.getRole().equalsIgnoreCase("Admin")) {
-					//model.addObject("tickets", tickets);
-					model.addObject("compitableSiteStock",stockInt.getOrdersForCustomer(device.getCustomerDevice().getCustomerName(),device.getModelNumber()));
-					model.addObject("productObject", device);
-					model.setViewName("tonerReplacement");
-					
-				} else if (userName.getRole().equalsIgnoreCase("User")) {
-					//model.addObject("tickets", tickets);						
-					model.addObject("compitableSiteStock",stockInt.getOrdersForCustomer(device.getCustomerDevice().getCustomerName(),device.getModelNumber()));
-					model.addObject("productObject", device);
-					model.setViewName("tonerReplacementUser");
-				}else if (userName.getRole().equalsIgnoreCase("Technician")) {
-					//model.addObject("tickets", tickets);						
-					model.addObject("compitableSiteStock",stockInt.getOrdersForCustomer(device.getCustomerDevice().getCustomerName(),device.getModelNumber()));
-					model.addObject("productObject", device);
-					model.setViewName("tonerReplacementTech");
+				else{				
+					model.addObject("message", "Device does not exist.");			
 				}
-			}else{
-				model.setViewName("login");
+				model.setViewName("tonerReplacement");				
+			}else if (userName.getRole().equalsIgnoreCase("User")) {
+				device = deviceServiceInt.getDeviceBySerialNumber(serialNumber);
+
+				if (device != null) {				
+					model.addObject("technicians", employeeServiceInt.getAllTechnicians());
+					model.addObject("product", device);
+					model.addObject("compitableSiteStock",stockInt.getOrdersForCustomer(device.getCustomerDevice().getCustomerName(),device.getModelNumber()));
+					model.addObject("productObject", device);
+				}
+				else{				
+					model.addObject("message", "Device does not exist.");			
+				}
+				model.setViewName("tonerReplacementUser");
+			}else if (userName.getRole().equalsIgnoreCase("Technician")) {
+				
+				device = deviceServiceInt.getDeviceBySerialNumber(serialNumber);
+
+				if (device != null) {				
+					model.addObject("technicians", employeeServiceInt.getAllTechnicians());
+					model.addObject("product", device);
+					model.addObject("compitableSiteStock",stockInt.getOrdersForCustomer(device.getCustomerDevice().getCustomerName(),device.getModelNumber()));
+					model.addObject("productObject", device);
+				}
+				else{				
+					model.addObject("message", "Device does not exist.");			
+				}
+				model.setViewName("tonerReplacementTech");
 			}
-			return model;
-}
-
-
+			
+		
+		}else{
+			model.setViewName("login");
+		}
+		return model;
+	}
 	
 	@RequestMapping(value="removeAccessory")
 	public ModelAndView removeAccessory(@ModelAttribute("removeAccessory")DeviceBean removeAccessory,DeviceBean deviceBean)
@@ -493,8 +508,7 @@ public class DeviceController {
 		String updateDevice ="updateDevice";
 		model = new ModelAndView();
 		userName = (Employee) session.getAttribute("loggedInUser");
-		if(userName != null){
-			
+		if(userName != null){			
 			model.addObject("retMessage",accessoriesInt.removeAccessory(removeAccessory.getChkAccessories(),deviceBean));
 			model.addObject("updateDevice",updateDevice);
 			model.setViewName("confirmations");
