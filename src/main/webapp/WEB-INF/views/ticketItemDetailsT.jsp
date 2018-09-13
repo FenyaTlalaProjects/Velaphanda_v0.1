@@ -2116,31 +2116,39 @@ li {
 									<!-- ticketClosedNoAction -->
 									<div class="tab-pane" id="tTicketClosedNoAction">
 
+										<br />
 										
 											<legend style="font-size: 18px; line-height: 1.42857143;"
-											align="center">
+													align="center">
 													Closed Details
 												</legend>
-											
-											<form:form class="well form-horizontal">
-												
+
+											<form:form class="well form-horizontal">												
 												<!-- Text input Serial No-->
 												<div class="form-group">
-													<label class="col-md-2">Serial No</label>													
+													<label class="col-md-3">Serial No</label>
 													${ticketObject.getDevice().getSerialNumber() }
 												</div>
 
-												<!-- Text area Action Taken-->
-												<div class="actionTaken">
-													<label class="col-md-2">Action Taken</label>"${ticketObject.actionTaken }
-												</div>
+												<c:if test="${empty ticketObject.actionTaken}">
+												</c:if>
+												<c:if test="${not empty ticketObject.actionTaken}">
+
+													<!-- Text area Action Taken-->
+													<div class="actionTaken">
+														<div class="form-group">
+															<label class="col-md-3">Action
+																Taken</label>${ticketObject.actionTaken}
+															</div>
+													</div>
+												</c:if>
 
 												<c:if test="${empty ticketObject.comments}">
 												</c:if>
 												<c:if test="${not empty ticketObject.comments}">
 													<!-- Text area Comment-->
 													<div class="form-group">
-														<label class="col-md-2">Comments</label>
+														<label class="col-md-3">Comments</label>
 														${ticketObject.comments}
 													</div>
 												</c:if>
@@ -2151,7 +2159,7 @@ li {
 													<!-- display Bridged-->
 													<div class="reseanBridged" id="reseanBridged">
 														<div class="form-group">
-															<label class="col-md-2">Bridged
+															<label class="col-md-3">Bridged
 																Reason</label>${ticketObject.bridgedReason}
 														</div>
 													</div>
@@ -2162,34 +2170,34 @@ li {
 												</c:if>
 												<c:if test="${not empty ticketObject.usedPartNumbers}">
 
-													<!-- Text area Used Spare Part-->
-													<div class="usedPartNumbersDetails">
+													
 														<div class="form-group">
-															<label class="col-md-2">Used
-																Spare/Part</label>${ticketObject.usedPartNumbers}
+															<!-- Text area Used Spare Part-->
+															<div class="usedPartNumbersDetails">
+																<label class="col-md-3">Used
+																	Spare/Part</label>${ticketObject.usedPartNumbers}
+															</div>
 														</div>
-													</div>
-												</c:if>
-												<c:if test="${ticketObject.getDevice().getColourReading() }">
 												</c:if>
 												<c:if
-													test="${not empty ticketObject.getDevice().getColourReading() }">
+													test="${empty $ticketObject.getDevice().getColourReading()}">
+												</c:if>
+												<c:if
+													test="${not empty $ticketObject.getDevice().getColourReading()}">
 
 													<!-- Text checkbox Colour Reading-->
 													<div class="form-group">
-														<label class="col-md-2">Colour
-															Reading</label>
-														${ticketObject.getDevice().getColourReading() }"
-																
+														<label class="col-md-3">Colour
+															Reading</label>${ticketObject.getDevice().getColourReading() }"
+															
 													</div>
-
 												</c:if>
 
-
-												<c:if test="${ticketObject.getDevice().getColourReading() }">
+												<c:if
+													test="${empty $ticketObject.getDevice().getMonoReading()}">
 												</c:if>
 												<c:if
-													test="${not empty ticketObject.getDevice().getMonoReading() }">
+													test="${not empty $ticketObject.getDevice().getMonoReading()}">
 
 													<div class="form-group">
 														<label class="col-md-3">Mono Reading</label>
@@ -2215,7 +2223,6 @@ li {
 														</div>
 													</div>
 													<!--// display ticked Used Part Numbers-->
-
 												</div>
 												<!-- displayNone for getPartToner -->
 
@@ -2224,13 +2231,11 @@ li {
 												<c:if test="${not empty ticketObject.reopenReason}">
 													<!-- Text area reopenReason-->
 													<div class="form-group">
-														<label class="col-md-2">Re-Open
-															Reason</label>
-														${ticketObject.reopenReason}
+														<label class="col-md-3">Re-Open
+															Reason</label>${ticketObject.reopenReason}															
 													</div>
 													<!-- Text area reopenReason-->
 												</c:if>
-
 											</form:form>
 										</div>
 										<!-- pane body -->
