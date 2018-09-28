@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <c:import url="templates/tableresizefont.jsp"></c:import>
 <c:import url="templates/stylesheetlib.jsp"></c:import>
-
 </head>
 <body>
 
