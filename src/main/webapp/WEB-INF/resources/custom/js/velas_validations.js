@@ -56,8 +56,8 @@ $(document)
 														validators : {
 															stringLength : {
 																min : 10,
-																max : 100,
-																message : 'Please enter at least 10 characters and no more than 100'
+																max : 500,
+																message : 'Please enter at least 10 characters and not more than 500'
 															},
 															notEmpty : {
 																message : 'Description is required and cannot be empty'
@@ -431,17 +431,20 @@ $(document)
 														message : 'The email address is not valid'
 													}
 												}
-											},
+											},											
 											description : {
 												validators : {
+													stringLength : {
+														min : 10,
+														max : 500,
+														message : 'Please enter at least 10 characters and not more than 500'
+													},
 													notEmpty : {
-														stringLength : {
-															min : 4,
-														},
 														message : 'Comment is required of what was updated and updated to what, this cannot be empty'
+															
 													}
 												}
-											},
+											}
 
 										}
 
@@ -1074,11 +1077,14 @@ $(document)
 											},
 											description : {
 												validators : {
+													stringLength : {
+														min : 10,
+														max : 500,
+														message : 'Please enter at least 10 characters and not more than 500'
+													},
 													notEmpty : {
-														stringLength : {
-															min : 4,
-														},
 														message : 'Comment is required of what was updated and updated to what, this cannot be empty'
+															
 													}
 												}
 											}

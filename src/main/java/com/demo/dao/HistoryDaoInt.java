@@ -8,10 +8,6 @@ import com.demo.model.History;
 public interface HistoryDaoInt {
 
 	String saveHistory(HistoryBean history);
-	List<History> getAllHistoryByCustomer();
-	List<History> getHistoryByCustomer(String customerName);
-	List<History> getAllHistoryBySerialNumber();
-	List<History> getHistoryBySerialNumber(String serialNumber);
 	List<History> getHistoryByPartNumber(String partNumber);
 	List<History> getAllHistoryByPartNumber();
 	List<History> getSiteStockHistoryByPartNumber(String partNumber);

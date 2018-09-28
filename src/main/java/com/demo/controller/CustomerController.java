@@ -19,6 +19,7 @@ import com.demo.model.Device;
 import com.demo.model.Employee;
 import com.demo.service.AccessoriesInt;
 import com.demo.service.CustomerContactDetailsServiceInt;
+import com.demo.service.CustomerDeviceHistoryServiceInt;
 import com.demo.service.CustomerServiceInt;
 import com.demo.service.DeviceServiceInt;
 import com.demo.service.HistoryServiceInt;
@@ -35,7 +36,7 @@ public class CustomerController {
 	@Autowired
 	private CustomerServiceInt customerServiceInt;
 	@Autowired
-	private HistoryServiceInt customerHistoryServiceInt;
+	private CustomerDeviceHistoryServiceInt customerHistoryServiceInt;
 	@Autowired
 	private DeviceServiceInt deviceServiceInt;
 	@Autowired

@@ -955,6 +955,8 @@
 																<option value="Cleaned Rollers">Cleaned Rollers</option>
 																<option value="Move Copier To New Location">Move Copier To New Location</option>
 																<option value="Firmware Upgrade">Firmware Upgrade</option>
+																<option value="Cleaned Waste Toner Bottle">Cleaned Waste Toner Bottle</option>
+																<option value="Replaced Stipples">Replaced Stipples</option>
 															</select>
 														</div>
 													</div>
@@ -1289,6 +1291,9 @@
 																<option value="Cleaned Rollers">Cleaned Rollers</option>
 																<option value="Move Copier To New Location">Move Copier To New Location</option>
 																<option value="Firmware Upgrade">Firmware Upgrade</option>
+																<option value="Cleaned Waste Toner Bottle">Cleaned Waste Toner Bottle</option>
+																<option value="Replaced Stipples">Replaced Stipples</option>
+																
 															</select>
 														</div>
 													</div>
@@ -1624,6 +1629,9 @@
 																<option value="Cleaned Rollers">Cleaned Rollers</option>
 																<option value="Move Copier To New Location">Move Copier To New Location</option>
 																<option value="Firmware Upgrade">Firmware Upgrade</option>
+																<option value="Cleaned Waste Toner Bottle">Cleaned Waste Toner Bottle</option>
+																<option value="Replaced Stipples">Replaced Stipples</option>
+																
 															</select>
 														</div>
 													</div>

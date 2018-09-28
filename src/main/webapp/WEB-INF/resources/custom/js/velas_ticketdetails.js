@@ -155,8 +155,14 @@ $(document)
 											},
 											comments : {
 												validators : {
+													stringLength : {
+														min : 10,
+														max : 500,
+														message : 'Please enter at least 10 characters and not more than 500'
+													},
 													notEmpty : {
 														message : 'Comment is required and can not be empty'
+															
 													}
 												}
 											},
@@ -242,7 +248,9 @@ $("#actionTaken").on(
 					|| $(this).val() == "Cleaned Laser Unit"
 					|| $(this).val() == "Cleaned Charge Rollers"
 					|| $(this).val() == "Cleaned ADF Class"
-					|| $(this).val() == "Cleaned Rollers") {
+					|| $(this).val() == "Cleaned Rollers"
+					|| $(this).val() == "Cleaned Waste Toner Bottle"
+					|| $(this).val() == "Replaced Stipples") {
 				$('textarea[name="usedPartNumbers"]:enabled').attr('disabled',
 						false);
 				$('#usedPartNumbers').attr('disabled', false);
@@ -273,8 +281,9 @@ function Faulty(val) {
 			|| val == 'Configured Printer' || val == 'User Error'
 			|| val == 'No fault Found' || val == 'Cleaned Mirrors'
 			|| val == 'Cleaned Laser Unit' || val == 'Cleaned Charge Rollers'
-			|| val == 'Cleaned ADF Class' || val == 'Cleaned Rollers' || val == 'Firmware Upgrade')
-
+			|| val == 'Cleaned ADF Class' || val == 'Cleaned Rollers' || val == 'Firmware Upgrade'
+			|| val == 'Cleaned Waste Toner Bottle' || val == 'Replaced Stipples')
+		
 		element.style.display = 'block';
 	else
 		element.style.display = 'none';
@@ -288,7 +297,8 @@ function Faulty(val) {
 			|| val == 'No fault Found' || val == 'Replaced Part/Toner'
 			|| val == 'Cleaned Mirrors' || val == 'Cleaned Laser Unit'
 			|| val == 'Cleaned Charge Rollers' || val == 'Cleaned ADF Class'
-			|| val == 'Cleaned Rollers' || val == "Firmware Upgrade")
+			|| val == 'Cleaned Rollers' || val == "Firmware Upgrade"
+			|| val == 'Cleaned Waste Toner Bottle' || val == 'Replaced Stipples')
 		element.style.display = 'block';
 	else
 		element.style.display = 'none';
@@ -302,7 +312,9 @@ function Faulty(val) {
 			|| val == 'No fault Found' || val == 'Replaced Part/Toner'
 			|| val == 'Cleaned Mirrors' || val == 'Cleaned Laser Unit'
 			|| val == 'Cleaned Charge Rollers' || val == 'Cleaned ADF Class'
-			|| val == 'Cleaned Rollers' || val == "Firmware Upgrade")
+			|| val == 'Cleaned Rollers' || val == "Firmware Upgrade"
+			|| val == 'Cleaned Waste Toner Bottle' || val == 'Replaced Stipples')
+		
 		element.style.display = 'block';
 	else
 		element.style.display = 'none';

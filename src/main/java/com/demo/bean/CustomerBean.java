@@ -36,7 +36,7 @@ public class CustomerBean {
 	private String contactEmail1;
 	private String contactType1;
 	//updating customer	
-	private String decription;
+	private String description;
 	
 	
 	

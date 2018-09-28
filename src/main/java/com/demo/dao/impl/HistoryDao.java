@@ -82,62 +82,6 @@ public class HistoryDao implements HistoryDaoInt {
 	}
 	
 	@Override
-	public List<History> getHistoryByCustomer(String customerName) {
-		
-		List<History> newList = null;
-		try{
-			
-			List<History> list = getAllHistoryByCustomer();
-			newList = new ArrayList<History>();
-			for(History customerHistory:list){
-				if(customerHistory.getObjectId().equals(customerName)){
-					newList.add(customerHistory);
-				}
-			}
-			
-		}catch(Exception e){
-			e.getMessage();
-		}
-		return newList;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<History> getAllHistoryByCustomer() {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
-				History.class);
-		return (List<History>) criteria.list();	
-	}
-	
-	@Override
-	public List<History> getHistoryBySerialNumber(String serialNumber) {
-		
-		List<History> newList = null;
-		try{
-			
-			List<History> list = getAllHistoryBySerialNumber();
-			newList = new ArrayList<History>();
-			for(History deviceHistory:list){
-				if(deviceHistory.getObjectId().equals(serialNumber)){
-					newList.add(deviceHistory);
-				}
-			}
-			
-		}catch(Exception e){
-			e.getMessage();
-		}
-		return newList;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<History> getAllHistoryBySerialNumber() {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
-				History.class);
-		return (List<History>) criteria.list();	
-	}
-	
-	@Override
 	public List<History> getHistoryByPartNumber(String partNumber) {
 		
 		List<History> newList = null;
