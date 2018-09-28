@@ -29,22 +29,6 @@ public class HistoryService implements HistoryServiceInt {
 		retMessage =historyDAO.saveHistory(history);
 		return retMessage;		
 	}	
-	@Override
-	public List<History> getAllHistoryByCustomer() {		
-		return historyDAO.getAllHistoryByCustomer();
-	}		
-	@Override
-	public List<History> getHistoryByCustomer(String customerName){		
-		return historyDAO.getHistoryByCustomer(customerName);
-	}	
-	@Override
-	public List<History> getAllHistoryBySerialNumber() {		
-		return historyDAO.getAllHistoryBySerialNumber();
-	}	
-	@Override
-	public List<History> getHistoryBySerialNumber(String serialNumber){	
-		return historyDAO.getHistoryBySerialNumber(serialNumber);
-	}
 	
 	@Override
 	public List<History> getAllHistoryByPartNumber() {		

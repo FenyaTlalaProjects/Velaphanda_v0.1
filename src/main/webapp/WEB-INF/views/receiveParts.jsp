@@ -272,7 +272,7 @@
 
 										<!-- Text input Supplier Name-->
 										<div class="form-group">
-											<label class="col-md-3 control-label">Supplier Namer</label>
+											<label class="col-md-3 control-label">Supplier Name</label>
 											<div class="col-md-8 inputGroupContainer">
 												<div class="input-group">
 													<span class="input-group-addon"><i
@@ -293,7 +293,7 @@
 												<div class="input-group">
 													<span class="input-group-addon"><i
 														class="glyphicon glyphicon-user"></i></span> <input type="text"
-														id="supplierOrderNo" name="supplierOrderNo"
+														id="supplierOrderNo" name="supplierOrderNo" onkeydown="upperCaseF(this)"
 														class="form-control" value=""
 														placeholder="Provide Supplier Order No">
 												</div>

@@ -21,10 +21,12 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.demo.bean.CustomerDeviceHistoryBean;
 import com.demo.bean.DeviceBean;
 import com.demo.bean.HistoryBean;
 import com.demo.dao.AccessoriesDaoInt;
 import com.demo.dao.CustomerDaoInt;
+import com.demo.dao.CustomerDeviceHistoryDaoInt;
 import com.demo.dao.DeviceDaoInt;
 import com.demo.dao.EmployeeDaoInt;
 import com.demo.dao.HistoryDaoInt;
@@ -68,13 +70,11 @@ public class DeviceDao implements DeviceDaoInt {
 	@Autowired
 	private HttpSession session = null;
 	@Autowired
-	private HistoryDaoInt historyDaoInt;
-	
+	private CustomerDeviceHistoryDaoInt deviceHistoryDaoInt;
 	@Autowired
 	private ModelNumbersMasterDaoInt modelNumbersMasterDaoInt;
+	
 	private String retMessage = null;
-	@SuppressWarnings("unused")
-	private Date currentDate = null;
 	ArrayList<Device> productList = null;
 	List<Device> deviceList = null; 
 	ArrayList<?> aList = null;
@@ -83,7 +83,7 @@ public class DeviceDao implements DeviceDaoInt {
 	Device device = null;
 
 	Employee userName, emp = null;
-	HistoryBean historyBean = null;
+	CustomerDeviceHistoryBean historyBean = null;
 	TicketHistory ticketHistory = null;
 	private ModelNumbers modelNum = null;
 	List<Accessories> accessoryList = null;
@@ -103,7 +103,7 @@ public class DeviceDao implements DeviceDaoInt {
 		try {
 			 localdevice = getDeviceBySerialNumbuer(device.getSerialNumber());
 			if (localdevice == null) {
-				historyBean = new HistoryBean();
+				historyBean = new CustomerDeviceHistoryBean();
 				//Prepare Device Data for History Table
 				historyBean.setAction("Create");
 				historyBean.setClassification("Device");
@@ -111,13 +111,10 @@ public class DeviceDao implements DeviceDaoInt {
 				historyBean.setUserEmail(emp.getEmail());
 				historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
 				historyBean.setDescription("Initial create of Device");
-				historyBean.setDataField1(null);
-				historyBean.setDataField2(null);
-				//historyBean.setQuantity((Integer) null);
 				device.setDateTime(timeDeviceAdded);			
 				sessionFactory.getCurrentSession().saveOrUpdate(device);
 				System.err.println("Device History is inserted into DB when installing machine for client");
-				historyDaoInt.saveHistory(historyBean);
+				deviceHistoryDaoInt.saveCustomerDeviceHistory(historyBean);
 				retMessage = "Device "
 						+ device.getSerialNumber()
 						+ " succefully added. The device belongs to customer : "
@@ -161,26 +158,23 @@ public class DeviceDao implements DeviceDaoInt {
 	@Override
 	public String updateDevice(Device device,DeviceBean deviceBean) {
 		
-		historyBean = new HistoryBean();
+		historyBean = new CustomerDeviceHistoryBean();
 		
 		emp = (Employee) session.getAttribute("loggedInUser");
 		
 		try {
 			System.err.println("Moleko");
-			historyBean = new HistoryBean();
+			historyBean = new CustomerDeviceHistoryBean();
 			//Prepare Device Data for History Table
 			historyBean.setAction("Update");
 			historyBean.setClassification("Device");
 			historyBean.setObjectId(device.getSerialNumber());
 			historyBean.setUserEmail(emp.getEmail());
 			historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
-			historyBean.setDescription(deviceBean.getDecription());
-			historyBean.setDataField1(null);
-			historyBean.setDataField2(null);
-			//historyBean.setQuantity((Integer) null);
+			historyBean.setDescription(deviceBean.getDescription());
 			sessionFactory.getCurrentSession().update(device);			
 			System.err.println("Device History is inserted into DB on Update");
-			historyDaoInt.saveHistory(historyBean);
+			deviceHistoryDaoInt.saveCustomerDeviceHistory(historyBean);
 			device.setDateTime(timeDeviceAdded);
 			retMessage = "Device " + device.getSerialNumber()
 					+ " is successfully updated. Device belongs to customer : "
@@ -201,7 +195,7 @@ public class DeviceDao implements DeviceDaoInt {
 		contactPerson = new DeviceContactPerson();
 		device = new Device();
 		String oldSerial =null;
-		historyBean = new HistoryBean();
+		historyBean = new CustomerDeviceHistoryBean();
 		emp = (Employee) session.getAttribute("loggedInUser");
 		try {
 
@@ -242,7 +236,7 @@ public class DeviceDao implements DeviceDaoInt {
 				contactPerson.setCellphone(deviceBean.getCellphone());
 				contactPerson.setTelephone(deviceBean.getTelephone());
 				//get description on updating
-				historyBean.setDescription(deviceBean.getDecription());
+				historyBean.setDescription(deviceBean.getDescription());
 				
 				customer = customerDaoInt.getClientByClientName(deviceBean.getCustomerName());
 

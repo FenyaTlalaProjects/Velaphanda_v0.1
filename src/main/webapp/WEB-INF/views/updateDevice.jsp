@@ -722,7 +722,7 @@
 														name="customerAction" class="form-control"
 														value="Update Customer">
 
-													<!-- Text area comments-->
+														<!-- Text area comments-->
 													<label class="col-md-3 control-label">Provide
 														Comment</label>
 													<div class="form-group">
@@ -731,7 +731,7 @@
 																<span class="input-group-addon"><i
 																	class="glyphicon glyphicon-edit"></i></span>
 																<textarea class="form-control" style="height: 120px;"
-																	id="decription" name="decription" maxlength="150"
+																	id="description" name="description" maxlength="150"
 																	placeholder="Please enter what was updated and new updated data"></textarea>
 															</div>
 														</div>

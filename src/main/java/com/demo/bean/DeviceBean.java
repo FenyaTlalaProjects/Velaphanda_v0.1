@@ -69,6 +69,6 @@ public class DeviceBean {
 	private String updateFlag;
 	
 	//updating device	
-	private String decription;
+	private String description;
 
 }

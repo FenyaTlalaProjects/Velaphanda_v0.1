@@ -134,7 +134,7 @@ public class AccessoriesDao implements AccessoriesDaoInt {
 				historyBean.setObjectId(deviceBean.getSerialNumber());
 				historyBean.setUserEmail(emp.getEmail());
 				historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
-				historyBean.setDescription(deviceBean.getDecription());
+				historyBean.setDescription(deviceBean.getDescription());
 				historyBean.setDataField1(null);
 				historyBean.setDataField2(null);
 				//historyBean.setQuantity((Integer) null);

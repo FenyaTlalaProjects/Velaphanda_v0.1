@@ -263,10 +263,10 @@
 												Finisher SL-FIN701H / SL-FIN701B</td>
 											<td>52,4 KB</td>
 											<td><a target="_blank"
-												href="resources/service_manuals/samsung/FIN's/SL-FIN701B/Service Manual/0_Cover_FIN701.pdf">
+												href="resources/service_manuals/samsung/FIN's/SL-FIN701B/0_Cover_FIN701.pdf">
 													View PDF</a></td>
 											<td><a target="_blank" download
-												href="resources/service_manuals/samsung/FIN's/SL-FIN701B/Service Manual/0_Cover_FIN701.pdf">
+												href="resources/service_manuals/samsung/FIN's/SL-FIN701B/0_Cover_FIN701.pdf">
 													Download PDF</a></td>
 										</tr>
 

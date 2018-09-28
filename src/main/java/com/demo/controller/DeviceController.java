@@ -21,6 +21,7 @@ import com.demo.model.TicketHistory;
 import com.demo.model.Tickets;
 import com.demo.service.AccessoriesInt;
 import com.demo.service.CustomerContactDetailsServiceInt;
+import com.demo.service.CustomerDeviceHistoryServiceInt;
 import com.demo.service.CustomerServiceInt;
 import com.demo.service.EmployeeServiceInt;
 import com.demo.service.DeviceServiceInt;
@@ -38,7 +39,7 @@ import com.demo.service.TicketsServiceInt;
 public class DeviceController {
 	
 	@Autowired
-	private HistoryServiceInt deviceHistoryServiceInt;
+	private CustomerDeviceHistoryServiceInt deviceHistoryServiceInt;
 	@Autowired
 	private SpareMasterServiceInt spareMasterServiceInt;
 	@Autowired
@@ -266,10 +267,8 @@ public class DeviceController {
 		else{
 			model.setViewName("login");
 		}
-		return model;
-		
-	}
-	
+		return model;		
+	}	
 	@RequestMapping(value={"displayDeviceHistory","userDisplayDeviceHistory"},method=RequestMethod.GET)
 	public ModelAndView displayDeviceHistory(String serialNumber)
 	{

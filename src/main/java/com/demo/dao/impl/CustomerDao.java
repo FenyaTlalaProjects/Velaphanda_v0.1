@@ -19,12 +19,15 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.bean.CustomerBean;
+import com.demo.bean.CustomerDeviceHistoryBean;
 import com.demo.bean.HistoryBean;
 import com.demo.dao.CustomerDaoInt;
 import com.demo.dao.CustomerContactDetailsDaoInt;
+import com.demo.dao.CustomerDeviceHistoryDaoInt;
 import com.demo.dao.HistoryDaoInt;
 import com.demo.model.Customer;
 import com.demo.model.CustomerContactDetails;
+import com.demo.model.CustomerDeviceHistory;
 import com.demo.model.Employee;
 import com.demo.reports.initializer.CustomerReportBean;
 import com.demo.service.CustomerContactDetailsServiceInt;
@@ -51,8 +54,10 @@ public class CustomerDao implements CustomerDaoInt {
 	private CustomerContactDetailsDaoInt customerContactDetailsDaoIntDaoInt;
 	@Autowired
 	private HistoryDaoInt historyDaoInt;
+	@Autowired
+	private CustomerDeviceHistoryDaoInt customerHistoryDaoInt;
 
-	HistoryBean historyBean = null;
+	CustomerDeviceHistoryBean historyBean = null;
 	private String retMessage = null;
 	List<Customer> clientList = null;
 	Customer customer = null;
@@ -132,7 +137,7 @@ public class CustomerDao implements CustomerDaoInt {
 					list.add(contactDetails1);
 				}
 				
-				historyBean = new HistoryBean();
+				historyBean = new CustomerDeviceHistoryBean();
 				//Prepare Customer Data for History Table
 				historyBean.setAction("Create");
 				historyBean.setClassification("Customer");
@@ -140,15 +145,11 @@ public class CustomerDao implements CustomerDaoInt {
 				historyBean.setUserEmail(emp.getEmail());
 				historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
 				historyBean.setDescription("Initial create of Customer");
-				historyBean.setDataField1(null);
-				historyBean.setDataField2(null);
-				//historyBean.setQuantity((Integer) null);
-								
 					
 				sessionFactory.getCurrentSession().save(tempCustomer);
 				customerContactDetailsDaoIntDaoInt.saveContactDetails(list);
 				System.err.println("Customer History is inserted into DB when adding new client");
-				historyDaoInt.saveHistory(historyBean);
+				customerHistoryDaoInt.saveCustomerDeviceHistory(historyBean);
 				retMessage = "Customer " + tempCustomer.getCustomerName() + " "
 						+ "successfully added.";
 				
@@ -189,19 +190,16 @@ public class CustomerDao implements CustomerDaoInt {
 			tempCustomer.setZipcode(customerBean.getZipcode());
 			tempCustomer.setDateTimeClientAdded(dateTimeClientUpdated);
 			
-			historyBean = new HistoryBean();
+			historyBean = new CustomerDeviceHistoryBean();
 			//Prepare Customer Data for History Table
 			historyBean.setAction("Update");
 			historyBean.setClassification("Customer");
 			historyBean.setObjectId(customerBean.getCustomerName());
 			historyBean.setUserEmail(emp.getEmail());
 			historyBean.setUserName(emp.getFirstName() + " " + emp.getLastName());
-			historyBean.setDescription(customerBean.getDecription());
+			historyBean.setDescription(customerBean.getDescription());
 			historyBean.setDateTime(myFormat.format(currentDate));
-			historyBean.setDataField1(null);
-			historyBean.setDataField2(null);
-			//historyBean.setQuantity((Integer) null);
-
+		
 			list = new ArrayList<CustomerContactDetails>();
 
 			// Required contact person object
@@ -238,7 +236,7 @@ public class CustomerDao implements CustomerDaoInt {
 
 			customerContactDetailsDaoIntDaoInt.saveContactDetails(list);
 			System.err.println("Customer History is inserted into DB when updating client");
-			historyDaoInt.saveHistory(historyBean);
+			customerHistoryDaoInt.saveCustomerDeviceHistory(historyBean);
 		} catch (Exception e) {
 			retMessage = "Customer " + customer.getCustomerName()
 					+ " not updated\n" + e.getMessage()+".";
